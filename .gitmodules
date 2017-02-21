@@ -1,0 +1,15 @@
+[submodule "Argo"]
+	path = Argo
+	url = https://github.com/thoughtbot/Argo.git
+[submodule "Runes"]
+	path = Runes
+	url = https://github.com/thoughtbot/Runes.git
+[submodule "Curry"]
+	path = Curry
+	url = https://github.com/thoughtbot/Curry.git
+[submodule "Kickstarter-Prelude"]
+	path = Kickstarter-Prelude
+	url = https://github.com/kickstarter/Kickstarter-Prelude.git
+[submodule "Kickstarter-ReactiveExtensions"]
+	path = Kickstarter-ReactiveExtensions
+	url = https://github.com/kickstarter/Kickstarter-ReactiveExtensions.git
