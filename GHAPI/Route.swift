@@ -3,7 +3,8 @@ import Prelude
 /**
  A list of possible requests that can be made for Kickstarter data.
  */
-//internal enum Route {
+internal enum Route {
+    case test
 //  case activities(categories: [Activity.Category], count: Int?)
 //  case addImage(fileUrl: URL, toDraft: UpdateDraft)
 //  case addVideo(fileUrl: URL, toDraft: UpdateDraft)
@@ -66,17 +67,18 @@ import Prelude
 //  case userProjectsBacked
 //  case userSelf
 //  case user(userId: Int)
-//
-//  enum UploadParam: String {
-//    case image
-//    case video
-//  }
-//
-//  // swiftlint:disable:next large_tuple
-//  internal var requestProperties:
-//    (method: Method, path: String, query: [String:Any], file: (name: UploadParam, url: URL)?) {
-//
-//    switch self {
+
+  enum UploadParam: String {
+    case image
+    case video
+  }
+
+  // swiftlint:disable:next large_tuple
+  internal var requestProperties:
+    (method: Method, path: String, query: [String:Any], file: (name: UploadParam, url: URL)?) {
+
+    switch self {
+    case .test: return (.GET, "/v1/activities", [:], nil)
 //    case let .activities(categories, count):
 //      var params: [String:Any] = ["categories": categories.map { $0.rawValue }]
 //      params["count"] = count
@@ -334,7 +336,7 @@ import Prelude
 //
 //    case let .user(userId):
 //      return (.GET, "/v1/users/\(userId)", [:], nil)
-//
-//    }
-//  }
-//}
+
+    }
+  }
+}

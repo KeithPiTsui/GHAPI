@@ -17,7 +17,6 @@
 		0E4D5A031E5C5E58008E4AD6 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4D59DB1E5C5E10008E4AD6 /* Runes.framework */; };
 		0E4D5A071E5C5E58008E4AD6 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4D5A051E5C5E58008E4AD6 /* ReactiveSwift.framework */; };
 		0E4D5A081E5C5E58008E4AD6 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4D5A061E5C5E58008E4AD6 /* Result.framework */; };
-		0E4D5A111E5C605E008E4AD6 /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A101E5C605E008E4AD6 /* ServiceType.swift */; };
 		0E4D5A131E5C607A008E4AD6 /* NSURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A121E5C607A008E4AD6 /* NSURLSession.swift */; };
 		0E4D5A171E5C60AD008E4AD6 /* BasicHTTPAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A141E5C60AD008E4AD6 /* BasicHTTPAuth.swift */; };
 		0E4D5A181E5C60AD008E4AD6 /* ClientAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A151E5C60AD008E4AD6 /* ClientAuth.swift */; };
@@ -29,6 +28,11 @@
 		0E4D5A231E5C60C1008E4AD6 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A1E1E5C60C1008E4AD6 /* Route.swift */; };
 		0E4D5A251E5C614B008E4AD6 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A241E5C614B008E4AD6 /* Secrets.swift */; };
 		0E4D5A271E5C61A0008E4AD6 /* ErrorEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A261E5C61A0008E4AD6 /* ErrorEnvelope.swift */; };
+		0E5706181E5D9DDA0047BF4C /* ServerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5706161E5D9DDA0047BF4C /* ServerConfig.swift */; };
+		0E5706191E5D9DDA0047BF4C /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5706171E5D9DDA0047BF4C /* Service.swift */; };
+		0E57061B1E5D9E100047BF4C /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E57061A1E5D9E100047BF4C /* ServiceType.swift */; };
+		0E57061D1E5D9FC50047BF4C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E57061C1E5D9FC50047BF4C /* User.swift */; };
+		0E57061F1E5DA0370047BF4C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E57061E1E5DA0370047BF4C /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -280,7 +284,6 @@
 		0E4D59E81E5C5E18008E4AD6 /* ReactiveExtensions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveExtensions.xcodeproj; path = "Kickstarter-ReactiveExtensions/ReactiveExtensions.xcodeproj"; sourceTree = "<group>"; };
 		0E4D5A051E5C5E58008E4AD6 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = "Kickstarter-ReactiveExtensions/Frameworks/ReactiveSwift/build/Debug-iphoneos/ReactiveSwift.framework"; sourceTree = "<group>"; };
 		0E4D5A061E5C5E58008E4AD6 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "Kickstarter-ReactiveExtensions/Frameworks/ReactiveSwift/Carthage/Checkouts/Result/build/Debug-iphoneos/Result.framework"; sourceTree = "<group>"; };
-		0E4D5A101E5C605E008E4AD6 /* ServiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
 		0E4D5A121E5C607A008E4AD6 /* NSURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSession.swift; sourceTree = "<group>"; };
 		0E4D5A141E5C60AD008E4AD6 /* BasicHTTPAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicHTTPAuth.swift; sourceTree = "<group>"; };
 		0E4D5A151E5C60AD008E4AD6 /* ClientAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientAuth.swift; sourceTree = "<group>"; };
@@ -292,6 +295,11 @@
 		0E4D5A1E1E5C60C1008E4AD6 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		0E4D5A241E5C614B008E4AD6 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		0E4D5A261E5C61A0008E4AD6 /* ErrorEnvelope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorEnvelope.swift; sourceTree = "<group>"; };
+		0E5706161E5D9DDA0047BF4C /* ServerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConfig.swift; sourceTree = "<group>"; };
+		0E5706171E5D9DDA0047BF4C /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		0E57061A1E5D9E100047BF4C /* ServiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
+		0E57061C1E5D9FC50047BF4C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0E57061E1E5DA0370047BF4C /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,7 +471,9 @@
 		0E4D5A0B1E5C5FE6008E4AD6 /* GithubServices */ = {
 			isa = PBXGroup;
 			children = (
-				0E4D5A101E5C605E008E4AD6 /* ServiceType.swift */,
+				0E5706161E5D9DDA0047BF4C /* ServerConfig.swift */,
+				0E5706171E5D9DDA0047BF4C /* Service.swift */,
+				0E57061A1E5D9E100047BF4C /* ServiceType.swift */,
 			);
 			name = GithubServices;
 			sourceTree = "<group>";
@@ -479,6 +489,8 @@
 		0E4D5A0D1E5C601B008E4AD6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0E57061C1E5D9FC50047BF4C /* User.swift */,
+				0E57061E1E5DA0370047BF4C /* Location.swift */,
 				0E4D5A261E5C61A0008E4AD6 /* ErrorEnvelope.swift */,
 			);
 			name = Models;
@@ -870,17 +882,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E4D5A211E5C60C1008E4AD6 /* Method.swift in Sources */,
+				0E5706191E5D9DDA0047BF4C /* Service.swift in Sources */,
+				0E57061F1E5DA0370047BF4C /* Location.swift in Sources */,
+				0E5706181E5D9DDA0047BF4C /* ServerConfig.swift in Sources */,
 				0E4D5A191E5C60AD008E4AD6 /* OauthToken.swift in Sources */,
 				0E4D5A201E5C60C1008E4AD6 /* EncodableType.swift in Sources */,
 				0E4D5A231E5C60C1008E4AD6 /* Route.swift in Sources */,
 				0E4D5A181E5C60AD008E4AD6 /* ClientAuth.swift in Sources */,
-				0E4D5A111E5C605E008E4AD6 /* ServiceType.swift in Sources */,
 				0E4D5A271E5C61A0008E4AD6 /* ErrorEnvelope.swift in Sources */,
+				0E57061D1E5D9FC50047BF4C /* User.swift in Sources */,
 				0E4D5A221E5C60C1008E4AD6 /* MimeType.swift in Sources */,
 				0E4D5A1F1E5C60C1008E4AD6 /* Decodable.swift in Sources */,
 				0E4D5A131E5C607A008E4AD6 /* NSURLSession.swift in Sources */,
 				0E4D5A171E5C60AD008E4AD6 /* BasicHTTPAuth.swift in Sources */,
 				0E4D5A251E5C614B008E4AD6 /* Secrets.swift in Sources */,
+				0E57061B1E5D9E100047BF4C /* ServiceType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1098,6 +1114,7 @@
 				0E4D59891E5C5BC0008E4AD6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0E4D598A1E5C5BC0008E4AD6 /* Build configuration list for PBXNativeTarget "GHAPITests" */ = {
 			isa = XCConfigurationList;
@@ -1106,6 +1123,7 @@
 				0E4D598C1E5C5BC0008E4AD6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
