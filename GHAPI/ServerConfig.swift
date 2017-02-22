@@ -44,6 +44,13 @@ public struct ServerConfig: ServerConfigType {
     basicHTTPAuth: BasicHTTPAuth.development
   )
 
+    public static let github: ServerConfigType = ServerConfig(
+        apiBaseUrl: URL(string: "https://\(Secrets.Api.Endpoint.github)")!,
+        webBaseUrl: URL(string: "https://\(Secrets.WebEndpoint.github)")!,
+        apiClientAuth: ClientAuth.github,
+        basicHTTPAuth: BasicHTTPAuth.github
+    )
+
   public init(apiBaseUrl: URL,
               webBaseUrl: URL,
               apiClientAuth: ClientAuthType,

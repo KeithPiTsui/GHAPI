@@ -9,7 +9,17 @@ import Runes
 import ReactiveSwift
 import Result
 import ReactiveExtensions
+import GHAPI
 
 //PlaygroundPage.current.needsIndefiniteExecution = true
 
-let str = "Hello world"
+//let str = "Hello world"
+
+let service = Service.init(
+    serverConfig: ServerConfig.github,
+    //oauthToken: OauthToken.init(token: "uncomment and put in your token!"),
+    language: "en"
+)
+
+let x = service.testConnectionToGithub()
+

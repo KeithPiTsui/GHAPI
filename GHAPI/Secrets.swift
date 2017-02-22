@@ -6,11 +6,13 @@ public enum Secrets {
     public enum Client {
       public static let production = "deadbeef"
       public static let staging = "beefdead"
+      public static let github = ""
     }
 
     public enum Endpoint {
       public static let production = "api.com"
       public static let staging = "api.staging"
+      public static let github = "api.github.com"
     }
   }
 
@@ -65,5 +67,6 @@ public enum Secrets {
   public enum WebEndpoint {
     public static let production = "www.kickstarter.com"
     public static let staging = "staging.com"
+    public static let github = "api.github.com"
   }
 }

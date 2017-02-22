@@ -24,4 +24,8 @@ public struct ClientAuth: ClientAuthType {
   public static let development: ClientAuthType = ClientAuth(
     clientId: Secrets.Api.Client.staging
   )
+ 
+    public static let github: ClientAuthType = ClientAuth(
+        clientId: Secrets.Api.Client.github
+    )
 }

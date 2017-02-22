@@ -53,7 +53,7 @@ public struct Service: ServiceType {
   }
     
     public func testConnectionToGithub() -> SignalProducer<User, ErrorEnvelope> {
-        return request(.test)
+        return request(.user(userName: "keithpitsui"))
     }
 
 //  public func facebookConnect(facebookAccessToken token: String) -> SignalProducer<User, ErrorEnvelope> {
