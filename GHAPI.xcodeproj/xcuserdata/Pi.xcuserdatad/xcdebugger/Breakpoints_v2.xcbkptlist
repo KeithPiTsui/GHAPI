@@ -74,7 +74,7 @@
                   moduleName = "GHAPI"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Pi/KeithProjects/GHAPI/GHAPI/NSURLSession.swift"
-                  timestampString = "509535096.535993"
+                  timestampString = "509536030.205974"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "21"
@@ -89,7 +89,7 @@
                   moduleName = "GHAPI"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Pi/KeithProjects/GHAPI/GHAPI/NSURLSession.swift"
-                  timestampString = "509535096.538227"
+                  timestampString = "509536030.208265"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "22"
@@ -138,7 +138,7 @@
                   moduleName = "GHAPI"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Pi/KeithProjects/GHAPI/GHAPI/NSURLSession.swift"
-                  timestampString = "509535045.148723"
+                  timestampString = "509536030.214699"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "133"
@@ -153,7 +153,7 @@
                   moduleName = "GHAPI"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Pi/KeithProjects/GHAPI/GHAPI/NSURLSession.swift"
-                  timestampString = "509535045.151843"
+                  timestampString = "509536030.216968"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "134"
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHAPI/ServiceType.swift"
-            timestampString = "509533653.41498"
+            timestampString = "509536027.263412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "358"
-            endingLineNumber = "358"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "preparedRequest(forURL:method:query:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -241,70 +241,6 @@
             endingLineNumber = "36"
             landmarkName = "testExample()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GHAPI/ServiceType.swift"
-            timestampString = "509533316.090509"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
-            landmarkName = "preparedRequest(forRequest:query:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GHAPI/ServiceType.swift"
-            timestampString = "509533672.754554"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
-            landmarkName = "preparedRequest(forRequest:query:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(extension in GHAPI):GHAPI.ServiceType.preparedRequest (forRequest : Foundation.URLRequest, query : Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; Foundation.URLRequest"
-                  moduleName = "GHAPI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Pi/KeithProjects/GHAPI/GHAPI/ServiceType.swift"
-                  timestampString = "509535045.178253"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "335"
-                  endingLineNumber = "335"
-                  offsetFromSymbolStart = "4084">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(extension in GHAPI):GHAPI.ServiceType.(preparedRequest (forRequest : Foundation.URLRequest, query : Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; Foundation.URLRequest).(closure #1)"
-                  moduleName = "GHAPI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Pi/KeithProjects/GHAPI/GHAPI/ServiceType.swift"
-                  timestampString = "509535045.180517"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "335"
-                  endingLineNumber = "335"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

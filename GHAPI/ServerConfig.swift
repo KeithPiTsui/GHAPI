@@ -6,6 +6,8 @@ public protocol ServerConfigType {
   var webBaseUrl: URL { get }
   var apiClientAuth: ClientAuthType { get }
   var basicHTTPAuth: BasicHTTPAuthType? { get }
+    var defaultHeaders: [String: String]? {get}
+    var defaultParameters: [String: String]? {get}
 }
 
 public func == (lhs: ServerConfigType, rhs: ServerConfigType) -> Bool {
@@ -22,6 +24,8 @@ public struct ServerConfig: ServerConfigType {
   public let webBaseUrl: URL
   public let apiClientAuth: ClientAuthType
   public let basicHTTPAuth: BasicHTTPAuthType?
+  public let defaultHeaders: [String : String]?
+    public let defaultParameters: [String : String]?
 
   public static let production: ServerConfigType = ServerConfig(
     apiBaseUrl: URL(string: "https://\(Secrets.Api.Endpoint.production)")!,
@@ -54,11 +58,29 @@ public struct ServerConfig: ServerConfigType {
   public init(apiBaseUrl: URL,
               webBaseUrl: URL,
               apiClientAuth: ClientAuthType,
-              basicHTTPAuth: BasicHTTPAuthType?) {
+              basicHTTPAuth: BasicHTTPAuthType?,
+    defaultHeaders: [String: String]? = nil,
+    defaultParameters: [String: String]? = nil) {
 
     self.apiBaseUrl = apiBaseUrl
     self.webBaseUrl = webBaseUrl
     self.apiClientAuth = apiClientAuth
     self.basicHTTPAuth = basicHTTPAuth
+    self.defaultHeaders = defaultHeaders
+    self.defaultParameters = defaultParameters
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
