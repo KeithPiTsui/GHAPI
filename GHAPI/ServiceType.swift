@@ -84,11 +84,7 @@ extension ServiceType {
             request.httpBody = try? JSONSerialization.data(withJSONObject: query, options: [])
         }
         } else {
-        queryItems.append(
-          contentsOf: query
-            .flatMap(queryComponents)
-            .map(URLQueryItem.init(name:value:))
-        )
+            queryItems.append(contentsOf: query.flatMap(queryComponents).map(URLQueryItem.init(name:value:)))
         }
         if queryItems.count > 0 {
             components.queryItems = queryItems.sorted { $0.name < $1.name }
@@ -152,6 +148,13 @@ extension ServiceType {
 //    return headers
 //  }
 
+    //  fileprivate var defaultQueryParams: [String:String] {
+    //    var query: [String:String] = [:]
+    ////    query["client_id"] = self.serverConfig.apiClientAuth.clientId
+    ////    query["oauth_token"] = self.oauthToken?.token
+    //    return query
+    //  }
+    
   fileprivate var authorizationHeader: String? {
     if let token = self.oauthToken?.token {
       return "token \(token)"
@@ -159,13 +162,6 @@ extension ServiceType {
       return self.serverConfig.basicHTTPAuth?.authorizationHeader
     }
   }
-
-//  fileprivate var defaultQueryParams: [String:String] {
-//    var query: [String:String] = [:]
-////    query["client_id"] = self.serverConfig.apiClientAuth.clientId
-////    query["oauth_token"] = self.oauthToken?.token
-//    return query
-//  }
 
   fileprivate func queryComponents(_ key: String, _ value: Any) -> [(String, String)] {
     var components: [(String, String)] = []

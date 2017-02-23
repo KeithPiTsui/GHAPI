@@ -41,70 +41,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GHAPI/Service.swift"
-            timestampString = "509532259.978504"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "518"
-            endingLineNumber = "518"
-            landmarkName = "request(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GHAPI/NSURLSession.swift"
-            timestampString = "509535096.073494"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "rac_dataResponse(_:uploading:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(extension in GHAPI):__ObjC.URLSession.rac_dataResponse (Foundation.URLRequest, uploading : Swift.Optional&lt;(url : Foundation.URL, name : Swift.String)&gt;) -&gt; ReactiveSwift.SignalProducer&lt;Foundation.Data, GHAPI.ErrorEnvelope&gt;"
-                  moduleName = "GHAPI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Pi/KeithProjects/GHAPI/GHAPI/NSURLSession.swift"
-                  timestampString = "509536030.205974"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "58">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(extension in GHAPI):__ObjC.URLSession.(rac_dataResponse (Foundation.URLRequest, uploading : Swift.Optional&lt;(url : Foundation.URL, name : Swift.String)&gt;) -&gt; ReactiveSwift.SignalProducer&lt;Foundation.Data, GHAPI.ErrorEnvelope&gt;).(closure #1)"
-                  moduleName = "GHAPI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Pi/KeithProjects/GHAPI/GHAPI/NSURLSession.swift"
-                  timestampString = "509536030.208265"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "35">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "GHAPI/NSURLSession.swift"
             timestampString = "509532984.086135"
             startingColumnNumber = "9223372036854775807"
@@ -138,7 +74,7 @@
                   moduleName = "GHAPI"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Pi/KeithProjects/GHAPI/GHAPI/NSURLSession.swift"
-                  timestampString = "509536030.214699"
+                  timestampString = "509536546.049189"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "133"
@@ -153,7 +89,7 @@
                   moduleName = "GHAPI"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Pi/KeithProjects/GHAPI/GHAPI/NSURLSession.swift"
-                  timestampString = "509536030.216968"
+                  timestampString = "509536546.051471"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "134"
@@ -185,44 +121,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GHAPI/ServiceType.swift"
-            timestampString = "509536027.263412"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "preparedRequest(forURL:method:query:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "GHAPI/NSURLSession.swift"
             timestampString = "509532984.086135"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
             endingLineNumber = "30"
-            landmarkName = "rac_dataResponse(_:uploading:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GHAPI/NSURLSession.swift"
-            timestampString = "509532965.122398"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
             landmarkName = "rac_dataResponse(_:uploading:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -272,6 +176,38 @@
             startingLineNumber = "56"
             endingLineNumber = "56"
             landmarkName = "testExample()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GHAPI/ServiceType.swift"
+            timestampString = "509536532.986671"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "preparedRequest(forRequest:query:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GHAPI/ServiceType.swift"
+            timestampString = "509536577.154511"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "preparedRequest(forRequest:query:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

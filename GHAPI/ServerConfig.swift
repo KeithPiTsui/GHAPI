@@ -52,7 +52,8 @@ public struct ServerConfig: ServerConfigType {
         apiBaseUrl: URL(string: "https://\(Secrets.Api.Endpoint.github)")!,
         webBaseUrl: URL(string: "https://\(Secrets.WebEndpoint.github)")!,
         apiClientAuth: ClientAuth.github,
-        basicHTTPAuth: BasicHTTPAuth.github
+        basicHTTPAuth: BasicHTTPAuth.github,
+        defaultHeaders: ["Accept":"application/vnd.github.v3+json"]
     )
 
   public init(apiBaseUrl: URL,
