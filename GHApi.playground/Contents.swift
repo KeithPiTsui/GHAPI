@@ -11,7 +11,7 @@ import Result
 import ReactiveExtensions
 import GHAPI
 
-//PlaygroundPage.current.needsIndefiniteExecution = true
+PlaygroundPage.current.needsIndefiniteExecution = true
 
 //let str = "Hello world"
 
@@ -23,3 +23,6 @@ let service = Service.init(
 
 let x = service.testConnectionToGithub()
 
+x.startWithResult { (result) in
+    print(result.value?.id ?? "No value")
+}

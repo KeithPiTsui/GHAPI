@@ -333,10 +333,12 @@ extension ServiceType {
         )
       }
       components.queryItems = queryItems.sorted { $0.name < $1.name }
-      request.url = components.url
+        if queryItems.count > 0 {
+            request.url = components.url
+        }
 
-      let currentHeaders = request.allHTTPHeaderFields ?? [:]
-      request.allHTTPHeaderFields = currentHeaders.withAllValuesFrom(headers)
+//      let currentHeaders = request.allHTTPHeaderFields ?? [:]
+//      request.allHTTPHeaderFields = currentHeaders.withAllValuesFrom(headers)
 
       return request
   }
@@ -393,8 +395,8 @@ extension ServiceType {
 
   fileprivate var defaultQueryParams: [String:String] {
     var query: [String:String] = [:]
-    query["client_id"] = self.serverConfig.apiClientAuth.clientId
-    query["oauth_token"] = self.oauthToken?.token
+//    query["client_id"] = self.serverConfig.apiClientAuth.clientId
+//    query["oauth_token"] = self.oauthToken?.token
     return query
   }
 

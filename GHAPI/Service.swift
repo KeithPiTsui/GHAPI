@@ -522,6 +522,7 @@ public struct Service: ServiceType {
           "URL(string: \(properties.path), relativeToURL: \(self.serverConfig.apiBaseUrl)) == nil"
         )
       }
+     print("\(URL)")
 
       return Service.session.rac_JSONResponse(
         preparedRequest(forURL: URL, method: properties.method, query: properties.query),

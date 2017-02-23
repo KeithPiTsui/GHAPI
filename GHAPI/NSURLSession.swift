@@ -18,7 +18,9 @@ internal extension URLSession {
   internal func rac_dataResponse(_ request: URLRequest, uploading file: (url: URL, name: String)? = nil)
     -> SignalProducer<Data, ErrorEnvelope> {
 
-      let producer = file.map { self.rac_dataWithRequest(request, uploading: $0, named: $1) }
+      let producer = file.map {
+            self.rac_dataWithRequest(request, uploading: $0, named: $1)
+        }
         ?? self.reactive.data(with: request)
 
       return producer
