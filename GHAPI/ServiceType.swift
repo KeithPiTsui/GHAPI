@@ -68,7 +68,7 @@ extension ServiceType {
         var request = originalRequest
         guard let URL = request.url else { return originalRequest }
 
-        var headers = self.defaultHeaders ?? [:]
+        var headers = self.defaultHeaders
 
         let method = request.httpMethod?.uppercased()
         var components = URLComponents(url: URL, resolvingAgainstBaseURL: false)!
@@ -116,11 +116,13 @@ extension ServiceType {
 
   public func isPrepared(request: URLRequest) -> Bool {
     return request.value(forHTTPHeaderField: "Authorization") == authorizationHeader
-      && request.value(forHTTPHeaderField: "Kickstarter-iOS-App") != nil
+//      && request.value(forHTTPHeaderField: "Kickstarter-iOS-App") != nil
   }
 
-    fileprivate var defaultHeaders: [String:String]?  {
-        return self.serverConfig.defaultHeaders
+    fileprivate var defaultHeaders: [String:String]  {
+        var headers = self.serverConfig.defaultHeaders ?? [:]
+        headers["Authorization"] = self.authorizationHeader
+        return headers
     }
     
     fileprivate var defaultQueryParameters: [String: String]? {

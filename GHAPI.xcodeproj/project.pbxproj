@@ -328,6 +328,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E22C07F1E5EEBC4005843A3 /* GithubApiSpecification */ = {
+			isa = PBXGroup;
+			children = (
+				0E4D5A1E1E5C60C1008E4AD6 /* Route.swift */,
+			);
+			name = GithubApiSpecification;
+			sourceTree = "<group>";
+		};
 		0E4D59691E5C5BC0008E4AD6 = {
 			isa = PBXGroup;
 			children = (
@@ -450,6 +458,7 @@
 		0E4D5A091E5C5FBD008E4AD6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				0E22C07F1E5EEBC4005843A3 /* GithubApiSpecification */,
 				0E4D5A0F1E5C603A008E4AD6 /* Authentification */,
 				0E4D5A0E1E5C602D008E4AD6 /* Utilities */,
 				0E4D5A0D1E5C601B008E4AD6 /* Models */,
@@ -503,7 +512,6 @@
 				0E4D5A1B1E5C60C1008E4AD6 /* EncodableType.swift */,
 				0E4D5A1C1E5C60C1008E4AD6 /* Method.swift */,
 				0E4D5A1D1E5C60C1008E4AD6 /* MimeType.swift */,
-				0E4D5A1E1E5C60C1008E4AD6 /* Route.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";

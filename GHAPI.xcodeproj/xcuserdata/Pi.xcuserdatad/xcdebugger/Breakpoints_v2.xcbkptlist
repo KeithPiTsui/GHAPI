@@ -74,7 +74,7 @@
                   moduleName = "GHAPI"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Pi/KeithProjects/GHAPI/GHAPI/NSURLSession.swift"
-                  timestampString = "509536546.049189"
+                  timestampString = "509537934.619364"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "133"
@@ -89,7 +89,7 @@
                   moduleName = "GHAPI"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Pi/KeithProjects/GHAPI/GHAPI/NSURLSession.swift"
-                  timestampString = "509536546.051471"
+                  timestampString = "509537934.621728"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "134"
@@ -153,22 +153,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GHAPI/NSURLSession.swift"
-            timestampString = "509533718.498599"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "rac_JSONResponse(_:uploading:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "GHAPITests/GHAPITests.swift"
             timestampString = "509534702.357949"
             startingColumnNumber = "9223372036854775807"
@@ -186,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHAPI/ServiceType.swift"
-            timestampString = "509536532.986671"
+            timestampString = "509537915.306749"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
@@ -202,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GHAPI/ServiceType.swift"
-            timestampString = "509536577.154511"
+            timestampString = "509537941.346617"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"

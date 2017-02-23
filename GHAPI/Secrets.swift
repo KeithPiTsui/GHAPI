@@ -17,8 +17,8 @@ public enum Secrets {
   }
 
   public enum BasicHTTPAuth {
-    public static let username = "usr"
-    public static let password = "pswd"
+    public static let username = "keithpitsui"
+    public static let password = "ma~3%N3E<C4@@XD"
   }
 
   public enum Firebase {

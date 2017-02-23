@@ -113,7 +113,7 @@ class GHAPITests: XCTestCase {
             expectation.fulfill()
         }
         
-        self.waitForExpectations(timeout: 20, handler: nil)
+        self.waitForExpectations(timeout: 2000, handler: nil)
         
     }
     
