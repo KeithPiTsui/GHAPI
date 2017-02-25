@@ -9,8 +9,8 @@ internal enum Route {
         case image
         case video
     }
-
-  // swiftlint:disable:next large_tuple
+    
+    // swiftlint:disable:next large_tuple
     internal var requestProperties: (
         method: Method,
         path: String,

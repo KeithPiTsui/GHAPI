@@ -1,72 +1,72 @@
 public enum Secrets {
-  public static let isOSS = false
-  public static let fieldReportEmail = "hello@email.com"
-
-  public enum Api {
-    public enum Client {
-      public static let production = "deadbeef"
-      public static let staging = "beefdead"
-      public static let github = ""
-    }
-
-    public enum Endpoint {
-      public static let production = "api.com"
-      public static let staging = "api.staging"
-      public static let github = "api.github.com"
-    }
-  }
-
-  public enum BasicHTTPAuth {
-    public static let username = "keithpitsui"
-    public static let password = "ma~3%N3E<C4@@XD"
-  }
-
-  public enum Firebase {
-    public enum Huzza {
-      public enum Production {
-        public static let apiKey = "deadbeef"
-        public static let appName = "production"
-        public static let bundleID = "com.production"
-        public static let clientID = "deadbeef"
-        public static let databaseURL = "database"
-        public static let gcmSenderID = "gcm"
-        public static let googleAppID = "app"
-        public static let storageBucket = "hello"
-      }
-
-      public enum Demo {
-        public static let apiKey = "deadbeef"
-        public static let appName = "production"
-        public static let bundleID = "com.production"
-        public static let clientID = "deadbeef"
-        public static let databaseURL = "database"
-        public static let gcmSenderID = "gcm"
-        public static let googleAppID = "app"
-        public static let storageBucket = "hello"
-      }
-    }
-  }
-
-  public enum HockeyAppId {
-    public static let beta = "beta"
-    public static let production = "production"
-  }
-
-  public enum KoalaEndpoint {
-    public static let staging = "staging";
-    public static let production = "production";
-  }
-
-  public enum LiveStreams {
+    public static let isOSS = false
+    public static let fieldReportEmail = "hello@email.com"
+    
     public enum Api {
-      public static let base = "https://www.api.com"
+        public enum Client {
+            public static let production = "deadbeef"
+            public static let staging = "beefdead"
+            public static let github = ""
+        }
+        
+        public enum Endpoint {
+            public static let production = "api.com"
+            public static let staging = "api.staging"
+            public static let github = "api.github.com"
+        }
     }
-    public static let endpoint = "https://api.com/stuff"
-  }
-
-  public enum WebEndpoint {
-    public static let production = "www.kickstarter.com"
-    public static let staging = "staging.com"
-    public static let github = "api.github.com"
-  }
+    
+    public enum BasicHTTPAuth {
+        public static let username = "keithpitsui"
+        public static let password = "ma~3%N3E<C4@@XD"
+    }
+    
+    public enum Firebase {
+        public enum Huzza {
+            public enum Production {
+                public static let apiKey = "deadbeef"
+                public static let appName = "production"
+                public static let bundleID = "com.production"
+                public static let clientID = "deadbeef"
+                public static let databaseURL = "database"
+                public static let gcmSenderID = "gcm"
+                public static let googleAppID = "app"
+                public static let storageBucket = "hello"
+            }
+            
+            public enum Demo {
+                public static let apiKey = "deadbeef"
+                public static let appName = "production"
+                public static let bundleID = "com.production"
+                public static let clientID = "deadbeef"
+                public static let databaseURL = "database"
+                public static let gcmSenderID = "gcm"
+                public static let googleAppID = "app"
+                public static let storageBucket = "hello"
+            }
+        }
+    }
+    
+    public enum HockeyAppId {
+        public static let beta = "beta"
+        public static let production = "production"
+    }
+    
+    public enum KoalaEndpoint {
+        public static let staging = "staging";
+        public static let production = "production";
+    }
+    
+    public enum LiveStreams {
+        public enum Api {
+            public static let base = "https://www.api.com"
+        }
+        public static let endpoint = "https://api.com/stuff"
+    }
+    
+    public enum WebEndpoint {
+        public static let production = "www.kickstarter.com"
+        public static let staging = "staging.com"
+        public static let github = "api.github.com"
+    }
 }
