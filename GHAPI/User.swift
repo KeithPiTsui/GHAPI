@@ -93,45 +93,11 @@ extension User: Decodable {
 
   }
 }
-
-//extension UInt: Decodable {
-//    /**
-//     Decode `JSON` into `Decoded<UInt>`.
-//     
-//     Succeeds if the value is a number that can be converted to a `UInt`,
-//     otherwise it returns a type mismatch.
-//     
-//     - parameter json: The `JSON` value to decode
-//     
-//     - returns: A decoded `UInt` value
-//     */
-//    public static func decode(_ json: JSON) -> Decoded<UInt> {
-//        switch json {
-//        case let .number(n): return pure(n.uintValue)
-//        default: return .typeMismatch(expected: "UInt", actual: json)
-//        }
-//    }
-//}
-
-//let dateString = "Thu, 22 Oct 2015 07:45:17 +0000"
-//let dateFormatter = NSDateFormatter()
-//dateFormatter.dateFormat = "EEE, dd MMM yyyy hh:mm:ss +zzzz"
-//dateFormatter.locale = Locale.init(identifier: "en_GB")
-//let dateObj = dateFormatter.dateFromString(dateString)
-//
-//dateFormatter.dateFormat = "MM-dd-yyyy"
-//print("Dateobj: \(dateFormatter.stringFromDate(dateObj!))")
-
 extension Date: Decodable {
     public static func decode(_ json: JSON) -> Decoded<Date> {
         switch json {
         case .string(let dateString):
-            let df = DateFormatter()
-            /// 2015-05-12T01:01:22Z
-            df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-            guard let date = df.date(from: dateString) else {
-                return Decoded.failure(.custom("Date string misformatted"))
-            }
+            guard let date = ISO8601DateFormatter().date(from: dateString) else { return .failure(.custom("Date string misformatted"))}
             return pure(date)
         default: return .typeMismatch(expected: "Date", actual: json)
         }

@@ -43,6 +43,9 @@ let df = DateFormatter()
 df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
 let date = df.date(from: dateString)
 
+let isodf = ISO8601DateFormatter()
+let d2 = isodf.date(from: dateString)
+
 //guard let date = df.date(from: dateString) else {
 ////    return Decoded.failure(.custom("Date string misformatted"))
 //}
