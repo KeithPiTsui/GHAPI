@@ -32,7 +32,6 @@
 		0E5706191E5D9DDA0047BF4C /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5706171E5D9DDA0047BF4C /* Service.swift */; };
 		0E57061B1E5D9E100047BF4C /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E57061A1E5D9E100047BF4C /* ServiceType.swift */; };
 		0E57061D1E5D9FC50047BF4C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E57061C1E5D9FC50047BF4C /* User.swift */; };
-		0E57061F1E5DA0370047BF4C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E57061E1E5DA0370047BF4C /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -299,7 +298,6 @@
 		0E5706171E5D9DDA0047BF4C /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		0E57061A1E5D9E100047BF4C /* ServiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
 		0E57061C1E5D9FC50047BF4C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		0E57061E1E5DA0370047BF4C /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -499,7 +497,6 @@
 			isa = PBXGroup;
 			children = (
 				0E57061C1E5D9FC50047BF4C /* User.swift */,
-				0E57061E1E5DA0370047BF4C /* Location.swift */,
 				0E4D5A261E5C61A0008E4AD6 /* ErrorEnvelope.swift */,
 			);
 			name = Models;
@@ -891,7 +888,6 @@
 			files = (
 				0E4D5A211E5C60C1008E4AD6 /* Method.swift in Sources */,
 				0E5706191E5D9DDA0047BF4C /* Service.swift in Sources */,
-				0E57061F1E5DA0370047BF4C /* Location.swift in Sources */,
 				0E5706181E5D9DDA0047BF4C /* ServerConfig.swift in Sources */,
 				0E4D5A191E5C60AD008E4AD6 /* OauthToken.swift in Sources */,
 				0E4D5A201E5C60C1008E4AD6 /* EncodableType.swift in Sources */,
