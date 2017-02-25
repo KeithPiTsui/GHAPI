@@ -116,7 +116,6 @@ extension ServiceType {
 
   public func isPrepared(request: URLRequest) -> Bool {
     return request.value(forHTTPHeaderField: "Authorization") == authorizationHeader
-//      && request.value(forHTTPHeaderField: "Kickstarter-iOS-App") != nil
   }
 
     fileprivate var defaultHeaders: [String:String]  {
