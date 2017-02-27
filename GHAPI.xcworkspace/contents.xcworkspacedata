@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Kickstarter-ReactiveExtensions/ReactiveExtensions.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Runes/Runes.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Kickstarter-Prelude/Prelude.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Curry/Curry.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Argo/Argo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:GHAPI.xcodeproj">
+   </FileRef>
+</Workspace>
