@@ -49,7 +49,7 @@ class GHAPITests: XCTestCase {
             
             if let data = data {
                 let str = String(data: data, encoding: .utf8)
-                print(str)
+                print(str ?? "")
             }
             
             

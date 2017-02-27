@@ -78,7 +78,8 @@ extension ServiceType {
                 queryItems.append(contentsOf: defaultQPs.map(URLQueryItem.init(name:value:)))
             }
             
-            if method == .some("POST") || method == .some("PUT") {
+            if method == .some("POST") || method == .some("PUT")
+            || method == .some("PATCH") || method == .some("DELETE") {
                 if request.httpBody == nil {
                     headers["Content-Type"] = "application/json; charset=utf-8"
                     request.httpBody = try? JSONSerialization.data(withJSONObject: query, options: [])
