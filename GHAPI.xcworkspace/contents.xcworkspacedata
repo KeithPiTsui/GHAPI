@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Kickstarter-ReactiveExtensions/ReactiveExtensions.xcodeproj">
+      location = "group:Runes/Runes.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Runes/Runes.xcodeproj">
+      location = "group:Kickstarter-ReactiveExtensions/ReactiveExtensions.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Kickstarter-Prelude/Prelude.xcodeproj">

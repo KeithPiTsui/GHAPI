@@ -10,8 +10,6 @@
 		0E4D597D1E5C5BC0008E4AD6 /* GHAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4D59731E5C5BC0008E4AD6 /* GHAPI.framework */; };
 		0E4D59821E5C5BC0008E4AD6 /* GHAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D59811E5C5BC0008E4AD6 /* GHAPITests.swift */; };
 		0E4D59841E5C5BC0008E4AD6 /* GHAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E4D59761E5C5BC0008E4AD6 /* GHAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0E4D5A071E5C5E58008E4AD6 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4D5A051E5C5E58008E4AD6 /* ReactiveSwift.framework */; };
-		0E4D5A081E5C5E58008E4AD6 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4D5A061E5C5E58008E4AD6 /* Result.framework */; };
 		0E4D5A131E5C607A008E4AD6 /* NSURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A121E5C607A008E4AD6 /* NSURLSession.swift */; };
 		0E4D5A171E5C60AD008E4AD6 /* BasicHTTPAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A141E5C60AD008E4AD6 /* BasicHTTPAuth.swift */; };
 		0E4D5A181E5C60AD008E4AD6 /* ClientAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A151E5C60AD008E4AD6 /* ClientAuth.swift */; };
@@ -27,6 +25,13 @@
 		0E5706191E5D9DDA0047BF4C /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5706171E5D9DDA0047BF4C /* Service.swift */; };
 		0E57061B1E5D9E100047BF4C /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E57061A1E5D9E100047BF4C /* ServiceType.swift */; };
 		0E57061D1E5D9FC50047BF4C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E57061C1E5D9FC50047BF4C /* User.swift */; };
+		0E88069E1E642C0F0019CE44 /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8806971E642C0F0019CE44 /* Argo.framework */; };
+		0E88069F1E642C0F0019CE44 /* Curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8806981E642C0F0019CE44 /* Curry.framework */; };
+		0E8806A01E642C0F0019CE44 /* Prelude.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8806991E642C0F0019CE44 /* Prelude.framework */; };
+		0E8806A11E642C0F0019CE44 /* ReactiveExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E88069A1E642C0F0019CE44 /* ReactiveExtensions.framework */; };
+		0E8806A21E642C0F0019CE44 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E88069B1E642C0F0019CE44 /* ReactiveSwift.framework */; };
+		0E8806A31E642C0F0019CE44 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E88069C1E642C0F0019CE44 /* Result.framework */; };
+		0E8806A41E642C0F0019CE44 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E88069D1E642C0F0019CE44 /* Runes.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +69,18 @@
 		0E5706171E5D9DDA0047BF4C /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		0E57061A1E5D9E100047BF4C /* ServiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
 		0E57061C1E5D9FC50047BF4C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0E88068B1E642A820019CE44 /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = "Argo/build/Debug-iphoneos/Argo.framework"; sourceTree = "<group>"; };
+		0E88068C1E642A820019CE44 /* Curry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Curry.framework; path = "Curry/build/Debug-iphoneos/Curry.framework"; sourceTree = "<group>"; };
+		0E88068D1E642A820019CE44 /* Prelude.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Prelude.framework; path = "Kickstarter-Prelude/build/Debug-iphoneos/Prelude.framework"; sourceTree = "<group>"; };
+		0E88068E1E642A820019CE44 /* ReactiveExtensions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveExtensions.framework; path = "Kickstarter-ReactiveExtensions/build/Debug-iphoneos/ReactiveExtensions.framework"; sourceTree = "<group>"; };
+		0E88068F1E642A820019CE44 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = "Runes/build/Debug-iphoneos/Runes.framework"; sourceTree = "<group>"; };
+		0E8806971E642C0F0019CE44 /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/Argo.framework"; sourceTree = "<group>"; };
+		0E8806981E642C0F0019CE44 /* Curry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Curry.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/Curry.framework"; sourceTree = "<group>"; };
+		0E8806991E642C0F0019CE44 /* Prelude.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Prelude.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/Prelude.framework"; sourceTree = "<group>"; };
+		0E88069A1E642C0F0019CE44 /* ReactiveExtensions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveExtensions.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/ReactiveExtensions.framework"; sourceTree = "<group>"; };
+		0E88069B1E642C0F0019CE44 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/ReactiveSwift.framework"; sourceTree = "<group>"; };
+		0E88069C1E642C0F0019CE44 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/Result.framework"; sourceTree = "<group>"; };
+		0E88069D1E642C0F0019CE44 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/Runes.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +88,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E4D5A071E5C5E58008E4AD6 /* ReactiveSwift.framework in Frameworks */,
-				0E4D5A081E5C5E58008E4AD6 /* Result.framework in Frameworks */,
+				0E88069E1E642C0F0019CE44 /* Argo.framework in Frameworks */,
+				0E88069F1E642C0F0019CE44 /* Curry.framework in Frameworks */,
+				0E8806A01E642C0F0019CE44 /* Prelude.framework in Frameworks */,
+				0E8806A11E642C0F0019CE44 /* ReactiveExtensions.framework in Frameworks */,
+				0E8806A21E642C0F0019CE44 /* ReactiveSwift.framework in Frameworks */,
+				0E8806A31E642C0F0019CE44 /* Result.framework in Frameworks */,
+				0E8806A41E642C0F0019CE44 /* Runes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +158,18 @@
 		0E4D5A041E5C5E58008E4AD6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E8806971E642C0F0019CE44 /* Argo.framework */,
+				0E8806981E642C0F0019CE44 /* Curry.framework */,
+				0E8806991E642C0F0019CE44 /* Prelude.framework */,
+				0E88069A1E642C0F0019CE44 /* ReactiveExtensions.framework */,
+				0E88069B1E642C0F0019CE44 /* ReactiveSwift.framework */,
+				0E88069C1E642C0F0019CE44 /* Result.framework */,
+				0E88069D1E642C0F0019CE44 /* Runes.framework */,
+				0E88068B1E642A820019CE44 /* Argo.framework */,
+				0E88068C1E642A820019CE44 /* Curry.framework */,
+				0E88068D1E642A820019CE44 /* Prelude.framework */,
+				0E88068E1E642A820019CE44 /* ReactiveExtensions.framework */,
+				0E88068F1E642A820019CE44 /* Runes.framework */,
 				0E4D5A051E5C5E58008E4AD6 /* ReactiveSwift.framework */,
 				0E4D5A061E5C5E58008E4AD6 /* Result.framework */,
 			);
@@ -465,6 +499,7 @@
 		0E4D59881E5C5BC0008E4AD6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
@@ -476,9 +511,15 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Kickstarter-ReactiveExtensions/Frameworks/ReactiveSwift/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/Kickstarter-ReactiveExtensions/Frameworks/ReactiveSwift/Carthage/Checkouts/Result/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Argo/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Curry/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Kickstarter-Prelude/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Kickstarter-ReactiveExtensions/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Runes/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = GHAPI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.GHAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -491,6 +532,7 @@
 		0E4D59891E5C5BC0008E4AD6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
@@ -502,9 +544,15 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Kickstarter-ReactiveExtensions/Frameworks/ReactiveSwift/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/Kickstarter-ReactiveExtensions/Frameworks/ReactiveSwift/Carthage/Checkouts/Result/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Argo/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Curry/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Kickstarter-Prelude/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Kickstarter-ReactiveExtensions/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Runes/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = GHAPI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.GHAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
