@@ -106,6 +106,7 @@ class GHAPITests: XCTestCase {
             language: "en"
         )
 
+        
         let x = service.testConnectionToGithub()
 
         x.startWithResult { (result) in

@@ -56,6 +56,18 @@ public struct ServerConfig: ServerConfigType {
         defaultHeaders: ["Accept":"application/vnd.github.v3+json"]
     )
     
+    
+    public static func githubServerConfig(username: String, password: String) -> ServerConfigType {
+        let basicHTTPAuth = BasicHTTPAuth(username: username, password: password)
+        return ServerConfig(
+            apiBaseUrl: URL(string: "https://\(Secrets.Api.Endpoint.github)")!,
+            webBaseUrl: URL(string: "https://\(Secrets.WebEndpoint.github)")!,
+            apiClientAuth: ClientAuth.github,
+            basicHTTPAuth: basicHTTPAuth,
+            defaultHeaders: ["Accept":"application/vnd.github.v3+json"]
+        )
+    }
+    
     public init(apiBaseUrl: URL,
                 webBaseUrl: URL,
                 apiClientAuth: ClientAuthType,

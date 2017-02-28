@@ -6,7 +6,7 @@ public enum Secrets {
         public enum Client {
             public static let production = "deadbeef"
             public static let staging = "beefdead"
-            public static let github = ""
+            public static let github = "KeithPiTsui"
         }
         
         public enum Endpoint {
