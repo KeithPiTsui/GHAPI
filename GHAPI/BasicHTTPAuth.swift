@@ -36,16 +36,6 @@ public struct BasicHTTPAuth: BasicHTTPAuthType {
     public let username: String
     public let password: String
     
-    public static let development: BasicHTTPAuthType = BasicHTTPAuth(
-        username: Secrets.BasicHTTPAuth.username,
-        password: Secrets.BasicHTTPAuth.password
-    )
-    
-    public static let github: BasicHTTPAuthType = BasicHTTPAuth(
-        username: Secrets.BasicHTTPAuth.username,
-        password: Secrets.BasicHTTPAuth.password
-    )
-    
     public init(username: String, password: String) {
         self.username = username
         self.password = password

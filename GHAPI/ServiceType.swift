@@ -12,40 +12,32 @@ public enum Mailbox: String {
  A type that knows how to perform requests for Kickstarter data.
  */
 public protocol ServiceType {
-    var appId: String { get }
     var serverConfig: ServerConfigType { get }
-    var oauthToken: OauthTokenAuthType? { get }
-    var language: String { get }
-    var buildVersion: String { get }
     
-    init(appId: String,
-         serverConfig: ServerConfigType,
-         oauthToken: OauthTokenAuthType?,
-         language: String,
-         buildVersion: String)
+    init( serverConfig: ServerConfigType)
     
-    /// Returns a new service with the oauth token replaced.
-    func login(_ oauthToken: OauthTokenAuthType) -> Self
+    /// Returns a new service with the user and password replaced
+    func login(username: String, password: String) -> Service
     
-    /// Returns a new service with the oauth token set to `nil`.
+    /// Returns a new service without authentification infomation.
     func logout() -> Self
     
     /// Request to test with Github API
     func testConnectionToGithub() -> SignalProducer<User, ErrorEnvelope>
+    
+    /// Request user profile from github
+    func userProfile(name: String) -> SignalProducer<User, ErrorEnvelope>
 }
 
 extension ServiceType {
     /// Returns `true` if an oauth token is present, and `false` otherwise.
-    public var isAuthenticated: Bool { return self.oauthToken != nil}
+    public var isAuthenticated: Bool { return self.serverConfig.basicHTTPAuth != nil}
 }
 
 public func == (lhs: ServiceType, rhs: ServiceType) -> Bool {
     return
         type(of: lhs) == type(of: rhs) &&
-            lhs.serverConfig == rhs.serverConfig &&
-            lhs.oauthToken == rhs.oauthToken &&
-            lhs.language == rhs.language &&
-            lhs.buildVersion == rhs.buildVersion
+            lhs.serverConfig == rhs.serverConfig
 }
 
 public func != (lhs: ServiceType, rhs: ServiceType) -> Bool {
@@ -130,12 +122,9 @@ extension ServiceType {
     }
     
     fileprivate var authorizationHeader: String? {
-        if let token = self.oauthToken?.token {
-            return "token \(token)"
-        } else {
             return self.serverConfig.basicHTTPAuth?.authorizationHeader
-        }
     }
+    
     
     fileprivate func queryComponents(_ key: String, _ value: Any) -> [(String, String)] {
         var components: [(String, String)] = []

@@ -102,12 +102,35 @@ extension Date: Decodable {
         default: return .typeMismatch(expected: "Date", actual: json)
         }
     }
+    
+    public var ISO8601DateRepresentation: String {
+        return ISO8601DateFormatter().string(from: self)
+    }
 }
 
 
 extension User: EncodableType {
   public func encode() -> [String:Any] {
-    let result: [String:Any] = [:]
+    var result: [String:Any] = [:]
+    result["login"] = self.login
+    result["id"] = self.id
+    result = result.withAllValuesFrom(self.avatar.encode())
+    result = result.withAllValuesFrom(self.urls.encode())
+    result["type"] = self.type
+    result["site_admin"] = self.siteAdmin
+    result["name"] = self.name
+    result["company"] = self.company ?? ""
+    result["blog"] = self.blog ?? ""
+    result["location"] = self.location
+    result["email"] = self.email
+    result["hireable"] = self.hireable ?? false
+    result["bio"] = self.bio ?? ""
+    result["public_repos"] = self.publicRepos
+    result["public_gists"] = self.publicGists
+    result["followers"] = self.followers
+    result["following"] = self.following
+    result["created_at"] = self.createdDate.ISO8601DateRepresentation
+    result["updated_at"] = self.updatedDate.ISO8601DateRepresentation
     return result
   }
 }
@@ -122,7 +145,7 @@ extension User.Avatar: Decodable {
 
 extension User.Avatar: EncodableType {
   public func encode() -> [String:Any] {
-    return [ "url": self.url, "id": self.id]
+    return [ "avatar_url": self.url, "gravatar_id": self.id]
   }
 }
 
@@ -147,6 +170,18 @@ extension User.URLs: Decodable {
 
 extension User.URLs: EncodableType {
     public func encode() -> [String:Any] {
-        return [:]
+        var result: [String:Any] = [:]
+        result["url"] = self.url
+        result["html_url"] = self.htmlUrl
+        result["followers_url"] = self.followersUrl
+        result["following_url"] = self.followingUrl
+        result["gists_url"] = self.gitsUrl
+        result["starred_url"] = self.starredUrl
+        result["subscriptions_url"] = self.subscriptionsUrl
+        result["organizations_url"] = self.organizationsUrl
+        result["repos_url"] = self.reposUrl
+        result["events_url"] = self.eventsUrl
+        result["received_events_url"] = self.receivedEventsUrl
+        return result
     }
 }

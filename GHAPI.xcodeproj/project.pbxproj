@@ -12,8 +12,6 @@
 		0E4D59841E5C5BC0008E4AD6 /* GHAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E4D59761E5C5BC0008E4AD6 /* GHAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0E4D5A131E5C607A008E4AD6 /* NSURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A121E5C607A008E4AD6 /* NSURLSession.swift */; };
 		0E4D5A171E5C60AD008E4AD6 /* BasicHTTPAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A141E5C60AD008E4AD6 /* BasicHTTPAuth.swift */; };
-		0E4D5A181E5C60AD008E4AD6 /* ClientAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A151E5C60AD008E4AD6 /* ClientAuth.swift */; };
-		0E4D5A191E5C60AD008E4AD6 /* OauthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A161E5C60AD008E4AD6 /* OauthToken.swift */; };
 		0E4D5A1F1E5C60C1008E4AD6 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A1A1E5C60C1008E4AD6 /* Decodable.swift */; };
 		0E4D5A201E5C60C1008E4AD6 /* EncodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A1B1E5C60C1008E4AD6 /* EncodableType.swift */; };
 		0E4D5A211E5C60C1008E4AD6 /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A1C1E5C60C1008E4AD6 /* Method.swift */; };
@@ -21,6 +19,7 @@
 		0E4D5A231E5C60C1008E4AD6 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A1E1E5C60C1008E4AD6 /* Route.swift */; };
 		0E4D5A251E5C614B008E4AD6 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A241E5C614B008E4AD6 /* Secrets.swift */; };
 		0E4D5A271E5C61A0008E4AD6 /* ErrorEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D5A261E5C61A0008E4AD6 /* ErrorEnvelope.swift */; };
+		0E50AA161E6800D20002A40D /* UserPasswordEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E50AA151E6800D20002A40D /* UserPasswordEnvelope.swift */; };
 		0E5706181E5D9DDA0047BF4C /* ServerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5706161E5D9DDA0047BF4C /* ServerConfig.swift */; };
 		0E5706191E5D9DDA0047BF4C /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5706171E5D9DDA0047BF4C /* Service.swift */; };
 		0E57061B1E5D9E100047BF4C /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E57061A1E5D9E100047BF4C /* ServiceType.swift */; };
@@ -56,8 +55,6 @@
 		0E4D5A061E5C5E58008E4AD6 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "Kickstarter-ReactiveExtensions/Frameworks/ReactiveSwift/Carthage/Checkouts/Result/build/Debug-iphoneos/Result.framework"; sourceTree = "<group>"; };
 		0E4D5A121E5C607A008E4AD6 /* NSURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSession.swift; sourceTree = "<group>"; };
 		0E4D5A141E5C60AD008E4AD6 /* BasicHTTPAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicHTTPAuth.swift; sourceTree = "<group>"; };
-		0E4D5A151E5C60AD008E4AD6 /* ClientAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientAuth.swift; sourceTree = "<group>"; };
-		0E4D5A161E5C60AD008E4AD6 /* OauthToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OauthToken.swift; sourceTree = "<group>"; };
 		0E4D5A1A1E5C60C1008E4AD6 /* Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decodable.swift; sourceTree = "<group>"; };
 		0E4D5A1B1E5C60C1008E4AD6 /* EncodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncodableType.swift; sourceTree = "<group>"; };
 		0E4D5A1C1E5C60C1008E4AD6 /* Method.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Method.swift; sourceTree = "<group>"; };
@@ -65,6 +62,7 @@
 		0E4D5A1E1E5C60C1008E4AD6 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		0E4D5A241E5C614B008E4AD6 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		0E4D5A261E5C61A0008E4AD6 /* ErrorEnvelope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorEnvelope.swift; sourceTree = "<group>"; };
+		0E50AA151E6800D20002A40D /* UserPasswordEnvelope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPasswordEnvelope.swift; sourceTree = "<group>"; };
 		0E5706161E5D9DDA0047BF4C /* ServerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConfig.swift; sourceTree = "<group>"; };
 		0E5706171E5D9DDA0047BF4C /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		0E57061A1E5D9E100047BF4C /* ServiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
@@ -219,6 +217,7 @@
 		0E4D5A0D1E5C601B008E4AD6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0E50AA151E6800D20002A40D /* UserPasswordEnvelope.swift */,
 				0E57061C1E5D9FC50047BF4C /* User.swift */,
 				0E4D5A261E5C61A0008E4AD6 /* ErrorEnvelope.swift */,
 			);
@@ -241,8 +240,6 @@
 			children = (
 				0E4D5A241E5C614B008E4AD6 /* Secrets.swift */,
 				0E4D5A141E5C60AD008E4AD6 /* BasicHTTPAuth.swift */,
-				0E4D5A151E5C60AD008E4AD6 /* ClientAuth.swift */,
-				0E4D5A161E5C60AD008E4AD6 /* OauthToken.swift */,
 			);
 			name = Authentification;
 			sourceTree = "<group>";
@@ -363,10 +360,9 @@
 				0E4D5A211E5C60C1008E4AD6 /* Method.swift in Sources */,
 				0E5706191E5D9DDA0047BF4C /* Service.swift in Sources */,
 				0E5706181E5D9DDA0047BF4C /* ServerConfig.swift in Sources */,
-				0E4D5A191E5C60AD008E4AD6 /* OauthToken.swift in Sources */,
 				0E4D5A201E5C60C1008E4AD6 /* EncodableType.swift in Sources */,
+				0E50AA161E6800D20002A40D /* UserPasswordEnvelope.swift in Sources */,
 				0E4D5A231E5C60C1008E4AD6 /* Route.swift in Sources */,
-				0E4D5A181E5C60AD008E4AD6 /* ClientAuth.swift in Sources */,
 				0E4D5A271E5C61A0008E4AD6 /* ErrorEnvelope.swift in Sources */,
 				0E57061D1E5D9FC50047BF4C /* User.swift in Sources */,
 				0E4D5A221E5C60C1008E4AD6 /* MimeType.swift in Sources */,
