@@ -93,21 +93,6 @@ extension User: Decodable {
 
   }
 }
-extension Date: Decodable {
-    public static func decode(_ json: JSON) -> Decoded<Date> {
-        switch json {
-        case .string(let dateString):
-            guard let date = ISO8601DateFormatter().date(from: dateString) else { return .failure(.custom("Date string misformatted"))}
-            return pure(date)
-        default: return .typeMismatch(expected: "Date", actual: json)
-        }
-    }
-    
-    public var ISO8601DateRepresentation: String {
-        return ISO8601DateFormatter().string(from: self)
-    }
-}
-
 
 extension User: EncodableType {
   public func encode() -> [String:Any] {
@@ -183,5 +168,21 @@ extension User.URLs: EncodableType {
         result["events_url"] = self.eventsUrl
         result["received_events_url"] = self.receivedEventsUrl
         return result
+    }
+}
+
+
+extension Date: Decodable {
+    public static func decode(_ json: JSON) -> Decoded<Date> {
+        switch json {
+        case .string(let dateString):
+            guard let date = ISO8601DateFormatter().date(from: dateString) else { return .failure(.custom("Date string misformatted"))}
+            return pure(date)
+        default: return .typeMismatch(expected: "Date", actual: json)
+        }
+    }
+    
+    public var ISO8601DateRepresentation: String {
+        return ISO8601DateFormatter().string(from: self)
     }
 }

@@ -11,8 +11,9 @@ import Curry
 import Runes
 
 public struct SearchResult {
-    let total_count: Int
-    let incomplete_results: Bool
+    public let total_count: Int
+    public let incomplete_results: Bool
+    public let items: [Repository]
 }
 
 extension SearchResult: Equatable {}
@@ -29,13 +30,10 @@ extension SearchResult: CustomDebugStringConvertible {
 
 extension SearchResult: Decodable {
     public static func decode(_ json: JSON) -> Decoded<SearchResult> {
-        
-        let create = curry(SearchResult.init)
-        let tmp = create
+        return curry(SearchResult.init)
             <^> json <| "total_count"
             <*> json <| "incomplete_results"
-        return tmp
-        
+            <*> json <|| "items"
     }
 }
 
