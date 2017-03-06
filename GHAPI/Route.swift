@@ -12,7 +12,6 @@ internal enum Route {
     case user(userName: String)
     case search(scope: SearchScope,
         keyword: String,
-        qualifiers: [SearchQualifier]?,
         sort: SearchSorting?,
         order: SearchSortingOrder?
     )
@@ -29,9 +28,18 @@ internal enum Route {
         case let .user(userName):
             return (.GET, "/users/\(userName)", [:], nil)
             
-        case let .search(scope, keyword, qualifiers, sort, order):
+        case let .search(scope, keyword, sort, order):
             let path = "/search/\(scope.name)"
             var query = ["q":keyword]
+            
+            var qualifiers: [SearchQualifier]? = nil
+            
+            switch scope {
+            case .repositories(let repoQualifiers):
+                qualifiers = repoQualifiers
+            default:
+                break
+            }
             
             if let qualifiers = qualifiers, qualifiers.count > 0 {
                 query["q"] = keyword

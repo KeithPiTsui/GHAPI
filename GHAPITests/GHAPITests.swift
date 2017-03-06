@@ -30,72 +30,28 @@ class GHAPITests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
-        let expectation = self.expectation(description: "network response")
-
-//        let urlString =  "https://api.github.com/users/keithpitsui"
+//      let urlString =  "https://api.github.com/users/keithpitsui"
         let urlString =  "https://api.github.com/search/repositories?q=tetris+language:assembly&sort=stars&order=desc"
+        self.linkRequest(link: urlString)
+        
+    }
+    
+    fileprivate func linkRequest(link: String) {
+        let expectation = self.expectation(description: "network response")
+        let urlString = link
         let myUrl = URL(string: urlString);
         let request = NSMutableURLRequest(url:myUrl!);
         request.httpMethod = "GET";
-        
         let task = URLSession.shared.dataTask(with: request as URLRequest) {
             data, response, error in
-
-            if let response = response {
-                print(response.description)
-            }
-            
-            if let data = data {
-                let str = String(data: data, encoding: .utf8)
-                print(str ?? "")
-            }
-            
-            
-            print("Hello")
+            if let response = response { print(response.description) }
+            if let data = data { print(String(data: data, encoding: .utf8) ?? "")}
             expectation.fulfill()
-//            if error != nil {
-//                print(error!.localizedDescription)
-//                DispatchQueue.main.sync(execute: {
-//                    AWLoader.hide()
-//                })
-//                return
-//            }
-//            
-//            do {
-//                
-//                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSArray
-//                
-//                if let parseJSON = json{
-//                    print(parseJSON)
-//                } else {
-//                    AWLoader.hide()
-//                }
-//                catch{
-//                    AWLoader.hide()
-//                    print(error)
-//                }
-            }
-            task.resume()
-        
-        
-//        let service = Service.init(
-//            serverConfig: ServerConfig.github,
-//            //oauthToken: OauthToken.init(token: "uncomment and put in your token!"),
-//            language: "en"
-//        )
-//        
-//        let x = service.testConnectionToGithub()
-//        
-//        x.startWithResult { (result) in
-//            print(result.value?.id ?? "No value")
-//            expectation.fulfill()
-//        }
-        
+        }
+        task.resume()
         self.waitForExpectations(timeout: 200, handler: nil)
     }
+    
     
     func testGithubService() {
         
@@ -118,9 +74,12 @@ class GHAPITests: XCTestCase {
     func testGHServiceSearch() {
         let expectation = self.expectation(description: "network response")
         let service = Service()
-        
-        
-        
+        let langQualifier: RepositoriesQualifier = .language([.assembly])
+        service.search(scope: .repositories([langQualifier]), keyword: "tetris")
+            .startWithResult {(result) in
+            print(result.value?.debugDescription ?? "No value")
+            expectation.fulfill()
+        }
         self.waitForExpectations(timeout: 2000, handler: nil)
     }
     

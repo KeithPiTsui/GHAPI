@@ -9,7 +9,7 @@
 import Foundation
 
 public enum SearchScope {
-    case repositories(RepositoriesQualifier)
+    case repositories([RepositoriesQualifier])
     case code
     case issues
     case users

@@ -37,14 +37,14 @@ public struct Service: ServiceType {
     
     public func search(scope: SearchScope,
                        keyword: String,
-                       qualifiers: [SearchQualifier]?,
-                       sort: SearchSorting?,
-                       order: SearchSortingOrder?) -> SignalProducer<SearchResult, ErrorEnvelope> {
-        return request(.search(scope: scope, keyword: keyword, qualifiers: qualifiers, sort: sort, order: order))
+                       sort: SearchSorting? = nil,
+                       order: SearchSortingOrder? = nil) -> SignalProducer<SearchResult, ErrorEnvelope> {
+        return request(.search(scope: scope, keyword: keyword,  sort: sort, order: order))
     }
-    
-    
-    private func decodeModel<M: Decodable>(_ json: Any) ->
+}
+
+extension Service {
+    fileprivate func decodeModel<M: Decodable>(_ json: Any) ->
         SignalProducer<M, ErrorEnvelope> where M == M.DecodedType {
             
             return SignalProducer(value: json)
@@ -60,7 +60,7 @@ public struct Service: ServiceType {
             }
     }
     
-    private func decodeModels<M: Decodable>(_ json: Any) ->
+    fileprivate func decodeModels<M: Decodable>(_ json: Any) ->
         SignalProducer<[M], ErrorEnvelope> where M == M.DecodedType {
             
             return SignalProducer(value: json)
@@ -76,9 +76,9 @@ public struct Service: ServiceType {
             }
     }
     
-    private static let session = URLSession(configuration: .default)
+    fileprivate static let session = URLSession(configuration: .default)
     
-    private func requestPagination<M: Decodable>(_ paginationUrl: String)
+    fileprivate func requestPagination<M: Decodable>(_ paginationUrl: String)
         -> SignalProducer<M, ErrorEnvelope> where M == M.DecodedType {
             
             guard let paginationUrl = URL(string: paginationUrl) else {
@@ -89,7 +89,7 @@ public struct Service: ServiceType {
                 .flatMap(decodeModel)
     }
     
-    private func request<M: Decodable>(_ route: Route)
+    fileprivate func request<M: Decodable>(_ route: Route)
         -> SignalProducer<M, ErrorEnvelope> where M == M.DecodedType {
             
             let properties = route.requestProperties
@@ -108,7 +108,7 @@ public struct Service: ServiceType {
                 .flatMap(decodeModel)
     }
     
-    private func request<M: Decodable>(_ route: Route)
+    fileprivate func request<M: Decodable>(_ route: Route)
         -> SignalProducer<[M], ErrorEnvelope> where M == M.DecodedType {
             
             let properties = route.requestProperties
@@ -122,3 +122,5 @@ public struct Service: ServiceType {
                 .flatMap(decodeModels)
     }
 }
+
+
