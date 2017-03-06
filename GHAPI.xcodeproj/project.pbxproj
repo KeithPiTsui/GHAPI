@@ -31,6 +31,8 @@
 		0E8806A21E642C0F0019CE44 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E88069B1E642C0F0019CE44 /* ReactiveSwift.framework */; };
 		0E8806A31E642C0F0019CE44 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E88069C1E642C0F0019CE44 /* Result.framework */; };
 		0E8806A41E642C0F0019CE44 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E88069D1E642C0F0019CE44 /* Runes.framework */; };
+		0EE17BBF1E6D657300451632 /* SearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BBE1E6D657300451632 /* SearchParameters.swift */; };
+		0EE17BC11E6D6F6100451632 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BC01E6D6F6100451632 /* SearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		0E88069B1E642C0F0019CE44 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/ReactiveSwift.framework"; sourceTree = "<group>"; };
 		0E88069C1E642C0F0019CE44 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/Result.framework"; sourceTree = "<group>"; };
 		0E88069D1E642C0F0019CE44 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/Runes.framework"; sourceTree = "<group>"; };
+		0EE17BBE1E6D657300451632 /* SearchParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchParameters.swift; sourceTree = "<group>"; };
+		0EE17BC01E6D6F6100451632 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				0E4D5A1E1E5C60C1008E4AD6 /* Route.swift */,
+				0EE17BBE1E6D657300451632 /* SearchParameters.swift */,
 			);
 			name = GithubApiSpecification;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 				0E50AA151E6800D20002A40D /* UserPasswordEnvelope.swift */,
 				0E57061C1E5D9FC50047BF4C /* User.swift */,
 				0E4D5A261E5C61A0008E4AD6 /* ErrorEnvelope.swift */,
+				0EE17BC01E6D6F6100451632 /* SearchResult.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -359,7 +365,9 @@
 			files = (
 				0E4D5A211E5C60C1008E4AD6 /* Method.swift in Sources */,
 				0E5706191E5D9DDA0047BF4C /* Service.swift in Sources */,
+				0EE17BC11E6D6F6100451632 /* SearchResult.swift in Sources */,
 				0E5706181E5D9DDA0047BF4C /* ServerConfig.swift in Sources */,
+				0EE17BBF1E6D657300451632 /* SearchParameters.swift in Sources */,
 				0E4D5A201E5C60C1008E4AD6 /* EncodableType.swift in Sources */,
 				0E50AA161E6800D20002A40D /* UserPasswordEnvelope.swift in Sources */,
 				0E4D5A231E5C60C1008E4AD6 /* Route.swift in Sources */,

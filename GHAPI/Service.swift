@@ -35,6 +35,15 @@ public struct Service: ServiceType {
         return request(.user(userName: name))
     }
     
+    public func search(scope: SearchScope,
+                       keyword: String,
+                       qualifiers: [SearchQualifier]?,
+                       sort: SearchSorting?,
+                       order: SearchSortingOrder?) -> SignalProducer<SearchResult, ErrorEnvelope> {
+        return request(.search(scope: scope, keyword: keyword, qualifiers: qualifiers, sort: sort, order: order))
+    }
+    
+    
     private func decodeModel<M: Decodable>(_ json: Any) ->
         SignalProducer<M, ErrorEnvelope> where M == M.DecodedType {
             

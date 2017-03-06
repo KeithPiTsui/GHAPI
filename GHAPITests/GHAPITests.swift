@@ -35,7 +35,8 @@ class GHAPITests: XCTestCase {
         
         let expectation = self.expectation(description: "network response")
 
-        let urlString =  "https://api.github.com/users/keithpitsui"
+//        let urlString =  "https://api.github.com/users/keithpitsui"
+        let urlString =  "https://api.github.com/search/repositories?q=tetris+language:assembly&sort=stars&order=desc"
         let myUrl = URL(string: urlString);
         let request = NSMutableURLRequest(url:myUrl!);
         request.httpMethod = "GET";
@@ -93,18 +94,14 @@ class GHAPITests: XCTestCase {
 //            expectation.fulfill()
 //        }
         
-        self.waitForExpectations(timeout: 20, handler: nil)
+        self.waitForExpectations(timeout: 200, handler: nil)
     }
     
     func testGithubService() {
         
         let expectation = self.expectation(description: "network response")
         
-        let service = Service.init(
-            serverConfig: ServerConfig.github,
-            //oauthToken: OauthToken.init(token: "uncomment and put in your token!"),
-            language: "en"
-        )
+        let service = Service.init(serverConfig: ServerConfig.github)
 
         
         let x = service.testConnectionToGithub()
@@ -116,6 +113,15 @@ class GHAPITests: XCTestCase {
         
         self.waitForExpectations(timeout: 2000, handler: nil)
         
+    }
+    
+    func testGHServiceSearch() {
+        let expectation = self.expectation(description: "network response")
+        let service = Service()
+        
+        
+        
+        self.waitForExpectations(timeout: 2000, handler: nil)
     }
     
     
