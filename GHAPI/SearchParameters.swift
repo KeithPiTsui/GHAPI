@@ -51,11 +51,6 @@ public enum SearchSortingOrder: String {
 // MARK: -
 // MARK: Arguments
 
-public enum UserType: String {
-    case user
-    case org
-}
-
 public protocol SearchValueTypeRepresentation: Comparable {
     var representationSVT: String { get }
 }

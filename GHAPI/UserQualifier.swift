@@ -14,27 +14,39 @@ public enum UserInArgument: String {
     case readme
 }
 
+public enum UserType: String {
+    case user
+    case org
+}
+
+
 public enum UserQualifier: SearchQualifier {
+    case type(UserType)
     case `in`([UserInArgument])
-    case created(ComparativeArgument<Date>)
-    case followers(UInt)
+    case repos(ComparativeArgument<UInt>)
     case location(String)
-    case repo([String])
     case language([LanguageArgument])
+    case created(ComparativeArgument<Date>)
+    case followers(ComparativeArgument<UInt>)
     
     public var searchRepresentation: String {
         let rep: String
         switch self {
+        case let .type(arg):
+            rep = "type:" + arg.rawValue
         case let .in(args):
             rep = "in:" + args.map{$0.rawValue}.joined(separator: ",")
-            
-        case let .repo(args):
-            rep = "repo:" + args.joined(separator: ",")
+        case let .repos(arg):
+            rep = "repos:" + arg.searchRepresentation
+        case let .location(arg):
+            rep = "location:" + arg
         case let .language(args):
             rep = "language:" + args.map{$0.rawValue}.joined(separator: ",")
-            
-        default: break
+        case let .created(arg):
+            rep = "created:" + arg.searchRepresentation
+        case let .followers(arg):
+            rep = "followers:" + arg.searchRepresentation
         }
-        return ""
+        return rep
     }
 }
