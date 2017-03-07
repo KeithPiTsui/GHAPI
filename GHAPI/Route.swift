@@ -11,7 +11,7 @@ internal enum Route {
     
     case user(userName: String)
     case search(scope: SearchScope,
-        keyword: String,
+        keyword: String?,
         sort: SearchSorting?,
         order: SearchSortingOrder?
     )
@@ -30,7 +30,8 @@ internal enum Route {
             
         case let .search(scope, keyword, sort, order):
             let path = "/search/\(scope.name)"
-            var query = ["q":keyword]
+            var query: [String: String] = [:]
+            if let keyword = keyword { query = ["q":keyword]}
             
             var qualifiers: [SearchQualifier]? = nil
             
@@ -42,9 +43,8 @@ internal enum Route {
             }
             
             if let qualifiers = qualifiers, qualifiers.count > 0 {
-                query["q"] = keyword
-                    + "+"
-                    + qualifiers.map{$0.searchRepresentation}.joined(separator: "+")
+                let kw = keyword == nil ? "" : (keyword! + "+")
+                query["q"] = kw + qualifiers.map{$0.searchRepresentation}.joined(separator: "+")
             }
             if let sort = sort { query["sort"] = sort.rawValue }
             if let order = order { query["order"] = order.rawValue }
@@ -52,3 +52,11 @@ internal enum Route {
         }
     }
 }
+
+
+
+
+
+
+
+

@@ -45,7 +45,7 @@ public enum SearchSorting: String {
 
 public enum SearchSortingOrder: String {
     case asc
-    case dsc
+    case desc
 }
 
 // MARK: -
@@ -97,6 +97,7 @@ public enum ComparativeArgument<Argument: SearchValueTypeRepresentation> {
 
 public enum LanguageArgument: String {
     case assembly
+    case swift
 }
 
 

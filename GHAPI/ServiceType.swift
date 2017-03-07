@@ -30,7 +30,7 @@ public protocol ServiceType {
     
     /// Request a search result from github
     func search(scope: SearchScope,
-                keyword: String,
+                keyword: String?,
                 sort: SearchSorting?,
                 order: SearchSortingOrder?) -> SignalProducer<SearchResult, ErrorEnvelope>
 }

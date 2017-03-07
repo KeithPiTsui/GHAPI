@@ -86,6 +86,28 @@ class GHAPITests: XCTestCase {
         self.waitForExpectations(timeout: 2000, handler: nil)
     }
     
+    func testGHServiceTrendingRepos() {
+        let expectation = self.expectation(description: "network response")
+        let service = Service()
+        let createdDateQualifier: RepositoriesQualifier = .pushed(.biggerAndEqualThan(Date() - 7*24*50))
+        let langQualifier: RepositoriesQualifier = .language([.swift])
+        
+        service.search(scope: .repositories([createdDateQualifier, langQualifier]),
+                       sort: .stars,
+                       order: .desc)
+            .startWithResult {(result) in
+                if let value  = result.value {
+                    print(value.debugDescription)
+                }
+                if let error = result.error {
+                    print(error.localizedDescription)
+                }
+                expectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 2000, handler: nil)
+    }
+    
     
     func testPerformanceExample() {self.measure {}}
 }

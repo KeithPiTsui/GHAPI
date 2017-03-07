@@ -32,7 +32,7 @@ public struct Repository {
     public let size: UInt
     public let stargazers_count: UInt
     public let watchers_count: UInt
-    public let language: String
+    public let language: String?
     public let forks_count: UInt
     public let open_issues_count: UInt
     public let master_branch: String?
@@ -79,7 +79,7 @@ extension Repository: Decodable {
             <*> json <| "watchers_count"
         
         let temp5 = temp4
-            <*> json <| "language"
+            <*> json <|? "language"
             <*> json <| "forks_count"
             <*> json <| "open_issues_count"
             <*> json <|? "master_branch"

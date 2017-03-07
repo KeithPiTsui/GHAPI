@@ -36,7 +36,7 @@ public struct Service: ServiceType {
     }
     
     public func search(scope: SearchScope,
-                       keyword: String,
+                       keyword: String? = nil,
                        sort: SearchSorting? = nil,
                        order: SearchSortingOrder? = nil) -> SignalProducer<SearchResult, ErrorEnvelope> {
         return request(.search(scope: scope, keyword: keyword,  sort: sort, order: order))
