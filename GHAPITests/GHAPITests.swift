@@ -73,7 +73,7 @@ class GHAPITests: XCTestCase {
         let expectation = self.expectation(description: "network response")
         let service = Service()
         let langQualifier: RepositoriesQualifier = .language([.assembly])
-        service.search(scope: .repositories([langQualifier]), keyword: "tetris")
+        service.searchRepository(qualifiers: [langQualifier], keyword: "tetris")
             .startWithResult {(result) in
                 if let value  = result.value {
                     print(value.debugDescription)
@@ -92,7 +92,29 @@ class GHAPITests: XCTestCase {
         let createdDateQualifier: RepositoriesQualifier = .pushed(.biggerAndEqualThan(Date() - 7*24*50))
         let langQualifier: RepositoriesQualifier = .language([.swift])
         
-        service.search(scope: .repositories([createdDateQualifier, langQualifier]),
+        service.searchRepository(qualifiers: [createdDateQualifier, langQualifier],
+                                 sort: .stars,
+                                order: .desc)
+                        .startWithResult {(result) in
+                            if let value  = result.value {
+                                print(value.debugDescription)
+                            }
+                            if let error = result.error {
+                                print(error.localizedDescription)
+                            }
+                            expectation.fulfill()
+                    }
+        
+        self.waitForExpectations(timeout: 2000, handler: nil)
+    }
+    
+    func testGHServiceUserSearch() {
+        let expectation = self.expectation(description: "network response")
+        let service = Service()
+
+        let userTypeQualifier: UserQualifier = .type(.user)
+        service.searchUser(qualifiers: [userTypeQualifier],
+                       keyword: "Keith",
                        sort: .stars,
                        order: .desc)
             .startWithResult {(result) in

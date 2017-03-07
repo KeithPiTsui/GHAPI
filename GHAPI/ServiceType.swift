@@ -28,11 +28,18 @@ public protocol ServiceType {
     /// Request user profile from github
     func userProfile(name: String) -> SignalProducer<User, ErrorEnvelope>
     
-    /// Request a search result from github
-    func search(scope: SearchScope,
-                keyword: String?,
-                sort: SearchSorting?,
-                order: SearchSortingOrder?) -> SignalProducer<SearchResult, ErrorEnvelope>
+    /// Request a search on Repository from github
+    func searchRepository(qualifiers: [RepositoriesQualifier],
+                          keyword: String?,
+                          sort: SearchSorting?,
+                          order: SearchSortingOrder?) ->  SignalProducer<RepositorySearchResult, ErrorEnvelope>
+    
+    /// Request a search on Repository from github
+    func searchUser(qualifiers: [UserQualifier],
+                          keyword: String?,
+                          sort: SearchSorting?,
+                          order: SearchSortingOrder?) ->  SignalProducer<UserSearchResult, ErrorEnvelope>
+    
 }
 
 extension ServiceType {

@@ -29,6 +29,9 @@
 		0E7B7BA11E6E3DF800D50C95 /* IssueQualifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BA01E6E3DF800D50C95 /* IssueQualifier.swift */; };
 		0E7B7BA31E6E3E1100D50C95 /* UserQualifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BA21E6E3E1100D50C95 /* UserQualifier.swift */; };
 		0E7B7BA61E6E3EA300D50C95 /* CommitsQualifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BA51E6E3EA300D50C95 /* CommitsQualifier.swift */; };
+		0E7B7BDF1E6E5F5700D50C95 /* RepositorySearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BDE1E6E5F5700D50C95 /* RepositorySearchResult.swift */; };
+		0E7B7BE11E6E612800D50C95 /* UserSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BE01E6E612800D50C95 /* UserSearchResult.swift */; };
+		0E7B7BE31E6E628C00D50C95 /* StandardTypeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BE21E6E628C00D50C95 /* StandardTypeExtension.swift */; };
 		0E88069E1E642C0F0019CE44 /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8806971E642C0F0019CE44 /* Argo.framework */; };
 		0E88069F1E642C0F0019CE44 /* Curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8806981E642C0F0019CE44 /* Curry.framework */; };
 		0E8806A01E642C0F0019CE44 /* Prelude.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8806991E642C0F0019CE44 /* Prelude.framework */; };
@@ -81,6 +84,9 @@
 		0E7B7BA01E6E3DF800D50C95 /* IssueQualifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueQualifier.swift; sourceTree = "<group>"; };
 		0E7B7BA21E6E3E1100D50C95 /* UserQualifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserQualifier.swift; sourceTree = "<group>"; };
 		0E7B7BA51E6E3EA300D50C95 /* CommitsQualifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitsQualifier.swift; sourceTree = "<group>"; };
+		0E7B7BDE1E6E5F5700D50C95 /* RepositorySearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositorySearchResult.swift; sourceTree = "<group>"; };
+		0E7B7BE01E6E612800D50C95 /* UserSearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchResult.swift; sourceTree = "<group>"; };
+		0E7B7BE21E6E628C00D50C95 /* StandardTypeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardTypeExtension.swift; sourceTree = "<group>"; };
 		0E88068B1E642A820019CE44 /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = "Argo/build/Debug-iphoneos/Argo.framework"; sourceTree = "<group>"; };
 		0E88068C1E642A820019CE44 /* Curry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Curry.framework; path = "Curry/build/Debug-iphoneos/Curry.framework"; sourceTree = "<group>"; };
 		0E88068D1E642A820019CE44 /* Prelude.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Prelude.framework; path = "Kickstarter-Prelude/build/Debug-iphoneos/Prelude.framework"; sourceTree = "<group>"; };
@@ -241,6 +247,8 @@
 				0E57061C1E5D9FC50047BF4C /* User.swift */,
 				0E4D5A261E5C61A0008E4AD6 /* ErrorEnvelope.swift */,
 				0EE17BC01E6D6F6100451632 /* SearchResult.swift */,
+				0E7B7BDE1E6E5F5700D50C95 /* RepositorySearchResult.swift */,
+				0E7B7BE01E6E612800D50C95 /* UserSearchResult.swift */,
 				0EE17BC21E6D7CCB00451632 /* Repository.swift */,
 				0EE17BC41E6D7D1B00451632 /* RepositoryOwner.swift */,
 			);
@@ -254,6 +262,7 @@
 				0E4D5A1B1E5C60C1008E4AD6 /* EncodableType.swift */,
 				0E4D5A1C1E5C60C1008E4AD6 /* Method.swift */,
 				0E4D5A1D1E5C60C1008E4AD6 /* MimeType.swift */,
+				0E7B7BE21E6E628C00D50C95 /* StandardTypeExtension.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -396,6 +405,7 @@
 				0EE17BC51E6D7D1B00451632 /* RepositoryOwner.swift in Sources */,
 				0E5706191E5D9DDA0047BF4C /* Service.swift in Sources */,
 				0EE17BC11E6D6F6100451632 /* SearchResult.swift in Sources */,
+				0E7B7BDF1E6E5F5700D50C95 /* RepositorySearchResult.swift in Sources */,
 				0E5706181E5D9DDA0047BF4C /* ServerConfig.swift in Sources */,
 				0E7B7B9D1E6E3DBB00D50C95 /* RepositoryQualifier.swift in Sources */,
 				0EE17BBF1E6D657300451632 /* SearchParameters.swift in Sources */,
@@ -408,6 +418,8 @@
 				0E7B7BA61E6E3EA300D50C95 /* CommitsQualifier.swift in Sources */,
 				0E4D5A221E5C60C1008E4AD6 /* MimeType.swift in Sources */,
 				0E4D5A1F1E5C60C1008E4AD6 /* Decodable.swift in Sources */,
+				0E7B7BE11E6E612800D50C95 /* UserSearchResult.swift in Sources */,
+				0E7B7BE31E6E628C00D50C95 /* StandardTypeExtension.swift in Sources */,
 				0E7B7BA31E6E3E1100D50C95 /* UserQualifier.swift in Sources */,
 				0EE17BC31E6D7CCB00451632 /* Repository.swift in Sources */,
 				0E4D5A131E5C607A008E4AD6 /* NSURLSession.swift in Sources */,

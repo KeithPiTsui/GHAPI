@@ -38,6 +38,8 @@ internal enum Route {
             switch scope {
             case .repositories(let repoQualifiers):
                 qualifiers = repoQualifiers
+            case .users(let userQualifiers):
+                qualifiers = userQualifiers
             default:
                 break
             }

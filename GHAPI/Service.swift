@@ -35,11 +35,18 @@ public struct Service: ServiceType {
         return request(.user(userName: name))
     }
     
-    public func search(scope: SearchScope,
-                       keyword: String? = nil,
-                       sort: SearchSorting? = nil,
-                       order: SearchSortingOrder? = nil) -> SignalProducer<SearchResult, ErrorEnvelope> {
-        return request(.search(scope: scope, keyword: keyword,  sort: sort, order: order))
+    public func searchRepository(qualifiers: [RepositoriesQualifier],
+                                  keyword: String? = nil,
+                                  sort: SearchSorting? = nil,
+                                  order: SearchSortingOrder? = nil) ->  SignalProducer<RepositorySearchResult, ErrorEnvelope> {
+        return request(.search(scope: .repositories(qualifiers), keyword: keyword,  sort: sort, order: order))
+    }
+    
+    public func searchUser(qualifiers: [UserQualifier],
+                    keyword: String?,
+                    sort: SearchSorting?,
+                    order: SearchSortingOrder?) ->  SignalProducer<UserSearchResult, ErrorEnvelope> {
+        return request(.search(scope: .users(qualifiers), keyword: keyword,  sort: sort, order: order))
     }
 }
 

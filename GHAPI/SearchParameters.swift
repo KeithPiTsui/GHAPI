@@ -11,9 +11,9 @@ import Foundation
 public enum SearchScope {
     case repositories([RepositoriesQualifier])
     case code([CodeQualifier])
-    case issues(IssueQualifier)
-    case users(UserQualifier)
-    case commits
+    case issues([IssueQualifier])
+    case users([UserQualifier])
+    case commits([CommitsQualifier])
     
     public var name: String {
         switch self {
@@ -25,7 +25,7 @@ public enum SearchScope {
             return "issues"
         case .users(_):
             return "users"
-        case .commits:
+        case .commits(_):
             return "commits"
         }
     }

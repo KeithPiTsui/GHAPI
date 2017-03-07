@@ -28,19 +28,20 @@ public struct User {
     public let urls: URLs
     public let type: String
     public let siteAdmin: Bool
-    public let name: String
+    
+    public let name: String?
     public let company: String?
     public let blog: String?
-    public let location: String
-    public let email: String
+    public let location: String?
+    public let email: String?
     public let hireable: Bool?
     public let bio: String?
-    public let publicRepos: Int
-    public let publicGists: Int
-    public let followers: Int
-    public let following: Int
-    public let createdDate: Date
-    public let updatedDate: Date
+    public let publicRepos: Int?
+    public let publicGists: Int?
+    public let followers: Int?
+    public let following: Int?
+    public let createdDate: Date?
+    public let updatedDate: Date?
     
     
 }
@@ -71,23 +72,23 @@ extension User: Decodable {
     let tmp2 = tmp1
         <*> json <| "type"
         <*> json <| "site_admin"
-        <*> json <| "name"
+        <*> json <|? "name"
         <*> json <|? "company"
         <*> json <|? "blog"
     
     let tmp3 = tmp2
-        <*> json <| "location"
-        <*> json <| "email"
+        <*> json <|? "location"
+        <*> json <|? "email"
         <*> json <|? "hireable"
         <*> json <|? "bio"
-        <*> json <| "public_repos"
+        <*> json <|? "public_repos"
         
     let tmp4 = tmp3
-        <*> json <| "public_gists"
-        <*> json <| "followers"
-        <*> json <| "following"
-        <*> json <| "created_at"
-        <*> json <| "updated_at"
+        <*> json <|? "public_gists"
+        <*> json <|? "followers"
+        <*> json <|? "following"
+        <*> json <|? "created_at"
+        <*> json <|? "updated_at"
     
     return tmp4
 
@@ -114,8 +115,8 @@ extension User: EncodableType {
     result["public_gists"] = self.publicGists
     result["followers"] = self.followers
     result["following"] = self.following
-    result["created_at"] = self.createdDate.ISO8601DateRepresentation
-    result["updated_at"] = self.updatedDate.ISO8601DateRepresentation
+    result["created_at"] = self.createdDate?.ISO8601DateRepresentation
+    result["updated_at"] = self.updatedDate?.ISO8601DateRepresentation
     return result
   }
 }
@@ -168,21 +169,5 @@ extension User.URLs: EncodableType {
         result["events_url"] = self.eventsUrl
         result["received_events_url"] = self.receivedEventsUrl
         return result
-    }
-}
-
-
-extension Date: Decodable {
-    public static func decode(_ json: JSON) -> Decoded<Date> {
-        switch json {
-        case .string(let dateString):
-            guard let date = ISO8601DateFormatter().date(from: dateString) else { return .failure(.custom("Date string misformatted"))}
-            return pure(date)
-        default: return .typeMismatch(expected: "Date", actual: json)
-        }
-    }
-    
-    public var ISO8601DateRepresentation: String {
-        return ISO8601DateFormatter().string(from: self)
     }
 }
