@@ -43,9 +43,9 @@ public struct Service: ServiceType {
     }
     
     public func searchUser(qualifiers: [UserQualifier],
-                    keyword: String?,
-                    sort: SearchSorting?,
-                    order: SearchSortingOrder?) ->  SignalProducer<UserSearchResult, ErrorEnvelope> {
+                    keyword: String? = nil,
+                    sort: SearchSorting? = nil,
+                    order: SearchSortingOrder? = nil) ->  SignalProducer<UserSearchResult, ErrorEnvelope> {
         return request(.search(scope: .users(qualifiers), keyword: keyword,  sort: sort, order: order))
     }
 }
