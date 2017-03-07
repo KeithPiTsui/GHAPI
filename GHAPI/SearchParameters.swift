@@ -31,6 +31,36 @@ public enum SearchScope {
     }
 }
 
+extension SearchScope: Equatable {
+    public static func == (lhs: SearchScope, rhs: SearchScope) -> Bool {
+        switch (lhs, rhs) {
+        case (repositories(let args0), repositories(let args1)):
+            let args0Rep = args0.map{$0.searchRepresentation}.joined(separator: "+")
+            let args1Rep = args1.map{$0.searchRepresentation}.joined(separator: "+")
+            return args0Rep == args1Rep
+        case (code(let args0), code(let args1)):
+            let args0Rep = args0.map{$0.searchRepresentation}.joined(separator: "+")
+            let args1Rep = args1.map{$0.searchRepresentation}.joined(separator: "+")
+            return args0Rep == args1Rep
+        case (issues(let args0), issues(let args1)):
+            let args0Rep = args0.map{$0.searchRepresentation}.joined(separator: "+")
+            let args1Rep = args1.map{$0.searchRepresentation}.joined(separator: "+")
+            return args0Rep == args1Rep
+        case (users(let args0), users(let args1)):
+            let args0Rep = args0.map{$0.searchRepresentation}.joined(separator: "+")
+            let args1Rep = args1.map{$0.searchRepresentation}.joined(separator: "+")
+            return args0Rep == args1Rep
+        case (commits(let args0), commits(let args1)):
+            let args0Rep = args0.map{$0.searchRepresentation}.joined(separator: "+")
+            let args1Rep = args1.map{$0.searchRepresentation}.joined(separator: "+")
+            return args0Rep == args1Rep
+        default:
+            return false
+        }
+    }
+}
+
+
 // MARK: -
 // MARK: Qualifiers
 
@@ -67,6 +97,11 @@ extension Date: SearchValueTypeRepresentation {
     }
 }
 
+public enum LanguageArgument: String {
+    case assembly
+    case swift
+}
+
 public enum ComparativeArgument<Argument: SearchValueTypeRepresentation> {
     case equal(Argument)
     case lessThan(Argument)
@@ -95,10 +130,7 @@ public enum ComparativeArgument<Argument: SearchValueTypeRepresentation> {
     }
 }
 
-public enum LanguageArgument: String {
-    case assembly
-    case swift
-}
+
 
 
 
