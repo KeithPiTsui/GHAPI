@@ -24,6 +24,11 @@
 		0E5706191E5D9DDA0047BF4C /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5706171E5D9DDA0047BF4C /* Service.swift */; };
 		0E57061B1E5D9E100047BF4C /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E57061A1E5D9E100047BF4C /* ServiceType.swift */; };
 		0E57061D1E5D9FC50047BF4C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E57061C1E5D9FC50047BF4C /* User.swift */; };
+		0E7B7B9D1E6E3DBB00D50C95 /* RepositoryQualifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7B9C1E6E3DBB00D50C95 /* RepositoryQualifier.swift */; };
+		0E7B7B9F1E6E3DDC00D50C95 /* CodeQualifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7B9E1E6E3DDC00D50C95 /* CodeQualifier.swift */; };
+		0E7B7BA11E6E3DF800D50C95 /* IssueQualifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BA01E6E3DF800D50C95 /* IssueQualifier.swift */; };
+		0E7B7BA31E6E3E1100D50C95 /* UserQualifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BA21E6E3E1100D50C95 /* UserQualifier.swift */; };
+		0E7B7BA61E6E3EA300D50C95 /* CommitsQualifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7BA51E6E3EA300D50C95 /* CommitsQualifier.swift */; };
 		0E88069E1E642C0F0019CE44 /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8806971E642C0F0019CE44 /* Argo.framework */; };
 		0E88069F1E642C0F0019CE44 /* Curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8806981E642C0F0019CE44 /* Curry.framework */; };
 		0E8806A01E642C0F0019CE44 /* Prelude.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8806991E642C0F0019CE44 /* Prelude.framework */; };
@@ -71,6 +76,11 @@
 		0E5706171E5D9DDA0047BF4C /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		0E57061A1E5D9E100047BF4C /* ServiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
 		0E57061C1E5D9FC50047BF4C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0E7B7B9C1E6E3DBB00D50C95 /* RepositoryQualifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryQualifier.swift; sourceTree = "<group>"; };
+		0E7B7B9E1E6E3DDC00D50C95 /* CodeQualifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeQualifier.swift; sourceTree = "<group>"; };
+		0E7B7BA01E6E3DF800D50C95 /* IssueQualifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueQualifier.swift; sourceTree = "<group>"; };
+		0E7B7BA21E6E3E1100D50C95 /* UserQualifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserQualifier.swift; sourceTree = "<group>"; };
+		0E7B7BA51E6E3EA300D50C95 /* CommitsQualifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitsQualifier.swift; sourceTree = "<group>"; };
 		0E88068B1E642A820019CE44 /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = "Argo/build/Debug-iphoneos/Argo.framework"; sourceTree = "<group>"; };
 		0E88068C1E642A820019CE44 /* Curry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Curry.framework; path = "Curry/build/Debug-iphoneos/Curry.framework"; sourceTree = "<group>"; };
 		0E88068D1E642A820019CE44 /* Prelude.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Prelude.framework; path = "Kickstarter-Prelude/build/Debug-iphoneos/Prelude.framework"; sourceTree = "<group>"; };
@@ -118,6 +128,7 @@
 		0E22C07F1E5EEBC4005843A3 /* GithubApiSpecification */ = {
 			isa = PBXGroup;
 			children = (
+				0E7B7BA41E6E3E7E00D50C95 /* Qualifiers */,
 				0E4D5A1E1E5C60C1008E4AD6 /* Route.swift */,
 				0EE17BBE1E6D657300451632 /* SearchParameters.swift */,
 			);
@@ -256,6 +267,18 @@
 			name = Authentification;
 			sourceTree = "<group>";
 		};
+		0E7B7BA41E6E3E7E00D50C95 /* Qualifiers */ = {
+			isa = PBXGroup;
+			children = (
+				0E7B7B9E1E6E3DDC00D50C95 /* CodeQualifier.swift */,
+				0E7B7BA51E6E3EA300D50C95 /* CommitsQualifier.swift */,
+				0E7B7BA01E6E3DF800D50C95 /* IssueQualifier.swift */,
+				0E7B7B9C1E6E3DBB00D50C95 /* RepositoryQualifier.swift */,
+				0E7B7BA21E6E3E1100D50C95 /* UserQualifier.swift */,
+			);
+			name = Qualifiers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -374,19 +397,24 @@
 				0E5706191E5D9DDA0047BF4C /* Service.swift in Sources */,
 				0EE17BC11E6D6F6100451632 /* SearchResult.swift in Sources */,
 				0E5706181E5D9DDA0047BF4C /* ServerConfig.swift in Sources */,
+				0E7B7B9D1E6E3DBB00D50C95 /* RepositoryQualifier.swift in Sources */,
 				0EE17BBF1E6D657300451632 /* SearchParameters.swift in Sources */,
+				0E7B7BA11E6E3DF800D50C95 /* IssueQualifier.swift in Sources */,
 				0E4D5A201E5C60C1008E4AD6 /* EncodableType.swift in Sources */,
 				0E50AA161E6800D20002A40D /* UserPasswordEnvelope.swift in Sources */,
 				0E4D5A231E5C60C1008E4AD6 /* Route.swift in Sources */,
 				0E4D5A271E5C61A0008E4AD6 /* ErrorEnvelope.swift in Sources */,
 				0E57061D1E5D9FC50047BF4C /* User.swift in Sources */,
+				0E7B7BA61E6E3EA300D50C95 /* CommitsQualifier.swift in Sources */,
 				0E4D5A221E5C60C1008E4AD6 /* MimeType.swift in Sources */,
 				0E4D5A1F1E5C60C1008E4AD6 /* Decodable.swift in Sources */,
+				0E7B7BA31E6E3E1100D50C95 /* UserQualifier.swift in Sources */,
 				0EE17BC31E6D7CCB00451632 /* Repository.swift in Sources */,
 				0E4D5A131E5C607A008E4AD6 /* NSURLSession.swift in Sources */,
 				0E4D5A171E5C60AD008E4AD6 /* BasicHTTPAuth.swift in Sources */,
 				0E4D5A251E5C614B008E4AD6 /* Secrets.swift in Sources */,
 				0E57061B1E5D9E100047BF4C /* ServiceType.swift in Sources */,
+				0E7B7B9F1E6E3DDC00D50C95 /* CodeQualifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

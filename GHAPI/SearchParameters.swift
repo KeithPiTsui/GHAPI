@@ -13,6 +13,7 @@ public enum SearchScope {
     case code([CodeQualifier])
     case issues(IssueQualifier)
     case users(UserQualifier)
+    case commits
     
     public var name: String {
         switch self {
@@ -24,6 +25,8 @@ public enum SearchScope {
             return "issues"
         case .users(_):
             return "users"
+        case .commits:
+            return "commits"
         }
     }
 }
@@ -32,157 +35,6 @@ public enum SearchScope {
 // MARK: Qualifiers
 
 public protocol SearchQualifier { var searchRepresentation: String {get} }
-
-public enum RepositoriesQualifier: SearchQualifier {
-    case `in`([InArgument])
-    case size(NumberComparativeArgument)
-    case forks(NumberComparativeArgument)
-    case fork(ForkArgument)
-    case created(Date)
-    case pushed(Date)
-    case user([String])
-    case repo([String])
-    case language([LanguageArgument])
-    case stars(NumberComparativeArgument)
-    
-    public var searchRepresentation: String {
-        let rep: String
-        switch self {
-        case let .in(args):
-            rep = "in:" + args.map{$0.rawValue}.joined(separator: ",")
-        case let .size(arg):
-            rep = "size:" + arg.searchRepresentation
-        case let .forks(arg):
-            rep = "forks:" + arg.searchRepresentation
-        case let .fork(arg):
-            rep = "fork:" + arg.rawValue
-        case let .created(date):
-            rep = "created:" + date.ISO8601DateRepresentation
-        case let .pushed(date):
-            rep = "pushed:" + date.ISO8601DateRepresentation
-        case let .user(args):
-            rep = "user:" + args.joined(separator: ",")
-        case let .repo(args):
-            rep = "repo:" + args.joined(separator: ",")
-        case let .language(args):
-            rep = "language:" + args.map{$0.rawValue}.joined(separator: ",")
-        case let .stars(arg):
-            rep = "stars" + arg.searchRepresentation
-        }
-        return rep
-    }
-}
-
-public enum CodeQualifier: SearchQualifier {
-    case `in`([InArgument])
-    case size(NumberComparativeArgument)
-    case fork(ForkArgument)
-    case user([String])
-    case repo([String])
-    case language([LanguageArgument])
-    case filename([String])
-    case path(String)
-    case `extension`(String)
-    
-    public var searchRepresentation: String {
-        let rep: String
-        switch self {
-        case let .in(args):
-            rep = "in:" + args.map{$0.rawValue}.joined(separator: ",")
-        case let .size(arg):
-            rep = "size:" + arg.searchRepresentation
-        case let .fork(arg):
-            rep = "fork:" + arg.rawValue
-        case let .user(args):
-            rep = "user:" + args.joined(separator: ",")
-        case let .repo(args):
-            rep = "repo:" + args.joined(separator: ",")
-        case let .language(args):
-            rep = "language:" + args.map{$0.rawValue}.joined(separator: ",")
-        case let .filename(arg):
-            rep = "filename:" + arg.joined(separator: ",")
-        case let .path(arg):
-            rep = "path:" + arg
-        case let .extension(arg):
-            rep = "extension:" + arg
-        }
-        return rep
-    }
-}
-
-public enum IssueQualifier: SearchQualifier {
-    case `in`([InArgument])
-    case size(NumberComparativeArgument)
-    case fork(ForkArgument)
-    case user([String])
-    case repo([String])
-    case language([LanguageArgument])
-    case filename([String])
-    case path(String)
-    case `extension`(String)
-    
-    public var searchRepresentation: String {
-        let rep: String
-        switch self {
-        case let .in(args):
-            rep = "in:" + args.map{$0.rawValue}.joined(separator: ",")
-        case let .size(arg):
-            rep = "size:" + arg.searchRepresentation
-        case let .fork(arg):
-            rep = "fork:" + arg.rawValue
-        case let .user(args):
-            rep = "user:" + args.joined(separator: ",")
-        case let .repo(args):
-            rep = "repo:" + args.joined(separator: ",")
-        case let .language(args):
-            rep = "language:" + args.map{$0.rawValue}.joined(separator: ",")
-        case let .filename(arg):
-            rep = "filename:" + arg.joined(separator: ",")
-        case let .path(arg):
-            rep = "path:" + arg
-        case let .extension(arg):
-            rep = "extension:" + arg
-        }
-        return rep
-    }
-}
-
-public enum UserQualifier: SearchQualifier {
-    case `in`([InArgument])
-    case size(NumberComparativeArgument)
-    case fork(ForkArgument)
-    case user([String])
-    case repo([String])
-    case language([LanguageArgument])
-    case filename([String])
-    case path(String)
-    case `extension`(String)
-    
-    public var searchRepresentation: String {
-        let rep: String
-        switch self {
-        case let .in(args):
-            rep = "in:" + args.map{$0.rawValue}.joined(separator: ",")
-        case let .size(arg):
-            rep = "size:" + arg.searchRepresentation
-        case let .fork(arg):
-            rep = "fork:" + arg.rawValue
-        case let .user(args):
-            rep = "user:" + args.joined(separator: ",")
-        case let .repo(args):
-            rep = "repo:" + args.joined(separator: ",")
-        case let .language(args):
-            rep = "language:" + args.map{$0.rawValue}.joined(separator: ",")
-        case let .filename(arg):
-            rep = "filename:" + arg.joined(separator: ",")
-        case let .path(arg):
-            rep = "path:" + arg
-        case let .extension(arg):
-            rep = "extension:" + arg
-        }
-        return rep
-    }
-}
 
 public enum SearchSorting: String {
     case `default`
@@ -196,48 +48,58 @@ public enum SearchSortingOrder: String {
     case dsc
 }
 
-
-
 // MARK: -
 // MARK: Arguments
 
-public enum InArgument: String {
-    case name
-    case description
-    case readme
+public enum UserType: String {
+    case user
+    case org
 }
-public enum NumberComparativeArgument {
-    case equal(UInt)
-    case lessThan(UInt)
-    case biggerThan(UInt)
-    case lessAndEqualThan(UInt)
-    case biggerAndEqualThan(UInt)
-    case between(UInt, UInt)
+
+public protocol SearchValueTypeRepresentation: Comparable {
+    var representationSVT: String { get }
+}
+
+extension UInt: SearchValueTypeRepresentation {
+    public var representationSVT: String {
+        return self.description
+    }
+}
+
+extension Date: SearchValueTypeRepresentation {
+    public var representationSVT: String {
+        return self.ISO8601DateRepresentation
+    }
+}
+
+public enum ComparativeArgument<Argument: SearchValueTypeRepresentation> {
+    case equal(Argument)
+    case lessThan(Argument)
+    case biggerThan(Argument)
+    case lessAndEqualThan(Argument)
+    case biggerAndEqualThan(Argument)
+    case between(Argument, Argument)
     
     public var searchRepresentation: String {
         switch self {
-        case let .equal(num):
-            return "\(num)"
-        case let .lessThan(num):
-            return "<\(num)"
-        case let .biggerThan(num):
-            return ">\(num)"
-        case let .lessAndEqualThan(num):
-            return "<=\(num)"
-        case let .biggerAndEqualThan(num):
-            return ">=\(num)"
-        case let .between(num0, num1):
-            let minNum = min(num0, num1)
-            let maxNum = max(num0, num1)
-            return "\(minNum)..\(maxNum)"
+        case let .equal(arg):
+            return arg.representationSVT
+        case let .lessThan(arg):
+            return "<" + arg.representationSVT
+        case let .biggerThan(arg):
+            return ">" + arg.representationSVT
+        case let .lessAndEqualThan(arg):
+            return "<=" + arg.representationSVT
+        case let .biggerAndEqualThan(arg):
+            return ">=" + arg.representationSVT
+        case let .between(arg0, arg1):
+            let minArg = min(arg0, arg1)
+            let maxArg = max(arg0, arg1)
+            return "\(minArg)..\(maxArg)"
         }
     }
-    
 }
-public enum ForkArgument: String {
-    case `true`
-    case only
-}
+
 public enum LanguageArgument: String {
     case assembly
 }
