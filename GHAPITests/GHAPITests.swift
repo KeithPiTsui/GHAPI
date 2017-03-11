@@ -130,6 +130,24 @@ class GHAPITests: XCTestCase {
         self.waitForExpectations(timeout: 2000, handler: nil)
     }
     
+    func testGHServiceUserWithURL() {
+        let expectation = self.expectation(description: "network response")
+        let service = Service()
+        let url = URL(string: "https://api.github.com/users/apple")!
+        service.user(referredBy: url).startWithResult { (result) in
+            if let value  = result.value {
+                print(value.debugDescription)
+            }
+            if let error = result.error {
+                print(error.localizedDescription)
+            }
+            expectation.fulfill()
+
+        }
+        
+        self.waitForExpectations(timeout: 2000, handler: nil)
+    }
+    
     
     func testPerformanceExample() {self.measure {}}
 }

@@ -48,6 +48,15 @@ public struct Service: ServiceType {
                     order: SearchSortingOrder? = nil) ->  SignalProducer<UserSearchResult, ErrorEnvelope> {
         return request(.search(scope: .users(qualifiers), keyword: keyword,  sort: sort, order: order))
     }
+    
+    public func user(referredBy url: URL) -> SignalProducer<User, ErrorEnvelope> {
+        return request(.resource(url: url))
+    }
+    
+    public func repository(referredBy url: URL) -> SignalProducer<Repository, ErrorEnvelope> {
+        return request(.resource(url: url))
+    }
+    
 }
 
 extension Service {

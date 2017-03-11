@@ -12,35 +12,41 @@ public enum IssueType: String {
     case issue
     case pr
 }
+extension IssueType: HashableEnumCaseIterating{}
 
 public enum IssueInArgument: String {
     case title
     case body
     case comments
 }
+extension IssueInArgument: HashableEnumCaseIterating{}
 
 public enum IssueState: String{
     case open
     case closed
 }
+extension IssueState: HashableEnumCaseIterating{}
 
 public enum IssueNo: String {
     case label
     case milestone
     case assignee
 }
+extension IssueNo: HashableEnumCaseIterating{}
 
 public enum IssueIs: String {
     case open
     case closed
     case merged
 }
+extension IssueIs: HashableEnumCaseIterating{}
 
 public enum CommitStatus: String {
     case pending
     case failure
     case success
 }
+extension CommitStatus: HashableEnumCaseIterating{}
 
 public enum IssueQualifier: SearchQualifier {
     case type(IssueType)
@@ -72,7 +78,8 @@ public enum IssueQualifier: SearchQualifier {
         case let .type(arg):
             rep = "type:" + arg.rawValue
         case let .in(args):
-            rep = "in:" + args.map{$0.rawValue}.joined(separator: ",")
+            if args.isEmpty {rep = ""} else {
+                rep = "in:" + args.map{$0.rawValue}.joined(separator: ",")}
         case let .author(name):
             rep = "author:" + name
         case let .assignee(name):
@@ -86,7 +93,8 @@ public enum IssueQualifier: SearchQualifier {
         case let .team(arg):
             rep = "team:" + arg
         case let .label(labels):
-            rep = labels.map{"lable:"+$0}.joined(separator:"+")
+            if labels.isEmpty {rep = ""} else {
+                rep = labels.map{"lable:"+$0}.joined(separator:"+")}
         case let .no(arg):
             rep = "no:" + arg.rawValue
         case let .is(arg):
@@ -108,11 +116,14 @@ public enum IssueQualifier: SearchQualifier {
         case let .base(arg):
             rep = "base:" + arg
         case let .user(args):
-            rep = "user:" + args.joined(separator: ",")
+            if args.isEmpty {rep = ""} else {
+                rep = "user:" + args.joined(separator: ",")}
         case let .repo(args):
-            rep = "repo:" + args.joined(separator: ",")
+            if args.isEmpty {rep = ""} else {
+                rep = "repo:" + args.joined(separator: ",")}
         case let .language(args):
-            rep = "language:" + args.map{$0.rawValue}.joined(separator: ",")
+            if args.isEmpty {rep = ""} else {
+                rep = "language:" + args.map{$0.rawValue}.joined(separator: ",")}
         }
         return rep
     }

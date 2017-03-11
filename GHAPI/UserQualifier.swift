@@ -13,14 +13,31 @@ public enum UserInArgument: String {
     case description
     case readme
 }
+extension UserInArgument: HashableEnumCaseIterating{}
+
+extension UserInArgument: CustomStringConvertible {
+    public var description: String {
+        return self.rawValue
+    }
+}
+
 
 public enum UserType: String {
     case user
     case org
 }
+extension UserType: HashableEnumCaseIterating{}
 
 
-public enum UserQualifier: SearchQualifier {
+extension UserType: CustomStringConvertible {
+    public var description: String {
+        return self.rawValue
+    }
+}
+
+
+
+public enum UserQualifier: SearchQualifier, EnumCasesIterating {
     case type(UserType)
     case `in`([UserInArgument])
     case repos(ComparativeArgument<UInt>)
@@ -35,13 +52,15 @@ public enum UserQualifier: SearchQualifier {
         case let .type(arg):
             rep = "type:" + arg.rawValue
         case let .in(args):
-            rep = "in:" + args.map{$0.rawValue}.joined(separator: ",")
+            if args.isEmpty {rep = ""} else {
+                rep = "in:" + args.map{$0.rawValue}.joined(separator: ",")}
         case let .repos(arg):
             rep = "repos:" + arg.searchRepresentation
         case let .location(arg):
             rep = "location:" + arg
         case let .language(args):
-            rep = "language:" + args.map{$0.rawValue}.joined(separator: ",")
+            if args.isEmpty {rep = ""} else {
+                rep = "language:" + args.map{$0.rawValue}.joined(separator: ",")}
         case let .created(arg):
             rep = "created:" + arg.searchRepresentation
         case let .followers(arg):
@@ -49,4 +68,32 @@ public enum UserQualifier: SearchQualifier {
         }
         return rep
     }
+    
+    public static let typeUnit = UserQualifier.type(UserType.user)
+    public static let inUnit = UserQualifier.in([])
+    public static let repoUnit = UserQualifier.repos(.none)
+    public static let locationUnit = UserQualifier.location("")
+    public static let languageUnit = UserQualifier.language([])
+    public static let createdUnit = UserQualifier.created(.none)
+    public static let followerUnit = UserQualifier.followers(.none)
+    
+    public static var allCases: [UserQualifier] = [typeUnit, inUnit, repoUnit, locationUnit, languageUnit, createdUnit, followerUnit]
 }
+
+extension UserQualifier: Equatable{}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

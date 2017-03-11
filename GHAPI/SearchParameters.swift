@@ -8,12 +8,21 @@
 
 import Foundation
 
-public enum SearchScope {
+public enum SearchScope: EnumCasesIterating {
     case repositories([RepositoriesQualifier])
     case code([CodeQualifier])
     case issues([IssueQualifier])
     case users([UserQualifier])
     case commits([CommitsQualifier])
+    
+    public var caseName: String {
+        var fullName = String(describing: self)
+        if let range = fullName.range(of: "(") {
+            let location = range.lowerBound
+            fullName = fullName.substring(to: location)
+        }
+        return fullName
+    }
     
     public var name: String {
         switch self {
@@ -29,7 +38,16 @@ public enum SearchScope {
             return "commits"
         }
     }
+    
+    public static let userUnit = SearchScope.users([])
+    public static let repositoryUnit = SearchScope.repositories([])
+    public static let issueUnit = SearchScope.issues([])
+    public static let commitUnit = SearchScope.commits([])
+    public static let codeUnit = SearchScope.code([])
+    
+    public static let allCases = [userUnit, repositoryUnit, issueUnit, commitUnit, codeUnit]
 }
+
 
 extension SearchScope: Equatable {
     public static func == (lhs: SearchScope, rhs: SearchScope) -> Bool {
@@ -64,7 +82,15 @@ extension SearchScope: Equatable {
 // MARK: -
 // MARK: Qualifiers
 
-public protocol SearchQualifier { var searchRepresentation: String {get} }
+public protocol SearchQualifier {
+    var searchRepresentation: String {get}
+}
+
+extension SearchQualifier {
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.searchRepresentation == rhs.searchRepresentation
+    }
+}
 
 public enum SearchSorting: String {
     case `default`
@@ -73,10 +99,14 @@ public enum SearchSorting: String {
     case updated
 }
 
+extension SearchSorting: HashableEnumCaseIterating{}
+
 public enum SearchSortingOrder: String {
     case asc
     case desc
 }
+
+extension SearchSortingOrder: HashableEnumCaseIterating{}
 
 // MARK: -
 // MARK: Arguments
@@ -100,6 +130,22 @@ extension Date: SearchValueTypeRepresentation {
 public enum LanguageArgument: String {
     case assembly
     case swift
+    case csharp
+    case jave
+    case scalar
+    case haskell
+    case c
+    case javascript
+    case html
+    case css
+}
+extension LanguageArgument: HashableEnumCaseIterating{}
+
+
+extension LanguageArgument: CustomStringConvertible {
+    public var description: String {
+        return self.rawValue
+    }
 }
 
 public enum ComparativeArgument<Argument: SearchValueTypeRepresentation> {
@@ -109,6 +155,7 @@ public enum ComparativeArgument<Argument: SearchValueTypeRepresentation> {
     case lessAndEqualThan(Argument)
     case biggerAndEqualThan(Argument)
     case between(Argument, Argument)
+    case none
     
     public var searchRepresentation: String {
         switch self {
@@ -126,8 +173,49 @@ public enum ComparativeArgument<Argument: SearchValueTypeRepresentation> {
             let minArg = min(arg0, arg1)
             let maxArg = max(arg0, arg1)
             return "\(minArg)..\(maxArg)"
+        case .none:
+            return ""
         }
     }
+    
+    public var upper: Argument? {
+        switch self {
+        case let .equal(arg):
+            return arg
+        case let .lessThan(arg):
+            return arg
+        case .biggerThan(_):
+            return nil
+        case let .lessAndEqualThan(arg):
+            return arg
+        case .biggerAndEqualThan(_):
+            return nil
+        case let .between(_, arg1):
+            return arg1
+        case .none:
+            return nil
+        }
+    }
+    
+    public var lower: Argument? {
+        switch self {
+        case let .equal(arg):
+            return arg
+        case .lessThan(_):
+            return nil
+        case let .biggerThan(arg):
+            return arg
+        case .lessAndEqualThan(_):
+            return nil
+        case let .biggerAndEqualThan(arg):
+            return arg
+        case let .between(arg0, _):
+            return arg0
+        case .none:
+            return nil
+        }
+    }
+    
 }
 
 

@@ -13,10 +13,22 @@ public enum RepositoriesInArgument: String {
     case description
     case readme
 }
+extension RepositoriesInArgument: HashableEnumCaseIterating{}
+extension RepositoriesInArgument: CustomStringConvertible {
+    public var description: String {
+        return self.rawValue
+    }
+}
 
 public enum RepositoriesForkArgument: String {
     case `true`
     case only
+}
+extension RepositoriesForkArgument: HashableEnumCaseIterating{}
+extension RepositoriesForkArgument: CustomStringConvertible {
+    public var description: String {
+        return self.rawValue
+    }
 }
 
 public enum RepositoriesQualifier: SearchQualifier {
@@ -35,7 +47,8 @@ public enum RepositoriesQualifier: SearchQualifier {
         let rep: String
         switch self {
         case let .in(args):
-            rep = "in:" + args.map{$0.rawValue}.joined(separator: ",")
+            if args.isEmpty {rep = ""} else {
+                rep = "in:" + args.map{$0.rawValue}.joined(separator: ",")}
         case let .size(arg):
             rep = "size:" + arg.searchRepresentation
         case let .forks(arg):
@@ -47,13 +60,17 @@ public enum RepositoriesQualifier: SearchQualifier {
         case let .pushed(date):
             rep = "pushed:" + date.searchRepresentation
         case let .user(args):
-            rep = "user:" + args.joined(separator: ",")
+            let args = args.filter{$0.isEmpty == false}
+            if args.isEmpty {rep = ""} else {
+                rep = "user:" + args.joined(separator: ",")}
         case let .repo(args):
-            rep = "repo:" + args.joined(separator: ",")
+            if args.isEmpty {rep = ""} else {
+                rep = "repo:" + args.joined(separator: ",")}
         case let .language(args):
-            rep = "language:" + args.map{$0.rawValue}.joined(separator: ",")
+            if args.isEmpty {rep = ""} else {
+                rep = "language:" + args.map{$0.rawValue}.joined(separator: ",")}
         case let .stars(arg):
-            rep = "stars" + arg.searchRepresentation
+            rep = "stars:" + arg.searchRepresentation
         }
         return rep
     }

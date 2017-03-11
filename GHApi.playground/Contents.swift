@@ -37,14 +37,14 @@ import GHAPI
 //print("Dateobj: \(dateFormatter.stringFromDate(dateObj!))")
 
 //let dateString = "2015-05-12T01:01:22Z"
-  let dateString = "2017-02-23T13:48:53Z"
-let df = DateFormatter()
-/// 2015-05-12T01:01:22Z
-df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-let date = df.date(from: dateString)
-
-let isodf = ISO8601DateFormatter()
-let d2 = isodf.date(from: dateString)
+//  let dateString = "2017-02-23T13:48:53Z"
+//let df = DateFormatter()
+///// 2015-05-12T01:01:22Z
+//df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+//let date = df.date(from: dateString)
+//
+//let isodf = ISO8601DateFormatter()
+//let d2 = isodf.date(from: dateString)
 
 //guard let date = df.date(from: dateString) else {
 ////    return Decoded.failure(.custom("Date string misformatted"))
@@ -70,10 +70,37 @@ let d2 = isodf.date(from: dateString)
 
 
 
-
-
-
-
+//enum MyEnum {
+//    case one
+//    case two
+//}
+//
+//
+//let nameOne = String(describing: MyEnum.one)
+//
+//enum MyEnumInt: Int {
+//    case one
+//    case two
+//}
+//
+//
+//let nameOneInt = String(describing: MyEnumInt.one)
+//
+//enum MyEnumString: String {
+//    case one
+//    case two
+//}
+//
+//let nameOneString = String(describing: MyEnumString.one)
+//
+//
+//enum MyEnumAssociatedValue {
+//    case one(Int)
+//    case two(String)
+//}
+//
+//let nameOneAV = String(describing: MyEnumAssociatedValue.one(1))
+//let nameTwoAV = String(describing: MyEnumAssociatedValue.two("Hello"))
 
 
 

@@ -19,8 +19,17 @@ extension Date: Decodable {
         default: return .typeMismatch(expected: "Date", actual: json)
         }
     }
-    
+}
+
+extension Date {
     public var ISO8601DateRepresentation: String {
         return ISO8601DateFormatter().string(from: self)
     }
+    
+    public func string(with pattern: String) -> String {
+        let df = DateFormatter()
+        df.dateFormat = pattern
+        return df.string(from: self)
+    }
+    
 }

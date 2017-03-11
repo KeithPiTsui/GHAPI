@@ -12,6 +12,8 @@ public enum CommitsIs: String {
     case `private`
     case `public`
 }
+extension CommitsIs: HashableEnumCaseIterating{}
+
 
 public enum CommitsQualifier: SearchQualifier {
     case author(String)
@@ -60,12 +62,15 @@ public enum CommitsQualifier: SearchQualifier {
             rep = "tree:" + arg
         case let .is(arg):
             rep = "is:" + arg.rawValue
-        case let .org(arg):
-            rep = "org:" + arg.joined(separator: ",")
+        case let .org(args):
+            if args.isEmpty {rep = ""} else {
+                rep = "org:" + args.joined(separator: ",")}
         case let .user(args):
-            rep = "user:" + args.joined(separator: ",")
+            if args.isEmpty {rep = ""} else {
+                rep = "user:" + args.joined(separator: ",")}
         case let .repo(args):
-            rep = "repo:" + args.joined(separator: ",")
+            if args.isEmpty {rep = ""} else {
+                rep = "repo:" + args.joined(separator: ",")}
         }
         return rep
     }

@@ -13,10 +13,12 @@ public enum CodeInArgument: String {
     case file
     case path
 }
+extension CodeInArgument: HashableEnumCaseIterating{}
 
 public enum CodeForkArgument: String {
     case `true`
 }
+extension CodeForkArgument: HashableEnumCaseIterating{}
 
 public enum CodeQualifier: SearchQualifier {
     case `in`([CodeInArgument])
@@ -33,19 +35,24 @@ public enum CodeQualifier: SearchQualifier {
         let rep: String
         switch self {
         case let .in(args):
-            rep = "in:" + args.map{$0.rawValue}.joined(separator: ",")
+            if args.isEmpty {rep = ""} else {
+                rep = "in:" + args.map{$0.rawValue}.joined(separator: ",")}
         case let .size(arg):
             rep = "size:" + arg.searchRepresentation
         case let .fork(arg):
             rep = "fork:" + arg.rawValue
         case let .user(args):
-            rep = "user:" + args.joined(separator: ",")
+            if args.isEmpty {rep = ""} else {
+                rep = "user:" + args.joined(separator: ",")}
         case let .repo(args):
-            rep = "repo:" + args.joined(separator: ",")
+            if args.isEmpty {rep = ""} else {
+                rep = "repo:" + args.joined(separator: ",")}
         case let .language(args):
-            rep = "language:" + args.map{$0.rawValue}.joined(separator: ",")
-        case let .filename(arg):
-            rep = "filename:" + arg.joined(separator: ",")
+            if args.isEmpty {rep = ""} else {
+                rep = "language:" + args.map{$0.rawValue}.joined(separator: ",")}
+        case let .filename(args):
+            if args.isEmpty {rep = ""} else {
+                rep = "filename:" + args.joined(separator: ",")}
         case let .path(arg):
             rep = "path:" + arg
         case let .extension(arg):
@@ -54,3 +61,19 @@ public enum CodeQualifier: SearchQualifier {
         return rep
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

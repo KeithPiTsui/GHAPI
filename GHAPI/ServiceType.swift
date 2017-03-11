@@ -40,6 +40,9 @@ public protocol ServiceType {
                           sort: SearchSorting?,
                           order: SearchSortingOrder?) ->  SignalProducer<UserSearchResult, ErrorEnvelope>
     
+    func user(referredBy url: URL) -> SignalProducer<User, ErrorEnvelope>
+    
+    func repository(referredBy url: URL) -> SignalProducer<Repository, ErrorEnvelope>
 }
 
 extension ServiceType {

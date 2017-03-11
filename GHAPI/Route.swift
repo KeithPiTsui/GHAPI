@@ -10,11 +10,15 @@ internal enum Route {
     }
     
     case user(userName: String)
+    
+    case resource(url: URL)
+    
     case search(scope: SearchScope,
         keyword: String?,
         sort: SearchSorting?,
         order: SearchSortingOrder?
     )
+    
     
     
     // swiftlint:disable:next large_tuple
@@ -27,6 +31,9 @@ internal enum Route {
             
         case let .user(userName):
             return (.GET, "/users/\(userName)", [:], nil)
+            
+        case let .resource(url):
+            return (.GET, url.path, [:], nil)
             
         case let .search(scope, keyword, sort, order):
             let path = "/search/\(scope.name)"
