@@ -14,7 +14,7 @@ import Runes
 public struct Branch {
     public struct BCommit {
         public let sha: String
-        public let url: String
+        public let url: URL
     }
     public let name: String
     public let commit: BCommit
@@ -63,7 +63,7 @@ extension Branch.BCommit: EncodableType {
     public func encode() -> [String:Any] {
         var result: [String:Any] = [:]
         result["sha"] = self.sha
-        result["url"] = self.url
+        result["url"] = self.url.absoluteString
         return result
     }
 }

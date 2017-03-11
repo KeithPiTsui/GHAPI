@@ -180,7 +180,8 @@ class GHAPITests: XCTestCase {
     
     func testSanitizedUrl() {
         let str = "https://api.github.com/repos/keith/asc_476/assignees{/user}"
-        let s = str.sanitizedUrlStr
+//        let s = str.sanitizedUrlStr
+        let s = str.ghUrlPatternRemoved
     }
     
     

@@ -8,24 +8,25 @@
 
 import Foundation
 
+infix operator -~: AdditionPrecedence
+
 extension String {
-    public var sanitizedUrlStr: String {
-        let ranges = self.ranges(ofMatching: "\\{.*\\}")
-        var text = self as NSString
-        for range in ranges {
-            text = text.replacingCharacters(in: range, with: "") as NSString
-        }
-        return text as String
+    public var ghUrlPatternRemoved: String {
+        return self -~ ("", "\\{.*\\}") -~ ("", "/*$")
     }
     
-    public func ranges(ofMatching regex: String) -> [NSRange] {
-        do {let regex = try NSRegularExpression(pattern: regex)
-            let nsString = self as NSString
-            let results = regex.matches(in: self, range: NSRange(location: 0, length: nsString.length))
-            return results.map {$0.range}
-        } catch let error {
-            print("invalid regex: \(error.localizedDescription)")
-            return []
-        }
+    public func replaced(by template: String, withRegex pattern: String) -> String {
+        guard let regex = try? NSRegularExpression(pattern: pattern) else { return self}
+        let mutableStr = NSMutableString(string: self)
+        regex.replaceMatches(in: mutableStr,
+                             options: [],
+                             range: NSRange(location: 0, length: mutableStr.length),
+                             withTemplate: template)
+        
+        return mutableStr as String
+    }
+
+    public static func -~ (lhs: String, rhs: (template: String, regexPattern: String)) -> String {
+        return lhs.replaced(by: rhs.template, withRegex: rhs.regexPattern)
     }
 }
