@@ -12,10 +12,10 @@ import Runes
 
 public struct Repository {
     public struct URLs {
-        public let url: String
-        public let htmlUrl: String
-        public let branches_url: String
-        public let commits_url: String
+        public let url: URL
+        public let htmlUrl: URL
+        public let branches_url: URL
+        public let commits_url: URL
     }
     
     public let id: UInt
@@ -134,10 +134,10 @@ extension Repository.URLs: Decodable {
 extension Repository.URLs: EncodableType {
     public func encode() -> [String:Any] {
         var result: [String:Any] = [:]
-        result["url"] = self.url
-        result["html_url"] = self.htmlUrl
-        result["commits_url"] = self.commits_url
-        result["branches_url"] = self.branches_url
+        result["url"] = self.url.absoluteString
+        result["html_url"] = self.htmlUrl.absoluteString
+        result["commits_url"] = self.commits_url.absoluteString
+        result["branches_url"] = self.branches_url.absoluteString
         return result
     }
 }

@@ -21,21 +21,21 @@ public struct Commit {
         public let committer: Person
         public let message: String
         public let tree: Branch.BCommit
-        public let url: String
+        public let url: URL
         public let comment_count: Int
     }
     
     public struct Parent {
         public let sha: String
-        public let url: String
-        public let html_url: String
+        public let url: URL
+        public let html_url: URL
     }
     
     public let sha: String
     public let commit: CCommit
-    public let url: String
-    public let html_url: String
-    public let comments_url: String
+    public let url: URL
+    public let html_url: URL
+    public let comments_url: URL
     public let author: User
     public let committer: User
     public let parents: [Parent]
@@ -75,9 +75,9 @@ extension Commit: EncodableType {
         var result: [String:Any] = [:]
         result["sha"] = self.sha
         result["commit"] = self.commit.encode()
-        result["url"] = self.url
-        result["html_url"] = self.html_url
-        result["comments_url"] = self.comments_url
+        result["url"] = self.url.absoluteString
+        result["html_url"] = self.html_url.absoluteString
+        result["comments_url"] = self.comments_url.absoluteString
         result["author"] = self.author.encode()
         result["committer"] = self.committer.encode()
         result["parents"] = self.parents.map{$0.encode()}
@@ -106,7 +106,7 @@ extension Commit.CCommit: EncodableType {
         result["committer"] = self.committer.encode()
         result["message"] = self.message
         result["tree"] = self.tree.encode()
-        result["url"] = self.url
+        result["url"] = self.url.absoluteString
         result["comment_count"] = self.comment_count
         return result
     }
@@ -146,8 +146,8 @@ extension Commit.Parent: EncodableType {
     public func encode() -> [String:Any] {
         var result: [String:Any] = [:]
         result["sha"] = self.sha
-        result["url"] = self.url
-        result["html_url"] = self.html_url
+        result["url"] = self.url.absoluteString
+        result["html_url"] = self.html_url.absoluteString
         return result
     }
 }

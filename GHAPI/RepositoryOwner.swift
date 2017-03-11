@@ -13,10 +13,10 @@ import Runes
 public struct RepositoryOwner {
     public let login: String
     public let id: UInt
-    public let avatar_url: String
+    public let avatar_url: URL
     public let gravatar_id: String
-    public let url: String
-    public let received_events_url: String
+    public let url: URL
+    public let received_events_url: URL
     public let type: String
 }
 
@@ -50,10 +50,10 @@ extension RepositoryOwner: EncodableType {
     public func encode() -> [String:Any] {
         var result: [String:Any] = [:]
         result["login"] = self.login
-        result["avatar_url"] = self.avatar_url
+        result["avatar_url"] = self.avatar_url.absoluteString
         result["gravatar_id"] = self.gravatar_id
-        result["url"] = self.url
-        result["received_events_url"] = self.received_events_url
+        result["url"] = self.url.absoluteString
+        result["received_events_url"] = self.received_events_url.absoluteString
         result["type"] = self.type
         return result
     }

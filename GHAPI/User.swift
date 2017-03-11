@@ -4,21 +4,21 @@ import Runes
 
 public struct User {
     public struct URLs {
-        public let url: String
-        public let htmlUrl: String
-        public let followersUrl: String
-        public let followingUrl: String
-        public let gitsUrl: String
-        public let starredUrl: String
-        public let subscriptionsUrl: String
-        public let organizationsUrl: String
-        public let reposUrl: String
-        public let eventsUrl: String
-        public let receivedEventsUrl: String
+        public let url: URL
+        public let htmlUrl: URL
+        public let followersUrl: URL
+        public let followingUrl: URL
+        public let gitsUrl: URL
+        public let starredUrl: URL
+        public let subscriptionsUrl: URL
+        public let organizationsUrl: URL
+        public let reposUrl: URL
+        public let eventsUrl: URL
+        public let receivedEventsUrl: URL
     }
     
     public struct Avatar {
-        public let url: String
+        public let url: URL
         public let id: String
     }
     
@@ -131,7 +131,7 @@ extension User.Avatar: Decodable {
 
 extension User.Avatar: EncodableType {
   public func encode() -> [String:Any] {
-    return [ "avatar_url": self.url, "gravatar_id": self.id]
+    return [ "avatar_url": self.url.absoluteString, "gravatar_id": self.id]
   }
 }
 
@@ -157,17 +157,17 @@ extension User.URLs: Decodable {
 extension User.URLs: EncodableType {
     public func encode() -> [String:Any] {
         var result: [String:Any] = [:]
-        result["url"] = self.url
-        result["html_url"] = self.htmlUrl
-        result["followers_url"] = self.followersUrl
-        result["following_url"] = self.followingUrl
-        result["gists_url"] = self.gitsUrl
-        result["starred_url"] = self.starredUrl
-        result["subscriptions_url"] = self.subscriptionsUrl
-        result["organizations_url"] = self.organizationsUrl
-        result["repos_url"] = self.reposUrl
-        result["events_url"] = self.eventsUrl
-        result["received_events_url"] = self.receivedEventsUrl
+        result["url"] = self.url.absoluteString
+        result["html_url"] = self.htmlUrl.absoluteString
+        result["followers_url"] = self.followersUrl.absoluteString
+        result["following_url"] = self.followingUrl.absoluteString
+        result["gists_url"] = self.gitsUrl.absoluteString
+        result["starred_url"] = self.starredUrl.absoluteString
+        result["subscriptions_url"] = self.subscriptionsUrl.absoluteString
+        result["organizations_url"] = self.organizationsUrl.absoluteString
+        result["repos_url"] = self.reposUrl.absoluteString
+        result["events_url"] = self.eventsUrl.absoluteString
+        result["received_events_url"] = self.receivedEventsUrl.absoluteString
         return result
     }
 }
