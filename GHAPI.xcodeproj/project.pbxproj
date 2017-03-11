@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E2B00641E73E2DC007C4A89 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2B00631E73E2DC007C4A89 /* Commit.swift */; };
 		0E4D597D1E5C5BC0008E4AD6 /* GHAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4D59731E5C5BC0008E4AD6 /* GHAPI.framework */; };
 		0E4D59821E5C5BC0008E4AD6 /* GHAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4D59811E5C5BC0008E4AD6 /* GHAPITests.swift */; };
 		0E4D59841E5C5BC0008E4AD6 /* GHAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E4D59761E5C5BC0008E4AD6 /* GHAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -24,6 +25,7 @@
 		0E5706191E5D9DDA0047BF4C /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5706171E5D9DDA0047BF4C /* Service.swift */; };
 		0E57061B1E5D9E100047BF4C /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E57061A1E5D9E100047BF4C /* ServiceType.swift */; };
 		0E57061D1E5D9FC50047BF4C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E57061C1E5D9FC50047BF4C /* User.swift */; };
+		0E5BF8C41E73D46200EDD841 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5BF8C31E73D46200EDD841 /* Branch.swift */; };
 		0E7AF45F1E729F5F0001C425 /* EnumIterating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7AF45E1E729F5F0001C425 /* EnumIterating.swift */; };
 		0E7B7B9D1E6E3DBB00D50C95 /* RepositoryQualifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7B9C1E6E3DBB00D50C95 /* RepositoryQualifier.swift */; };
 		0E7B7B9F1E6E3DDC00D50C95 /* CodeQualifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7B9E1E6E3DDC00D50C95 /* CodeQualifier.swift */; };
@@ -41,7 +43,6 @@
 		0E8806A31E642C0F0019CE44 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E88069C1E642C0F0019CE44 /* Result.framework */; };
 		0E8806A41E642C0F0019CE44 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E88069D1E642C0F0019CE44 /* Runes.framework */; };
 		0EE17BBF1E6D657300451632 /* SearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BBE1E6D657300451632 /* SearchParameters.swift */; };
-		0EE17BC11E6D6F6100451632 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BC01E6D6F6100451632 /* SearchResult.swift */; };
 		0EE17BC31E6D7CCB00451632 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BC21E6D7CCB00451632 /* Repository.swift */; };
 		0EE17BC51E6D7D1B00451632 /* RepositoryOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BC41E6D7D1B00451632 /* RepositoryOwner.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E2B00631E73E2DC007C4A89 /* Commit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
 		0E4D59731E5C5BC0008E4AD6 /* GHAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GHAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E4D59761E5C5BC0008E4AD6 /* GHAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHAPI.h; sourceTree = "<group>"; };
 		0E4D59771E5C5BC0008E4AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 		0E5706171E5D9DDA0047BF4C /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		0E57061A1E5D9E100047BF4C /* ServiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
 		0E57061C1E5D9FC50047BF4C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0E5BF8C31E73D46200EDD841 /* Branch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
 		0E7AF45E1E729F5F0001C425 /* EnumIterating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumIterating.swift; sourceTree = "<group>"; };
 		0E7B7B9C1E6E3DBB00D50C95 /* RepositoryQualifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryQualifier.swift; sourceTree = "<group>"; };
 		0E7B7B9E1E6E3DDC00D50C95 /* CodeQualifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeQualifier.swift; sourceTree = "<group>"; };
@@ -102,7 +105,6 @@
 		0E88069C1E642C0F0019CE44 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/Result.framework"; sourceTree = "<group>"; };
 		0E88069D1E642C0F0019CE44 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/Runes.framework"; sourceTree = "<group>"; };
 		0EE17BBE1E6D657300451632 /* SearchParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchParameters.swift; sourceTree = "<group>"; };
-		0EE17BC01E6D6F6100451632 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		0EE17BC21E6D7CCB00451632 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		0EE17BC41E6D7D1B00451632 /* RepositoryOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryOwner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -246,13 +248,14 @@
 			isa = PBXGroup;
 			children = (
 				0E50AA151E6800D20002A40D /* UserPasswordEnvelope.swift */,
+				0E7B7BE01E6E612800D50C95 /* UserSearchResult.swift */,
 				0E57061C1E5D9FC50047BF4C /* User.swift */,
 				0E4D5A261E5C61A0008E4AD6 /* ErrorEnvelope.swift */,
-				0EE17BC01E6D6F6100451632 /* SearchResult.swift */,
 				0E7B7BDE1E6E5F5700D50C95 /* RepositorySearchResult.swift */,
-				0E7B7BE01E6E612800D50C95 /* UserSearchResult.swift */,
 				0EE17BC21E6D7CCB00451632 /* Repository.swift */,
 				0EE17BC41E6D7D1B00451632 /* RepositoryOwner.swift */,
+				0E5BF8C31E73D46200EDD841 /* Branch.swift */,
+				0E2B00631E73E2DC007C4A89 /* Commit.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -407,7 +410,6 @@
 				0E4D5A211E5C60C1008E4AD6 /* Method.swift in Sources */,
 				0EE17BC51E6D7D1B00451632 /* RepositoryOwner.swift in Sources */,
 				0E5706191E5D9DDA0047BF4C /* Service.swift in Sources */,
-				0EE17BC11E6D6F6100451632 /* SearchResult.swift in Sources */,
 				0E7B7BDF1E6E5F5700D50C95 /* RepositorySearchResult.swift in Sources */,
 				0E5706181E5D9DDA0047BF4C /* ServerConfig.swift in Sources */,
 				0E7AF45F1E729F5F0001C425 /* EnumIterating.swift in Sources */,
@@ -417,9 +419,11 @@
 				0E4D5A201E5C60C1008E4AD6 /* EncodableType.swift in Sources */,
 				0E50AA161E6800D20002A40D /* UserPasswordEnvelope.swift in Sources */,
 				0E4D5A231E5C60C1008E4AD6 /* Route.swift in Sources */,
+				0E5BF8C41E73D46200EDD841 /* Branch.swift in Sources */,
 				0E4D5A271E5C61A0008E4AD6 /* ErrorEnvelope.swift in Sources */,
 				0E57061D1E5D9FC50047BF4C /* User.swift in Sources */,
 				0E7B7BA61E6E3EA300D50C95 /* CommitsQualifier.swift in Sources */,
+				0E2B00641E73E2DC007C4A89 /* Commit.swift in Sources */,
 				0E4D5A221E5C60C1008E4AD6 /* MimeType.swift in Sources */,
 				0E4D5A1F1E5C60C1008E4AD6 /* Decodable.swift in Sources */,
 				0E7B7BE11E6E612800D50C95 /* UserSearchResult.swift in Sources */,

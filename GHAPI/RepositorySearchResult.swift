@@ -44,6 +44,7 @@ extension RepositorySearchResult: EncodableType {
         var result: [String:Any] = [:]
         result["total_count"] = self.total_count
         result["incomplete_results"] = self.incomplete_results
+        result["items"] = self.items.map{$0.encode()}
         return result
     }
 }

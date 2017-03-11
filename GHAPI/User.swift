@@ -25,7 +25,7 @@ public struct User {
     public let login: String
     public let id: Int
     public let avatar: Avatar
-    public let urls: URLs
+    public let urls: User.URLs
     public let type: String
     public let siteAdmin: Bool
     

@@ -11,100 +11,23 @@ import Result
 import ReactiveExtensions
 import GHAPI
 
-//PlaygroundPage.current.needsIndefiniteExecution = true
+PlaygroundPage.current.needsIndefiniteExecution = true
 
-//let str = "Hello world"
-
-//let service = Service.init(
-//    serverConfig: ServerConfig.github,
-//    //oauthToken: OauthToken.init(token: "uncomment and put in your token!"),
-//    language: "en"
-//)
-//
-//let x = service.testConnectionToGithub()
-//
-//x.startWithResult { (result) in
-//    print(result.value?.id ?? "No value")
-//}
-
-//let dateString = "Thu, 22 Oct 2015 07:45:17 +0000"
-//let dateFormatter = NSDateFormatter()
-//dateFormatter.dateFormat = "EEE, dd MMM yyyy hh:mm:ss +zzzz"
-//dateFormatter.locale = Locale.init(identifier: "en_GB")
-//let dateObj = dateFormatter.dateFromString(dateString)
-//
-//dateFormatter.dateFormat = "MM-dd-yyyy"
-//print("Dateobj: \(dateFormatter.stringFromDate(dateObj!))")
-
-//let dateString = "2015-05-12T01:01:22Z"
-//  let dateString = "2017-02-23T13:48:53Z"
-//let df = DateFormatter()
-///// 2015-05-12T01:01:22Z
-//df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-//let date = df.date(from: dateString)
-//
-//let isodf = ISO8601DateFormatter()
-//let d2 = isodf.date(from: dateString)
-
-//guard let date = df.date(from: dateString) else {
-////    return Decoded.failure(.custom("Date string misformatted"))
-//}
-
-
-//extension Date: Decodable {
-//    public static func decode(_ json: JSON) -> Decoded<Date> {
-//        switch json {
-//        case .string(let dateString):
-//            let df = DateFormatter()
-//            /// 2015-05-12T01:01:22Z
-//            df.dateFormat = "yyyy-MM-ddThh:mm:ssZ"
-//            guard let date = df.date(from: dateString) else {
-//                return Decoded.failure(.custom("Date string misformatted"))
-//            }
-//            return pure(date)
-//        default: return .typeMismatch(expected: "Date", actual: json)
-//        }
-//    }
-//}
-
-
-
-
-//enum MyEnum {
-//    case one
-//    case two
-//}
-//
-//
-//let nameOne = String(describing: MyEnum.one)
-//
-//enum MyEnumInt: Int {
-//    case one
-//    case two
-//}
-//
-//
-//let nameOneInt = String(describing: MyEnumInt.one)
-//
-//enum MyEnumString: String {
-//    case one
-//    case two
-//}
-//
-//let nameOneString = String(describing: MyEnumString.one)
-//
-//
-//enum MyEnumAssociatedValue {
-//    case one(Int)
-//    case two(String)
-//}
-//
-//let nameOneAV = String(describing: MyEnumAssociatedValue.one(1))
-//let nameTwoAV = String(describing: MyEnumAssociatedValue.two("Hello"))
-
-
-
-
+let urlString = "https://api.github.com/repos/keith/asc_476/branches"
+let myUrl = URL(string: urlString);
+let request = NSMutableURLRequest(url:myUrl!);
+request.httpMethod = "GET";
+let task = URLSession.shared.dataTask(with: request as URLRequest) {
+    data, response, error in
+    guard let response = response,
+        let data = data  else { return }
+    let jsonStr = String(data: data, encoding: .utf8)
+    let result:[Branch]? = jsonStr.flatMap(decode)
+    guard let first = result?.first else { return }
+    print(first.name)
+    
+}
+task.resume()
 
 
 

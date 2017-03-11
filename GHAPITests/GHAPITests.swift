@@ -149,6 +149,37 @@ class GHAPITests: XCTestCase {
     }
     
     
+    func testJsonEncode() {
+        let expectation = self.expectation(description: "network response")
+        let urlString = "https://api.github.com/repos/keith/asc_476/branches"
+        let myUrl = URL(string: urlString);
+        let request = NSMutableURLRequest(url:myUrl!);
+        request.httpMethod = "GET";
+        let task = URLSession.shared.dataTask(with: request as URLRequest) {
+            data, response, error in
+            guard let response = response,
+                let data = data  else { return }
+            guard let object = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) else { return }
+//let str: Decoded<[String]> = decode(object)
+            let result: Decoded<[Branch]> = decode(object)
+            print("hello")
+            guard let branch = result.value?.first else { return }
+            let str = branch.toJSONString()
+            print(str)
+            expectation.fulfill()
+        }
+        task.resume()
+        self.waitForExpectations(timeout: 2000, handler: nil)
+    }
+    
+    func testDirectJsonDecode() {
+        let jsonStr = "{\"name\":\"master\",\"commit\":{\"sha\":\"3eef257b8166bd1450dda32ec3c722a7d1b4533f\",\"url\":\"https://api.github.com/repos/keith/asc_476/commits/3eef257b8166bd1450dda32ec3c722a7d1b4533f\"}}"
+        let result:Branch? = decode(jsonStr)
+        print(result?.name)
+        
+    }
+    
+    
     func testPerformanceExample() {self.measure {}}
 }
 

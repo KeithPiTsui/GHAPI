@@ -11,15 +11,21 @@ import Curry
 import Runes
 
 public struct Repository {
+    public struct URLs {
+        public let url: String
+        public let htmlUrl: String
+        public let branches_url: String
+        public let commits_url: String
+    }
+    
     public let id: UInt
     public let name: String
     public let full_name: String
     public let owner: RepositoryOwner
     public let `private`: Bool
-    public let html_url: String
     public let description: String?
     public let fork: Bool
-    public let url: String
+    public let urls: Repository.URLs
     
     public struct Dates {
         public let created_at: Date
@@ -37,7 +43,7 @@ public struct Repository {
     public let open_issues_count: UInt
     public let master_branch: String?
     public let default_branch: String?
-    public let score: Double
+    public let score: Double?
 }
 
 extension Repository: Equatable {
@@ -66,10 +72,9 @@ extension Repository: Decodable {
         
         let temp3 = temp2
             <*> json <| "private"
-            <*> json <| "html_url"
             <*> json <|? "description"
             <*> json <| "fork"
-            <*> json <| "url"
+            <*> Repository.URLs.decode(json)
         
         let temp4 = temp3
             <*> Repository.Dates.decode(json)
@@ -84,7 +89,7 @@ extension Repository: Decodable {
             <*> json <| "open_issues_count"
             <*> json <|? "master_branch"
             <*> json <|? "default_branch"
-            <*> json <| "score"
+            <*> json <|? "score"
         
         
         return temp5
@@ -109,7 +114,31 @@ extension Repository.Dates: Decodable {
 
 extension Repository.Dates: EncodableType {
     public func encode() -> [String:Any] {
-        return [ "created_at": self.created_at, "updated_at": self.updated_at, "pushed_at": self.pushed_at]
+        return [ "created_at": self.created_at.ISO8601DateRepresentation,
+                 "updated_at": self.updated_at.ISO8601DateRepresentation,
+                 "pushed_at": self.pushed_at.ISO8601DateRepresentation]
+    }
+}
+
+extension Repository.URLs: Decodable {
+    public static func decode(_ json: JSON) -> Decoded<Repository.URLs> {
+        let tmp = curry(Repository.URLs.init)
+            <^> json <| "url"
+            <*> json <| "html_url"
+            <*> json <| "branches_url"
+            <*> json <| "commits_url"
+        return tmp
+    }
+}
+
+extension Repository.URLs: EncodableType {
+    public func encode() -> [String:Any] {
+        var result: [String:Any] = [:]
+        result["url"] = self.url
+        result["html_url"] = self.htmlUrl
+        result["commits_url"] = self.commits_url
+        result["branches_url"] = self.branches_url
+        return result
     }
 }
 
