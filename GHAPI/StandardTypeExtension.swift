@@ -33,3 +33,24 @@ extension Date {
     }
     
 }
+
+extension URL: Decodable {
+    public static func decode(_ json: JSON) -> Decoded<URL> {
+        switch json {
+        case .string(let str):
+            guard let url = URL(string: str) else { return .failure(.custom("URL malformed"))}
+            return pure(url)
+        default: return .typeMismatch(expected: "URL", actual: json)
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+

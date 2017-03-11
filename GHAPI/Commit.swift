@@ -20,7 +20,7 @@ public struct Commit {
         public let author: Person
         public let committer: Person
         public let message: String
-        public let tree: Branch.Commit
+        public let tree: Branch.BCommit
         public let url: String
         public let comment_count: Int
     }
@@ -39,7 +39,6 @@ public struct Commit {
     public let author: User
     public let committer: User
     public let parents: [Parent]
-    
 }
 
 extension Commit: Equatable {}

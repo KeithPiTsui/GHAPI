@@ -12,12 +12,12 @@ import Runes
 
 
 public struct Branch {
-    public struct Commit {
+    public struct BCommit {
         public let sha: String
         public let url: String
     }
     public let name: String
-    public let commit: Commit
+    public let commit: BCommit
     
 }
 
@@ -50,16 +50,16 @@ extension Branch: EncodableType {
     }
 }
 
-extension Branch.Commit: Decodable {
-    public static func decode(_ json: JSON) -> Decoded<Branch.Commit> {
-        let tmp = curry(Branch.Commit.init)
+extension Branch.BCommit: Decodable {
+    public static func decode(_ json: JSON) -> Decoded<Branch.BCommit> {
+        let tmp = curry(Branch.BCommit.init)
             <^> json <| "sha"
             <*> json <| "url"
         return tmp
     }
 }
 
-extension Branch.Commit: EncodableType {
+extension Branch.BCommit: EncodableType {
     public func encode() -> [String:Any] {
         var result: [String:Any] = [:]
         result["sha"] = self.sha

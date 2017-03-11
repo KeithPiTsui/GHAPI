@@ -57,6 +57,14 @@ public struct Service: ServiceType {
         return request(.resource(url: url))
     }
     
+    public func branches(referredBy url: URL) -> SignalProducer<[Branch], ErrorEnvelope> {
+        return request(.resource(url: url))
+    }
+    
+    public func commits(referredBy url: URL) -> SignalProducer<[Commit], ErrorEnvelope> {
+        return request(.resource(url: url))
+    }
+    
 }
 
 extension Service {

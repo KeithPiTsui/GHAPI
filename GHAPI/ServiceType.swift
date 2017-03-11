@@ -43,6 +43,10 @@ public protocol ServiceType {
     func user(referredBy url: URL) -> SignalProducer<User, ErrorEnvelope>
     
     func repository(referredBy url: URL) -> SignalProducer<Repository, ErrorEnvelope>
+    
+    func branches(referredBy url: URL) -> SignalProducer<[Branch], ErrorEnvelope>
+    
+    func commits(referredBy url: URL) -> SignalProducer<[Commit], ErrorEnvelope>
 }
 
 extension ServiceType {
