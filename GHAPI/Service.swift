@@ -65,6 +65,10 @@ public struct Service: ServiceType {
         return request(.resource(url: url))
     }
     
+    public func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope> {
+        return request(.resource(url: url))
+    }
+    
 }
 
 extension Service {

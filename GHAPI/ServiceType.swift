@@ -47,6 +47,8 @@ public protocol ServiceType {
     func branches(referredBy url: URL) -> SignalProducer<[Branch], ErrorEnvelope>
     
     func commits(referredBy url: URL) -> SignalProducer<[Commit], ErrorEnvelope>
+    
+    func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope>
 }
 
 extension ServiceType {
@@ -74,7 +76,8 @@ extension ServiceType {
      
      - returns: A new URL request that is properly configured for the server.
      */
-    public func preparedRequest(forRequest originalRequest: URLRequest, query: [String:Any] = [:])
+    public func preparedRequest(forRequest originalRequest: URLRequest,
+                                query: [String:Any] = [:])
         -> URLRequest {
             
             var request = originalRequest
