@@ -13,3 +13,9 @@ public protocol GHAPIModelType:
     Equatable, CustomStringConvertible, CustomDebugStringConvertible, Decodable, EncodableType {
     
 }
+
+extension GHAPIModelType {
+    public var description: String {
+        return self.toJSONString() ?? self.debugDescription
+    }
+}

@@ -45,6 +45,8 @@
 		0E8806A41E642C0F0019CE44 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E88069D1E642C0F0019CE44 /* Runes.framework */; };
 		0EA044D11E76535300643EBA /* Readme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044D01E76535300643EBA /* Readme.swift */; };
 		0EA044D31E76567400643EBA /* GHAPIModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044D21E76567400643EBA /* GHAPIModelType.swift */; };
+		0EA044DB1E768DB000643EBA /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044DA1E768DB000643EBA /* Event.swift */; };
+		0EA044DD1E768E5700643EBA /* Event.text in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044DC1E768E5700643EBA /* Event.text */; };
 		0EE17BBF1E6D657300451632 /* SearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BBE1E6D657300451632 /* SearchParameters.swift */; };
 		0EE17BC31E6D7CCB00451632 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BC21E6D7CCB00451632 /* Repository.swift */; };
 		0EE17BC51E6D7D1B00451632 /* RepositoryOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BC41E6D7D1B00451632 /* RepositoryOwner.swift */; };
@@ -110,6 +112,8 @@
 		0E88069D1E642C0F0019CE44 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/Runes.framework"; sourceTree = "<group>"; };
 		0EA044D01E76535300643EBA /* Readme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Readme.swift; sourceTree = "<group>"; };
 		0EA044D21E76567400643EBA /* GHAPIModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHAPIModelType.swift; sourceTree = "<group>"; };
+		0EA044DA1E768DB000643EBA /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		0EA044DC1E768E5700643EBA /* Event.text */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Event.text; sourceTree = "<group>"; };
 		0EE17BBE1E6D657300451632 /* SearchParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchParameters.swift; sourceTree = "<group>"; };
 		0EE17BC21E6D7CCB00451632 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		0EE17BC41E6D7D1B00451632 /* RepositoryOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryOwner.swift; sourceTree = "<group>"; };
@@ -265,6 +269,8 @@
 				0E2B00631E73E2DC007C4A89 /* Commit.swift */,
 				0EA044D01E76535300643EBA /* Readme.swift */,
 				0EA044D21E76567400643EBA /* GHAPIModelType.swift */,
+				0EA044DA1E768DB000643EBA /* Event.swift */,
+				0EA044DC1E768E5700643EBA /* Event.text */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -425,6 +431,7 @@
 				0E7B7B9D1E6E3DBB00D50C95 /* RepositoryQualifier.swift in Sources */,
 				0EE17BBF1E6D657300451632 /* SearchParameters.swift in Sources */,
 				0E7B7BA11E6E3DF800D50C95 /* IssueQualifier.swift in Sources */,
+				0EA044DD1E768E5700643EBA /* Event.text in Sources */,
 				0E4D5A201E5C60C1008E4AD6 /* EncodableType.swift in Sources */,
 				0EA044D31E76567400643EBA /* GHAPIModelType.swift in Sources */,
 				0E50AA161E6800D20002A40D /* UserPasswordEnvelope.swift in Sources */,
@@ -444,6 +451,7 @@
 				0E4D5A131E5C607A008E4AD6 /* NSURLSession.swift in Sources */,
 				0EA044D11E76535300643EBA /* Readme.swift in Sources */,
 				0E4D5A171E5C60AD008E4AD6 /* BasicHTTPAuth.swift in Sources */,
+				0EA044DB1E768DB000643EBA /* Event.swift in Sources */,
 				0E4D5A251E5C614B008E4AD6 /* Secrets.swift in Sources */,
 				0E57061B1E5D9E100047BF4C /* ServiceType.swift in Sources */,
 				0E7B7B9F1E6E3DDC00D50C95 /* CodeQualifier.swift in Sources */,

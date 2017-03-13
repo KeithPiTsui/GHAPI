@@ -1,0 +1,95 @@
+{
+"id": "5480476471",
+"type": "IssueCommentEvent",
+"actor": {
+"id": 2284279,
+"login": "onmyway133",
+"display_login": "onmyway133",
+"gravatar_id": "",
+"url": "https://api.github.com/users/onmyway133",
+"avatar_url": "https://avatars.githubusercontent.com/u/2284279?"
+},
+"repo": {
+"id": 77019891,
+"name": "ArtSabintsev/Guitar",
+"url": "https://api.github.com/repos/ArtSabintsev/Guitar"
+},
+"payload": {
+"action": "created",
+"issue": {
+"url": "https://api.github.com/repos/ArtSabintsev/Guitar/issues/9",
+"repository_url": "https://api.github.com/repos/ArtSabintsev/Guitar",
+"labels_url": "https://api.github.com/repos/ArtSabintsev/Guitar/issues/9/labels{/name}",
+"comments_url": "https://api.github.com/repos/ArtSabintsev/Guitar/issues/9/comments",
+"events_url": "https://api.github.com/repos/ArtSabintsev/Guitar/issues/9/events",
+"html_url": "https://github.com/ArtSabintsev/Guitar/issues/9",
+"id": 213018487,
+"number": 9,
+"title": "From snake case to slug case",
+"user": {
+"login": "onmyway133",
+"id": 2284279,
+"avatar_url": "https://avatars2.githubusercontent.com/u/2284279?v=3",
+"gravatar_id": "",
+"url": "https://api.github.com/users/onmyway133",
+"html_url": "https://github.com/onmyway133",
+"followers_url": "https://api.github.com/users/onmyway133/followers",
+"following_url": "https://api.github.com/users/onmyway133/following{/other_user}",
+"gists_url": "https://api.github.com/users/onmyway133/gists{/gist_id}",
+"starred_url": "https://api.github.com/users/onmyway133/starred{/owner}{/repo}",
+"subscriptions_url": "https://api.github.com/users/onmyway133/subscriptions",
+"organizations_url": "https://api.github.com/users/onmyway133/orgs",
+"repos_url": "https://api.github.com/users/onmyway133/repos",
+"events_url": "https://api.github.com/users/onmyway133/events{/privacy}",
+"received_events_url": "https://api.github.com/users/onmyway133/received_events",
+"type": "User",
+"site_admin": false
+},
+"labels": [
+
+],
+"state": "closed",
+"locked": false,
+"assignee": null,
+"assignees": [
+
+],
+"milestone": null,
+"comments": 5,
+"created_at": "2017-03-09T12:09:10Z",
+"updated_at": "2017-03-13T08:03:57Z",
+"closed_at": "2017-03-09T16:09:12Z",
+"body": "Hi, nice library 👍 \r\n\r\nJust a question, how can I transform from case A to case B, like snake case to slug case `hello_world` -> `hello-world`? or from camel case to snake case, like `helloWorld` -> `hello-world`?"
+},
+"comment": {
+"url": "https://api.github.com/repos/ArtSabintsev/Guitar/issues/comments/286038589",
+"html_url": "https://github.com/ArtSabintsev/Guitar/issues/9#issuecomment-286038589",
+"issue_url": "https://api.github.com/repos/ArtSabintsev/Guitar/issues/9",
+"id": 286038589,
+"user": {
+"login": "onmyway133",
+"id": 2284279,
+"avatar_url": "https://avatars2.githubusercontent.com/u/2284279?v=3",
+"gravatar_id": "",
+"url": "https://api.github.com/users/onmyway133",
+"html_url": "https://github.com/onmyway133",
+"followers_url": "https://api.github.com/users/onmyway133/followers",
+"following_url": "https://api.github.com/users/onmyway133/following{/other_user}",
+"gists_url": "https://api.github.com/users/onmyway133/gists{/gist_id}",
+"starred_url": "https://api.github.com/users/onmyway133/starred{/owner}{/repo}",
+"subscriptions_url": "https://api.github.com/users/onmyway133/subscriptions",
+"organizations_url": "https://api.github.com/users/onmyway133/orgs",
+"repos_url": "https://api.github.com/users/onmyway133/repos",
+"events_url": "https://api.github.com/users/onmyway133/events{/privacy}",
+"received_events_url": "https://api.github.com/users/onmyway133/received_events",
+"type": "User",
+"site_admin": false
+},
+"created_at": "2017-03-13T08:03:57Z",
+"updated_at": "2017-03-13T08:03:57Z",
+"body": "@ArtSabintsev looks great. This is very handy when dealing with different json styles"
+}
+},
+"public": true,
+"created_at": "2017-03-13T08:03:57Z"
+}

@@ -232,6 +232,38 @@ class GHAPITests: XCTestCase {
     
     
     func testPerformanceExample() {self.measure {}}
+    
+    
+    
+    
+    
+    
+    
+    
+    func testEventJsonEncode() {
+        let expectation = self.expectation(description: "network response")
+        let urlString = "https://api.github.com/users/keithPitsui/events?per_page=1"
+        let myUrl = URL(string: urlString);
+        let request = NSMutableURLRequest(url:myUrl!);
+        request.httpMethod = "GET";
+        let task = URLSession.shared.dataTask(with: request as URLRequest) {
+            data, response, error in
+            guard let response = response,
+                let data = data  else { return }
+            guard let object = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) else { return }
+            let result: Decoded<[GHEvent]> = decode(object)
+            print("hello")
+            guard let branch = result.value?.first else { return }
+//            let str = branch.toJSONString()
+            
+            expectation.fulfill()
+        }
+        task.resume()
+        self.waitForExpectations(timeout: 2000, handler: nil)
+    }
+    
+    
+    
 }
 
 
