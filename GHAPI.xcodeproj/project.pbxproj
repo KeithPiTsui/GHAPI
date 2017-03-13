@@ -50,6 +50,7 @@
 		0EA044E21E76C1F700643EBA /* PushEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044E11E76C1F700643EBA /* PushEventPayload.swift */; };
 		0EA044E41E76C21D00643EBA /* ForkEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044E31E76C21D00643EBA /* ForkEventPayload.swift */; };
 		0EA044E61E76C23B00643EBA /* WatchEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044E51E76C23B00643EBA /* WatchEventPayload.swift */; };
+		0EA044E81E76C92700643EBA /* CreateEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044E71E76C92700643EBA /* CreateEventPayload.swift */; };
 		0EE17BBF1E6D657300451632 /* SearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BBE1E6D657300451632 /* SearchParameters.swift */; };
 		0EE17BC31E6D7CCB00451632 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BC21E6D7CCB00451632 /* Repository.swift */; };
 		0EE17BC51E6D7D1B00451632 /* RepositoryOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BC41E6D7D1B00451632 /* RepositoryOwner.swift */; };
@@ -120,6 +121,7 @@
 		0EA044E11E76C1F700643EBA /* PushEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushEventPayload.swift; sourceTree = "<group>"; };
 		0EA044E31E76C21D00643EBA /* ForkEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForkEventPayload.swift; sourceTree = "<group>"; };
 		0EA044E51E76C23B00643EBA /* WatchEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchEventPayload.swift; sourceTree = "<group>"; };
+		0EA044E71E76C92700643EBA /* CreateEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventPayload.swift; sourceTree = "<group>"; };
 		0EE17BBE1E6D657300451632 /* SearchParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchParameters.swift; sourceTree = "<group>"; };
 		0EE17BC21E6D7CCB00451632 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		0EE17BC41E6D7D1B00451632 /* RepositoryOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryOwner.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				0EA044E31E76C21D00643EBA /* ForkEventPayload.swift */,
 				0EA044E11E76C1F700643EBA /* PushEventPayload.swift */,
 				0EA044E51E76C23B00643EBA /* WatchEventPayload.swift */,
+				0EA044E71E76C92700643EBA /* CreateEventPayload.swift */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				0E4D5A211E5C60C1008E4AD6 /* Method.swift in Sources */,
 				0EE17BC51E6D7D1B00451632 /* RepositoryOwner.swift in Sources */,
 				0E5706191E5D9DDA0047BF4C /* Service.swift in Sources */,
+				0EA044E81E76C92700643EBA /* CreateEventPayload.swift in Sources */,
 				0E7B7BDF1E6E5F5700D50C95 /* RepositorySearchResult.swift in Sources */,
 				0E5706181E5D9DDA0047BF4C /* ServerConfig.swift in Sources */,
 				0E7AF45F1E729F5F0001C425 /* EnumIterating.swift in Sources */,

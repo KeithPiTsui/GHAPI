@@ -166,7 +166,15 @@ extension PushEventPayload.PCommit: GHAPIModelType {
     }
 }
 
-
+extension PushEventPayload: GHAPIModelType {
+    public static func == (lhs: PushEventPayload, rhs: PushEventPayload) -> Bool {
+        return lhs.ref == rhs.ref
+    }
+    
+    public var debugDescription: String {
+        return "PushEventPayload ref:\(self.ref)"
+    }
+}
 
 
 

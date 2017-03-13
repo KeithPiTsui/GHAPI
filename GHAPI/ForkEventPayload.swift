@@ -38,3 +38,13 @@ public struct ForkEventPayload: EventPayloadType {
     public let repository: Repository
     public let sender: User
 }
+
+extension ForkEventPayload: GHAPIModelType {
+    public static func == (lhs: ForkEventPayload, rhs: ForkEventPayload) -> Bool {
+        return lhs.forkee == rhs.forkee && lhs.repository == rhs.repository && lhs.sender == rhs.sender
+    }
+    
+    public var debugDescription: String {
+        return "ForkEventPayload forkee: \(self.forkee)\nrepository: \(self.repository)\nsender: \(self.sender)"
+    }
+}

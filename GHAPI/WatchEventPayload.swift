@@ -31,3 +31,13 @@ public struct WatchEventPayload: EventPayloadType{
     
     public let action: String
 }
+
+extension WatchEventPayload: GHAPIModelType {
+    public static func == (lhs: WatchEventPayload, rhs: WatchEventPayload) -> Bool {
+        return lhs.action == rhs.action
+    }
+    
+    public var debugDescription: String {
+        return "PushEventPayload ref:\(self.action)"
+    }
+}
