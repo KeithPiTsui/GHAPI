@@ -77,13 +77,17 @@ extension ServiceType {
      - returns: A new URL request that is properly configured for the server.
      */
     public func preparedRequest(forRequest originalRequest: URLRequest,
-                                query: [String:Any] = [:])
+                                query: [String:Any] = [:],
+                                headers: [String: String] = [:])
         -> URLRequest {
             
             var request = originalRequest
             guard let URL = request.url else { return originalRequest }
             
-            var headers = self.defaultHeaders
+            var thisHeaders = self.defaultHeaders
+            if headers.isEmpty == false {
+                thisHeaders = thisHeaders.withAllValuesFrom(headers)
+            }
             
             let method = request.httpMethod?.uppercased()
             var components = URLComponents(url: URL, resolvingAgainstBaseURL: false)!
@@ -96,7 +100,7 @@ extension ServiceType {
             if method == .some("POST") || method == .some("PUT")
             || method == .some("PATCH") || method == .some("DELETE") {
                 if request.httpBody == nil {
-                    headers["Content-Type"] = "application/json; charset=utf-8"
+                    thisHeaders["Content-Type"] = "application/json; charset=utf-8"
                     request.httpBody = try? JSONSerialization.data(withJSONObject: query, options: [])
                 }
             } else {
@@ -108,7 +112,7 @@ extension ServiceType {
             }
             
             let currentHeaders = request.allHTTPHeaderFields ?? [:]
-            request.allHTTPHeaderFields = currentHeaders.withAllValuesFrom(headers)
+            request.allHTTPHeaderFields = currentHeaders.withAllValuesFrom(thisHeaders)
             
             return request
     }
@@ -122,12 +126,14 @@ extension ServiceType {
      
      - returns: A new URL request that is properly configured for the server.
      */
-    public func preparedRequest(forURL url: URL, method: Method = .GET, query: [String:Any] = [:])
+    public func preparedRequest(forURL url: URL,
+                                method: Method = .GET,
+                                query: [String:Any] = [:],
+                                headers: [String: String] = [:])
         -> URLRequest {
-            
             var request = URLRequest(url: url)
             request.httpMethod = method.rawValue
-            return self.preparedRequest(forRequest: request, query: query)
+            return self.preparedRequest(forRequest: request, query: query, headers: headers)
     }
     
     public func isPrepared(request: URLRequest) -> Bool {

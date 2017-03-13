@@ -184,6 +184,51 @@ class GHAPITests: XCTestCase {
         let s = str.ghUrlPatternRemoved
     }
     
+    func testReadmeResponse() {
+        let expectation = self.expectation(description: "network response")
+        let urlString = "https://api.github.com/repos/ReactiveCocoa/ReactiveCocoa/readme"
+        let myUrl = URL(string: urlString);
+        let request = NSMutableURLRequest(url:myUrl!);
+        request.httpMethod = "GET";
+        request.allHTTPHeaderFields?["Accept"] = "application/vnd.github.v3.html"
+        let task = URLSession.shared.dataTask(with: request as URLRequest) {
+            data, response, error in
+            guard let response = response,
+                let data = data  else { return }
+            
+            let str = String(data: data, encoding: .utf8)
+            print(str)
+            
+            
+            expectation.fulfill()
+        }
+        task.resume()
+        self.waitForExpectations(timeout: 2000, handler: nil)
+    }
+    
+    func testReadmeService() {
+        let expectation = self.expectation(description: "network response")
+        let service = Service()
+        let url = URL(string: "https://api.github.com/repos/ReactiveCocoa/ReactiveCocoa/readme")!
+        service.readme(referredBy: url).startWithResult { (result) in
+            if let value  = result.value {
+                print(value.debugDescription)
+                if let data = Data(base64Encoded: value.content, options: .ignoreUnknownCharacters) {
+                let str = String(data: data, encoding: String.Encoding.utf8)
+                print(str)
+                }
+                
+            }
+            if let error = result.error {
+                print(error.localizedDescription)
+            }
+            expectation.fulfill()
+            
+        }
+        
+        self.waitForExpectations(timeout: 2000, handler: nil)
+    }
+    
     
     
     func testPerformanceExample() {self.measure {}}

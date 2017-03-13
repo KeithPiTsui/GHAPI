@@ -130,7 +130,10 @@ extension Service {
             print("\(URL)")
             
             return Service.session.rac_JSONResponse(
-                preparedRequest(forURL: URL, method: properties.method, query: properties.query),
+                preparedRequest(forURL: URL,
+                                method: properties.method,
+                                query: properties.query,
+                                headers: properties.headers),
                 uploading: properties.file.map { ($1, $0.rawValue) }
                 )
                 .flatMap(decodeModel)

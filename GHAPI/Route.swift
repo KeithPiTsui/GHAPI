@@ -20,20 +20,20 @@ internal enum Route {
     )
     
     
-    
     // swiftlint:disable:next large_tuple
     internal var requestProperties: (
         method: Method,
         path: String,
         query: [String:Any],
-        file: (name: UploadParam, url: URL)?) {
+        file: (name: UploadParam, url: URL)?,
+        headers: [String: String]) {
         switch self {
             
         case let .user(userName):
-            return (.GET, "/users/\(userName)", [:], nil)
+            return (.GET, "/users/\(userName)", [:], nil, [:])
             
         case let .resource(url):
-            return (.GET, url.path, [:], nil)
+            return (.GET, url.path, [:], nil, [:])
             
         case let .search(scope, keyword, sort, order):
             let path = "/search/\(scope.name)"
@@ -57,7 +57,7 @@ internal enum Route {
             }
             if let sort = sort { query["sort"] = sort.rawValue }
             if let order = order { query["order"] = order.rawValue }
-            return (.GET, path, query, nil)
+            return (.GET, path, query, nil, [:])
         }
     }
 }
