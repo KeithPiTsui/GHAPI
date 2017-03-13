@@ -5,26 +5,75 @@
 //  Created by Pi on 13/03/2017.
 //  Copyright © 2017 Keith. All rights reserved.
 //
-
-
 import Argo
 import Curry
 import Runes
 
-public enum EventType: String {
-    case CommitCommentEvent
-    case CreateEvent
-    case WatchEvent
+public struct GHEvent {
+    public enum EventType: String {
+        case CommitCommentEvent
+        case CreateEvent
+        case WatchEvent
+    }
+    public struct EIndividual {
+        public let id: UInt
+        public let login: String
+        public let gravatar_id: String
+        public let avatar_url: URL
+        public let url: URL
+    }
+    public struct ERepository {
+        public let id: UInt
+        public let name: String
+        public let url: URL
+    }
+    
+    public let type: GHEvent.EventType
+    public let `public`: Bool
+    public let actor: GHEvent.EIndividual
+    public let org: GHEvent.EIndividual?
+    public let created_at: Date
+    public let id: String
+    public let payload: EventPayloadType?
+    public let repo: ERepository?
+    
+    fileprivate static let payloadConstructorDict: [GHEvent.EventType: EventPayloadType.Type] =
+        [GHEvent.EventType.WatchEvent: WatchEventPayload.self]
 }
-extension EventType: GHAPIModelType {
+
+
+extension GHEvent: Decodable {
+    public static func decode(_ json: JSON) -> Decoded<GHEvent> {
+        let creator = curry(GHEvent.init)
+        let tmp = creator <^> json <| "type"
+            <*> json <| "public"
+            <*> json <| "actor"
+            <*> json <|? "org"
+            <*> json <| "created_at"
+            <*> json <| "id"
+        
+        let _payload: Decoded<EventPayloadType>?
+            = ((json <| "type").value as GHEvent.EventType?)
+            .flatMap {payloadConstructorDict[$0]?.decode(json)}
+        
+        let payload: Decoded<EventPayloadType?> = _payload == nil
+            ? Decoded<EventPayloadType?>.success(nil)
+            : _payload!.map(Optional.some)
+
+        let tmp5 = tmp <*> payload <*> json <|? "repo"
+        return tmp5
+    }
+}
+
+extension GHEvent.EventType: GHAPIModelType {
     public var debugDescription: String {
         return "Event.EIndividual id: \(self.rawValue) "
     }
     
-    public static func decode(_ json: JSON) -> Decoded<EventType> {
+    public static func decode(_ json: JSON) -> Decoded<GHEvent.EventType> {
         switch json {
         case .string(let typeStr):
-            guard let et = EventType.init(rawValue: typeStr) else {
+            guard let et = GHEvent.EventType.init(rawValue: typeStr) else {
                 return .failure(.custom("EventType string misformatted"))
             }
             return pure(et)
@@ -38,15 +87,8 @@ extension EventType: GHAPIModelType {
     }
 }
 
-public struct EIndividual {
-    public let id: UInt
-    public let login: String
-    public let gravatar_id: String
-    public let avatar_url: URL
-    public let url: URL
-}
-extension EIndividual: GHAPIModelType {
-    public static func == (lhs: EIndividual, rhs: EIndividual) -> Bool {
+extension GHEvent.EIndividual: GHAPIModelType {
+    public static func == (lhs: GHEvent.EIndividual, rhs: GHEvent.EIndividual) -> Bool {
         return lhs.id == rhs.id
     }
     
@@ -54,8 +96,8 @@ extension EIndividual: GHAPIModelType {
         return "Event.EIndividual id: \(self.id) "
     }
     
-    public static func decode(_ json: JSON) -> Decoded<EIndividual> {
-        let creator = curry(EIndividual.init)
+    public static func decode(_ json: JSON) -> Decoded<GHEvent.EIndividual> {
+        let creator = curry(GHEvent.EIndividual.init)
         let tmp = creator
             <^> json <| "id"
             <*> json <| "login"
@@ -75,66 +117,31 @@ extension EIndividual: GHAPIModelType {
     }
 }
 
-public protocol EventPayloadType {
-    static func decode(_ json: JSON) -> Decoded<EventPayloadType>
-}
-
-public struct WatchEventPayload: EventPayloadType{
-    
-    public static func decode(_ json: JSON) -> Decoded<EventPayloadType> {
-        switch json {
-        case .object(let payload):
-            guard let payloadJson = payload["payload"] else { break }
-            return curry(WatchEventPayload.init) <^> payloadJson <| "action"
-        default:
-            break
-        }
-        return .failure(.custom("WatchEventPayload cannot be constructed from Json \(json)"))
+extension GHEvent.ERepository: GHAPIModelType {
+    public static func == (lhs: GHEvent.ERepository, rhs: GHEvent.ERepository) -> Bool {
+        return lhs.id == rhs.id
     }
     
-    public let action: String
-}
-
-
-public struct GHEvent {
-    public let type: EventType
-    public let `public`: Bool
-    public let actor: EIndividual
-    public let org: EIndividual?
-    public let created_at: Date
-    public let id: String
-    public let payload: EventPayloadType?
-}
-
-fileprivate let payloadConstructorDict: [EventType: EventPayloadType.Type] =
-    [EventType.WatchEvent: WatchEventPayload.self]
-
-
-extension GHEvent: Decodable {
-    public static func decode(_ json: JSON) -> Decoded<GHEvent> {
-        let creator = curry(GHEvent.init)
-        let tmp = creator <^> json <| "type"
-            <*> json <| "public"
-            <*> json <| "actor"
-            <*> json <|? "org"
-            <*> json <| "created_at"
-            <*> json <| "id"
-        
-        let _payload: Decoded<EventPayloadType>?
-            = ((json <| "type").value as EventType?)
-            .flatMap {payloadConstructorDict[$0]?.decode(json)}
-        
-        let payload: Decoded<EventPayloadType?> = _payload == nil
-            ? Decoded<EventPayloadType?>.success(nil)
-            : _payload!.map(Optional.some)
-
-        let tmp5 = tmp <*> payload
-        return tmp5
+    public var debugDescription: String {
+        return "Event.EIndividual id: \(self.id) "
+    }
+    
+    public static func decode(_ json: JSON) -> Decoded<GHEvent.ERepository> {
+        let creator = curry(GHEvent.ERepository.init)
+        let tmp = creator
+            <^> json <| "id"
+            <*> json <| "name"
+            <*> json <| "url"
+        return tmp
+    }
+    public func encode() -> [String:Any] {
+        var result: [String:Any] = [:]
+        result["id"] = self.id
+        result["name"] = self.name
+        result["url"] = self.url.absoluteString
+        return result
     }
 }
-
-
-
 
 
 

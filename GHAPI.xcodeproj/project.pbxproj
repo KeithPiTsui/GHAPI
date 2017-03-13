@@ -46,7 +46,10 @@
 		0EA044D11E76535300643EBA /* Readme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044D01E76535300643EBA /* Readme.swift */; };
 		0EA044D31E76567400643EBA /* GHAPIModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044D21E76567400643EBA /* GHAPIModelType.swift */; };
 		0EA044DB1E768DB000643EBA /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044DA1E768DB000643EBA /* Event.swift */; };
-		0EA044DD1E768E5700643EBA /* Event.text in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044DC1E768E5700643EBA /* Event.text */; };
+		0EA044DF1E76BC6E00643EBA /* EventPayloadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044DE1E76BC6E00643EBA /* EventPayloadType.swift */; };
+		0EA044E21E76C1F700643EBA /* PushEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044E11E76C1F700643EBA /* PushEventPayload.swift */; };
+		0EA044E41E76C21D00643EBA /* ForkEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044E31E76C21D00643EBA /* ForkEventPayload.swift */; };
+		0EA044E61E76C23B00643EBA /* WatchEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044E51E76C23B00643EBA /* WatchEventPayload.swift */; };
 		0EE17BBF1E6D657300451632 /* SearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BBE1E6D657300451632 /* SearchParameters.swift */; };
 		0EE17BC31E6D7CCB00451632 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BC21E6D7CCB00451632 /* Repository.swift */; };
 		0EE17BC51E6D7D1B00451632 /* RepositoryOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BC41E6D7D1B00451632 /* RepositoryOwner.swift */; };
@@ -113,7 +116,10 @@
 		0EA044D01E76535300643EBA /* Readme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Readme.swift; sourceTree = "<group>"; };
 		0EA044D21E76567400643EBA /* GHAPIModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHAPIModelType.swift; sourceTree = "<group>"; };
 		0EA044DA1E768DB000643EBA /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		0EA044DC1E768E5700643EBA /* Event.text */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Event.text; sourceTree = "<group>"; };
+		0EA044DE1E76BC6E00643EBA /* EventPayloadType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPayloadType.swift; sourceTree = "<group>"; };
+		0EA044E11E76C1F700643EBA /* PushEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushEventPayload.swift; sourceTree = "<group>"; };
+		0EA044E31E76C21D00643EBA /* ForkEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForkEventPayload.swift; sourceTree = "<group>"; };
+		0EA044E51E76C23B00643EBA /* WatchEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchEventPayload.swift; sourceTree = "<group>"; };
 		0EE17BBE1E6D657300451632 /* SearchParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchParameters.swift; sourceTree = "<group>"; };
 		0EE17BC21E6D7CCB00451632 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		0EE17BC41E6D7D1B00451632 /* RepositoryOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryOwner.swift; sourceTree = "<group>"; };
@@ -258,19 +264,18 @@
 		0E4D5A0D1E5C601B008E4AD6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0E50AA151E6800D20002A40D /* UserPasswordEnvelope.swift */,
-				0E7B7BE01E6E612800D50C95 /* UserSearchResult.swift */,
-				0E57061C1E5D9FC50047BF4C /* User.swift */,
-				0E4D5A261E5C61A0008E4AD6 /* ErrorEnvelope.swift */,
-				0E7B7BDE1E6E5F5700D50C95 /* RepositorySearchResult.swift */,
-				0EE17BC21E6D7CCB00451632 /* Repository.swift */,
-				0EE17BC41E6D7D1B00451632 /* RepositoryOwner.swift */,
 				0E5BF8C31E73D46200EDD841 /* Branch.swift */,
 				0E2B00631E73E2DC007C4A89 /* Commit.swift */,
-				0EA044D01E76535300643EBA /* Readme.swift */,
+				0E4D5A261E5C61A0008E4AD6 /* ErrorEnvelope.swift */,
+				0EA044E01E76C1D900643EBA /* Event */,
 				0EA044D21E76567400643EBA /* GHAPIModelType.swift */,
-				0EA044DA1E768DB000643EBA /* Event.swift */,
-				0EA044DC1E768E5700643EBA /* Event.text */,
+				0EA044D01E76535300643EBA /* Readme.swift */,
+				0EE17BC21E6D7CCB00451632 /* Repository.swift */,
+				0EE17BC41E6D7D1B00451632 /* RepositoryOwner.swift */,
+				0E7B7BDE1E6E5F5700D50C95 /* RepositorySearchResult.swift */,
+				0E57061C1E5D9FC50047BF4C /* User.swift */,
+				0E50AA151E6800D20002A40D /* UserPasswordEnvelope.swift */,
+				0E7B7BE01E6E612800D50C95 /* UserSearchResult.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -307,6 +312,18 @@
 				0E7B7BA21E6E3E1100D50C95 /* UserQualifier.swift */,
 			);
 			name = Qualifiers;
+			sourceTree = "<group>";
+		};
+		0EA044E01E76C1D900643EBA /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				0EA044DA1E768DB000643EBA /* Event.swift */,
+				0EA044DE1E76BC6E00643EBA /* EventPayloadType.swift */,
+				0EA044E31E76C21D00643EBA /* ForkEventPayload.swift */,
+				0EA044E11E76C1F700643EBA /* PushEventPayload.swift */,
+				0EA044E51E76C23B00643EBA /* WatchEventPayload.swift */,
+			);
+			name = Event;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -431,13 +448,13 @@
 				0E7B7B9D1E6E3DBB00D50C95 /* RepositoryQualifier.swift in Sources */,
 				0EE17BBF1E6D657300451632 /* SearchParameters.swift in Sources */,
 				0E7B7BA11E6E3DF800D50C95 /* IssueQualifier.swift in Sources */,
-				0EA044DD1E768E5700643EBA /* Event.text in Sources */,
 				0E4D5A201E5C60C1008E4AD6 /* EncodableType.swift in Sources */,
 				0EA044D31E76567400643EBA /* GHAPIModelType.swift in Sources */,
 				0E50AA161E6800D20002A40D /* UserPasswordEnvelope.swift in Sources */,
 				0E4D5A231E5C60C1008E4AD6 /* Route.swift in Sources */,
 				0E5BF8C41E73D46200EDD841 /* Branch.swift in Sources */,
 				0E4D5A271E5C61A0008E4AD6 /* ErrorEnvelope.swift in Sources */,
+				0EA044E21E76C1F700643EBA /* PushEventPayload.swift in Sources */,
 				0E57061D1E5D9FC50047BF4C /* User.swift in Sources */,
 				0E7B7BA61E6E3EA300D50C95 /* CommitsQualifier.swift in Sources */,
 				0E2B00661E73F39C007C4A89 /* String-Extension.swift in Sources */,
@@ -447,6 +464,7 @@
 				0E7B7BE11E6E612800D50C95 /* UserSearchResult.swift in Sources */,
 				0E7B7BE31E6E628C00D50C95 /* StandardTypeExtension.swift in Sources */,
 				0E7B7BA31E6E3E1100D50C95 /* UserQualifier.swift in Sources */,
+				0EA044DF1E76BC6E00643EBA /* EventPayloadType.swift in Sources */,
 				0EE17BC31E6D7CCB00451632 /* Repository.swift in Sources */,
 				0E4D5A131E5C607A008E4AD6 /* NSURLSession.swift in Sources */,
 				0EA044D11E76535300643EBA /* Readme.swift in Sources */,
@@ -454,6 +472,8 @@
 				0EA044DB1E768DB000643EBA /* Event.swift in Sources */,
 				0E4D5A251E5C614B008E4AD6 /* Secrets.swift in Sources */,
 				0E57061B1E5D9E100047BF4C /* ServiceType.swift in Sources */,
+				0EA044E61E76C23B00643EBA /* WatchEventPayload.swift in Sources */,
+				0EA044E41E76C21D00643EBA /* ForkEventPayload.swift in Sources */,
 				0E7B7B9F1E6E3DDC00D50C95 /* CodeQualifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
