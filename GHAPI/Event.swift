@@ -120,19 +120,14 @@ extension GHEvent: Decodable {
             <*> json <| "created_at"
             <*> json <| "id"
         
-        var _payload: Decoded<EventPayloadType>? = nil
+        let _payload: Decoded<EventPayloadType>?
+            = ((json <| "type").value as EventType?)
+            .flatMap {payloadConstructorDict[$0]?.decode(json)}
         
-        let t: Decoded<EventType> = json <| "type"
-        if let tt = t.value {
-            _payload = payloadConstructorDict[tt]?.decode(json)
-        }
-        
-        let payload: Decoded<EventPayloadType?>
-        if let pl = _payload {
-            payload = pl.map(Optional.some)
-        } else {
-            payload = Decoded<EventPayloadType?>.success(nil)
-        }
+        let payload: Decoded<EventPayloadType?> = _payload == nil
+            ? Decoded<EventPayloadType?>.success(nil)
+            : _payload!.map(Optional.some)
+
         let tmp5 = tmp <*> payload
         return tmp5
     }
