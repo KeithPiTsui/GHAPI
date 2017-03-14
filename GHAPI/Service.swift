@@ -73,11 +73,14 @@ public struct Service: ServiceType {
     }
     
     public func trendingRepository(of period: GithubCraper.TrendingPeriod, with language: String?)
-        -> SignalProducer<[TrendingRepository]?, ErrorEnvelope> {
+        -> SignalProducer<[TrendingRepository], ErrorEnvelope> {
             return SignalProducer { observer, disposable in
-                let repos = GithubCraper.trendingRepositories(of: period, with: language)
-                observer.send(value: repos)
-                observer.sendCompleted()
+                if let repos = GithubCraper.trendingRepositories(of: period, with: language) {
+                    observer.send(value: repos)
+                    observer.sendCompleted()
+                } else {
+                    observer.send(error: .couldNotParseJSON)
+                }
             }
     }
 }

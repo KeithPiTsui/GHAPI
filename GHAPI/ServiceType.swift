@@ -52,7 +52,7 @@ public protocol ServiceType {
     
     func events(of user: User) -> SignalProducer<[GHEvent], ErrorEnvelope>
     
-    func trendingRepository(of period: GithubCraper.TrendingPeriod, with language: String?) -> SignalProducer<[TrendingRepository]?, ErrorEnvelope>
+    func trendingRepository(of period: GithubCraper.TrendingPeriod, with language: String?) -> SignalProducer<[TrendingRepository], ErrorEnvelope>
 }
 
 extension ServiceType {
