@@ -262,6 +262,9 @@ class GHAPITests: XCTestCase {
         self.waitForExpectations(timeout: 2000, handler: nil)
     }
     
+    func testJiFramework() {
+        testJi()
+    }
     
     
 }

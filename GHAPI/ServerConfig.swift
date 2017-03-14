@@ -39,7 +39,7 @@ public struct ServerConfig: ServerConfigType {
     public init(apiBaseUrl: URL,
                 basicHTTPAuth: BasicHTTPAuthType? = nil,
                 defaultHeaders: [String: String]? = nil,
-                defaultParameters: [String: String]? = ["per_page":"30"]) {
+                defaultParameters: [String: String]? = ["per_page":"100"]) {
         self.apiBaseUrl = apiBaseUrl
         self.basicHTTPAuth = basicHTTPAuth
         self.defaultHeaders = defaultHeaders

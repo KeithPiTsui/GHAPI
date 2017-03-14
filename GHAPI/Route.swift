@@ -19,6 +19,8 @@ internal enum Route {
         order: SearchSortingOrder?
     )
     
+    case events(userName: String)
+    
     
     // swiftlint:disable:next large_tuple
     internal var requestProperties: (
@@ -58,6 +60,9 @@ internal enum Route {
             if let sort = sort { query["sort"] = sort.rawValue }
             if let order = order { query["order"] = order.rawValue }
             return (.GET, path, query, nil, [:])
+        
+        case let .events(username):
+            return (.GET, "/users/\(username)/events", [:], nil, [:])
         }
     }
 }

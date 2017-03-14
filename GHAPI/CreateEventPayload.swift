@@ -16,10 +16,10 @@ public struct CreateEventPayload: EventPayloadType{
         case .object(let payload):
             guard let payloadJson = payload["payload"] else { break }
             return curry(CreateEventPayload.init)
-                <^> payloadJson <| "ref"
+                <^> payloadJson <|? "ref"
                 <*> payloadJson <| "ref_type"
                 <*> payloadJson <| "master_branch"
-                <*> payloadJson <| "description"
+                <*> payloadJson <|? "description"
                 <*> payloadJson <| "pusher_type"
                 <*> payloadJson <|? "repostiory"
                 <*> payloadJson <|? "sender"
@@ -39,10 +39,10 @@ public struct CreateEventPayload: EventPayloadType{
         return result
     }
     
-    public let ref: String
+    public let ref: String?
     public let ref_type: String
     public let master_branch: String
-    public let desc: String
+    public let desc: String?
     public let pusher_type: String
     public let repostiory: Repository?
     public let sender: User?

@@ -49,6 +49,12 @@ public protocol ServiceType {
     func commits(referredBy url: URL) -> SignalProducer<[Commit], ErrorEnvelope>
     
     func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope>
+    
+    func events(of user: User) -> SignalProducer<[GHEvent], ErrorEnvelope>
+    
+    func trendingRepository(after date: Date, of languages: [LanguageArgument]) -> SignalProducer<[Repository], ErrorEnvelope>
+    
+    func trendingUser(after date: Date, of languages: [LanguageArgument]) -> SignalProducer<[User], ErrorEnvelope>
 }
 
 extension ServiceType {

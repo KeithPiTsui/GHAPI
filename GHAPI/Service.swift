@@ -68,7 +68,21 @@ public struct Service: ServiceType {
     public func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope> {
         return request(.resource(url: url))
     }
+    public func events(of user: User) -> SignalProducer<[GHEvent], ErrorEnvelope> {
+        return request(.events(userName: user.login))
+    }
     
+    public func trendingRepository(after date: Date, of languages: [LanguageArgument]) -> SignalProducer<[Repository], ErrorEnvelope> {
+        let dateQualifier = RepositoriesQualifier.created(ComparativeArgument.biggerThan(date))
+        let langQualifier = RepositoriesQualifier.language(languages)
+        return self.searchRepository(qualifiers: [dateQualifier, langQualifier]).map { $0.items }
+    }
+    
+    public func trendingUser(after date: Date, of languages: [LanguageArgument]) -> SignalProducer<[User], ErrorEnvelope> {
+        let dateQualifier = UserQualifier.created(ComparativeArgument.biggerThan(date))
+        let langQualifier = UserQualifier.language(languages)
+        return self.searchUser(qualifiers: [dateQualifier, langQualifier]).map { $0.items }
+    }
 }
 
 extension Service {

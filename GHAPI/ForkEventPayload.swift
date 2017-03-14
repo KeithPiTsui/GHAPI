@@ -18,8 +18,8 @@ public struct ForkEventPayload: EventPayloadType {
             guard let payloadJson = payload["payload"] else { break }
             return curry(ForkEventPayload.init)
                 <^> payloadJson <| "forkee"
-                <*> payloadJson <| "repository"
-                <*> payloadJson <| "sender"
+                <*> payloadJson <|? "repository"
+                <*> payloadJson <|? "sender"
         default:
             break
         }
@@ -29,14 +29,14 @@ public struct ForkEventPayload: EventPayloadType {
     public func encode() -> [String : Any] {
         var result: [String:Any] = [:]
         result["forkee"] = self.forkee.encode()
-        result["repository"] = self.repository.encode()
-        result["sender"] = self.sender.encode()
+        result["repository"] = self.repository?.encode()
+        result["sender"] = self.sender?.encode()
         return result
     }
     
     public let forkee: Repository
-    public let repository: Repository
-    public let sender: User
+    public let repository: Repository?
+    public let sender: User?
 }
 
 extension ForkEventPayload: GHAPIModelType {
