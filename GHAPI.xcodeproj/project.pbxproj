@@ -53,6 +53,7 @@
 		0EA044E81E76C92700643EBA /* CreateEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044E71E76C92700643EBA /* CreateEventPayload.swift */; };
 		0ECE8A651E77CB15001FE48B /* GithubTrendingCraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A641E77CB15001FE48B /* GithubTrendingCraper.swift */; };
 		0ECE8A671E77CB22001FE48B /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A661E77CB22001FE48B /* Ji.framework */; };
+		0ECE8A691E77CBE4001FE48B /* testGithubCraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A681E77CBE4001FE48B /* testGithubCraper.swift */; };
 		0EE17BBF1E6D657300451632 /* SearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BBE1E6D657300451632 /* SearchParameters.swift */; };
 		0EE17BC31E6D7CCB00451632 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BC21E6D7CCB00451632 /* Repository.swift */; };
 		0EE17BC51E6D7D1B00451632 /* RepositoryOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BC41E6D7D1B00451632 /* RepositoryOwner.swift */; };
@@ -126,6 +127,7 @@
 		0EA044E71E76C92700643EBA /* CreateEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventPayload.swift; sourceTree = "<group>"; };
 		0ECE8A641E77CB15001FE48B /* GithubTrendingCraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubTrendingCraper.swift; sourceTree = "<group>"; };
 		0ECE8A661E77CB22001FE48B /* Ji.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ji.framework; path = "../Ji/build/Debug-iphoneos/Ji.framework"; sourceTree = "<group>"; };
+		0ECE8A681E77CBE4001FE48B /* testGithubCraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testGithubCraper.swift; sourceTree = "<group>"; };
 		0EE17BBE1E6D657300451632 /* SearchParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchParameters.swift; sourceTree = "<group>"; };
 		0EE17BC21E6D7CCB00451632 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		0EE17BC41E6D7D1B00451632 /* RepositoryOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryOwner.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			children = (
 				0E4D59811E5C5BC0008E4AD6 /* GHAPITests.swift */,
 				0E4D59831E5C5BC0008E4AD6 /* Info.plist */,
+				0ECE8A681E77CBE4001FE48B /* testGithubCraper.swift */,
 			);
 			path = GHAPITests;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E4D59821E5C5BC0008E4AD6 /* GHAPITests.swift in Sources */,
+				0ECE8A691E77CBE4001FE48B /* testGithubCraper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
