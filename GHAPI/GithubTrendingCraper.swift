@@ -52,9 +52,7 @@ public struct GithubCraper {
     
     public static func trendingRepositories(of period: TrendingPeriod, with language: String?) -> [TrendingRepository]? {
         var urlStr = githubTrendingURLStr
-        if let lang = language {
-            urlStr += "/\(lang)"
-        }
+        if let lang = language { urlStr += "/\(lang)"}
         let pQuery = trendingQuery(of: period)
         urlStr += "?\(pQuery.key)=\(pQuery.value)"
         guard let url = URL(string: urlStr) else { return nil }
@@ -96,7 +94,6 @@ public struct GithubCraper {
         
         return curry(TrendingRepository.init)(ownerName)(repoName)(desc)(lang)(totalStars)(forks)(periodStars)
     }
-    
 }
 
 

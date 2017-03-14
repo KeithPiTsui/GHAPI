@@ -30,15 +30,33 @@ class testGithubCraper: XCTestCase {
     }
     
     func testJiFramework() {
-        let i = "1,234".numbers().first
-        let i2 = "1234".numbers().first
+//        let i = "1,234".numbers().first
+//        let i2 = "1234".numbers().first
         //        testJi()
     }
     
     func testDailyTrendingSwift() {
-        let repos = GithubCraper.trendingRepositories(of: .daily, with: "swift")
+//        let repos = GithubCraper.trendingRepositories(of: .daily, with: "swift")
         
         print("Hello")
+    }
+    
+    func testDailyTrendingSignal() {
+        let expectation = self.expectation(description: "network response")
+        let service = Service()
+        service.trendingRepository(of: .daily, with: "swift")
+            .observe(on: QueueScheduler())
+            .startWithResult { (result) in
+                
+                if let reposValue = result.value {
+                    if let repos = reposValue {
+                        print("\(repos.count)")
+                    }
+                }
+                expectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 2000, handler: nil)
     }
     
     
@@ -50,3 +68,25 @@ class testGithubCraper: XCTestCase {
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

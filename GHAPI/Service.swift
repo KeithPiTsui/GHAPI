@@ -72,16 +72,13 @@ public struct Service: ServiceType {
         return request(.events(userName: user.login))
     }
     
-    public func trendingRepository(after date: Date, of languages: [LanguageArgument]) -> SignalProducer<[Repository], ErrorEnvelope> {
-        let dateQualifier = RepositoriesQualifier.created(ComparativeArgument.biggerThan(date))
-        let langQualifier = RepositoriesQualifier.language(languages)
-        return self.searchRepository(qualifiers: [dateQualifier, langQualifier]).map { $0.items }
-    }
-    
-    public func trendingUser(after date: Date, of languages: [LanguageArgument]) -> SignalProducer<[User], ErrorEnvelope> {
-        let dateQualifier = UserQualifier.created(ComparativeArgument.biggerThan(date))
-        let langQualifier = UserQualifier.language(languages)
-        return self.searchUser(qualifiers: [dateQualifier, langQualifier]).map { $0.items }
+    public func trendingRepository(of period: GithubCraper.TrendingPeriod, with language: String?)
+        -> SignalProducer<[TrendingRepository]?, ErrorEnvelope> {
+            return SignalProducer { observer, disposable in
+                let repos = GithubCraper.trendingRepositories(of: period, with: language)
+                observer.send(value: repos)
+                observer.sendCompleted()
+            }
     }
 }
 
