@@ -12,32 +12,25 @@ import Runes
 
 
 public struct WatchEventPayload: EventPayloadType{
-    public static func decode(_ json: JSON) -> Decoded<EventPayloadType> {
-        switch json {
-        case .object(let payload):
-            guard let payloadJson = payload["payload"] else { break }
-            return curry(WatchEventPayload.init) <^> payloadJson <| "action"
-        default:
-            break
-        }
-        return .failure(.custom("WatchEventPayload cannot be constructed from Json \(json)"))
-    }
-    
-    public func encode() -> [String : Any] {
-        var result: [String:Any] = [:]
-        result["action"] = self.action
-        return result
-    }
-    
-    public let action: String
+  public static func decode(_ json: JSON) -> Decoded<EventPayloadType> {
+    return curry(WatchEventPayload.init) <^> json <| "action"
+  }
+
+  public func encode() -> [String : Any] {
+    var result: [String:Any] = [:]
+    result["action"] = self.action
+    return result
+  }
+
+  public let action: String
 }
 
 extension WatchEventPayload: GHAPIModelType {
-    public static func == (lhs: WatchEventPayload, rhs: WatchEventPayload) -> Bool {
-        return lhs.action == rhs.action
-    }
-    
-    public var debugDescription: String {
-        return "PushEventPayload ref:\(self.action)"
-    }
+  public static func == (lhs: WatchEventPayload, rhs: WatchEventPayload) -> Bool {
+    return lhs.action == rhs.action
+  }
+
+  public var debugDescription: String {
+    return "WatchEventPayload action:\(self.action)"
+  }
 }

@@ -12,39 +12,33 @@ import Runes
 
 
 public struct ForkEventPayload: EventPayloadType {
-    public static func decode(_ json: JSON) -> Decoded<EventPayloadType> {
-        switch json {
-        case .object(let payload):
-            guard let payloadJson = payload["payload"] else { break }
-            return curry(ForkEventPayload.init)
-                <^> payloadJson <| "forkee"
-                <*> payloadJson <|? "repository"
-                <*> payloadJson <|? "sender"
-        default:
-            break
-        }
-        return .failure(.custom("ForkEventPayload cannot be constructed from Json \(json)"))
-    }
-    
-    public func encode() -> [String : Any] {
-        var result: [String:Any] = [:]
-        result["forkee"] = self.forkee.encode()
-        result["repository"] = self.repository?.encode()
-        result["sender"] = self.sender?.encode()
-        return result
-    }
-    
-    public let forkee: Repository
-    public let repository: Repository?
-    public let sender: User?
+  public static func decode(_ json: JSON) -> Decoded<EventPayloadType> {
+    return curry(ForkEventPayload.init)
+      <^> json <| "forkee"
+      <*> json <|? "repository"
+      <*> json <|? "sender"
+
+  }
+
+  public func encode() -> [String : Any] {
+    var result: [String:Any] = [:]
+    result["forkee"] = self.forkee.encode()
+    result["repository"] = self.repository?.encode()
+    result["sender"] = self.sender?.encode()
+    return result
+  }
+
+  public let forkee: Repository
+  public let repository: Repository?
+  public let sender: User?
 }
 
 extension ForkEventPayload: GHAPIModelType {
-    public static func == (lhs: ForkEventPayload, rhs: ForkEventPayload) -> Bool {
-        return lhs.forkee == rhs.forkee && lhs.repository == rhs.repository && lhs.sender == rhs.sender
-    }
-    
-    public var debugDescription: String {
-        return "ForkEventPayload forkee: \(self.forkee)\nrepository: \(self.repository)\nsender: \(self.sender)"
-    }
+  public static func == (lhs: ForkEventPayload, rhs: ForkEventPayload) -> Bool {
+    return lhs.forkee == rhs.forkee && lhs.repository == rhs.repository && lhs.sender == rhs.sender
+  }
+
+  public var debugDescription: String {
+    return "ForkEventPayload forkee: \(self.forkee)\nrepository: \(self.repository)\nsender: \(self.sender)"
+  }
 }
