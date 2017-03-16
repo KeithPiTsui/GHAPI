@@ -93,6 +93,7 @@ public struct PushEventPayload: EventPayloadType {
         public let added: [String]?
         public let removed: [String]?
         public let modified: [String]?
+      public let sha: String?
     }
     
     public let ref: String
@@ -164,6 +165,7 @@ extension PushEventPayload.PCommit: GHAPIModelType {
             <*> json <||? "added"
             <*> json <||? "removed"
             <*> json <||? "modified"
+            <*> json <|? "sha"
         return tmp3
     }
     public func encode() -> [String:Any] {
@@ -179,6 +181,7 @@ extension PushEventPayload.PCommit: GHAPIModelType {
         result["added"] = self.added
         result["removed"] = self.removed
         result["modified"] = self.modified
+        result["sha"] = self.sha
         return result
     }
 }
