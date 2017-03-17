@@ -44,13 +44,8 @@ public struct GithubCraper {
     let languages = languageNodes
       .map{ (node) -> ProgrammingLanguage? in
         guard
-          let displayname = node.content
-          else { return nil }
-        guard
-          let par = node.parent,
-          let tag = par.tag,
-          tag == "a",
-          let ghapiname = par.attributes["href"]?.components(separatedBy: "/").last
+          let displayname = node.content,
+          let ghapiname = node.parent?.attributes["href"]?.components(separatedBy: "/").last
           else { return nil }
         return (displayname, ghapiname)
       }
