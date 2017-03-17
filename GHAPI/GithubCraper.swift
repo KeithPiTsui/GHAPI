@@ -29,7 +29,7 @@ public struct GithubCraper {
   }
   public typealias ProgrammingLanguage = (displayName: String, ghapiName: String)
 
-  public static let githubTrendingURLStr = "https://github.com/trending"
+  public static let githubTrendingURLStr = Secrets.Api.Endpoint.githubTrending
   public static let githubTrendingURL = URL(string: githubTrendingURLStr)!
   public static let trendingDoc = Ji(htmlURL: githubTrendingURL)
 
@@ -105,21 +105,6 @@ public struct GithubCraper {
 
     return curry(TrendingRepository.init)(ownerName)(repoName)(desc)(lang)(totalStars)(forks)(periodStars)
   }
-}
-
-
-func testJi() {
-  let jiDoc = Ji(htmlURL: URL(string: "https://github.com/trending/swift?since=daily")!)
-  let rootNode = jiDoc?.rootNode
-  print("title: \(rootNode?.tag)")
-  if let htmlNode = rootNode {
-    let languageNodes = htmlNode.descendantsWithAttributeName("class",
-                                                              attributeValue: "select-menu-item-text js-select-button-text js-navigation-open")
-    let languages = languageNodes.map{$0.content}.compact()
-    print(languages)
-  }
-  
-  
 }
 
 

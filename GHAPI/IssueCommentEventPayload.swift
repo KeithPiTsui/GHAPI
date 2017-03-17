@@ -1,5 +1,5 @@
 //
-//  IssueCommentEvent.swift
+//  IssueCommentEventPayload.swift
 //  GHAPI
 //
 //  Created by Pi on 16/03/2017.
@@ -11,9 +11,9 @@ import Curry
 import Runes
 
 
-public struct IssueCommentEvent: EventPayloadType{
+public struct IssueCommentEventPayload: EventPayloadType{
   public static func decode(_ json: JSON) -> Decoded<EventPayloadType> {
-    return curry(IssueCommentEvent.init)
+    return curry(IssueCommentEventPayload.init)
       <^> json <| "action"
       <*> json <| "issue"
       <*> json <| "comment"
@@ -37,7 +37,7 @@ public struct IssueCommentEvent: EventPayloadType{
       public let html_url: URL
       public let issue_url: URL
     }
-    public let urls: IssueCommentEvent.IComment.IIURLs
+    public let urls: IssueCommentEventPayload.IComment.IIURLs
     public let id: UInt
     public let user: User
     public let created_at: Date
@@ -48,31 +48,31 @@ public struct IssueCommentEvent: EventPayloadType{
 
 }
 
-extension IssueCommentEvent: GHAPIModelType {
-  public static func == (lhs: IssueCommentEvent, rhs: IssueCommentEvent) -> Bool {
+extension IssueCommentEventPayload: GHAPIModelType {
+  public static func == (lhs: IssueCommentEventPayload, rhs: IssueCommentEventPayload) -> Bool {
     return lhs.action == rhs.action
       && rhs.issue == rhs.issue
       && lhs.comment == rhs.comment
   }
 
   public var debugDescription: String {
-    return "IssueCommentEvent action:\(self.action)"
+    return "IssueCommentEventPayload action:\(self.action)"
   }
 }
 
-extension IssueCommentEvent.IComment: GHAPIModelType {
+extension IssueCommentEventPayload.IComment: GHAPIModelType {
   public static func == (
-    lhs: IssueCommentEvent.IComment,
-    rhs: IssueCommentEvent.IComment) -> Bool {
+    lhs: IssueCommentEventPayload.IComment,
+    rhs: IssueCommentEventPayload.IComment) -> Bool {
     return lhs.id == rhs.id
   }
 
   public var debugDescription: String {
     return "IssueEventPayload.IIssue id:\(self.id)"
   }
-  public static func decode(_ json: JSON) -> Decoded<IssueCommentEvent.IComment> {
-    return curry(IssueCommentEvent.IComment.init)
-      <^> IssueCommentEvent.IComment.IIURLs.decode(json)
+  public static func decode(_ json: JSON) -> Decoded<IssueCommentEventPayload.IComment> {
+    return curry(IssueCommentEventPayload.IComment.init)
+      <^> IssueCommentEventPayload.IComment.IIURLs.decode(json)
       <*> json <| "id"
       <*> json <| "user"
       <*> json <| "created_at"
@@ -95,18 +95,18 @@ extension IssueCommentEvent.IComment: GHAPIModelType {
 }
 
 
-extension IssueCommentEvent.IComment.IIURLs: GHAPIModelType {
+extension IssueCommentEventPayload.IComment.IIURLs: GHAPIModelType {
   public static func == (
-    lhs: IssueCommentEvent.IComment.IIURLs,
-    rhs: IssueCommentEvent.IComment.IIURLs) -> Bool {
+    lhs: IssueCommentEventPayload.IComment.IIURLs,
+    rhs: IssueCommentEventPayload.IComment.IIURLs) -> Bool {
     return lhs.url == rhs.url
   }
 
   public var debugDescription: String {
     return "IssueEventPayload.IIssue.IIURLs url:\(self.url)"
   }
-  public static func decode(_ json: JSON) -> Decoded<IssueCommentEvent.IComment.IIURLs> {
-    return curry(IssueCommentEvent.IComment.IIURLs.init)
+  public static func decode(_ json: JSON) -> Decoded<IssueCommentEventPayload.IComment.IIURLs> {
+    return curry(IssueCommentEventPayload.IComment.IIURLs.init)
       <^> json <| "url"
       <*> json <| "html_url"
       <*> json <| "issue_url"

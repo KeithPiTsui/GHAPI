@@ -42,8 +42,6 @@ public struct User {
     public let following: Int?
     public let createdDate: Date?
     public let updatedDate: Date?
-    
-    
 }
 
 extension User: Equatable {}
