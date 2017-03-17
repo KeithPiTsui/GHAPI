@@ -22,11 +22,10 @@ public protocol ServiceType {
   /// Returns a new service without authentification infomation.
   func logout() -> Self
 
-  /// Request to test with Github API
-  func testConnectionToGithub() -> SignalProducer<User, ErrorEnvelope>
-
   /// Request user profile from github
-  func userProfile(name: String) -> SignalProducer<User, ErrorEnvelope>
+  func user(with name: String) -> SignalProducer<User, ErrorEnvelope>
+
+  func user(referredBy url: URL) -> SignalProducer<User, ErrorEnvelope>
 
   /// Request a search on Repository from github
   func searchRepository(
@@ -34,43 +33,46 @@ public protocol ServiceType {
     keyword: String?,
     sort: SearchSorting?,
     order: SearchSortingOrder?)
-    ->  SignalProducer<RepositorySearchResult, ErrorEnvelope>
+    ->  SignalProducer<SearchResult<Repository>, ErrorEnvelope>
 
-  /// Request a search on Repository from github
+  /// Request a search on User from github
   func searchUser(
     qualifiers: [UserQualifier],
     keyword: String?,
     sort: SearchSorting?,
-    order: SearchSortingOrder?) ->  SignalProducer<UserSearchResult, ErrorEnvelope>
+    order: SearchSortingOrder?)
+    ->  SignalProducer<SearchResult<User>, ErrorEnvelope>
 
-  /// Request a search on Repository from github
-  func searchUser2(
-    qualifiers: [UserQualifier],
-    keyword: String?,
-    sort: SearchSorting?,
-    order: SearchSortingOrder?) ->  SignalProducer<SearchResult<User>, ErrorEnvelope>
 
-  func user(referredBy url: URL) -> SignalProducer<User, ErrorEnvelope>
-
+  /// Request a repository referred by url
   func repository(referredBy url: URL) -> SignalProducer<Repository, ErrorEnvelope>
 
-  func repository(of username: String, and reponame: String)
+  /// Request a repository specified by owner name and reop name
+  func repository(of ownername: String, and reponame: String)
     -> SignalProducer<Repository, ErrorEnvelope>
 
+  /// Compose a url for a repository specified by owner name and repo name
+  func repositoryUrl(of ownername: String, and reponame: String) -> URL
+
+  /// Request a branch specified by url
   func branches(referredBy url: URL) -> SignalProducer<[Branch], ErrorEnvelope>
 
+  /// Request a commit specified by url
   func commits(referredBy url: URL) -> SignalProducer<[Commit], ErrorEnvelope>
 
+  /// Request a readme specified by url
   func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope>
 
+  /// Request events of user
   func events(of user: User) -> SignalProducer<[GHEvent], ErrorEnvelope>
 
+  /// Request trending repositories specified with period and programming language
   func trendingRepository(
     of period: GithubCraper.TrendingPeriod,
     with language: String?)
     -> SignalProducer<[TrendingRepository], ErrorEnvelope>
 
-  func repositoryUrl(of username: String, and reponame: String) -> URL
+
 }
 
 extension ServiceType {

@@ -10,7 +10,7 @@ import Argo
 import Curry
 import Runes
 
-public struct SearchResult<I: Decodable> {
+public struct SearchResult<I: Decodable & Equatable & EncodableType> {
   public let total_count: Int
   public let incomplete_results: Bool
   public let items: [I]
@@ -20,6 +20,7 @@ extension SearchResult: Equatable {
   public static func == (lhs: SearchResult, rhs: SearchResult) -> Bool {
     return lhs.total_count == rhs.total_count
       && lhs.incomplete_results == rhs.incomplete_results
+      && lhs.items == rhs.items
   }
 }
 
@@ -57,7 +58,7 @@ extension SearchResult: EncodableType {
     var result: [String:Any] = [:]
     result["total_count"] = self.total_count
     result["incomplete_results"] = self.incomplete_results
-    //    result["items"] = self.items.map{$0.encode()}
+        result["items"] = self.items.map{$0.encode()}
     return result
   }
 }

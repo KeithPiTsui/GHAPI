@@ -1,5 +1,5 @@
 /**
- A type that knows the location of a Kickstarter API and web server.
+ A type that knows the location of Github API.
  */
 public protocol ServerConfigType {
     var apiBaseUrl: URL { get }

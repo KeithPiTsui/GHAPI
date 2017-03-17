@@ -27,52 +27,46 @@ public struct Service: ServiceType {
 
   public func logout() -> Service { return Service() }
 
-  public func testConnectionToGithub() -> SignalProducer<User, ErrorEnvelope> {
-    return request(.user(userName: "keithpitsui"))
-  }
-
-  public func userProfile(name: String) -> SignalProducer<User, ErrorEnvelope> {
+  public func user(with name: String) -> SignalProducer<User, ErrorEnvelope> {
     return request(.user(userName: name))
   }
 
-  public func searchRepository(qualifiers: [RepositoriesQualifier],
-                               keyword: String? = nil,
-                               sort: SearchSorting? = nil,
-                               order: SearchSortingOrder? = nil) ->  SignalProducer<RepositorySearchResult, ErrorEnvelope> {
-    return request(.search(scope: .repositories(qualifiers), keyword: keyword,  sort: sort, order: order))
+  public func searchRepository(
+    qualifiers: [RepositoriesQualifier],
+    keyword: String? = nil,
+    sort: SearchSorting? = nil,
+    order: SearchSortingOrder? = nil)
+    -> SignalProducer<SearchResult<Repository>, ErrorEnvelope> {
+      return request(.search(scope: .repositories(qualifiers), keyword: keyword,  sort: sort, order: order))
   }
 
-  public func searchUser(qualifiers: [UserQualifier],
-                         keyword: String? = nil,
-                         sort: SearchSorting? = nil,
-                         order: SearchSortingOrder? = nil) ->  SignalProducer<UserSearchResult, ErrorEnvelope> {
-    return request(.search(scope: .users(qualifiers), keyword: keyword,  sort: sort, order: order))
-  }
-
-  public func searchUser2(
+  public func searchUser(
     qualifiers: [UserQualifier],
-    keyword: String?,
-    sort: SearchSorting?,
-    order: SearchSortingOrder?) ->  SignalProducer<SearchResult<User>, ErrorEnvelope> {
-    return request(.search(scope: .users(qualifiers), keyword: keyword,  sort: sort, order: order))
+    keyword: String? = nil,
+    sort: SearchSorting? = nil,
+    order: SearchSortingOrder? = nil)
+    -> SignalProducer<SearchResult<User>, ErrorEnvelope> {
+      return request(.search(scope: .users(qualifiers), keyword: keyword,  sort: sort, order: order))
   }
 
-  public func user(referredBy url: URL) -> SignalProducer<User, ErrorEnvelope> {
+  public func user(referredBy url: URL)
+    -> SignalProducer<User, ErrorEnvelope> {
     return request(.resource(url: url))
   }
 
-  public func repository(referredBy url: URL) -> SignalProducer<Repository, ErrorEnvelope> {
+  public func repository(referredBy url: URL)
+    -> SignalProducer<Repository, ErrorEnvelope> {
     return request(.resource(url: url))
   }
 
-  public func repository(of username: String, and reponame: String)
+  public func repository(of ownername: String, and reponame: String)
     -> SignalProducer<Repository, ErrorEnvelope>{
-      return request(.repository(username: username, reponame: reponame))
+      return request(.repository(username: ownername, reponame: reponame))
   }
 
-  public func repositoryUrl(of username: String, and reponame: String) -> URL {
+  public func repositoryUrl(of ownername: String, and reponame: String) -> URL {
     return self.serverConfig.apiBaseUrl.appendingPathComponent(
-      Route.repository(username: username, reponame: reponame).requestProperties.path)
+      Route.repository(username: ownername, reponame: reponame).requestProperties.path)
   }
 
   public func branches(referredBy url: URL) -> SignalProducer<[Branch], ErrorEnvelope> {
@@ -184,8 +178,8 @@ extension Service {
         )
         .flatMap(decodeModels)
   }
-  
-  
+
+
 }
 
 
