@@ -11,64 +11,6 @@ import Curry
 import Runes
 
 public struct PushEventPayload: EventPayloadType {
-  public static func decode(_ json: JSON) -> Decoded<EventPayloadType> {
-
-    let creator = curry(PushEventPayload.init)
-
-    let tmp = creator
-      <^> json <| "ref"
-      <*> json <| "before"
-      <*> json <|? "after"
-      <*> json <|? "created"
-      <*> json <|? "deleted"
-
-    let tmp1 = tmp
-      <*> json <|? "forced"
-      <*> json <|? "base_ref"
-      <*> json <|? "compare"
-      <*> json <|| "commits"
-      <*> json <|? "head_commit"
-
-    let tmp2 = tmp1
-      <*> json <|? "repository"
-      <*> json <|? "pusher"
-      <*> json <|? "sender"
-
-    let tmp3 = tmp2
-      <*> json <| "push_id"
-      <*> json <| "size"
-      <*> json <| "distinct_size"
-      <*> json <| "head"
-
-
-    return tmp3.map{$0 as EventPayloadType}
-
-  }
-
-  public func encode() -> [String : Any] {
-    var result: [String:Any] = [:]
-    result["ref"] = self.ref
-    result["before"] = self.before
-    result["after"] = self.after
-    result["created"] = self.created
-    result["deleted"] = self.deleted
-    result["forced"] = self.forced
-    result["base_ref"] = self.base_ref
-    result["compare"] = self.compare?.absoluteString
-    result["commits"] = self.commits.map{$0.encode()}
-    result["head_commit"] = self.head_commit?.encode()
-    result["repository"] = self.encode()
-    result["pusher"] = self.encode()
-    result["sender"] = self.sender?.encode()
-
-    result["push_id"] = self.push_id
-    result["size"] = self.size
-    result["distinct_size"] = self.distinct_size
-    result["head"] = self.head
-
-    return result
-  }
-
   public struct PCommit {
     public struct PCPerson {
       public let name: String
@@ -106,7 +48,6 @@ public struct PushEventPayload: EventPayloadType {
   public let size: UInt
   public let distinct_size: UInt
   public let head: String
-
 }
 
 extension PushEventPayload.PCommit.PCPerson: GHAPIModelType {
@@ -175,6 +116,55 @@ extension PushEventPayload.PCommit: GHAPIModelType {
 extension PushEventPayload: GHAPIModelType {
   public static func == (lhs: PushEventPayload, rhs: PushEventPayload) -> Bool {
     return lhs.ref == rhs.ref
+  }
+  public static func decode(_ json: JSON) -> Decoded<EventPayloadType> {
+    let creator = curry(PushEventPayload.init)
+    let tmp = creator
+      <^> json <| "ref"
+      <*> json <| "before"
+      <*> json <|? "after"
+      <*> json <|? "created"
+      <*> json <|? "deleted"
+    let tmp1 = tmp
+      <*> json <|? "forced"
+      <*> json <|? "base_ref"
+      <*> json <|? "compare"
+      <*> json <|| "commits"
+      <*> json <|? "head_commit"
+    let tmp2 = tmp1
+      <*> json <|? "repository"
+      <*> json <|? "pusher"
+      <*> json <|? "sender"
+    let tmp3 = tmp2
+      <*> json <| "push_id"
+      <*> json <| "size"
+      <*> json <| "distinct_size"
+      <*> json <| "head"
+    return tmp3.map{$0 as EventPayloadType}
+  }
+
+  public func encode() -> [String : Any] {
+    var result: [String:Any] = [:]
+    result["ref"] = self.ref
+    result["before"] = self.before
+    result["after"] = self.after
+    result["created"] = self.created
+    result["deleted"] = self.deleted
+    result["forced"] = self.forced
+    result["base_ref"] = self.base_ref
+    result["compare"] = self.compare?.absoluteString
+    result["commits"] = self.commits.map{$0.encode()}
+    result["head_commit"] = self.head_commit?.encode()
+    result["repository"] = self.encode()
+    result["pusher"] = self.encode()
+    result["sender"] = self.sender?.encode()
+
+    result["push_id"] = self.push_id
+    result["size"] = self.size
+    result["distinct_size"] = self.distinct_size
+    result["head"] = self.head
+
+    return result
   }
 }
 

@@ -12,25 +12,6 @@ import Runes
 
 
 public struct CommitCommentEventPayload: EventPayloadType{
-  public static func decode(_ json: JSON) -> Decoded<EventPayloadType> {
-    return curry(CommitCommentEventPayload.init)
-      <^> json <| "action"
-      <*> json <| "comment"
-      <*> json <| "repository"
-      <*> json <| "sender"
-  }
-
-  public func encode() -> [String : Any] {
-    var result: [String:Any] = [:]
-    result["action"] = self.action
-    return result
-  }
-
-  public let action: String
-  public let comment: CComment
-  public let repository: Repository
-  public let sender: UserLite
-
   public struct CComment {
     public let url: URL
     public let html_url: URL
@@ -44,11 +25,29 @@ public struct CommitCommentEventPayload: EventPayloadType{
     public let updated_at: Date
     public let body: String
   }
+
+  public let action: String
+  public let comment: CComment
+  public let repository: Repository
+  public let sender: UserLite
 }
 
 extension CommitCommentEventPayload: GHAPIModelType {
   public static func == (lhs: CommitCommentEventPayload, rhs: CommitCommentEventPayload) -> Bool {
     return lhs.action == rhs.action
+  }
+  public static func decode(_ json: JSON) -> Decoded<EventPayloadType> {
+    return curry(CommitCommentEventPayload.init)
+      <^> json <| "action"
+      <*> json <| "comment"
+      <*> json <| "repository"
+      <*> json <| "sender"
+  }
+
+  public func encode() -> [String : Any] {
+    var result: [String:Any] = [:]
+    result["action"] = self.action
+    return result
   }
 }
 

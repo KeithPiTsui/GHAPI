@@ -11,6 +11,19 @@ import Curry
 import Runes
 
 public struct CreateEventPayload: EventPayloadType{
+  public let ref: String?
+  public let ref_type: String
+  public let master_branch: String
+  public let desc: String?
+  public let pusher_type: String
+  public let repostiory: Repository?
+  public let sender: User?
+}
+
+extension CreateEventPayload: GHAPIModelType {
+  public static func == (lhs: CreateEventPayload, rhs: CreateEventPayload) -> Bool {
+    return lhs.ref == rhs.ref
+  }
   public static func decode(_ json: JSON) -> Decoded<EventPayloadType> {
     return curry(CreateEventPayload.init)
       <^> json <|? "ref"
@@ -31,19 +44,5 @@ public struct CreateEventPayload: EventPayloadType{
     result["description"] = self.desc
     result["pusher_type"] = self.pusher_type
     return result
-  }
-
-  public let ref: String?
-  public let ref_type: String
-  public let master_branch: String
-  public let desc: String?
-  public let pusher_type: String
-  public let repostiory: Repository?
-  public let sender: User?
-}
-
-extension CreateEventPayload: GHAPIModelType {
-  public static func == (lhs: CreateEventPayload, rhs: CreateEventPayload) -> Bool {
-    return lhs.ref == rhs.ref
   }
 }

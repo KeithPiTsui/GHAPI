@@ -12,23 +12,8 @@ import Runes
 
 
 public struct IssueCommentEventPayload: EventPayloadType{
-  public static func decode(_ json: JSON) -> Decoded<EventPayloadType> {
-    return curry(IssueCommentEventPayload.init)
-      <^> json <| "action"
-      <*> json <| "issue"
-      <*> json <| "comment"
-  }
-
-  public func encode() -> [String : Any] {
-    var result: [String:Any] = [:]
-    result["action"] = self.action
-    result["issue"] = self.issue.encode()
-    result["comment"] = self.comment.encode()
-    return result
-  }
-
   public let action: String
-  public let issue: IssueEventPayload.IIssue
+  public let issue: Issue
   public let comment: IComment
 
   public struct IComment {
@@ -53,6 +38,20 @@ extension IssueCommentEventPayload: GHAPIModelType {
     return lhs.action == rhs.action
       && rhs.issue == rhs.issue
       && lhs.comment == rhs.comment
+  }
+  public static func decode(_ json: JSON) -> Decoded<EventPayloadType> {
+    return curry(IssueCommentEventPayload.init)
+      <^> json <| "action"
+      <*> json <| "issue"
+      <*> json <| "comment"
+  }
+
+  public func encode() -> [String : Any] {
+    var result: [String:Any] = [:]
+    result["action"] = self.action
+    result["issue"] = self.issue.encode()
+    result["comment"] = self.comment.encode()
+    return result
   }
 }
 

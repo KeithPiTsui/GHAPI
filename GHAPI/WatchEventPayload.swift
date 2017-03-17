@@ -10,7 +10,6 @@ import Argo
 import Curry
 import Runes
 
-
 public struct WatchEventPayload: EventPayloadType{
   public let action: String
 }

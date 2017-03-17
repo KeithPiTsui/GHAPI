@@ -11,10 +11,6 @@ import Curry
 import Runes
 
 public struct DeploymentEventPayload: EventPayloadType{
-  public let deployment: DDeployment
-  public let repository: Repository
-  public let sender: UserLite
-
   public struct DDeployment {
     public let url: URL
     public let id: UInt
@@ -30,6 +26,10 @@ public struct DeploymentEventPayload: EventPayloadType{
     public let repository_url: URL
 
   }
+
+  public let deployment: DDeployment
+  public let repository: Repository
+  public let sender: UserLite
 }
 
 extension DeploymentEventPayload: GHAPIModelType {
