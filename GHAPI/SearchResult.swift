@@ -16,23 +16,14 @@ public struct SearchResult<I: Decodable & Equatable & EncodableType> {
   public let items: [I]
 }
 
-extension SearchResult: Equatable {
+extension SearchResult: GHAPIModelType {
   public static func == (lhs: SearchResult, rhs: SearchResult) -> Bool {
     return lhs.total_count == rhs.total_count
       && lhs.incomplete_results == rhs.incomplete_results
       && lhs.items == rhs.items
   }
-}
 
-extension SearchResult: CustomDebugStringConvertible {
-  public var debugDescription: String {
-    return "total_count: \(self.total_count) \nincomplete_results: \(self.incomplete_results)"
-  }
-}
-
-extension SearchResult: Decodable {
   public static func decode(_ json: JSON) -> Decoded<SearchResult> {
-
     let items: Decoded<[I]>
     if case let .object(subJson) = json,
       let itemsJson = subJson["items"],
@@ -51,9 +42,7 @@ extension SearchResult: Decodable {
       <*> json <| "incomplete_results"
       <*> items
   }
-}
 
-extension SearchResult: EncodableType {
   public func encode() -> [String:Any] {
     var result: [String:Any] = [:]
     result["total_count"] = self.total_count

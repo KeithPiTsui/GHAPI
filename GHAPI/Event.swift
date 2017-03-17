@@ -46,7 +46,11 @@ public struct GHEvent {
 }
 
 
-extension GHEvent: Decodable {
+extension GHEvent: GHAPIModelType {
+  public static func == (lhs: GHEvent, rhs: GHEvent) -> Bool {
+    return lhs.id == rhs.id
+  }
+
   public static func decode(_ json: JSON) -> Decoded<GHEvent> {
     let creator = curry(GHEvent.init)
     let tmp = creator <^> json <| "type"
@@ -71,9 +75,7 @@ extension GHEvent: Decodable {
     let tmp5 = tmp <*> payload <*> json <|? "repo"
     return tmp5
   }
-}
 
-extension GHEvent: EncodableType {
   public func encode() -> [String : Any] {
     var result: [String: Any] = [:]
     result["type"] = self.type.rawValue
