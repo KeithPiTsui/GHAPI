@@ -10,7 +10,7 @@ import Argo
 import Curry
 import Runes
 
-public struct SearchResult<I: Decodable & Equatable & EncodableType> {
+public struct SearchResult<I: GHAPIModelType> {
   public let total_count: Int
   public let incomplete_results: Bool
   public let items: [I]

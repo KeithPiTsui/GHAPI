@@ -10,189 +10,88 @@ import Argo
 import Curry
 import Runes
 
+public struct DeploymentEventPayload: EventPayloadType{
+  public let deployment: DDeployment
+  public let repository: Repository
+  public let sender: UserLite
 
-//public struct DeploymentEventPayload: EventPayloadType{
-//  public static func decode(_ json: JSON) -> Decoded<EventPayloadType> {
-//    return curry(DeploymentEventPayload.init) <^> json <| "action"
-//  }
-//
-//  public func encode() -> [String : Any] {
-//    var result: [String:Any] = [:]
-//    result["action"] = self.action
-//    return result
-//  }
-//
-//  public let deployment: String
-//  public let repository: Repository
-//  public let sender: UserLite
-//
-//  public struct DDeployment {
-//    public let url: URL
-//    public let id: UInt
-//    public let sha: String
-//    public let ref: String
-//    public let task: String
-//    public let environment: String
-//    public let description: String
-//    public let creator: UserLite
-//    public let created_at: Date
-//    public let updated_at: Date
-//    public let statuses_url: URL
-//    public let repository_url: URL
-//
-//  }
-//}
-//
-//extension DeploymentEventPayload: GHAPIModelType {
-//  public static func == (lhs: DeploymentEventPayload, rhs: DeploymentEventPayload) -> Bool {
-//    return lhs.action == rhs.action
-//  }
-//
-//  public var debugDescription: String {
-//    return "DeploymentEventPayload action:\(self.action)"
-//  }
-//}
+  public struct DDeployment {
+    public let url: URL
+    public let id: UInt
+    public let sha: String
+    public let ref: String
+    public let task: String
+    public let environment: String
+    public let desc: String
+    public let creator: UserLite
+    public let created_at: Date
+    public let updated_at: Date
+    public let statuses_url: URL
+    public let repository_url: URL
 
-/*
- {
- "deployment": {
- "url": "https://api.github.com/repos/baxterthehacker/public-repo/deployments/710692",
- "id": 710692,
- "sha": "9049f1265b7d61be4a8904a9a27120d2064dab3b",
- "ref": "master",
- "task": "deploy",
- "payload": {
- },
- "environment": "production",
- "description": null,
- "creator": {
- "login": "baxterthehacker",
- "id": 6752317,
- "avatar_url": "https://avatars.githubusercontent.com/u/6752317?v=3",
- "gravatar_id": "",
- "url": "https://api.github.com/users/baxterthehacker",
- "html_url": "https://github.com/baxterthehacker",
- "followers_url": "https://api.github.com/users/baxterthehacker/followers",
- "following_url": "https://api.github.com/users/baxterthehacker/following{/other_user}",
- "gists_url": "https://api.github.com/users/baxterthehacker/gists{/gist_id}",
- "starred_url": "https://api.github.com/users/baxterthehacker/starred{/owner}{/repo}",
- "subscriptions_url": "https://api.github.com/users/baxterthehacker/subscriptions",
- "organizations_url": "https://api.github.com/users/baxterthehacker/orgs",
- "repos_url": "https://api.github.com/users/baxterthehacker/repos",
- "events_url": "https://api.github.com/users/baxterthehacker/events{/privacy}",
- "received_events_url": "https://api.github.com/users/baxterthehacker/received_events",
- "type": "User",
- "site_admin": false
- },
- "created_at": "2015-05-05T23:40:38Z",
- "updated_at": "2015-05-05T23:40:38Z",
- "statuses_url": "https://api.github.com/repos/baxterthehacker/public-repo/deployments/710692/statuses",
- "repository_url": "https://api.github.com/repos/baxterthehacker/public-repo"
- },
- "repository": {
- "id": 35129377,
- "name": "public-repo",
- "full_name": "baxterthehacker/public-repo",
- "owner": {
- "login": "baxterthehacker",
- "id": 6752317,
- "avatar_url": "https://avatars.githubusercontent.com/u/6752317?v=3",
- "gravatar_id": "",
- "url": "https://api.github.com/users/baxterthehacker",
- "html_url": "https://github.com/baxterthehacker",
- "followers_url": "https://api.github.com/users/baxterthehacker/followers",
- "following_url": "https://api.github.com/users/baxterthehacker/following{/other_user}",
- "gists_url": "https://api.github.com/users/baxterthehacker/gists{/gist_id}",
- "starred_url": "https://api.github.com/users/baxterthehacker/starred{/owner}{/repo}",
- "subscriptions_url": "https://api.github.com/users/baxterthehacker/subscriptions",
- "organizations_url": "https://api.github.com/users/baxterthehacker/orgs",
- "repos_url": "https://api.github.com/users/baxterthehacker/repos",
- "events_url": "https://api.github.com/users/baxterthehacker/events{/privacy}",
- "received_events_url": "https://api.github.com/users/baxterthehacker/received_events",
- "type": "User",
- "site_admin": false
- },
- "private": false,
- "html_url": "https://github.com/baxterthehacker/public-repo",
- "description": "",
- "fork": false,
- "url": "https://api.github.com/repos/baxterthehacker/public-repo",
- "forks_url": "https://api.github.com/repos/baxterthehacker/public-repo/forks",
- "keys_url": "https://api.github.com/repos/baxterthehacker/public-repo/keys{/key_id}",
- "collaborators_url": "https://api.github.com/repos/baxterthehacker/public-repo/collaborators{/collaborator}",
- "teams_url": "https://api.github.com/repos/baxterthehacker/public-repo/teams",
- "hooks_url": "https://api.github.com/repos/baxterthehacker/public-repo/hooks",
- "issue_events_url": "https://api.github.com/repos/baxterthehacker/public-repo/issues/events{/number}",
- "events_url": "https://api.github.com/repos/baxterthehacker/public-repo/events",
- "assignees_url": "https://api.github.com/repos/baxterthehacker/public-repo/assignees{/user}",
- "branches_url": "https://api.github.com/repos/baxterthehacker/public-repo/branches{/branch}",
- "tags_url": "https://api.github.com/repos/baxterthehacker/public-repo/tags",
- "blobs_url": "https://api.github.com/repos/baxterthehacker/public-repo/git/blobs{/sha}",
- "git_tags_url": "https://api.github.com/repos/baxterthehacker/public-repo/git/tags{/sha}",
- "git_refs_url": "https://api.github.com/repos/baxterthehacker/public-repo/git/refs{/sha}",
- "trees_url": "https://api.github.com/repos/baxterthehacker/public-repo/git/trees{/sha}",
- "statuses_url": "https://api.github.com/repos/baxterthehacker/public-repo/statuses/{sha}",
- "languages_url": "https://api.github.com/repos/baxterthehacker/public-repo/languages",
- "stargazers_url": "https://api.github.com/repos/baxterthehacker/public-repo/stargazers",
- "contributors_url": "https://api.github.com/repos/baxterthehacker/public-repo/contributors",
- "subscribers_url": "https://api.github.com/repos/baxterthehacker/public-repo/subscribers",
- "subscription_url": "https://api.github.com/repos/baxterthehacker/public-repo/subscription",
- "commits_url": "https://api.github.com/repos/baxterthehacker/public-repo/commits{/sha}",
- "git_commits_url": "https://api.github.com/repos/baxterthehacker/public-repo/git/commits{/sha}",
- "comments_url": "https://api.github.com/repos/baxterthehacker/public-repo/comments{/number}",
- "issue_comment_url": "https://api.github.com/repos/baxterthehacker/public-repo/issues/comments{/number}",
- "contents_url": "https://api.github.com/repos/baxterthehacker/public-repo/contents/{+path}",
- "compare_url": "https://api.github.com/repos/baxterthehacker/public-repo/compare/{base}...{head}",
- "merges_url": "https://api.github.com/repos/baxterthehacker/public-repo/merges",
- "archive_url": "https://api.github.com/repos/baxterthehacker/public-repo/{archive_format}{/ref}",
- "downloads_url": "https://api.github.com/repos/baxterthehacker/public-repo/downloads",
- "issues_url": "https://api.github.com/repos/baxterthehacker/public-repo/issues{/number}",
- "pulls_url": "https://api.github.com/repos/baxterthehacker/public-repo/pulls{/number}",
- "milestones_url": "https://api.github.com/repos/baxterthehacker/public-repo/milestones{/number}",
- "notifications_url": "https://api.github.com/repos/baxterthehacker/public-repo/notifications{?since,all,participating}",
- "labels_url": "https://api.github.com/repos/baxterthehacker/public-repo/labels{/name}",
- "releases_url": "https://api.github.com/repos/baxterthehacker/public-repo/releases{/id}",
- "created_at": "2015-05-05T23:40:12Z",
- "updated_at": "2015-05-05T23:40:30Z",
- "pushed_at": "2015-05-05T23:40:38Z",
- "git_url": "git://github.com/baxterthehacker/public-repo.git",
- "ssh_url": "git@github.com:baxterthehacker/public-repo.git",
- "clone_url": "https://github.com/baxterthehacker/public-repo.git",
- "svn_url": "https://github.com/baxterthehacker/public-repo",
- "homepage": null,
- "size": 0,
- "stargazers_count": 0,
- "watchers_count": 0,
- "language": null,
- "has_issues": true,
- "has_downloads": true,
- "has_wiki": true,
- "has_pages": true,
- "forks_count": 0,
- "mirror_url": null,
- "open_issues_count": 2,
- "forks": 0,
- "open_issues": 2,
- "watchers": 0,
- "default_branch": "master"
- },
- "sender": {
- "login": "baxterthehacker",
- "id": 6752317,
- "avatar_url": "https://avatars.githubusercontent.com/u/6752317?v=3",
- "gravatar_id": "",
- "url": "https://api.github.com/users/baxterthehacker",
- "html_url": "https://github.com/baxterthehacker",
- "followers_url": "https://api.github.com/users/baxterthehacker/followers",
- "following_url": "https://api.github.com/users/baxterthehacker/following{/other_user}",
- "gists_url": "https://api.github.com/users/baxterthehacker/gists{/gist_id}",
- "starred_url": "https://api.github.com/users/baxterthehacker/starred{/owner}{/repo}",
- "subscriptions_url": "https://api.github.com/users/baxterthehacker/subscriptions",
- "organizations_url": "https://api.github.com/users/baxterthehacker/orgs",
- "repos_url": "https://api.github.com/users/baxterthehacker/repos",
- "events_url": "https://api.github.com/users/baxterthehacker/events{/privacy}",
- "received_events_url": "https://api.github.com/users/baxterthehacker/received_events",
- "type": "User",
- "site_admin": false
- }
- }*/
+  }
+}
+
+extension DeploymentEventPayload: GHAPIModelType {
+  public static func == (lhs: DeploymentEventPayload, rhs: DeploymentEventPayload) -> Bool {
+    return lhs.deployment == rhs.deployment
+      && lhs.repository == rhs.repository
+      && lhs.sender == rhs.sender
+  }
+  public static func decode(_ json: JSON) -> Decoded<EventPayloadType> {
+    return curry(DeploymentEventPayload.init)
+      <^> json <| "deployment"
+      <*> json <| "repository"
+      <*> json <| "sender"
+
+  }
+
+  public func encode() -> [String : Any] {
+    var result: [String:Any] = [:]
+    result["deployment"] = self.deployment.encode()
+    result["repository"] = self.repository.encode()
+    result["sender"] = self.sender.encode()
+    return result
+  }
+}
+
+extension DeploymentEventPayload.DDeployment: GHAPIModelType {
+  public static func == (lhs: DeploymentEventPayload.DDeployment, rhs: DeploymentEventPayload.DDeployment) -> Bool {
+    return lhs.id == rhs.id
+  }
+  public static func decode(_ json: JSON) -> Decoded<DeploymentEventPayload.DDeployment> {
+    let creator = curry(DeploymentEventPayload.DDeployment.init)
+    let tmp = creator
+      <^> json <| "url"
+      <*> json <| "id"
+      <*> json <| "sha"
+      <*> json <| "ref"
+      <*> json <| "task"
+      <*> json <| "environment"
+    let tmp2 = tmp
+      <*> json <| "description"
+      <*> json <| "creator"
+      <*> json <| "created_at"
+      <*> json <| "updated_at"
+      <*> json <| "statuses_url"
+      <*> json <| "repository_url"
+    return tmp2
+
+  }
+  public func encode() -> [String : Any] {
+    var result: [String : Any] = [:]
+    result["url"] = self.url.absoluteString
+    result["id"] = self.id
+    result["sha"] = self.sha
+    result["ref"] = self.ref
+    result["task"] = self.task
+    result["environment"] = self.environment
+    result["description"] = self.desc
+    result["creator"] = self.creator.encode()
+    result["created_at"] = self.created_at.ISO8601DateRepresentation
+    result["updated_at"] = self.updated_at.ISO8601DateRepresentation
+    result["statuses_url"] = self.statuses_url.absoluteString
+    result["repository_url"] = self.repository_url.absoluteString
+    return result
+  }
+}

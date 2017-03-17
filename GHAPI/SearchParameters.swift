@@ -215,7 +215,6 @@ public enum ComparativeArgument<Argument: SearchValueTypeRepresentation> {
             return nil
         }
     }
-    
 }
 
 

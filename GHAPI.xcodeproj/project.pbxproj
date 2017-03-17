@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E00C90D1E7C042600958A39 /* GollumEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00C90C1E7C042600958A39 /* GollumEventPayload.swift */; };
+		0E00C90F1E7C08AC00958A39 /* LabelEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00C90E1E7C08AC00958A39 /* LabelEventPayload.swift */; };
+		0E00C9111E7C0AD600958A39 /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00C9101E7C0AD600958A39 /* Organization.swift */; };
+		0E00C9131E7C0D7100958A39 /* MemberEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00C9121E7C0D7100958A39 /* MemberEventPayload.swift */; };
+		0E00C9151E7C0E2700958A39 /* MembershipEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00C9141E7C0E2700958A39 /* MembershipEventPayload.swift */; };
 		0E2B00641E73E2DC007C4A89 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2B00631E73E2DC007C4A89 /* Commit.swift */; };
 		0E2B00661E73F39C007C4A89 /* String-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2B00651E73F39C007C4A89 /* String-Extension.swift */; };
 		0E4D597D1E5C5BC0008E4AD6 /* GHAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4D59731E5C5BC0008E4AD6 /* GHAPI.framework */; };
@@ -75,6 +80,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E00C90C1E7C042600958A39 /* GollumEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GollumEventPayload.swift; sourceTree = "<group>"; };
+		0E00C90E1E7C08AC00958A39 /* LabelEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelEventPayload.swift; sourceTree = "<group>"; };
+		0E00C9101E7C0AD600958A39 /* Organization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organization.swift; sourceTree = "<group>"; };
+		0E00C9121E7C0D7100958A39 /* MemberEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberEventPayload.swift; sourceTree = "<group>"; };
+		0E00C9141E7C0E2700958A39 /* MembershipEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembershipEventPayload.swift; sourceTree = "<group>"; };
 		0E2B00631E73E2DC007C4A89 /* Commit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
 		0E2B00651E73F39C007C4A89 /* String-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Extension.swift"; sourceTree = "<group>"; };
 		0E4D59731E5C5BC0008E4AD6 /* GHAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GHAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,9 +183,7 @@
 		0E22C07F1E5EEBC4005843A3 /* GithubApiSpecification */ = {
 			isa = PBXGroup;
 			children = (
-				0E7B7BA41E6E3E7E00D50C95 /* Qualifiers */,
 				0E4D5A1E1E5C60C1008E4AD6 /* Route.swift */,
-				0EE17BBE1E6D657300451632 /* SearchParameters.swift */,
 			);
 			name = GithubApiSpecification;
 			sourceTree = "<group>";
@@ -286,17 +294,18 @@
 		0E4D5A0D1E5C601B008E4AD6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0EB10E1B1E7BDA5A001460D8 /* Search */,
 				0E5BF8C31E73D46200EDD841 /* Branch.swift */,
 				0E2B00631E73E2DC007C4A89 /* Commit.swift */,
 				0E4D5A261E5C61A0008E4AD6 /* ErrorEnvelope.swift */,
 				0EA044E01E76C1D900643EBA /* Event */,
 				0EA044D21E76567400643EBA /* GHAPIModelType.swift */,
+				0E00C9101E7C0AD600958A39 /* Organization.swift */,
 				0EA044D01E76535300643EBA /* Readme.swift */,
 				0EE17BC21E6D7CCB00451632 /* Repository.swift */,
+				0EB10E1B1E7BDA5A001460D8 /* Search */,
 				0E57061C1E5D9FC50047BF4C /* User.swift */,
-				0E50AA151E6800D20002A40D /* UserPasswordEnvelope.swift */,
 				0EB10E191E7BD544001460D8 /* UserLite.swift */,
+				0E50AA151E6800D20002A40D /* UserPasswordEnvelope.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -338,17 +347,21 @@
 		0EA044E01E76C1D900643EBA /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				0E4E43F31E7BCE1700A4CADE /* CommitCommentEventPayload.swift */,
 				0EA044E71E76C92700643EBA /* CreateEventPayload.swift */,
+				0EB10E151E7BD29A001460D8 /* DeleteEventPayload.swift */,
+				0EB10E171E7BD3DB001460D8 /* DeploymentEventPayload.swift */,
 				0EA044DA1E768DB000643EBA /* Event.swift */,
 				0EA044DE1E76BC6E00643EBA /* EventPayloadType.swift */,
 				0EA044E31E76C21D00643EBA /* ForkEventPayload.swift */,
+				0E00C90C1E7C042600958A39 /* GollumEventPayload.swift */,
 				0E65493C1E7A58A4005342AF /* IssueCommentEventPayload.swift */,
 				0E65493A1E7A4BD9005342AF /* IssueEventPayload.swift */,
+				0E00C90E1E7C08AC00958A39 /* LabelEventPayload.swift */,
+				0E00C9121E7C0D7100958A39 /* MemberEventPayload.swift */,
+				0E00C9141E7C0E2700958A39 /* MembershipEventPayload.swift */,
 				0EA044E11E76C1F700643EBA /* PushEventPayload.swift */,
 				0EA044E51E76C23B00643EBA /* WatchEventPayload.swift */,
-				0E4E43F31E7BCE1700A4CADE /* CommitCommentEventPayload.swift */,
-				0EB10E151E7BD29A001460D8 /* DeleteEventPayload.swift */,
-				0EB10E171E7BD3DB001460D8 /* DeploymentEventPayload.swift */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -356,6 +369,8 @@
 		0EB10E1B1E7BDA5A001460D8 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				0E7B7BA41E6E3E7E00D50C95 /* Qualifiers */,
+				0EE17BBE1E6D657300451632 /* SearchParameters.swift */,
 				0EB10E1E1E7BDB44001460D8 /* SearchResult.swift */,
 			);
 			name = Search;
@@ -514,13 +529,16 @@
 				0E2B00661E73F39C007C4A89 /* String-Extension.swift in Sources */,
 				0ECE8A651E77CB15001FE48B /* GithubCraper.swift in Sources */,
 				0E2B00641E73E2DC007C4A89 /* Commit.swift in Sources */,
+				0E00C9151E7C0E2700958A39 /* MembershipEventPayload.swift in Sources */,
 				0E4D5A221E5C60C1008E4AD6 /* MimeType.swift in Sources */,
+				0E00C90D1E7C042600958A39 /* GollumEventPayload.swift in Sources */,
 				0EB10E181E7BD3DB001460D8 /* DeploymentEventPayload.swift in Sources */,
 				0E4D5A1F1E5C60C1008E4AD6 /* Decodable.swift in Sources */,
 				0E7B7BE31E6E628C00D50C95 /* StandardTypeExtension.swift in Sources */,
 				0E7B7BA31E6E3E1100D50C95 /* UserQualifier.swift in Sources */,
 				0EA044DF1E76BC6E00643EBA /* EventPayloadType.swift in Sources */,
 				0EE17BC31E6D7CCB00451632 /* Repository.swift in Sources */,
+				0E00C9131E7C0D7100958A39 /* MemberEventPayload.swift in Sources */,
 				0E4D5A131E5C607A008E4AD6 /* NSURLSession.swift in Sources */,
 				0EA044D11E76535300643EBA /* Readme.swift in Sources */,
 				0E65493D1E7A58A4005342AF /* IssueCommentEventPayload.swift in Sources */,
@@ -532,6 +550,8 @@
 				0E57061B1E5D9E100047BF4C /* ServiceType.swift in Sources */,
 				0EA044E61E76C23B00643EBA /* WatchEventPayload.swift in Sources */,
 				0EA044E41E76C21D00643EBA /* ForkEventPayload.swift in Sources */,
+				0E00C90F1E7C08AC00958A39 /* LabelEventPayload.swift in Sources */,
+				0E00C9111E7C0AD600958A39 /* Organization.swift in Sources */,
 				0E7B7B9F1E6E3DDC00D50C95 /* CodeQualifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
