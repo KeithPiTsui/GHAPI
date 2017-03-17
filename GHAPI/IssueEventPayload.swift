@@ -142,11 +142,11 @@ extension IssueEventPayload.IIssue.IIURLs: GHAPIModelType {
   public func encode() -> [String : Any] {
     var result: [String:Any] = [:]
     result["url"] = self.url
-    result["repository_url"] = self.repository_url
-    result["labels_url"] = self.labels_url
-    result["comments_url"] = self.comments_url
-    result["events_url"] = self.events_url
-    result["html_url"] = self.html_url
+    result["repository_url"] = self.repository_url.absoluteString
+    result["labels_url"] = self.labels_url.absoluteString
+    result["comments_url"] = self.comments_url.absoluteString
+    result["events_url"] = self.events_url.absoluteString
+    result["html_url"] = self.html_url.absoluteString
     return result
   }
 }
