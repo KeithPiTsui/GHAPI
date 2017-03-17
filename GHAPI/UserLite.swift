@@ -46,7 +46,4 @@ extension UserLite: GHAPIModelType {
   public static func == (lhs: UserLite, rhs: UserLite) -> Bool {
     return lhs.id == rhs.id
   }
-  public var debugDescription: String {
-    return "login: \(self.login) \nid: \(self.id)"
-  }
 }

@@ -50,10 +50,6 @@ extension CommitCommentEventPayload: GHAPIModelType {
   public static func == (lhs: CommitCommentEventPayload, rhs: CommitCommentEventPayload) -> Bool {
     return lhs.action == rhs.action
   }
-
-  public var debugDescription: String {
-    return "WatchEventPayload action:\(self.action)"
-  }
 }
 
 extension CommitCommentEventPayload.CComment: GHAPIModelType {
@@ -61,10 +57,6 @@ extension CommitCommentEventPayload.CComment: GHAPIModelType {
     lhs: CommitCommentEventPayload.CComment,
     rhs: CommitCommentEventPayload.CComment) -> Bool {
     return lhs.id == rhs.id
-  }
-
-  public var debugDescription: String {
-    return "CommitCommentEventPayload.CComment id:\(self.id)"
   }
 
   public static func decode(_ json: JSON) -> Decoded<CommitCommentEventPayload.CComment> {

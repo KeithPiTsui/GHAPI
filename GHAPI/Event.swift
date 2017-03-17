@@ -73,11 +73,23 @@ extension GHEvent: Decodable {
   }
 }
 
-extension GHEvent.EventType: GHAPIModelType {
-  public var debugDescription: String {
-    return "Event.EIndividual id: \(self.rawValue) "
+extension GHEvent: EncodableType {
+  public func encode() -> [String : Any] {
+    var result: [String: Any] = [:]
+    result["type"] = self.type.rawValue
+    result["public"] = self.`public`
+    result["actor"] = self.actor.encode()
+    result["org"] = self.org?.encode()
+    result["created_at"] = self.created_at.ISO8601DateRepresentation
+    result["id"] = self.id
+    result["payload"] = self.payload?.encode()
+    result["repo"] = self.repo
+    return result
   }
+}
 
+
+extension GHEvent.EventType: GHAPIModelType {
   public static func decode(_ json: JSON) -> Decoded<GHEvent.EventType> {
     switch json {
     case .string(let typeStr):
@@ -98,10 +110,6 @@ extension GHEvent.EventType: GHAPIModelType {
 extension GHEvent.EIndividual: GHAPIModelType {
   public static func == (lhs: GHEvent.EIndividual, rhs: GHEvent.EIndividual) -> Bool {
     return lhs.id == rhs.id
-  }
-
-  public var debugDescription: String {
-    return "Event.EIndividual id: \(self.id) "
   }
 
   public static func decode(_ json: JSON) -> Decoded<GHEvent.EIndividual> {
@@ -128,10 +136,6 @@ extension GHEvent.EIndividual: GHAPIModelType {
 extension GHEvent.ERepository: GHAPIModelType {
   public static func == (lhs: GHEvent.ERepository, rhs: GHEvent.ERepository) -> Bool {
     return lhs.id == rhs.id
-  }
-
-  public var debugDescription: String {
-    return "Event.EIndividual id: \(self.id) "
   }
 
   public static func decode(_ json: JSON) -> Decoded<GHEvent.ERepository> {

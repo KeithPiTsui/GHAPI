@@ -113,10 +113,6 @@ extension PushEventPayload.PCommit.PCPerson: GHAPIModelType {
   public static func == (lhs: PushEventPayload.PCommit.PCPerson, rhs: PushEventPayload.PCommit.PCPerson) -> Bool {
     return lhs.name == rhs.name
   }
-
-  public var debugDescription: String {
-    return "PushEventPayload.PCommit.PCPerson name: \(self.name) "
-  }
   public static func decode(_ json: JSON) -> Decoded<PushEventPayload.PCommit.PCPerson> {
     let creator = curry(PushEventPayload.PCommit.PCPerson.init)
     let tmp = creator
@@ -139,9 +135,6 @@ extension PushEventPayload.PCommit: GHAPIModelType {
     return lhs.id == rhs.id
   }
 
-  public var debugDescription: String {
-    return "PushEventPayload.PCommit id: \(self.id) "
-  }
   public static func decode(_ json: JSON) -> Decoded<PushEventPayload.PCommit> {
     let creator = curry(PushEventPayload.PCommit.init)
     let tmp = creator
@@ -182,10 +175,6 @@ extension PushEventPayload.PCommit: GHAPIModelType {
 extension PushEventPayload: GHAPIModelType {
   public static func == (lhs: PushEventPayload, rhs: PushEventPayload) -> Bool {
     return lhs.ref == rhs.ref
-  }
-
-  public var debugDescription: String {
-    return "PushEventPayload ref:\(self.ref)"
   }
 }
 

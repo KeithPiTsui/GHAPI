@@ -60,19 +60,11 @@ extension IssueEventPayload: GHAPIModelType {
   public static func == (lhs: IssueEventPayload, rhs: IssueEventPayload) -> Bool {
     return lhs.action == rhs.action && lhs.issue == rhs.issue
   }
-
-  public var debugDescription: String {
-    return "IssueEventPayload action:\(self.action)"
-  }
 }
 
 extension IssueEventPayload.IIssue: GHAPIModelType {
   public static func == (lhs: IssueEventPayload.IIssue, rhs: IssueEventPayload.IIssue) -> Bool {
     return lhs.id == rhs.id
-  }
-
-  public var debugDescription: String {
-    return "IssueEventPayload.IIssue id:\(self.id)"
   }
 
   public static func decode(_ json: JSON) -> Decoded<IssueEventPayload.IIssue> {
@@ -124,10 +116,6 @@ extension IssueEventPayload.IIssue: GHAPIModelType {
 extension IssueEventPayload.IIssue.IIURLs: GHAPIModelType {
   public static func == (lhs: IssueEventPayload.IIssue.IIURLs, rhs: IssueEventPayload.IIssue.IIURLs) -> Bool {
     return lhs.url == rhs.url
-  }
-
-  public var debugDescription: String {
-    return "IssueEventPayload.IIssue.IIURLs url:\(self.url)"
   }
   public static func decode(_ json: JSON) -> Decoded<IssueEventPayload.IIssue.IIURLs> {
     return curry(IssueEventPayload.IIssue.IIURLs.init)

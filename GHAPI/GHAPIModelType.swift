@@ -10,12 +10,20 @@ import Foundation
 import Argo
 
 public protocol GHAPIModelType:
-    Equatable, CustomStringConvertible, CustomDebugStringConvertible, Decodable, EncodableType {
-    
+  Equatable,
+  CustomStringConvertible,
+  CustomDebugStringConvertible,
+  Decodable,
+EncodableType {
+
 }
 
 extension GHAPIModelType {
-    public var description: String {
-        return self.toJSONString() ?? self.debugDescription
-    }
+  public var description: String {
+    return self.toJSONString() ?? ""
+  }
+
+  public var debugDescription: String {
+    return self.toJSONString() ?? ""
+  }
 }

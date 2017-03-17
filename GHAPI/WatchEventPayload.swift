@@ -29,8 +29,4 @@ extension WatchEventPayload: GHAPIModelType {
   public static func == (lhs: WatchEventPayload, rhs: WatchEventPayload) -> Bool {
     return lhs.action == rhs.action
   }
-
-  public var debugDescription: String {
-    return "WatchEventPayload action:\(self.action)"
-  }
 }

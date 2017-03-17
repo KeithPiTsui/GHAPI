@@ -47,8 +47,4 @@ extension DeleteEventPayload: GHAPIModelType {
     && lhs.repository == rhs.repository
     && lhs.sender == rhs.sender
   }
-
-  public var debugDescription: String {
-    return "DeleteEventPayload ref:\(self.ref)"
-  }
 }

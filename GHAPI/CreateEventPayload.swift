@@ -46,8 +46,4 @@ extension CreateEventPayload: GHAPIModelType {
   public static func == (lhs: CreateEventPayload, rhs: CreateEventPayload) -> Bool {
     return lhs.ref == rhs.ref
   }
-
-  public var debugDescription: String {
-    return "CreateEventPayload ref:\(self.ref)"
-  }
 }

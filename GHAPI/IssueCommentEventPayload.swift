@@ -54,10 +54,6 @@ extension IssueCommentEventPayload: GHAPIModelType {
       && rhs.issue == rhs.issue
       && lhs.comment == rhs.comment
   }
-
-  public var debugDescription: String {
-    return "IssueCommentEventPayload action:\(self.action)"
-  }
 }
 
 extension IssueCommentEventPayload.IComment: GHAPIModelType {
@@ -67,9 +63,6 @@ extension IssueCommentEventPayload.IComment: GHAPIModelType {
     return lhs.id == rhs.id
   }
 
-  public var debugDescription: String {
-    return "IssueEventPayload.IIssue id:\(self.id)"
-  }
   public static func decode(_ json: JSON) -> Decoded<IssueCommentEventPayload.IComment> {
     return curry(IssueCommentEventPayload.IComment.init)
       <^> IssueCommentEventPayload.IComment.IIURLs.decode(json)
@@ -102,9 +95,6 @@ extension IssueCommentEventPayload.IComment.IIURLs: GHAPIModelType {
     return lhs.url == rhs.url
   }
 
-  public var debugDescription: String {
-    return "IssueEventPayload.IIssue.IIURLs url:\(self.url)"
-  }
   public static func decode(_ json: JSON) -> Decoded<IssueCommentEventPayload.IComment.IIURLs> {
     return curry(IssueCommentEventPayload.IComment.IIURLs.init)
       <^> json <| "url"
