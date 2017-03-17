@@ -54,6 +54,7 @@
 		0EA044E41E76C21D00643EBA /* ForkEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044E31E76C21D00643EBA /* ForkEventPayload.swift */; };
 		0EA044E61E76C23B00643EBA /* WatchEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044E51E76C23B00643EBA /* WatchEventPayload.swift */; };
 		0EA044E81E76C92700643EBA /* CreateEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044E71E76C92700643EBA /* CreateEventPayload.swift */; };
+		0EB10E161E7BD29A001460D8 /* DeleteEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB10E151E7BD29A001460D8 /* DeleteEventPayload.swift */; };
 		0ECE8A651E77CB15001FE48B /* GithubCraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A641E77CB15001FE48B /* GithubCraper.swift */; };
 		0ECE8A671E77CB22001FE48B /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A661E77CB22001FE48B /* Ji.framework */; };
 		0ECE8A691E77CBE4001FE48B /* testGithubCraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A681E77CBE4001FE48B /* testGithubCraper.swift */; };
@@ -131,6 +132,7 @@
 		0EA044E31E76C21D00643EBA /* ForkEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForkEventPayload.swift; sourceTree = "<group>"; };
 		0EA044E51E76C23B00643EBA /* WatchEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchEventPayload.swift; sourceTree = "<group>"; };
 		0EA044E71E76C92700643EBA /* CreateEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventPayload.swift; sourceTree = "<group>"; };
+		0EB10E151E7BD29A001460D8 /* DeleteEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteEventPayload.swift; sourceTree = "<group>"; };
 		0ECE8A641E77CB15001FE48B /* GithubCraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubCraper.swift; sourceTree = "<group>"; };
 		0ECE8A661E77CB22001FE48B /* Ji.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ji.framework; path = "../Ji/build/Debug-iphoneos/Ji.framework"; sourceTree = "<group>"; };
 		0ECE8A681E77CBE4001FE48B /* testGithubCraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testGithubCraper.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 				0EA044E11E76C1F700643EBA /* PushEventPayload.swift */,
 				0EA044E51E76C23B00643EBA /* WatchEventPayload.swift */,
 				0E4E43F31E7BCE1700A4CADE /* CommitCommentEventPayload.swift */,
+				0EB10E151E7BD29A001460D8 /* DeleteEventPayload.swift */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				0E65493D1E7A58A4005342AF /* IssueCommentEventPayload.swift in Sources */,
 				0E4D5A171E5C60AD008E4AD6 /* BasicHTTPAuth.swift in Sources */,
 				0EA044DB1E768DB000643EBA /* Event.swift in Sources */,
+				0EB10E161E7BD29A001460D8 /* DeleteEventPayload.swift in Sources */,
 				0E4D5A251E5C614B008E4AD6 /* Secrets.swift in Sources */,
 				0E57061B1E5D9E100047BF4C /* ServiceType.swift in Sources */,
 				0EA044E61E76C23B00643EBA /* WatchEventPayload.swift in Sources */,
