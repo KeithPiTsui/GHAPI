@@ -49,6 +49,14 @@ public struct Service: ServiceType {
     return request(.search(scope: .users(qualifiers), keyword: keyword,  sort: sort, order: order))
   }
 
+  public func searchUser2(
+    qualifiers: [UserQualifier],
+    keyword: String?,
+    sort: SearchSorting?,
+    order: SearchSortingOrder?) ->  SignalProducer<SearchResult<User>, ErrorEnvelope> {
+    return request(.search(scope: .users(qualifiers), keyword: keyword,  sort: sort, order: order))
+  }
+
   public func user(referredBy url: URL) -> SignalProducer<User, ErrorEnvelope> {
     return request(.resource(url: url))
   }

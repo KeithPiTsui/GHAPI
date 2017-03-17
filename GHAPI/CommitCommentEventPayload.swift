@@ -29,7 +29,7 @@ public struct CommitCommentEventPayload: EventPayloadType{
   public let action: String
   public let comment: CComment
   public let repository: Repository
-  public let sender: RepositoryOwner
+  public let sender: UserLite
 
   public struct CComment {
     public let url: URL

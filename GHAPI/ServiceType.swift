@@ -37,10 +37,18 @@ public protocol ServiceType {
     ->  SignalProducer<RepositorySearchResult, ErrorEnvelope>
 
   /// Request a search on Repository from github
-  func searchUser(qualifiers: [UserQualifier],
-                  keyword: String?,
-                  sort: SearchSorting?,
-                  order: SearchSortingOrder?) ->  SignalProducer<UserSearchResult, ErrorEnvelope>
+  func searchUser(
+    qualifiers: [UserQualifier],
+    keyword: String?,
+    sort: SearchSorting?,
+    order: SearchSortingOrder?) ->  SignalProducer<UserSearchResult, ErrorEnvelope>
+
+  /// Request a search on Repository from github
+  func searchUser2(
+    qualifiers: [UserQualifier],
+    keyword: String?,
+    sort: SearchSorting?,
+    order: SearchSortingOrder?) ->  SignalProducer<SearchResult<User>, ErrorEnvelope>
 
   func user(referredBy url: URL) -> SignalProducer<User, ErrorEnvelope>
 
@@ -183,7 +191,7 @@ extension ServiceType {
     } else {
       components.append((key, String(describing: value)))
     }
-
+    
     return components
   }
 }

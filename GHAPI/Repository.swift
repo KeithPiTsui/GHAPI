@@ -21,7 +21,7 @@ public struct Repository {
     public let id: UInt
     public let name: String
     public let full_name: String
-    public let owner: RepositoryOwner
+    public let owner: UserLite
     public let `private`: Bool
     public let description: String?
     public let fork: Bool

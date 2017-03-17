@@ -36,7 +36,7 @@ public struct DeleteEventPayload: EventPayloadType{
   public let ref_type: String
   public let pusher_type: String
   public let repository: Repository
-  public let sender: RepositoryOwner
+  public let sender: UserLite
 }
 
 extension DeleteEventPayload: GHAPIModelType {

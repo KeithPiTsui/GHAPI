@@ -55,12 +55,15 @@
 		0EA044E61E76C23B00643EBA /* WatchEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044E51E76C23B00643EBA /* WatchEventPayload.swift */; };
 		0EA044E81E76C92700643EBA /* CreateEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA044E71E76C92700643EBA /* CreateEventPayload.swift */; };
 		0EB10E161E7BD29A001460D8 /* DeleteEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB10E151E7BD29A001460D8 /* DeleteEventPayload.swift */; };
+		0EB10E181E7BD3DB001460D8 /* DeploymentEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB10E171E7BD3DB001460D8 /* DeploymentEventPayload.swift */; };
+		0EB10E1A1E7BD544001460D8 /* UserLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB10E191E7BD544001460D8 /* UserLite.swift */; };
+		0EB10E1D1E7BDAEA001460D8 /* SearchItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB10E1C1E7BDAEA001460D8 /* SearchItemType.swift */; };
+		0EB10E1F1E7BDB44001460D8 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB10E1E1E7BDB44001460D8 /* SearchResult.swift */; };
 		0ECE8A651E77CB15001FE48B /* GithubCraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A641E77CB15001FE48B /* GithubCraper.swift */; };
 		0ECE8A671E77CB22001FE48B /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A661E77CB22001FE48B /* Ji.framework */; };
 		0ECE8A691E77CBE4001FE48B /* testGithubCraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A681E77CBE4001FE48B /* testGithubCraper.swift */; };
 		0EE17BBF1E6D657300451632 /* SearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BBE1E6D657300451632 /* SearchParameters.swift */; };
 		0EE17BC31E6D7CCB00451632 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BC21E6D7CCB00451632 /* Repository.swift */; };
-		0EE17BC51E6D7D1B00451632 /* RepositoryOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BC41E6D7D1B00451632 /* RepositoryOwner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,12 +136,15 @@
 		0EA044E51E76C23B00643EBA /* WatchEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchEventPayload.swift; sourceTree = "<group>"; };
 		0EA044E71E76C92700643EBA /* CreateEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventPayload.swift; sourceTree = "<group>"; };
 		0EB10E151E7BD29A001460D8 /* DeleteEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteEventPayload.swift; sourceTree = "<group>"; };
+		0EB10E171E7BD3DB001460D8 /* DeploymentEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeploymentEventPayload.swift; sourceTree = "<group>"; };
+		0EB10E191E7BD544001460D8 /* UserLite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLite.swift; sourceTree = "<group>"; };
+		0EB10E1C1E7BDAEA001460D8 /* SearchItemType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchItemType.swift; sourceTree = "<group>"; };
+		0EB10E1E1E7BDB44001460D8 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		0ECE8A641E77CB15001FE48B /* GithubCraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubCraper.swift; sourceTree = "<group>"; };
 		0ECE8A661E77CB22001FE48B /* Ji.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ji.framework; path = "../Ji/build/Debug-iphoneos/Ji.framework"; sourceTree = "<group>"; };
 		0ECE8A681E77CBE4001FE48B /* testGithubCraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testGithubCraper.swift; sourceTree = "<group>"; };
 		0EE17BBE1E6D657300451632 /* SearchParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchParameters.swift; sourceTree = "<group>"; };
 		0EE17BC21E6D7CCB00451632 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
-		0EE17BC41E6D7D1B00451632 /* RepositoryOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryOwner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +290,7 @@
 		0E4D5A0D1E5C601B008E4AD6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0EB10E1B1E7BDA5A001460D8 /* Search */,
 				0E5BF8C31E73D46200EDD841 /* Branch.swift */,
 				0E2B00631E73E2DC007C4A89 /* Commit.swift */,
 				0E4D5A261E5C61A0008E4AD6 /* ErrorEnvelope.swift */,
@@ -291,11 +298,9 @@
 				0EA044D21E76567400643EBA /* GHAPIModelType.swift */,
 				0EA044D01E76535300643EBA /* Readme.swift */,
 				0EE17BC21E6D7CCB00451632 /* Repository.swift */,
-				0EE17BC41E6D7D1B00451632 /* RepositoryOwner.swift */,
-				0E7B7BDE1E6E5F5700D50C95 /* RepositorySearchResult.swift */,
 				0E57061C1E5D9FC50047BF4C /* User.swift */,
 				0E50AA151E6800D20002A40D /* UserPasswordEnvelope.swift */,
-				0E7B7BE01E6E612800D50C95 /* UserSearchResult.swift */,
+				0EB10E191E7BD544001460D8 /* UserLite.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -347,8 +352,20 @@
 				0EA044E51E76C23B00643EBA /* WatchEventPayload.swift */,
 				0E4E43F31E7BCE1700A4CADE /* CommitCommentEventPayload.swift */,
 				0EB10E151E7BD29A001460D8 /* DeleteEventPayload.swift */,
+				0EB10E171E7BD3DB001460D8 /* DeploymentEventPayload.swift */,
 			);
 			name = Event;
+			sourceTree = "<group>";
+		};
+		0EB10E1B1E7BDA5A001460D8 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				0E7B7BE01E6E612800D50C95 /* UserSearchResult.swift */,
+				0E7B7BDE1E6E5F5700D50C95 /* RepositorySearchResult.swift */,
+				0EB10E1C1E7BDAEA001460D8 /* SearchItemType.swift */,
+				0EB10E1E1E7BDB44001460D8 /* SearchResult.swift */,
+			);
+			name = Search;
 			sourceTree = "<group>";
 		};
 		0ECE8A631E77CB01001FE48B /* Craper */ = {
@@ -473,7 +490,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E4D5A211E5C60C1008E4AD6 /* Method.swift in Sources */,
-				0EE17BC51E6D7D1B00451632 /* RepositoryOwner.swift in Sources */,
 				0E5706191E5D9DDA0047BF4C /* Service.swift in Sources */,
 				0EA044E81E76C92700643EBA /* CreateEventPayload.swift in Sources */,
 				0E7B7BDF1E6E5F5700D50C95 /* RepositorySearchResult.swift in Sources */,
@@ -482,6 +498,7 @@
 				0E7B7B9D1E6E3DBB00D50C95 /* RepositoryQualifier.swift in Sources */,
 				0EE17BBF1E6D657300451632 /* SearchParameters.swift in Sources */,
 				0E7B7BA11E6E3DF800D50C95 /* IssueQualifier.swift in Sources */,
+				0EB10E1A1E7BD544001460D8 /* UserLite.swift in Sources */,
 				0E4D5A201E5C60C1008E4AD6 /* EncodableType.swift in Sources */,
 				0EA044D31E76567400643EBA /* GHAPIModelType.swift in Sources */,
 				0E50AA161E6800D20002A40D /* UserPasswordEnvelope.swift in Sources */,
@@ -497,16 +514,19 @@
 				0ECE8A651E77CB15001FE48B /* GithubCraper.swift in Sources */,
 				0E2B00641E73E2DC007C4A89 /* Commit.swift in Sources */,
 				0E4D5A221E5C60C1008E4AD6 /* MimeType.swift in Sources */,
+				0EB10E181E7BD3DB001460D8 /* DeploymentEventPayload.swift in Sources */,
 				0E4D5A1F1E5C60C1008E4AD6 /* Decodable.swift in Sources */,
 				0E7B7BE11E6E612800D50C95 /* UserSearchResult.swift in Sources */,
 				0E7B7BE31E6E628C00D50C95 /* StandardTypeExtension.swift in Sources */,
 				0E7B7BA31E6E3E1100D50C95 /* UserQualifier.swift in Sources */,
+				0EB10E1D1E7BDAEA001460D8 /* SearchItemType.swift in Sources */,
 				0EA044DF1E76BC6E00643EBA /* EventPayloadType.swift in Sources */,
 				0EE17BC31E6D7CCB00451632 /* Repository.swift in Sources */,
 				0E4D5A131E5C607A008E4AD6 /* NSURLSession.swift in Sources */,
 				0EA044D11E76535300643EBA /* Readme.swift in Sources */,
 				0E65493D1E7A58A4005342AF /* IssueCommentEventPayload.swift in Sources */,
 				0E4D5A171E5C60AD008E4AD6 /* BasicHTTPAuth.swift in Sources */,
+				0EB10E1F1E7BDB44001460D8 /* SearchResult.swift in Sources */,
 				0EA044DB1E768DB000643EBA /* Event.swift in Sources */,
 				0EB10E161E7BD29A001460D8 /* DeleteEventPayload.swift in Sources */,
 				0E4D5A251E5C614B008E4AD6 /* Secrets.swift in Sources */,
