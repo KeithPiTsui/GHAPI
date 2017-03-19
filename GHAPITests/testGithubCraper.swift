@@ -61,13 +61,13 @@ class testGithubCraper: XCTestCase {
 
 
   func testAllLanguages() {
-    _ = self.expectation(description: "network response")
+    //_ = self.expectation(description: "network response")
 
     let langs = GithubCraper.programmingLanguages
 
     print(langs)
 
-    self.waitForExpectations(timeout: 2000, handler: nil)
+    //self.waitForExpectations(timeout: 2000, handler: nil)
   }
 
 
