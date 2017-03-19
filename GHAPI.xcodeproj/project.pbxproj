@@ -41,6 +41,9 @@
 		0E65493D1E7A58A4005342AF /* IssueCommentEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E65493C1E7A58A4005342AF /* IssueCommentEventPayload.swift */; };
 		0E65E0BB1E7E67BC004EDBCA /* GHAPITestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E65E0BA1E7E67BC004EDBCA /* GHAPITestsHelper.swift */; };
 		0E65E0BF1E7E6CA4004EDBCA /* OrganizationEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E65E0BE1E7E6CA4004EDBCA /* OrganizationEventPayload.swift */; };
+		0E65E0C11E7E6D58004EDBCA /* OrgBlockEventPayload.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E65E0C01E7E6D58004EDBCA /* OrgBlockEventPayload.json */; };
+		0E65E0C31E7E6D7A004EDBCA /* OrgBlockEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E65E0C21E7E6D7A004EDBCA /* OrgBlockEventPayload.swift */; };
+		0E65E0C51E7E6D8F004EDBCA /* OrgBlockEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E65E0C41E7E6D8F004EDBCA /* OrgBlockEventPayload.swift */; };
 		0E7AF45F1E729F5F0001C425 /* EnumIterating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7AF45E1E729F5F0001C425 /* EnumIterating.swift */; };
 		0E7B7B9D1E6E3DBB00D50C95 /* RepositoryQualifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7B9C1E6E3DBB00D50C95 /* RepositoryQualifier.swift */; };
 		0E7B7B9F1E6E3DDC00D50C95 /* CodeQualifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7B9E1E6E3DDC00D50C95 /* CodeQualifier.swift */; };
@@ -128,6 +131,9 @@
 		0E65493C1E7A58A4005342AF /* IssueCommentEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueCommentEventPayload.swift; sourceTree = "<group>"; };
 		0E65E0BA1E7E67BC004EDBCA /* GHAPITestsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHAPITestsHelper.swift; sourceTree = "<group>"; };
 		0E65E0BE1E7E6CA4004EDBCA /* OrganizationEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizationEventPayload.swift; sourceTree = "<group>"; };
+		0E65E0C01E7E6D58004EDBCA /* OrgBlockEventPayload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OrgBlockEventPayload.json; sourceTree = "<group>"; };
+		0E65E0C21E7E6D7A004EDBCA /* OrgBlockEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgBlockEventPayload.swift; sourceTree = "<group>"; };
+		0E65E0C41E7E6D8F004EDBCA /* OrgBlockEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgBlockEventPayload.swift; sourceTree = "<group>"; };
 		0E7AF45E1E729F5F0001C425 /* EnumIterating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumIterating.swift; sourceTree = "<group>"; };
 		0E7B7B9C1E6E3DBB00D50C95 /* RepositoryQualifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryQualifier.swift; sourceTree = "<group>"; };
 		0E7B7B9E1E6E3DDC00D50C95 /* CodeQualifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeQualifier.swift; sourceTree = "<group>"; };
@@ -396,6 +402,7 @@
 				0EA044E71E76C92700643EBA /* CreateEventPayload.swift */,
 				0EE07C191E7E49670021FC6C /* OrganizationEventPayload.swift */,
 				0EB10E151E7BD29A001460D8 /* DeleteEventPayload.swift */,
+				0E65E0C41E7E6D8F004EDBCA /* OrgBlockEventPayload.swift */,
 				0EB10E171E7BD3DB001460D8 /* DeploymentEventPayload.swift */,
 				0EA044DA1E768DB000643EBA /* Event.swift */,
 				0EA044DE1E76BC6E00643EBA /* EventPayloadType.swift */,
@@ -445,6 +452,8 @@
 			children = (
 				0EE07C1E1E7E56000021FC6C /* OrganizationEventPayload.json */,
 				0E65E0BE1E7E6CA4004EDBCA /* OrganizationEventPayload.swift */,
+				0E65E0C01E7E6D58004EDBCA /* OrgBlockEventPayload.json */,
+				0E65E0C21E7E6D7A004EDBCA /* OrgBlockEventPayload.swift */,
 			);
 			name = EventPayloadTests;
 			sourceTree = "<group>";
@@ -552,6 +561,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E65E0C11E7E6D58004EDBCA /* OrgBlockEventPayload.json in Resources */,
 				0EE07C1F1E7E56000021FC6C /* OrganizationEventPayload.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -598,6 +608,7 @@
 				0E7B7BE31E6E628C00D50C95 /* StandardTypeExtension.swift in Sources */,
 				0E7B7BA31E6E3E1100D50C95 /* UserQualifier.swift in Sources */,
 				0EA044DF1E76BC6E00643EBA /* EventPayloadType.swift in Sources */,
+				0E65E0C51E7E6D8F004EDBCA /* OrgBlockEventPayload.swift in Sources */,
 				0EE17BC31E6D7CCB00451632 /* Repository.swift in Sources */,
 				0E00C9131E7C0D7100958A39 /* MemberEventPayload.swift in Sources */,
 				0E4D5A131E5C607A008E4AD6 /* NSURLSession.swift in Sources */,
@@ -622,6 +633,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E65E0C31E7E6D7A004EDBCA /* OrgBlockEventPayload.swift in Sources */,
 				0E4D59821E5C5BC0008E4AD6 /* GHAPITests.swift in Sources */,
 				0E65E0BB1E7E67BC004EDBCA /* GHAPITestsHelper.swift in Sources */,
 				0E65E0BF1E7E6CA4004EDBCA /* OrganizationEventPayload.swift in Sources */,
