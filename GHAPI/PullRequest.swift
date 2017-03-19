@@ -45,12 +45,12 @@ public struct PullRequest {
   }
   public struct PNumbers {
     public let number: UInt
-    public let comments: UInt
-    public let review_comments: UInt
-    public let commits: UInt
-    public let additions: UInt
-    public let deletions: UInt
-    public let changed_files: UInt
+    public let comments: UInt?
+    public let review_comments: UInt?
+    public let commits: UInt?
+    public let additions: UInt?
+    public let deletions: UInt?
+    public let changed_files: UInt?
   }
   public struct PDates {
     public let created_at: Date
@@ -74,9 +74,9 @@ public struct PullRequest {
   public let head: PullRequest.PNode
   public let base: PullRequest.PNode
   public let _links: PullRequest.PLinks
-  public let merged: Bool
+  public let merged: Bool?
   public let mergeable: Bool?
-  public let mergeable_state: String
+  public let mergeable_state: String?
   public let merged_by: String?
 }
 
@@ -105,9 +105,9 @@ extension PullRequest: GHAPIModelType {
       <*> json <| "base"
       <*> json <| "_links"
     let tmp4 = tmp3
-      <*> json <| "merged"
+      <*> json <|? "merged"
       <*> json <|? "mergeable"
-      <*> json <| "mergeable_state"
+      <*> json <|? "mergeable_state"
       <*> json <|? "merged_by"
     return tmp4
   }
@@ -241,12 +241,12 @@ extension PullRequest.PNumbers: GHAPIModelType {
   public static func decode(_ json: JSON) -> Decoded<PullRequest.PNumbers> {
     return curry(PullRequest.PNumbers.init)
       <^> json <| "number"
-      <*> json <| "comments"
-      <*> json <| "review_comments"
-      <*> json <| "commits"
-      <*> json <| "additions"
-      <*> json <| "deletions"
-      <*> json <| "changed_files"
+      <*> json <|? "comments"
+      <*> json <|? "review_comments"
+      <*> json <|? "commits"
+      <*> json <|? "additions"
+      <*> json <|? "deletions"
+      <*> json <|? "changed_files"
   }
   public func encode() -> [String : Any] {
     var result: [String:Any] = [:]
