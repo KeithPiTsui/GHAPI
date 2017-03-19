@@ -29,54 +29,54 @@ class testGithubCraper: XCTestCase {
     super.tearDown()
   }
 
-  func testJiFramework() {
-    //        let i = "1,234".numbers().first
-    //        let i2 = "1234".numbers().first
-    //        testJi()
-  }
-
-  func testDailyTrendingSwift() {
-    //        let repos = GithubCraper.trendingRepositories(of: .daily, with: "swift")
-
-    print("Hello")
-  }
-
-  func testDailyTrendingSignal() {
-//    let expectation = self.expectation(description: "network response")
-//    let service = Service()
-//    service.trendingRepository(of: .daily, with: "swift")
-//      .observe(on: QueueScheduler())
-//      .startWithResult { (result) in
+//  func testJiFramework() {
+//    //        let i = "1,234".numbers().first
+//    //        let i2 = "1234".numbers().first
+//    //        testJi()
+//  }
 //
-//        if let reposValue = result.value {
-//          if let repos = reposValue {
-//            print("\(repos.count)")
-//          }
-//        }
-//        expectation.fulfill()
+//  func testDailyTrendingSwift() {
+//    //        let repos = GithubCraper.trendingRepositories(of: .daily, with: "swift")
+//
+//    print("Hello")
+//  }
+//
+//  func testDailyTrendingSignal() {
+////    let expectation = self.expectation(description: "network response")
+////    let service = Service()
+////    service.trendingRepository(of: .daily, with: "swift")
+////      .observe(on: QueueScheduler())
+////      .startWithResult { (result) in
+////
+////        if let reposValue = result.value {
+////          if let repos = reposValue {
+////            print("\(repos.count)")
+////          }
+////        }
+////        expectation.fulfill()
+////    }
+////
+////    self.waitForExpectations(timeout: 2000, handler: nil)
+//  }
+//
+//
+//  func testAllLanguages() {
+//    //_ = self.expectation(description: "network response")
+//
+//    let langs = GithubCraper.programmingLanguages
+//
+//    print(langs)
+//
+//    //self.waitForExpectations(timeout: 2000, handler: nil)
+//  }
+//
+//
+//  func testPerformanceExample() {
+//    // This is an example of a performance test case.
+//    self.measure {
+//      // Put the code you want to measure the time of here.
 //    }
-//
-//    self.waitForExpectations(timeout: 2000, handler: nil)
-  }
-
-
-  func testAllLanguages() {
-    //_ = self.expectation(description: "network response")
-
-    let langs = GithubCraper.programmingLanguages
-
-    print(langs)
-
-    //self.waitForExpectations(timeout: 2000, handler: nil)
-  }
-
-
-  func testPerformanceExample() {
-    // This is an example of a performance test case.
-    self.measure {
-      // Put the code you want to measure the time of here.
-    }
-  }
+//  }
 
 }
 

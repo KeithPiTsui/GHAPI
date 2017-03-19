@@ -101,7 +101,7 @@ extension OrganizationEventPayload.OMembership: GHAPIModelType {
     result["url"] = self.url.absoluteString
     result["state"] = self.state
     result["role"] = self.role
-    result["organization_url"] = self.organization_url
+    result["organization_url"] = self.organization_url.absoluteString
     result["user"] = self.user.encode()
     return result
   }

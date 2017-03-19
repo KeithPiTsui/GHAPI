@@ -1,5 +1,5 @@
 //
-//  OrganizationEventPayload.swift
+//  PageBuildEventPayload.swift
 //  GHAPI
 //
 //  Created by Pi on 19/03/2017.
@@ -12,9 +12,9 @@ import Curry
 import Runes
 @testable import GHAPI
 
-internal final class OrganizationEventPayloadTests: XCTestCase {
+internal final class PageBuildEventPayloadTests: XCTestCase {
 
-  fileprivate var json: JSON? = GHAPITestsHelper.jsonObject(named: "OrganizationEventPayload")
+  fileprivate var json: JSON? = GHAPITestsHelper.jsonObject(named: "PageBuildEventPayload")
 
   override func setUp() {
     super.setUp()
@@ -28,11 +28,11 @@ internal final class OrganizationEventPayloadTests: XCTestCase {
     guard
       let json = self.json
       else { XCTAssert(false, "Json must not be nil"); return }
-    let decodePayload = OrganizationEventPayload.decode(json)
+    let decodePayload = PageBuildEventPayload.decode(json)
     guard
-      let payload = decodePayload.value as? OrganizationEventPayload
+      let payload = decodePayload.value as? PageBuildEventPayload
       else { XCTAssert(false, "payload cannot be constructed"); return }
-    XCTAssertEqual(payload.action, "member_invited")
+    XCTAssertEqual(payload.id, 15995382)
     let jsonStr = payload.toJSONString()
     XCTAssertNotNil(jsonStr)
   }

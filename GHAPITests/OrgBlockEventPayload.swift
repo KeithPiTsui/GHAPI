@@ -33,5 +33,7 @@ internal final class OrgBlockEventPayloadTests: XCTestCase {
       let payload = decodePayload.value as? OrgBlockEventPayload
       else { XCTAssert(false, "payload cannot be constructed"); return }
     XCTAssertEqual(payload.action, "blocked")
+    let jsonStr = payload.toJSONString()
+    XCTAssertNotNil(jsonStr)
   }
 }
