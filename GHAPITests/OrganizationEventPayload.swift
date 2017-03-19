@@ -1,5 +1,5 @@
 //
-//  GHOrganizationEventTests.swift
+//  OrganizationEventPayload.swift
 //  GHAPI
 //
 //  Created by Pi on 19/03/2017.
@@ -12,7 +12,7 @@ import Curry
 import Runes
 @testable import GHAPI
 
-internal final class GHOrganizationEventTests: XCTestCase {
+internal final class OrganizationEventPayloadTests: XCTestCase {
 
   fileprivate var json: JSON? = GHAPITestsHelper.setupJson(named: "OrganizationEventPayload")
 
@@ -35,13 +35,3 @@ internal final class GHOrganizationEventTests: XCTestCase {
     XCTAssertEqual(payload.action, "member_invited")
   }
 }
-
-
-
-
-
-
-
-
-
-

@@ -12,9 +12,11 @@ import Runes
 import Foundation
 import XCTest
 
+fileprivate class A {}
+
 internal enum GHAPITestsHelper {
   internal static func setupJson(named filename: String, and fileextension: String = "json") -> JSON? {
-    let bundle = Bundle(for: GHOrganizationEventTests.self)
+    let bundle = Bundle(for: A.self)
     guard
       let filePath = bundle.path(
         forResource: filename,
