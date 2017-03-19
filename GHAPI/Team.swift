@@ -19,6 +19,7 @@ public struct Team {
   public let url: URL
   public let members_url: URL
   public let repositories_url: URL
+  public let desc: String?
 }
 
 extension Team: GHAPIModelType {
@@ -35,12 +36,14 @@ extension Team: GHAPIModelType {
       <*> json <| "url"
       <*> json <| "members_url"
       <*> json <| "repositories_url"
+      <*> json <|? "description"
   }
   public func encode() -> [String : Any] {
     var result: [String:Any] = [:]
     result["name"] = self.name
     result["id"] = self.id
     result["slug"] = self.slug
+    result["description"] = self.desc
     result["privacy"] = self.privacy
     result["permission"] = self.permission
     result["url"] = self.url.absoluteString
