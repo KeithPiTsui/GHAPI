@@ -15,7 +15,63 @@ public struct GHEvent {
     case CreateEvent
     case WatchEvent
     case ForkEvent
+    case CommitCommentEvent
+    case DeleteEvent
+    case DeploymentEvent
+    case GollumEvent
+    case IssueCommentEvent
+    case IssueEvent
+    case LabelEvent
+    case MemberEvent
+    case MembershipEvent
+    case MilestoneEvent
+    case OrganizationEvent
+    case OrgBlockEvent
+    case PageBuildEvent
+    case ProjectCardEvent
+    case ProjectColumnEvent
+    case ProjectEvent
+    case PublicEvent
+    case PullRequestEvent
+    case PullRequestReviewCommentEvent
+    case PullRequestReviewEvent
+    case ReleaseEvent
+    case RepositoryEvent
+    case StatusEvent
+    case TeamAddEvent
+    case TeamEvent
   }
+  internal static let payloadConstructorDict
+    : [GHEvent.EventType: EventPayloadType.Type] =
+    [.WatchEvent: WatchEventPayload.self,
+     .CreateEvent: CreateEventPayload.self,
+     .ForkEvent: ForkEventPayload.self,
+     .PushEvent: PushEventPayload.self,
+     .CommitCommentEvent: CommitCommentEventPayload.self,
+     .DeleteEvent: DeleteEventPayload.self,
+     .DeploymentEvent: DeploymentEventPayload.self,
+     .GollumEvent: GollumEventPayload.self,
+     .IssueCommentEvent: IssueCommentEventPayload.self,
+     .IssueEvent: IssueEventPayload.self,
+     .LabelEvent: LabelEventPayload.self,
+     .MemberEvent: MemberEventPayload.self,
+     .MembershipEvent: MembershipEventPayload.self,
+     .MilestoneEvent: MilestoneEventPayload.self,
+     .OrganizationEvent: OrganizationEventPayload.self,
+     .OrgBlockEvent: OrgBlockEventPayload.self,
+     .PageBuildEvent: PageBuildEventPayload.self,
+     .ProjectCardEvent: ProjectCardEventPayload.self,
+     .ProjectColumnEvent: ProjectColumnEventPayload.self,
+     .ProjectEvent: ProjectEventPayload.self,
+     .PullRequestEvent: PullRequestEventPayload.self,
+     .PullRequestReviewCommentEvent: PullRequestReviewCommentEventPayload.self,
+     .PullRequestReviewEvent: PullRequestReviewEventPayload.self,
+     .ReleaseEvent: ReleaseEventPayload.self,
+     .RepositoryEvent: RepositoryEventPayload.self,
+     .StatusEvent: StatusEventPayload.self,
+     .TeamAddEvent: TeamAddEventPayload.self,
+     .TeamEvent: TeamEventPayload.self,
+     .PublicEvent: PublicEventPayload.self]
   public struct EIndividual {
     public let id: UInt
     public let login: String
@@ -37,13 +93,6 @@ public struct GHEvent {
   public let id: String
   public let payload: EventPayloadType?
   public let repo: ERepository?
-
-  fileprivate static let payloadConstructorDict
-    : [GHEvent.EventType: EventPayloadType.Type] =
-    [GHEvent.EventType.WatchEvent: WatchEventPayload.self,
-     GHEvent.EventType.CreateEvent: CreateEventPayload.self,
-     GHEvent.EventType.ForkEvent: ForkEventPayload.self,
-     GHEvent.EventType.PushEvent: PushEventPayload.self,]
 }
 
 
@@ -109,6 +158,8 @@ extension GHEvent.EventType: GHAPIModelType {
     return result
   }
 }
+extension GHEvent.EventType: HashableEnumCaseIterating {}
+
 
 extension GHEvent.EIndividual: GHAPIModelType {
   public static func == (lhs: GHEvent.EIndividual, rhs: GHEvent.EIndividual) -> Bool {
