@@ -50,6 +50,19 @@
 		0E65E0CD1E7E7D1F004EDBCA /* ProjectCardEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E65E0CC1E7E7D1F004EDBCA /* ProjectCardEventPayload.swift */; };
 		0E65E0CF1E7E7D2E004EDBCA /* ProjectCardEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E65E0CE1E7E7D2E004EDBCA /* ProjectCardEventPayload.swift */; };
 		0E65E0D11E7E7D37004EDBCA /* ProjectCardEventPayload.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E65E0D01E7E7D37004EDBCA /* ProjectCardEventPayload.json */; };
+		0E65E0D31E7E813A004EDBCA /* ProjectColumnEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E65E0D21E7E813A004EDBCA /* ProjectColumnEventPayload.swift */; };
+		0E65E0D51E7E8148004EDBCA /* ProjectColumnEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E65E0D41E7E8148004EDBCA /* ProjectColumnEventPayload.swift */; };
+		0E65E10F1E7E81A3004EDBCA /* ProjectColumnEventPayload.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E65E10E1E7E81A3004EDBCA /* ProjectColumnEventPayload.json */; };
+		0E65E1111E7E83DB004EDBCA /* ProjectEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E65E1101E7E83DB004EDBCA /* ProjectEventPayload.swift */; };
+		0E65E1131E7E83E7004EDBCA /* ProjectEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E65E1121E7E83E7004EDBCA /* ProjectEventPayload.swift */; };
+		0E65E1151E7E83F1004EDBCA /* ProjectEventPayload.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E65E1141E7E83F1004EDBCA /* ProjectEventPayload.json */; };
+		0E65E1171E7E86A6004EDBCA /* PublicEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E65E1161E7E86A6004EDBCA /* PublicEventPayload.swift */; };
+		0E65E1191E7E86B1004EDBCA /* PublicEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E65E1181E7E86B1004EDBCA /* PublicEventPayload.swift */; };
+		0E65E11B1E7E86B9004EDBCA /* PublicEventPayload.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E65E11A1E7E86B9004EDBCA /* PublicEventPayload.json */; };
+		0E65E11D1E7E87F8004EDBCA /* PullRequestEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E65E11C1E7E87F8004EDBCA /* PullRequestEventPayload.swift */; };
+		0E65E11F1E7E8800004EDBCA /* PullRequestEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E65E11E1E7E8800004EDBCA /* PullRequestEventPayload.swift */; };
+		0E65E1211E7E8808004EDBCA /* PullRequestEventPayload.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E65E1201E7E8808004EDBCA /* PullRequestEventPayload.json */; };
+		0E65E1231E7E88D4004EDBCA /* PullRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E65E1221E7E88D4004EDBCA /* PullRequest.swift */; };
 		0E7AF45F1E729F5F0001C425 /* EnumIterating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7AF45E1E729F5F0001C425 /* EnumIterating.swift */; };
 		0E7B7B9D1E6E3DBB00D50C95 /* RepositoryQualifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7B9C1E6E3DBB00D50C95 /* RepositoryQualifier.swift */; };
 		0E7B7B9F1E6E3DDC00D50C95 /* CodeQualifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B7B9E1E6E3DDC00D50C95 /* CodeQualifier.swift */; };
@@ -146,6 +159,19 @@
 		0E65E0CC1E7E7D1F004EDBCA /* ProjectCardEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCardEventPayload.swift; sourceTree = "<group>"; };
 		0E65E0CE1E7E7D2E004EDBCA /* ProjectCardEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCardEventPayload.swift; sourceTree = "<group>"; };
 		0E65E0D01E7E7D37004EDBCA /* ProjectCardEventPayload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ProjectCardEventPayload.json; sourceTree = "<group>"; };
+		0E65E0D21E7E813A004EDBCA /* ProjectColumnEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectColumnEventPayload.swift; sourceTree = "<group>"; };
+		0E65E0D41E7E8148004EDBCA /* ProjectColumnEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectColumnEventPayload.swift; sourceTree = "<group>"; };
+		0E65E10E1E7E81A3004EDBCA /* ProjectColumnEventPayload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ProjectColumnEventPayload.json; sourceTree = "<group>"; };
+		0E65E1101E7E83DB004EDBCA /* ProjectEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectEventPayload.swift; sourceTree = "<group>"; };
+		0E65E1121E7E83E7004EDBCA /* ProjectEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectEventPayload.swift; sourceTree = "<group>"; };
+		0E65E1141E7E83F1004EDBCA /* ProjectEventPayload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ProjectEventPayload.json; sourceTree = "<group>"; };
+		0E65E1161E7E86A6004EDBCA /* PublicEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicEventPayload.swift; sourceTree = "<group>"; };
+		0E65E1181E7E86B1004EDBCA /* PublicEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicEventPayload.swift; sourceTree = "<group>"; };
+		0E65E11A1E7E86B9004EDBCA /* PublicEventPayload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PublicEventPayload.json; sourceTree = "<group>"; };
+		0E65E11C1E7E87F8004EDBCA /* PullRequestEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestEventPayload.swift; sourceTree = "<group>"; };
+		0E65E11E1E7E8800004EDBCA /* PullRequestEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestEventPayload.swift; sourceTree = "<group>"; };
+		0E65E1201E7E8808004EDBCA /* PullRequestEventPayload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PullRequestEventPayload.json; sourceTree = "<group>"; };
+		0E65E1221E7E88D4004EDBCA /* PullRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequest.swift; sourceTree = "<group>"; };
 		0E7AF45E1E729F5F0001C425 /* EnumIterating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumIterating.swift; sourceTree = "<group>"; };
 		0E7B7B9C1E6E3DBB00D50C95 /* RepositoryQualifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryQualifier.swift; sourceTree = "<group>"; };
 		0E7B7B9E1E6E3DDC00D50C95 /* CodeQualifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeQualifier.swift; sourceTree = "<group>"; };
@@ -336,13 +362,14 @@
 				0EA044E01E76C1D900643EBA /* Event */,
 				0EA044D21E76567400643EBA /* GHAPIModelType.swift */,
 				0E00C91A1E7C132A00958A39 /* Issue.swift */,
-				0E00C9101E7C0AD600958A39 /* Organization.swift */,
 				0E00C91C1E7C14A300958A39 /* Milestone.swift */,
+				0E00C9101E7C0AD600958A39 /* Organization.swift */,
+				0E65E1221E7E88D4004EDBCA /* PullRequest.swift */,
 				0EA044D01E76535300643EBA /* Readme.swift */,
 				0EE17BC21E6D7CCB00451632 /* Repository.swift */,
 				0EB10E1B1E7BDA5A001460D8 /* Search */,
-				0E57061C1E5D9FC50047BF4C /* User.swift */,
 				0E00C9181E7C12A200958A39 /* Team.swift */,
+				0E57061C1E5D9FC50047BF4C /* User.swift */,
 				0EB10E191E7BD544001460D8 /* UserLite.swift */,
 				0E50AA151E6800D20002A40D /* UserPasswordEnvelope.swift */,
 			);
@@ -428,6 +455,10 @@
 				0E65E0C41E7E6D8F004EDBCA /* OrgBlockEventPayload.swift */,
 				0E65E0C61E7E747F004EDBCA /* PageBuildEventPayload.swift */,
 				0E65E0CC1E7E7D1F004EDBCA /* ProjectCardEventPayload.swift */,
+				0E65E0D21E7E813A004EDBCA /* ProjectColumnEventPayload.swift */,
+				0E65E1101E7E83DB004EDBCA /* ProjectEventPayload.swift */,
+				0E65E1161E7E86A6004EDBCA /* PublicEventPayload.swift */,
+				0E65E11C1E7E87F8004EDBCA /* PullRequestEventPayload.swift */,
 				0EA044E11E76C1F700643EBA /* PushEventPayload.swift */,
 				0EA044E51E76C23B00643EBA /* WatchEventPayload.swift */,
 			);
@@ -467,11 +498,19 @@
 				0EE07C1E1E7E56000021FC6C /* OrganizationEventPayload.json */,
 				0E65E0BE1E7E6CA4004EDBCA /* OrganizationEventPayload.swift */,
 				0E65E0C01E7E6D58004EDBCA /* OrgBlockEventPayload.json */,
-				0E65E0CE1E7E7D2E004EDBCA /* ProjectCardEventPayload.swift */,
-				0E65E0D01E7E7D37004EDBCA /* ProjectCardEventPayload.json */,
 				0E65E0C21E7E6D7A004EDBCA /* OrgBlockEventPayload.swift */,
 				0E65E0CA1E7E749B004EDBCA /* PageBuildEventPayload.json */,
 				0E65E0C81E7E748B004EDBCA /* PageBuildEventPayload.swift */,
+				0E65E0D01E7E7D37004EDBCA /* ProjectCardEventPayload.json */,
+				0E65E0CE1E7E7D2E004EDBCA /* ProjectCardEventPayload.swift */,
+				0E65E10E1E7E81A3004EDBCA /* ProjectColumnEventPayload.json */,
+				0E65E0D41E7E8148004EDBCA /* ProjectColumnEventPayload.swift */,
+				0E65E1141E7E83F1004EDBCA /* ProjectEventPayload.json */,
+				0E65E11E1E7E8800004EDBCA /* PullRequestEventPayload.swift */,
+				0E65E1201E7E8808004EDBCA /* PullRequestEventPayload.json */,
+				0E65E1181E7E86B1004EDBCA /* PublicEventPayload.swift */,
+				0E65E11A1E7E86B9004EDBCA /* PublicEventPayload.json */,
+				0E65E1121E7E83E7004EDBCA /* ProjectEventPayload.swift */,
 			);
 			name = EventPayloadTests;
 			sourceTree = "<group>";
@@ -579,9 +618,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E65E10F1E7E81A3004EDBCA /* ProjectColumnEventPayload.json in Resources */,
+				0E65E1151E7E83F1004EDBCA /* ProjectEventPayload.json in Resources */,
 				0E65E0CB1E7E749B004EDBCA /* PageBuildEventPayload.json in Resources */,
 				0E65E0D11E7E7D37004EDBCA /* ProjectCardEventPayload.json in Resources */,
 				0E65E0C11E7E6D58004EDBCA /* OrgBlockEventPayload.json in Resources */,
+				0E65E11B1E7E86B9004EDBCA /* PublicEventPayload.json in Resources */,
+				0E65E1211E7E8808004EDBCA /* PullRequestEventPayload.json in Resources */,
 				0EE07C1F1E7E56000021FC6C /* OrganizationEventPayload.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -593,6 +636,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E65E1171E7E86A6004EDBCA /* PublicEventPayload.swift in Sources */,
 				0E4D5A211E5C60C1008E4AD6 /* Method.swift in Sources */,
 				0E5706191E5D9DDA0047BF4C /* Service.swift in Sources */,
 				0EA044E81E76C92700643EBA /* CreateEventPayload.swift in Sources */,
@@ -610,6 +654,7 @@
 				0E4D5A231E5C60C1008E4AD6 /* Route.swift in Sources */,
 				0E5BF8C41E73D46200EDD841 /* Branch.swift in Sources */,
 				0E4E43F41E7BCE1700A4CADE /* CommitCommentEventPayload.swift in Sources */,
+				0E65E1231E7E88D4004EDBCA /* PullRequest.swift in Sources */,
 				0E4D5A271E5C61A0008E4AD6 /* ErrorEnvelope.swift in Sources */,
 				0EA044E21E76C1F700643EBA /* PushEventPayload.swift in Sources */,
 				0E57061D1E5D9FC50047BF4C /* User.swift in Sources */,
@@ -620,6 +665,7 @@
 				0ECE8A651E77CB15001FE48B /* GithubCraper.swift in Sources */,
 				0E2B00641E73E2DC007C4A89 /* Commit.swift in Sources */,
 				0E00C91B1E7C132A00958A39 /* Issue.swift in Sources */,
+				0E65E0D31E7E813A004EDBCA /* ProjectColumnEventPayload.swift in Sources */,
 				0E00C9151E7C0E2700958A39 /* MembershipEventPayload.swift in Sources */,
 				0E4D5A221E5C60C1008E4AD6 /* MimeType.swift in Sources */,
 				0E00C90D1E7C042600958A39 /* GollumEventPayload.swift in Sources */,
@@ -640,12 +686,14 @@
 				0E65E0CD1E7E7D1F004EDBCA /* ProjectCardEventPayload.swift in Sources */,
 				0EA044DB1E768DB000643EBA /* Event.swift in Sources */,
 				0EB10E161E7BD29A001460D8 /* DeleteEventPayload.swift in Sources */,
+				0E65E11D1E7E87F8004EDBCA /* PullRequestEventPayload.swift in Sources */,
 				0E4D5A251E5C614B008E4AD6 /* Secrets.swift in Sources */,
 				0E65E0C71E7E747F004EDBCA /* PageBuildEventPayload.swift in Sources */,
 				0E57061B1E5D9E100047BF4C /* ServiceType.swift in Sources */,
 				0EA044E61E76C23B00643EBA /* WatchEventPayload.swift in Sources */,
 				0EA044E41E76C21D00643EBA /* ForkEventPayload.swift in Sources */,
 				0E00C90F1E7C08AC00958A39 /* LabelEventPayload.swift in Sources */,
+				0E65E1111E7E83DB004EDBCA /* ProjectEventPayload.swift in Sources */,
 				0E00C9111E7C0AD600958A39 /* Organization.swift in Sources */,
 				0E7B7B9F1E6E3DDC00D50C95 /* CodeQualifier.swift in Sources */,
 			);
@@ -656,11 +704,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E65E0C31E7E6D7A004EDBCA /* OrgBlockEventPayload.swift in Sources */,
+				0E65E1191E7E86B1004EDBCA /* PublicEventPayload.swift in Sources */,
 				0E4D59821E5C5BC0008E4AD6 /* GHAPITests.swift in Sources */,
 				0E65E0BB1E7E67BC004EDBCA /* GHAPITestsHelper.swift in Sources */,
 				0E65E0C91E7E748B004EDBCA /* PageBuildEventPayload.swift in Sources */,
 				0E65E0BF1E7E6CA4004EDBCA /* OrganizationEventPayload.swift in Sources */,
+				0E65E11F1E7E8800004EDBCA /* PullRequestEventPayload.swift in Sources */,
+				0E65E0D51E7E8148004EDBCA /* ProjectColumnEventPayload.swift in Sources */,
 				0E65E0CF1E7E7D2E004EDBCA /* ProjectCardEventPayload.swift in Sources */,
+				0E65E1131E7E83E7004EDBCA /* ProjectEventPayload.swift in Sources */,
 				0ECE8A691E77CBE4001FE48B /* testGithubCraper.swift in Sources */,
 				0EB10E211E7BE701001460D8 /* GHAPIServiceTests.swift in Sources */,
 			);
