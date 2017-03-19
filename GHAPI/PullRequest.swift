@@ -69,7 +69,8 @@ public struct PullRequest {
   public let user: UserLite
   public let body: String
   public let merge_commit_sha: String?
-  public let assignee: String?
+  public let assignee: UserLite?
+  public let assignees: [UserLite]?
   public let milestone: String?
   public let head: PullRequest.PNode
   public let base: PullRequest.PNode
@@ -77,7 +78,7 @@ public struct PullRequest {
   public let merged: Bool?
   public let mergeable: Bool?
   public let mergeable_state: String?
-  public let merged_by: String?
+  public let merged_by: UserLite?
 }
 
 extension PullRequest: GHAPIModelType {
@@ -99,6 +100,7 @@ extension PullRequest: GHAPIModelType {
       <*> json <| "body"
       <*> json <|? "merge_commit_sha"
       <*> json <|? "assignee"
+      <*> json <||? "assignees"
     let tmp3 = tmp2
       <*> json <|? "milestone"
       <*> json <| "head"
@@ -122,7 +124,8 @@ extension PullRequest: GHAPIModelType {
     result["title"] = self.title
     result["user"] = self.user.encode()
     result["merge_commit_sha"] = self.merge_commit_sha
-    result["assignee"] = self.assignee
+    result["assignee"] = self.assignee?.encode()
+    result["assignees"] = self.assignees?.map{$0.encode()}
     result["milestone"] = self.milestone
     result["head"] = self.head.encode()
     result["base"] = self.base.encode()
@@ -130,7 +133,7 @@ extension PullRequest: GHAPIModelType {
     result["merged"] = self.merged
     result["mergeable"] = self.mergeable
     result["mergeable_state"] = self.mergeable_state
-    result["merged_by"] = self.merged_by
+    result["merged_by"] = self.merged_by?.encode()
     return result
   }
 }

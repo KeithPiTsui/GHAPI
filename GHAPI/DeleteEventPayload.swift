@@ -16,8 +16,8 @@ public struct DeleteEventPayload: EventPayloadType{
   public let ref: String
   public let ref_type: String
   public let pusher_type: String
-  public let repository: Repository
-  public let sender: UserLite
+  public let repository: Repository?
+  public let sender: UserLite?
 }
 
 extension DeleteEventPayload: GHAPIModelType {
@@ -33,8 +33,8 @@ extension DeleteEventPayload: GHAPIModelType {
       <^> json <| "ref"
       <*> json <| "ref_type"
       <*> json <| "pusher_type"
-      <*> json <| "repository"
-      <*> json <| "sender"
+      <*> json <|? "repository"
+      <*> json <|? "sender"
   }
 
   public func encode() -> [String : Any] {
@@ -42,8 +42,8 @@ extension DeleteEventPayload: GHAPIModelType {
     result["ref"] = self.ref
     result["ref_type"] = self.ref_type
     result["pusher_type"] = self.pusher_type
-    result["repository"] = self.repository.encode()
-    result["sender"] = self.sender.encode()
+    result["repository"] = self.repository?.encode()
+    result["sender"] = self.sender?.encode()
     return result
   }
 }

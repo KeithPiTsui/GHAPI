@@ -21,7 +21,7 @@ public struct PullRequestReviewCommentEventPayload: EventPayloadType{
     public let id: UInt
     public let diff_hunk: String
     public let path: String
-    public let position: UInt
+    public let position: UInt?
     public let original_position: UInt
     public let commit_id: String
     public let original_commit_id: String
@@ -36,8 +36,8 @@ public struct PullRequestReviewCommentEventPayload: EventPayloadType{
   public let action: String
   public let comment: PullRequestReviewCommentEventPayload.PComment
   public let pull_request: PullRequest
-  public let repository: Repository
-  public let sender: UserLite
+  public let repository: Repository?
+  public let sender: UserLite?
 }
 extension PullRequestReviewCommentEventPayload: GHAPIModelType {
   public static func == (lhs: PullRequestReviewCommentEventPayload, rhs: PullRequestReviewCommentEventPayload) -> Bool {
@@ -52,16 +52,16 @@ extension PullRequestReviewCommentEventPayload: GHAPIModelType {
       <^> json <| "action"
       <*> json <| "comment"
       <*> json <| "pull_request"
-      <*> json <| "repository"
-      <*> json <| "sender"
+      <*> json <|? "repository"
+      <*> json <|? "sender"
   }
   public func encode() -> [String : Any] {
     var result: [String:Any] = [:]
     result["action"] = self.action
     result["comment"] = self.comment.encode()
     result["pull_request"] = self.pull_request.encode()
-    result["repository"] = self.repository.encode()
-    result["sender"] = self.sender.encode()
+    result["repository"] = self.repository?.encode()
+    result["sender"] = self.sender?.encode()
     return result
   }
 }
@@ -77,7 +77,7 @@ extension PullRequestReviewCommentEventPayload.PComment: GHAPIModelType {
       <*> json <| "id"
       <*> json <| "diff_hunk"
       <*> json <| "path"
-      <*> json <| "position"
+      <*> json <|? "position"
       <*> json <| "original_position"
       <*> json <| "commit_id"
       <*> json <| "original_commit_id"

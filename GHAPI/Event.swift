@@ -20,7 +20,7 @@ public struct GHEvent {
     case DeploymentEvent
     case GollumEvent
     case IssueCommentEvent
-    case IssueEvent
+    case IssuesEvent
     case LabelEvent
     case MemberEvent
     case MembershipEvent
@@ -52,7 +52,7 @@ public struct GHEvent {
      .DeploymentEvent: DeploymentEventPayload.self,
      .GollumEvent: GollumEventPayload.self,
      .IssueCommentEvent: IssueCommentEventPayload.self,
-     .IssueEvent: IssueEventPayload.self,
+     .IssuesEvent: IssueEventPayload.self,
      .LabelEvent: LabelEventPayload.self,
      .MemberEvent: MemberEventPayload.self,
      .MembershipEvent: MembershipEventPayload.self,
@@ -94,13 +94,10 @@ public struct GHEvent {
   public let payload: EventPayloadType?
   public let repo: ERepository?
 }
-
-
 extension GHEvent: GHAPIModelType {
   public static func == (lhs: GHEvent, rhs: GHEvent) -> Bool {
     return lhs.id == rhs.id
   }
-
   public static func decode(_ json: JSON) -> Decoded<GHEvent> {
     let creator = curry(GHEvent.init)
     let tmp = creator <^> json <| "type"
@@ -110,12 +107,20 @@ extension GHEvent: GHAPIModelType {
       <*> json <| "created_at"
       <*> json <| "id"
 
+    let eventType = ((json <| "type").value as GHEvent.EventType?)
+    let eventId = ((json <| "id").value as String?)
+
     let _payload: Decoded<EventPayloadType>?
     if case let .object(subJson) = json, let payloadJson = subJson["payload"] {
-      _payload = ((json <| "type").value as GHEvent.EventType?)
-        .flatMap {payloadConstructorDict[$0]?.decode(payloadJson)}
+      _payload = eventType.flatMap {payloadConstructorDict[$0]?.decode(payloadJson)}
     } else {
       _payload = nil
+    }
+    if _payload == nil {
+      print("Event \(eventType) with id \(eventId) doesn't contain a payload")
+    } else if case let .failure(error) = _payload! {
+      print("Event \(eventType) with id \(eventId) doesn't convert a payload")
+      print(error)
     }
 
     let payload: Decoded<EventPayloadType?> = _payload == nil
@@ -140,13 +145,12 @@ extension GHEvent: GHAPIModelType {
   }
 }
 
-
 extension GHEvent.EventType: GHAPIModelType {
   public static func decode(_ json: JSON) -> Decoded<GHEvent.EventType> {
     switch json {
     case .string(let typeStr):
       guard let et = GHEvent.EventType.init(rawValue: typeStr) else {
-        return .failure(.custom("EventType string misformatted"))
+        return .failure(.custom("EventType string misformatted \(typeStr)"))
       }
       return pure(et)
     default: return .typeMismatch(expected: "EventType", actual: json)
@@ -159,7 +163,6 @@ extension GHEvent.EventType: GHAPIModelType {
   }
 }
 extension GHEvent.EventType: HashableEnumCaseIterating {}
-
 
 extension GHEvent.EIndividual: GHAPIModelType {
   public static func == (lhs: GHEvent.EIndividual, rhs: GHEvent.EIndividual) -> Bool {

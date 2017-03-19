@@ -21,6 +21,8 @@ internal enum Route {
 
   case events(userName: String)
 
+  case receivedEvents(userName: String)
+
   case repository(username: String, reponame: String)
 
 
@@ -65,6 +67,8 @@ internal enum Route {
 
     case let .events(username):
       return (.GET, "/users/\(username)/events", [:], nil, [:])
+    case let .receivedEvents(username):
+      return (.GET, "/users/\(username)/received_events", [:], nil, [:])
     case let .repository(username, reponame):
       return (.GET, "/repos/\(username)/\(reponame)", [:], nil, [:])
     }

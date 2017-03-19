@@ -64,15 +64,16 @@ public protocol ServiceType {
   func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope>
 
   /// Request events of user
-  func events(of user: User) -> SignalProducer<[GHEvent], ErrorEnvelope>
+  func events(of username: String) -> SignalProducer<[GHEvent], ErrorEnvelope>
+
+  /// Request received events of user
+  func receivedEvents(of username: String) -> SignalProducer<[GHEvent], ErrorEnvelope>
 
   /// Request trending repositories specified with period and programming language
   func trendingRepository(
     of period: GithubCraper.TrendingPeriod,
     with language: String?)
     -> SignalProducer<[TrendingRepository], ErrorEnvelope>
-
-
 }
 
 extension ServiceType {

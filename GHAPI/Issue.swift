@@ -19,12 +19,19 @@ public struct Issue {
     public let events_url: URL
     public let html_url: URL
   }
+  public struct ILabel {
+    public let id: UInt
+    public let url: URL
+    public let name: String
+    public let color: String
+    public let `default`: Bool
+  }
   public let urls: Issue.IURLs
   public let id: UInt
   public let number: UInt
   public let title: String
   public let user: User
-  public let labels: [String]
+  public let labels: [ILabel]
   public let state: String
   public let locked: Bool
   public let assignee: String?
@@ -110,6 +117,32 @@ extension Issue.IURLs: GHAPIModelType {
     result["comments_url"] = self.comments_url.absoluteString
     result["events_url"] = self.events_url.absoluteString
     result["html_url"] = self.html_url.absoluteString
+    return result
+  }
+}
+
+extension Issue.ILabel: GHAPIModelType {
+  public static func == (lhs: Issue.ILabel, rhs: Issue.ILabel) -> Bool {
+    return lhs.id == rhs.id
+  }
+  public static func decode(_ json: JSON) -> Decoded<Issue.ILabel> {
+    let creator = curry(Issue.ILabel.init)
+    let tmp = creator
+      <^> json <| "id"
+      <*> json <| "url"
+      <*> json <| "name"
+    let tmp2 = tmp
+      <*> json <| "color"
+      <*> json <| "default"
+    return tmp2
+  }
+  public func encode() -> [String : Any] {
+    var result: [String:Any] = [:]
+    result["id"] = self.id
+    result["url"] = self.url.absoluteString
+    result["name"] = self.name
+    result["color"] = self.color
+    result["default"] = self.`default`
     return result
   }
 }

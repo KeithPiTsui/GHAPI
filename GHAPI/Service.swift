@@ -80,8 +80,12 @@ public struct Service: ServiceType {
   public func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope> {
     return request(.resource(url: url))
   }
-  public func events(of user: User) -> SignalProducer<[GHEvent], ErrorEnvelope> {
-    return request(.events(userName: user.login))
+  public func events(of username: String) -> SignalProducer<[GHEvent], ErrorEnvelope> {
+    return request(.events(userName: username))
+  }
+
+  public func receivedEvents(of username: String) -> SignalProducer<[GHEvent], ErrorEnvelope> {
+    return request(.receivedEvents(userName: username))
   }
 
   public func trendingRepository(of period: GithubCraper.TrendingPeriod, with language: String?)

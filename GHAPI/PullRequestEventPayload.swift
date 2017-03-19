@@ -17,9 +17,9 @@ public struct PullRequestEventPayload: EventPayloadType{
   public let action: String
   public let number: UInt
   public let pull_request: PullRequest
-  public let repository: Repository
-  public let sender: UserLite
-  public let installation: PullRequestEventPayload.PInstallation
+  public let repository: Repository?
+  public let sender: UserLite?
+  public let installation: PullRequestEventPayload.PInstallation?
 }
 
 extension PullRequestEventPayload: GHAPIModelType {
@@ -36,18 +36,18 @@ extension PullRequestEventPayload: GHAPIModelType {
       <^> json <| "action"
       <*> json <| "number"
       <*> json <| "pull_request"
-      <*> json <| "repository"
-      <*> json <| "sender"
-      <*> json <| "installation"
+      <*> json <|? "repository"
+      <*> json <|? "sender"
+      <*> json <|? "installation"
   }
   public func encode() -> [String : Any] {
     var result: [String:Any] = [:]
     result["action"] = self.action
     result["number"] = self.number
     result["pull_request"] = self.pull_request.encode()
-    result["repository"] = self.repository.encode()
-    result["sender"] = self.sender.encode()
-    result["installation"] = self.installation.encode()
+    result["repository"] = self.repository?.encode()
+    result["sender"] = self.sender?.encode()
+    result["installation"] = self.installation?.encode()
     return result
   }
 }

@@ -120,6 +120,7 @@
 		0EE17BBF1E6D657300451632 /* SearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BBE1E6D657300451632 /* SearchParameters.swift */; };
 		0EE17BC31E6D7CCB00451632 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BC21E6D7CCB00451632 /* Repository.swift */; };
 		0EF4E6C21E7ED604008BDB49 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4E6C11E7ED604008BDB49 /* Event.swift */; };
+		0EF4E6C41E7EE4FE008BDB49 /* jsonParsingError.text in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4E6C31E7EE4FE008BDB49 /* jsonParsingError.text */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -257,6 +258,7 @@
 		0EE17BBE1E6D657300451632 /* SearchParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchParameters.swift; sourceTree = "<group>"; };
 		0EE17BC21E6D7CCB00451632 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		0EF4E6C11E7ED604008BDB49 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		0EF4E6C31E7EE4FE008BDB49 /* jsonParsingError.text */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = jsonParsingError.text; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -457,6 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				0EB10E201E7BE701001460D8 /* GHAPIServiceTests.swift */,
+				0EF4E6C31E7EE4FE008BDB49 /* jsonParsingError.text */,
 			);
 			name = ServiceTests;
 			sourceTree = "<group>";
@@ -794,6 +797,7 @@
 				0EF4E6C21E7ED604008BDB49 /* Event.swift in Sources */,
 				0E65E13B1E7EA467004EDBCA /* RepositoryEventPayload.swift in Sources */,
 				0E65E0BB1E7E67BC004EDBCA /* GHAPITestsHelper.swift in Sources */,
+				0EF4E6C41E7EE4FE008BDB49 /* jsonParsingError.text in Sources */,
 				0E65E12D1E7E9D2C004EDBCA /* PullRequestReviewCommentEventPayload.swift in Sources */,
 				0E65E0C91E7E748B004EDBCA /* PageBuildEventPayload.swift in Sources */,
 				0E65E0BF1E7E6CA4004EDBCA /* OrganizationEventPayload.swift in Sources */,
