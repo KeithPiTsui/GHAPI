@@ -38,7 +38,8 @@ public struct GHEvent {
   public let payload: EventPayloadType?
   public let repo: ERepository?
 
-  fileprivate static let payloadConstructorDict: [GHEvent.EventType: EventPayloadType.Type] =
+  fileprivate static let payloadConstructorDict
+    : [GHEvent.EventType: EventPayloadType.Type] =
     [GHEvent.EventType.WatchEvent: WatchEventPayload.self,
      GHEvent.EventType.CreateEvent: CreateEventPayload.self,
      GHEvent.EventType.ForkEvent: ForkEventPayload.self,
