@@ -18,7 +18,6 @@ public struct Branch {
   }
   public let name: String
   public let commit: BCommit
-
 }
 
 extension Branch: GHAPIModelType {
