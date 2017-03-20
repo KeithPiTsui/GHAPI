@@ -17,7 +17,7 @@ public protocol ServiceType {
   init( serverConfig: ServerConfigType)
 
   /// Returns a new service with the user and password replaced
-  func login(username: String, password: String) -> Service
+  func login(username: String, password: String) -> SignalProducer<(User,Service), ErrorEnvelope>
 
   /// Returns a new service without authentification infomation.
   func logout() -> Self

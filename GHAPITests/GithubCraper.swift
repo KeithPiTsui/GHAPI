@@ -16,7 +16,7 @@ import Result
 import ReactiveExtensions
 
 
-internal final class testGithubCraper: XCTestCase {
+internal final class GithubCraperTests: XCTestCase {
   let service = Service()
 
   fileprivate func run(within timeout: TimeInterval = 10, execute body: (XCTestExpectation) -> () ) {

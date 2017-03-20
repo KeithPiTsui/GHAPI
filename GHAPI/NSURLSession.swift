@@ -34,13 +34,12 @@ internal extension URLSession {
                         let headers = response.allHeaderFields as? [String:String],
                         let contentType = headers["Content-Type"], contentType.hasPrefix("application/json")
                         else {
-                            
                             print("[GHAPI] Failure \(self.sanitized(request))")
-                            
-                            if let json = parseJSONData(data) {
-                                switch decode(json) as Decoded<ErrorEnvelope> {
+                            if let json = parseJSONData(data),
+                              var ghErrJson = json as? [String: Any] {
+                              ghErrJson["httpCode"] = response.statusCode
+                              switch decode(ghErrJson) as Decoded<ErrorEnvelope> {
                                 case let .success(envelope):
-                                    // Got the error envelope
                                     return SignalProducer(error: envelope)
                                 case let .failure(error):
                                     print("Argo decoding error envelope error: \(error)")
@@ -51,7 +50,6 @@ internal extension URLSession {
                                 return SignalProducer(error: .couldNotParseErrorEnvelopeJSON)
                             }
                     }
-                    
                     print("[GHAPI] Success \(self.sanitized(request))")
                     return SignalProducer(value: data)
             }

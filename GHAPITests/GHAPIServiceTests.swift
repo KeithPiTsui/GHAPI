@@ -32,6 +32,23 @@ class GHAPIServiceTests: XCTestCase {
     self.waitForExpectations(timeout: 10, handler: nil)
   }
 
+  func testLogin() {
+
+  }
+
+  func testRequestError() {
+    run { (expect) in
+      service
+        .user(with: "asdinefnasdfowefn")
+        .startWithResult { (result) in
+          defer {expect.fulfill()}
+          XCTAssert(result.error != nil, "This should be error.")
+      }
+    }
+  }
+
+
+
   func testServiceReceivedEvents() {
     run { (expect) in
       service

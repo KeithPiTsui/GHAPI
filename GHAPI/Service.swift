@@ -21,8 +21,11 @@ public struct Service: ServiceType {
 
   public init(serverConfig: ServerConfigType = ServerConfig.github) { self.serverConfig = serverConfig }
 
-  public func login(username: String, password: String) -> Service {
-    return Service(serverConfig: ServerConfig.githubServerConfig(username: username, password: password))
+  public func login(username: String, password: String)
+    -> SignalProducer<(User,Service), ErrorEnvelope> {
+      let serv = Service(serverConfig: ServerConfig.githubServerConfig(username: username, password: password))
+      let me = serv.user(with: username).map{($0, serv)}
+      return me
   }
 
   public func logout() -> Service { return Service() }
@@ -51,12 +54,12 @@ public struct Service: ServiceType {
 
   public func user(referredBy url: URL)
     -> SignalProducer<User, ErrorEnvelope> {
-    return request(.resource(url: url))
+      return request(.resource(url: url))
   }
 
   public func repository(referredBy url: URL)
     -> SignalProducer<Repository, ErrorEnvelope> {
-    return request(.resource(url: url))
+      return request(.resource(url: url))
   }
 
   public func repository(of ownername: String, and reponame: String)
@@ -181,8 +184,8 @@ extension Service {
         )
         .flatMap(decodeModels)
   }
-
-
+  
+  
 }
 
 

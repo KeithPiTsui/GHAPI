@@ -113,7 +113,7 @@
 		0EB10E211E7BE701001460D8 /* GHAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB10E201E7BE701001460D8 /* GHAPIServiceTests.swift */; };
 		0ECE8A651E77CB15001FE48B /* GithubCraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A641E77CB15001FE48B /* GithubCraper.swift */; };
 		0ECE8A671E77CB22001FE48B /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A661E77CB22001FE48B /* Ji.framework */; };
-		0ECE8A691E77CBE4001FE48B /* testGithubCraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A681E77CBE4001FE48B /* testGithubCraper.swift */; };
+		0ECE8A691E77CBE4001FE48B /* GithubCraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A681E77CBE4001FE48B /* GithubCraper.swift */; };
 		0EE07C1A1E7E49670021FC6C /* OrganizationEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE07C191E7E49670021FC6C /* OrganizationEventPayload.swift */; };
 		0EE07C1F1E7E56000021FC6C /* OrganizationEventPayload.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EE07C1E1E7E56000021FC6C /* OrganizationEventPayload.json */; };
 		0EE17BBF1E6D657300451632 /* SearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BBE1E6D657300451632 /* SearchParameters.swift */; };
@@ -249,7 +249,7 @@
 		0EB10E201E7BE701001460D8 /* GHAPIServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHAPIServiceTests.swift; sourceTree = "<group>"; };
 		0ECE8A641E77CB15001FE48B /* GithubCraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubCraper.swift; sourceTree = "<group>"; };
 		0ECE8A661E77CB22001FE48B /* Ji.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ji.framework; path = "../Ji/build/Debug-iphoneos/Ji.framework"; sourceTree = "<group>"; };
-		0ECE8A681E77CBE4001FE48B /* testGithubCraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testGithubCraper.swift; sourceTree = "<group>"; };
+		0ECE8A681E77CBE4001FE48B /* GithubCraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubCraper.swift; sourceTree = "<group>"; };
 		0EE07C191E7E49670021FC6C /* OrganizationEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizationEventPayload.swift; sourceTree = "<group>"; };
 		0EE07C1E1E7E56000021FC6C /* OrganizationEventPayload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OrganizationEventPayload.json; sourceTree = "<group>"; };
 		0EE17BBE1E6D657300451632 /* SearchParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchParameters.swift; sourceTree = "<group>"; };
@@ -462,7 +462,7 @@
 		0E65E0BD1E7E68C9004EDBCA /* CraperTests */ = {
 			isa = PBXGroup;
 			children = (
-				0ECE8A681E77CBE4001FE48B /* testGithubCraper.swift */,
+				0ECE8A681E77CBE4001FE48B /* GithubCraper.swift */,
 			);
 			name = CraperTests;
 			sourceTree = "<group>";
@@ -800,7 +800,7 @@
 				0E65E1271E7E9873004EDBCA /* PullRequestReviewEventPayload.swift in Sources */,
 				0E65E0CF1E7E7D2E004EDBCA /* ProjectCardEventPayload.swift in Sources */,
 				0E65E1131E7E83E7004EDBCA /* ProjectEventPayload.swift in Sources */,
-				0ECE8A691E77CBE4001FE48B /* testGithubCraper.swift in Sources */,
+				0ECE8A691E77CBE4001FE48B /* GithubCraper.swift in Sources */,
 				0E65E1471E7EA8CA004EDBCA /* TeamEventPayload.swift in Sources */,
 				0EB10E211E7BE701001460D8 /* GHAPIServiceTests.swift in Sources */,
 			);
