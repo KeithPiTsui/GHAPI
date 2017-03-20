@@ -1,0 +1,16 @@
+{
+  "name": ".clang-format",
+  "path": ".clang-format",
+  "sha": "9b3aa8b7213b2d3b534a08907a44773b4f9c1f1a",
+  "size": 19,
+  "url": "https://api.github.com/repos/apple/swift/contents/.clang-format?ref=master",
+  "html_url": "https://github.com/apple/swift/blob/master/.clang-format",
+  "git_url": "https://api.github.com/repos/apple/swift/git/blobs/9b3aa8b7213b2d3b534a08907a44773b4f9c1f1a",
+  "download_url": "https://raw.githubusercontent.com/apple/swift/master/.clang-format",
+  "type": "file",
+  "_links": {
+    "self": "https://api.github.com/repos/apple/swift/contents/.clang-format?ref=master",
+    "git": "https://api.github.com/repos/apple/swift/git/blobs/9b3aa8b7213b2d3b534a08907a44773b4f9c1f1a",
+    "html": "https://github.com/apple/swift/blob/master/.clang-format"
+  }
+}

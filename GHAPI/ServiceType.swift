@@ -54,9 +54,16 @@ public protocol ServiceType {
   /// Compose a url for a repository specified by owner name and repo name
   func repositoryUrl(of ownername: String, and reponame: String) -> URL
 
-  /// Request a branch specified by url
+  /// Request a list of branch brief specified by url
+  ///
+  /// As refered by branches url of repository
   func branchLites(referredBy url: URL)
     -> SignalProducer<[BranchLite], ErrorEnvelope>
+
+  /// Request a specific branch specified by url
+  func branch(referredBy url: URL)
+    -> SignalProducer<Branch, ErrorEnvelope>
+
 
   /// Request a commit specified by url
   func commits(referredBy url: URL)

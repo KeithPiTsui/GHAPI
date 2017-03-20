@@ -66,7 +66,20 @@ internal final class GHAPIServiceTests: XCTestCase {
     }
   }
 
-  
+  func testBranch() {
+    run { (expect) in
+      guard let url =
+        URL(string: "https://api.github.com/repos/apple/swift/branches/swift-3.0-branch")
+        else {  XCTAssert(false, "branches test URL cannot be constructed"); return }
+      service.branch(referredBy: url).observeInBackground()
+        .startWithResult{ (result) in
+          defer {expect.fulfill()}
+          let branches = result.value
+          XCTAssertNotNil(branches, "commit request result should not be nil")
+      }
+    }
+  }
+
 
   func testBranchLites() {
     run { (expect) in

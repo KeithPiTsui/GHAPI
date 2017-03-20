@@ -11,8 +11,7 @@ import Result
 import ReactiveExtensions
 import GHAPI
 
-let a = WatchEventPayload.self
-let b = WatchEventPayload.self
-a == b
-
+let str = "git@github.com:octocat/Hello-World.git"
+let url = URL(string: str)
+url == nil
 
