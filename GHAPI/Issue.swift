@@ -34,8 +34,8 @@ public struct Issue {
   public let labels: [ILabel]
   public let state: String
   public let locked: Bool
-  public let assignee: String?
-  public let assignees: [String]
+  public let assignee: UserLite?
+  public let assignees: [UserLite]?
   public let milestone: String?
   public let comments: UInt
   public let created_at: Date
@@ -63,7 +63,7 @@ extension Issue: GHAPIModelType {
     let tmp2 = tmp1
       <*> json <| "locked"
       <*> json <|? "assignee"
-      <*> json <|| "assignees"
+      <*> json <||? "assignees"
       <*> json <|? "milestone"
     let tmp3 = tmp2
       <*> json <| "comments"
@@ -83,8 +83,8 @@ extension Issue: GHAPIModelType {
     result["labels"] = self.labels
     result["state"] = self.state
     result["locked"] = self.locked
-    result["assignee"] = self.assignee
-    result["assignees"] = self.assignees
+    result["assignee"] = self.assignee?.encode()
+    result["assignees"] = self.assignees?.map{$0.encode()}
     result["milestone"] = self.milestone
     result["comments"] = self.comments
     result["created_at"] = self.created_at.ISO8601DateRepresentation

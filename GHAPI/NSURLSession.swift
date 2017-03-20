@@ -10,7 +10,7 @@ private func parseJSONData(_ data: Data) -> Any? {
     return (try? JSONSerialization.jsonObject(with: data, options: []))
 }
 
-private let scheduler = QueueScheduler(qos: .background, name: "com.kickstarter.ksapi", targeting: nil)
+private let scheduler = QueueScheduler(qos: .background, name: "io.github.keithpitsui", targeting: nil)
 
 internal extension URLSession {
     
@@ -35,7 +35,7 @@ internal extension URLSession {
                         let contentType = headers["Content-Type"], contentType.hasPrefix("application/json")
                         else {
                             
-                            print("[KsApi] Failure \(self.sanitized(request))")
+                            print("[GHAPI] Failure \(self.sanitized(request))")
                             
                             if let json = parseJSONData(data) {
                                 switch decode(json) as Decoded<ErrorEnvelope> {
@@ -52,7 +52,7 @@ internal extension URLSession {
                             }
                     }
                     
-                    print("[KsApi] Success \(self.sanitized(request))")
+                    print("[GHAPI] Success \(self.sanitized(request))")
                     return SignalProducer(value: data)
             }
     }
@@ -101,7 +101,7 @@ internal extension URLSession {
 }
 
 private let defaultSessionError =
-    NSError(domain: "com.kickstarter.KsApi.rac_dataWithRequest", code: 1, userInfo: nil)
+    NSError(domain: "ios.github.keithpitsui.rac_dataWithRequest", code: 1, userInfo: nil)
 
 private let boundary = "k1ck574r73r154c0mp4ny"
 
