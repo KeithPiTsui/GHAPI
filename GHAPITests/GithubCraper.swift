@@ -22,7 +22,7 @@ internal final class GithubCraperTests: XCTestCase {
   fileprivate func run(within timeout: TimeInterval = 10, execute body: (XCTestExpectation) -> () ) {
     let expect = self.expectation(description: "networking")
     body(expect)
-    self.waitForExpectations(timeout: 10, handler: nil)
+    self.waitForExpectations(timeout: timeout, handler: nil)
   }
 
   func testDailyTrendingSwift() {

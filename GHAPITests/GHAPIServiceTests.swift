@@ -29,11 +29,34 @@ internal final class GHAPIServiceTests: XCTestCase {
   fileprivate func run(within timeout: TimeInterval = 10, execute body: (XCTestExpectation) -> () ) {
     let expect = self.expectation(description: "networking")
     body(expect)
-    self.waitForExpectations(timeout: 10, handler: nil)
+    self.waitForExpectations(timeout: timeout, handler: nil)
   }
 
   func testLogin() {
 
+  }
+
+  func testContentFromRepository() {
+    run { (expect) in
+      guard
+        let url
+        = URL(string: "https://api.github.com/repos/apple/swift")
+        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+
+      let repository = service.repository(referredBy: url).observeInBackground()
+      let content = repository
+        .concatMap{ [weak self] (repo) -> SignalProducer<[Content], ErrorEnvelope> in
+        guard let serv = self?.service else {
+          return SignalProducer<[Content], ErrorEnvelope>(error: ErrorEnvelope.unknownError)
+        }
+        return repo.requestContents(of: nil, with: serv)
+      }
+      content.startWithResult{ (result) in
+        defer { expect.fulfill() }
+        let repo = result.value
+        XCTAssertNotNil(repo, "commit request result should not be nil")
+      }
+    }
   }
 
   func testRepository() {
@@ -42,6 +65,16 @@ internal final class GHAPIServiceTests: XCTestCase {
         let url
         = URL(string: "https://api.github.com/repos/apple/swift")
         else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+
+      let repository = service.repository(referredBy: url).observeInBackground()
+      let content = repository.concatMap{ [weak self] (repo) -> SignalProducer<[Content], ErrorEnvelope> in
+
+        guard let serv = self?.service else {
+          return SignalProducer<[Content], ErrorEnvelope>(error: ErrorEnvelope.unknownError)
+        }
+        return repo.requestContents(of: nil, with: serv)
+      }
+
       service.repository(referredBy: url).observeInBackground()
         .startWithResult{ (result) in
           defer { expect.fulfill() }
@@ -218,3 +251,16 @@ internal final class GHAPIServiceTests: XCTestCase {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

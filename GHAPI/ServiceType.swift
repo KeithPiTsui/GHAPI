@@ -73,6 +73,14 @@ public protocol ServiceType {
   func commit(referredBy url: URL)
     -> SignalProducer<Commit, ErrorEnvelope>
 
+  /// Request a content specified by url
+  func contents(referredBy url: URL)
+    -> SignalProducer<[Content], ErrorEnvelope>
+
+  func contents(of repository: Repository, ref branch: String?)
+    -> SignalProducer<[Content], ErrorEnvelope>
+
+
   /// Request a readme specified by url
   func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope>
 

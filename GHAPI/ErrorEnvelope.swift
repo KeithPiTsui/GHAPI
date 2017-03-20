@@ -34,6 +34,16 @@ public struct ErrorEnvelope {
   /**
    A general error that JSON could not be parsed.
    */
+  internal static let unknownError = ErrorEnvelope(
+    httpCode: 400,
+    message: "",
+    errors: nil,
+    ghErrCode: .UnknownCode
+  )
+
+  /**
+   A general error that JSON could not be parsed.
+   */
   internal static let couldNotParseJSON = ErrorEnvelope(
     httpCode: 400,
     message: "",

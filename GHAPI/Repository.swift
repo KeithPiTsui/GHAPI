@@ -9,6 +9,9 @@
 import Argo
 import Curry
 import Runes
+import ReactiveSwift
+import Result
+import ReactiveExtensions
 
 public struct Repository {
   public struct RURLs {
@@ -82,6 +85,11 @@ public struct Repository {
     public let default_branch: String?
     public let score: Double?
   }
+  public struct Dates {
+    public let created_at: Date
+    public let updated_at: Date
+    public let pushed_at: Date
+  }
 
   public let id: UInt
   public let name: String
@@ -90,18 +98,10 @@ public struct Repository {
   public let `private`: Bool
   public let desc: String?
   public let fork: Bool
-
   public let urls: Repository.RURLs
   public let urls2: Repository.RURLs2
   public let urls3: Repository.RURLs3
-
-  public struct Dates {
-    public let created_at: Date
-    public let updated_at: Date
-    public let pushed_at: Date
-  }
   public let dates: Dates
-
   public let homepage: String?
   public let size: UInt
   public let stargazers_count: UInt
@@ -144,7 +144,6 @@ extension Repository: GHAPIModelType {
       <*> Repository.ROthers.decode(json)
     return temp5
   }
-
   public func encode() -> [String:Any] {
     var result: [String:Any] = [:]
     result = result.withAllValuesFrom(self.urls.encode())
@@ -173,14 +172,12 @@ extension Repository.Dates: GHAPIModelType {
       && lhs.updated_at == rhs.updated_at
       && lhs.pushed_at == rhs.pushed_at
   }
-
   public static func decode(_ json: JSON) -> Decoded<Repository.Dates> {
     return curry(Repository.Dates.init)
       <^> json <| "created_at"
       <*> json <| "updated_at"
       <*> json <| "pushed_at"
   }
-
   public func encode() -> [String:Any] {
     return [ "created_at": self.created_at.ISO8601DateRepresentation,
              "updated_at": self.updated_at.ISO8601DateRepresentation,
@@ -192,7 +189,6 @@ extension Repository.RURLs: GHAPIModelType {
   public static func == (lhs: Repository.RURLs, rhs: Repository.RURLs) -> Bool {
     return lhs.url == rhs.url
   }
-
   public static func decode(_ json: JSON) -> Decoded<Repository.RURLs> {
     let tmp = curry(Repository.RURLs.init)
       <^> json <| "url"
@@ -218,7 +214,6 @@ extension Repository.RURLs: GHAPIModelType {
       <*> json <| "git_commits_url"
     return tmp4
   }
-
   public func encode() -> [String:Any] {
     var result: [String:Any] = [:]
     result["url"] = self.url.absoluteString
@@ -247,7 +242,6 @@ extension Repository.RURLs2: GHAPIModelType {
   public static func == (lhs: Repository.RURLs2, rhs: Repository.RURLs2) -> Bool {
     return lhs.git_refs_url == rhs.git_refs_url
   }
-
   public static func decode(_ json: JSON) -> Decoded<Repository.RURLs2> {
     let tmp = curry(Repository.RURLs2.init)
       <^> json <| "git_refs_url"
@@ -267,7 +261,6 @@ extension Repository.RURLs2: GHAPIModelType {
       <*> json <|? "mirror_url"
     return tmp3
   }
-
   public func encode() -> [String:Any] {
     var result: [String:Any] = [:]
     result["git_refs_url"] = self.git_refs_url.absoluteString
@@ -291,7 +284,6 @@ extension Repository.RURLs3: GHAPIModelType {
   public static func == (lhs: Repository.RURLs3, rhs: Repository.RURLs3) -> Bool {
     return lhs.ssh_url == rhs.ssh_url
   }
-
   public static func decode(_ json: JSON) -> Decoded<Repository.RURLs3> {
     let tmp = curry(Repository.RURLs3.init)
       <^> json <| "notifications_url"
@@ -310,7 +302,6 @@ extension Repository.RURLs3: GHAPIModelType {
       <*> json <| "trees_url"
     return tmp3
   }
-
   public func encode() -> [String:Any] {
     var result: [String:Any] = [:]
     result["notifications_url"] = self.notifications_url.absoluteString
@@ -333,7 +324,6 @@ extension Repository.ROthers: GHAPIModelType {
   public static func == (lhs: Repository.ROthers, rhs: Repository.ROthers) -> Bool {
     return lhs.has_issues == rhs.has_issues
   }
-
   public static func decode(_ json: JSON) -> Decoded<Repository.ROthers> {
     let tmp = curry(Repository.ROthers.init)
       <^> json <| "has_issues"
@@ -351,7 +341,6 @@ extension Repository.ROthers: GHAPIModelType {
     <*> json <|? "score"
     return tmp3
   }
-
   public func encode() -> [String:Any] {
     var result: [String:Any] = [:]
     result["has_issues"] = self.has_issues
@@ -375,7 +364,6 @@ extension Repository.RPermission: GHAPIModelType {
       && lhs.push == rhs.push
       && lhs.pull == rhs.pull
   }
-
   public static func decode(_ json: JSON) -> Decoded<Repository.RPermission> {
     let tmp = curry(Repository.RPermission.init)
       <^> json <| "admin"
@@ -383,7 +371,6 @@ extension Repository.RPermission: GHAPIModelType {
       <*> json <| "pull"
     return tmp
   }
-
   public func encode() -> [String:Any] {
     var result: [String:Any] = [:]
     result["admin"] = self.admin
@@ -392,6 +379,63 @@ extension Repository.RPermission: GHAPIModelType {
     return result
   }
 }
+
+extension Repository {
+  public func requestContents(of branchName: String? = nil, with service: ServiceType)
+    -> SignalProducer<[Content], ErrorEnvelope> {
+      return service.contents(of: self, ref: branchName)
+  }
+  public func requestBranches(with service: ServiceType) -> SignalProducer<[BranchLite], ErrorEnvelope> {
+    return service.branchLites(referredBy: self.urls.branches_url)
+  }
+
+  public func requestBranch(of branchName: String, with service: ServiceType)
+    -> SignalProducer<Branch, ErrorEnvelope> {
+      return service.branch(referredBy: self.urls.branches_url.appendingPathComponent(branchName))
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

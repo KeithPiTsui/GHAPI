@@ -18,7 +18,7 @@ public struct Content {
   public let url: URL
   public let html_url: URL
   public let git_url: URL
-  public let download_url: URL
+  public let download_url: URL?
   public let type: String
   public let _links: Readme.RLinks
 }
@@ -37,7 +37,7 @@ extension Content: GHAPIModelType {
     let tmp2 = tmp
     <*> json <| "html_url"
     <*> json <| "git_url"
-    <*> json <| "download_url"
+    <*> json <|? "download_url"
     <*> json <| "type"
     let tmp3 = tmp2
       <*> json <| "_links"
@@ -53,7 +53,7 @@ extension Content: GHAPIModelType {
     result["url"] = self.url.absoluteString
     result["html_url"] = self.html_url.absoluteString
     result["git_url"] = self.git_url.absoluteString
-    result["download_url"] = self.download_url.absoluteString
+    result["download_url"] = self.download_url?.absoluteString
     result["type"] = self.type
     result["_links"] = self._links.encode()
     return result

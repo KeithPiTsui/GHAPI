@@ -25,6 +25,7 @@ internal enum Route {
 
   case repository(username: String, reponame: String)
 
+  case contents(repo: Repository, branch: String?)
 
   // swiftlint:disable:next large_tuple
   internal var requestProperties: (
@@ -33,6 +34,7 @@ internal enum Route {
     query: [String:Any],
     file: (name: UploadParam, url: URL)?,
     headers: [String: String]) {
+
     switch self {
 
     case let .user(userName):
@@ -71,6 +73,12 @@ internal enum Route {
       return (.GET, "/users/\(username)/received_events", [:], nil, [:])
     case let .repository(username, reponame):
       return (.GET, "/repos/\(username)/\(reponame)", [:], nil, [:])
+    case let .contents(repo, branch):
+      var queries: [String:Any] = [:]
+      if let branch = branch {
+        queries["ref"] = branch
+      }
+      return (.GET, repo.urls.contents_url.path, queries, nil, [:])
     }
   }
 }

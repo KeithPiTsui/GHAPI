@@ -90,6 +90,16 @@ public struct Service: ServiceType {
       return request(.resource(url: url))
   }
 
+  public func contents(referredBy url: URL)
+    -> SignalProducer<[Content], ErrorEnvelope>{
+      return request(.resource(url: url))
+  }
+
+  public func contents(of repository: Repository, ref branch: String? = nil)
+    -> SignalProducer<[Content], ErrorEnvelope>{
+      return request(.contents(repo: repository, branch: branch))
+  }
+
   public func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope> {
     return request(.resource(url: url))
   }
