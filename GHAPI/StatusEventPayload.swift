@@ -19,7 +19,7 @@ public struct StatusEventPayload: EventPayloadType{
   public let desc: String?
   public let state: String
   public let commit: Commit
-  public let branches: [Branch]
+  public let branches: [BranchLite]
   public let created_at: Date
   public let updated_at: Date
   public let repository: Repository

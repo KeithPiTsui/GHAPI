@@ -1,0 +1,118 @@
+{
+  "sha": "39639fd3b8c5c1eb2fcaf6d565d23975a55b528d",
+  "commit": {
+    "author": {
+      "name": "swift-ci",
+      "email": "swift-ci@users.noreply.github.com",
+      "date": "2017-03-16T00:58:50Z"
+    },
+    "committer": {
+      "name": "swift-ci",
+      "email": "swift-ci@users.noreply.github.com",
+      "date": "2017-03-16T00:58:50Z"
+    },
+    "message": "Merge remote-tracking branch 'origin/swift-3.1-branch' into swift-4.0-branch",
+    "tree": {
+      "sha": "f6046f165a2614195010df7b74f7ec7296de6a03",
+      "url": "https://api.github.com/repos/apple/swift/git/trees/f6046f165a2614195010df7b74f7ec7296de6a03"
+    },
+    "url": "https://api.github.com/repos/apple/swift/git/commits/39639fd3b8c5c1eb2fcaf6d565d23975a55b528d",
+    "comment_count": 0
+  },
+  "url": "https://api.github.com/repos/apple/swift/commits/39639fd3b8c5c1eb2fcaf6d565d23975a55b528d",
+  "html_url": "https://github.com/apple/swift/commit/39639fd3b8c5c1eb2fcaf6d565d23975a55b528d",
+  "comments_url": "https://api.github.com/repos/apple/swift/commits/39639fd3b8c5c1eb2fcaf6d565d23975a55b528d/comments",
+  "author": {
+    "login": "swift-ci",
+    "id": 15467072,
+    "avatar_url": "https://avatars3.githubusercontent.com/u/15467072?v=3",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/swift-ci",
+    "html_url": "https://github.com/swift-ci",
+    "followers_url": "https://api.github.com/users/swift-ci/followers",
+    "following_url": "https://api.github.com/users/swift-ci/following{/other_user}",
+    "gists_url": "https://api.github.com/users/swift-ci/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/swift-ci/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/swift-ci/subscriptions",
+    "organizations_url": "https://api.github.com/users/swift-ci/orgs",
+    "repos_url": "https://api.github.com/users/swift-ci/repos",
+    "events_url": "https://api.github.com/users/swift-ci/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/swift-ci/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "swift-ci",
+    "id": 15467072,
+    "avatar_url": "https://avatars3.githubusercontent.com/u/15467072?v=3",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/swift-ci",
+    "html_url": "https://github.com/swift-ci",
+    "followers_url": "https://api.github.com/users/swift-ci/followers",
+    "following_url": "https://api.github.com/users/swift-ci/following{/other_user}",
+    "gists_url": "https://api.github.com/users/swift-ci/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/swift-ci/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/swift-ci/subscriptions",
+    "organizations_url": "https://api.github.com/users/swift-ci/orgs",
+    "repos_url": "https://api.github.com/users/swift-ci/repos",
+    "events_url": "https://api.github.com/users/swift-ci/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/swift-ci/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "parents": [
+              {
+              "sha": "c23eebcd4292d0df96f47f15df46f95108a046f3",
+              "url": "https://api.github.com/repos/apple/swift/commits/c23eebcd4292d0df96f47f15df46f95108a046f3",
+              "html_url": "https://github.com/apple/swift/commit/c23eebcd4292d0df96f47f15df46f95108a046f3"
+              },
+              {
+              "sha": "cf5f91437754568efce7a52e7ffb1794d2a6cc60",
+              "url": "https://api.github.com/repos/apple/swift/commits/cf5f91437754568efce7a52e7ffb1794d2a6cc60",
+              "html_url": "https://github.com/apple/swift/commit/cf5f91437754568efce7a52e7ffb1794d2a6cc60"
+              }
+              ],
+  "stats": {
+    "total": 20,
+    "additions": 10,
+    "deletions": 10
+  },
+  "files": [
+            {
+            "sha": "6bed97bab32ec24ffbaec54ea431ef1d1b03761f",
+            "filename": "lib/Driver/Driver.cpp",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2,
+            "blob_url": "https://github.com/apple/swift/blob/39639fd3b8c5c1eb2fcaf6d565d23975a55b528d/lib/Driver/Driver.cpp",
+            "raw_url": "https://github.com/apple/swift/raw/39639fd3b8c5c1eb2fcaf6d565d23975a55b528d/lib/Driver/Driver.cpp",
+            "contents_url": "https://api.github.com/repos/apple/swift/contents/lib/Driver/Driver.cpp?ref=39639fd3b8c5c1eb2fcaf6d565d23975a55b528d",
+            "patch": "@@ -1279,7 +1279,7 @@ void Driver::buildActions(const ToolChain &TC,\n     JobAction *PCH = nullptr;\n     if (Args.hasFlag(options::OPT_enable_bridging_pch,\n                      options::OPT_disable_bridging_pch,\n-                     true)) {\n+                     false)) {\n       if (Arg *A = Args.getLastArg(options::OPT_import_objc_header)) {\n         StringRef Value = A->getValue();\n         auto Ty = TC.lookupTypeForExtension(llvm::sys::path::extension(Value));"
+            },
+            {
+            "sha": "cc92bc9776c44c03f84b9a21a884f141850ae58c",
+            "filename": "test/ClangImporter/pch-bridging-header.swift",
+            "status": "modified",
+            "additions": 5,
+            "deletions": 5,
+            "changes": 10,
+            "blob_url": "https://github.com/apple/swift/blob/39639fd3b8c5c1eb2fcaf6d565d23975a55b528d/test/ClangImporter/pch-bridging-header.swift",
+            "raw_url": "https://github.com/apple/swift/raw/39639fd3b8c5c1eb2fcaf6d565d23975a55b528d/test/ClangImporter/pch-bridging-header.swift",
+            "contents_url": "https://api.github.com/repos/apple/swift/contents/test/ClangImporter/pch-bridging-header.swift?ref=39639fd3b8c5c1eb2fcaf6d565d23975a55b528d",
+            "patch": "@@ -5,19 +5,19 @@\n // RUN: %target-swift-frontend -emit-pch -o %t/sdk-bridging-header.pch %S/Inputs/sdk-bridging-header.h\n // RUN: %target-swift-frontend -parse -verify %s -import-objc-header %t/sdk-bridging-header.pch\n \n-// Now test the driver-automated version is inert when disabled\n-// RUN: env TMPDIR=%t/tmp/ %target-swiftc_driver -parse -disable-bridging-pch -save-temps %s -import-objc-header %S/Inputs/sdk-bridging-header.h\n+// Now test the driver-automated version is inert when (default) disabled\n+// RUN: env TMPDIR=%t/tmp/ %target-swiftc_driver -parse -save-temps %s -import-objc-header %S/Inputs/sdk-bridging-header.h\n // RUN: not ls %t/tmp/*.pch >/dev/null 2>&1\n \n-// Test the driver-automated version works by default\n-// RUN: env TMPDIR=%t/tmp/ %target-swiftc_driver -parse -save-temps %s -import-objc-header %S/Inputs/sdk-bridging-header.h\n+// Test the driver-automated version works when enabled\n+// RUN: env TMPDIR=%t/tmp/ %target-swiftc_driver -parse -save-temps %s -enable-bridging-pch -import-objc-header %S/Inputs/sdk-bridging-header.h\n // RUN: ls %t/tmp/*.pch >/dev/null 2>&1\n // RUN: llvm-objdump -raw-clang-ast %t/tmp/*.pch | llvm-bcanalyzer -dump | %FileCheck %s\n // CHECK: ORIGINAL_FILE{{.*}}Inputs/sdk-bridging-header.h\n \n // Test the driver-automated version deletes its PCH file when done\n // RUN: rm %t/tmp/*.pch\n-// RUN: env TMPDIR=%t/tmp/ %target-swiftc_driver -parse %s -import-objc-header %S/Inputs/sdk-bridging-header.h\n+// RUN: env TMPDIR=%t/tmp/ %target-swiftc_driver -parse %s -enable-bridging-pch -import-objc-header %S/Inputs/sdk-bridging-header.h\n // RUN: not ls %t/tmp/*.pch >/dev/null 2>&1\n \n import Foundation"
+            },
+            {
+            "sha": "0be981e7c69b81df88d5f33ab206ad6fe95ae9cc",
+            "filename": "test/Driver/bridging-pch.swift",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 4,
+            "changes": 8,
+            "blob_url": "https://github.com/apple/swift/blob/39639fd3b8c5c1eb2fcaf6d565d23975a55b528d/test/Driver/bridging-pch.swift",
+            "raw_url": "https://github.com/apple/swift/raw/39639fd3b8c5c1eb2fcaf6d565d23975a55b528d/test/Driver/bridging-pch.swift",
+            "contents_url": "https://api.github.com/repos/apple/swift/contents/test/Driver/bridging-pch.swift?ref=39639fd3b8c5c1eb2fcaf6d565d23975a55b528d",
+            "patch": "@@ -1,18 +1,18 @@\n-// RUN: %swiftc_driver -typecheck -driver-print-actions -import-objc-header %S/Inputs/bridging-header.h %s 2>&1 | %FileCheck %s -check-prefix=YESPCHACT\n+// RUN: %swiftc_driver -typecheck -enable-bridging-pch -driver-print-actions -import-objc-header %S/Inputs/bridging-header.h %s 2>&1 | %FileCheck %s -check-prefix=YESPCHACT\n // YESPCHACT: 0: input, \"{{.*}}Inputs/bridging-header.h\", objc-header\n // YESPCHACT: 1: generate-pch, {0}, pch\n // YESPCHACT: 2: input, \"{{.*}}bridging-pch.swift\", swift\n // YESPCHACT: 3: compile, {2, 1}, none\n \n-// RUN: %swiftc_driver -typecheck -disable-bridging-pch -driver-print-actions -import-objc-header %S/Inputs/bridging-header.h %s 2>&1 | %FileCheck %s -check-prefix=NOPCHACT\n+// RUN: %swiftc_driver -typecheck -driver-print-actions -import-objc-header %S/Inputs/bridging-header.h %s 2>&1 | %FileCheck %s -check-prefix=NOPCHACT\n // NOPCHACT: 0: input, \"{{.*}}bridging-pch.swift\", swift\n // NOPCHACT: 1: compile, {0}, none\n \n-// RUN: %swiftc_driver -typecheck -driver-print-jobs -import-objc-header %S/Inputs/bridging-header.h %s 2>&1 | %FileCheck %s -check-prefix=YESPCHJOB\n+// RUN: %swiftc_driver -typecheck -enable-bridging-pch -driver-print-jobs -import-objc-header %S/Inputs/bridging-header.h %s 2>&1 | %FileCheck %s -check-prefix=YESPCHJOB\n // YESPCHJOB: {{.*}}swift -frontend {{.*}} -emit-pch -o {{.*}}bridging-header-{{.*}}.pch\n // YESPCHJOB: {{.*}}swift -frontend {{.*}} -import-objc-header {{.*}}bridging-header-{{.*}}.pch\n \n-// RUN: %swiftc_driver -typecheck -disable-bridging-pch  -driver-print-jobs -import-objc-header %S/Inputs/bridging-header.h %s 2>&1 | %FileCheck %s -check-prefix=NOPCHJOB\n+// RUN: %swiftc_driver -typecheck -driver-print-jobs -import-objc-header %S/Inputs/bridging-header.h %s 2>&1 | %FileCheck %s -check-prefix=NOPCHJOB\n // NOPCHJOB: {{.*}}swift -frontend {{.*}} -import-objc-header {{.*}}Inputs/bridging-header.h\n \n // RUN: echo \"{\\\"\\\": {\\\"swift-dependencies\\\": \\\"master.swiftdeps\\\"}}\" > %t.json"
+            }
+            ]
+}

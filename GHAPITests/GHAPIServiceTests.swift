@@ -14,7 +14,7 @@ import Runes
 import ReactiveSwift
 import Result
 
-class GHAPIServiceTests: XCTestCase {
+internal final class GHAPIServiceTests: XCTestCase {
 
   let service = Service()
 
@@ -34,6 +34,52 @@ class GHAPIServiceTests: XCTestCase {
 
   func testLogin() {
 
+  }
+
+  func testCommit() {
+    run { (expect) in
+      guard
+        let url
+        = URL(string: "https://api.github.com/repos/apple/swift/commits/39639fd3b8c5c1eb2fcaf6d565d23975a55b528d")
+        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+      service.commit(referredBy: url).observeInBackground()
+        .startWithResult{ (result) in
+          defer { expect.fulfill() }
+          let commit = result.value
+          XCTAssertNotNil(commit, "commit request result should not be nil")
+        }
+    }
+  }
+
+  func testCommits() {
+    run { (expect) in
+      guard
+        let url
+        = URL(string: "https://api.github.com/repos/apple/swift/commits")
+        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+      service.commits(referredBy: url).observeInBackground()
+        .startWithResult{ (result) in
+          defer { expect.fulfill() }
+          let commits = result.value
+          XCTAssertNotNil(commits, "commit request result should not be nil")
+      }
+    }
+  }
+
+  
+
+  func testBranchLites() {
+    run { (expect) in
+      guard let url =
+        URL(string: "https://api.github.com/repos/apple/swift/branches")
+        else {  XCTAssert(false, "branches test URL cannot be constructed"); return }
+      service.branchLites(referredBy: url).observeInBackground()
+        .startWithResult{ (result) in
+          defer {expect.fulfill()}
+          let branches = result.value
+          XCTAssertNotNil(branches, "commit request result should not be nil")
+        }
+    }
   }
 
   func testRequestError() {

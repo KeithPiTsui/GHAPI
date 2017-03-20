@@ -55,10 +55,16 @@ public protocol ServiceType {
   func repositoryUrl(of ownername: String, and reponame: String) -> URL
 
   /// Request a branch specified by url
-  func branches(referredBy url: URL) -> SignalProducer<[Branch], ErrorEnvelope>
+  func branchLites(referredBy url: URL)
+    -> SignalProducer<[BranchLite], ErrorEnvelope>
 
   /// Request a commit specified by url
-  func commits(referredBy url: URL) -> SignalProducer<[Commit], ErrorEnvelope>
+  func commits(referredBy url: URL)
+    -> SignalProducer<[Commit], ErrorEnvelope>
+
+  /// Request a commit specified by url
+  func commit(referredBy url: URL)
+    -> SignalProducer<Commit, ErrorEnvelope>
 
   /// Request a readme specified by url
   func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope>

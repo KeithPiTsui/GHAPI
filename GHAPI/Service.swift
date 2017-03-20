@@ -72,12 +72,18 @@ public struct Service: ServiceType {
       Route.repository(username: ownername, reponame: reponame).requestProperties.path)
   }
 
-  public func branches(referredBy url: URL) -> SignalProducer<[Branch], ErrorEnvelope> {
+  public func branchLites(referredBy url: URL) -> SignalProducer<[BranchLite], ErrorEnvelope> {
     return request(.resource(url: url))
   }
 
   public func commits(referredBy url: URL) -> SignalProducer<[Commit], ErrorEnvelope> {
     return request(.resource(url: url))
+  }
+
+  /// Request a commit specified by url
+  public func commit(referredBy url: URL)
+    -> SignalProducer<Commit, ErrorEnvelope> {
+      return request(.resource(url: url))
   }
 
   public func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope> {

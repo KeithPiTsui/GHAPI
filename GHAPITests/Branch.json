@@ -1,0 +1,82 @@
+{
+  "name": "swift-3.0-branch",
+  "commit": {
+    "sha": "03606ecbaa7f330811c481cd55ef6f2e10ab4371",
+    "commit": {
+      "author": {
+        "name": "Ted Kremenek",
+        "email": "kremenek@apple.com",
+        "date": "2016-12-12T17:25:57Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2016-12-12T17:25:57Z"
+      },
+      "message": "Merge pull request #4902 from linux-on-ibm-z/swift-3.0-branch-toolchain\n\nFix for ToolchainTestCase failure on non-FreeBSD systems",
+      "tree": {
+        "sha": "116451c5a66d7e81db2b5cbc21a3dcac5d3c6add",
+        "url": "https://api.github.com/repos/apple/swift/git/trees/116451c5a66d7e81db2b5cbc21a3dcac5d3c6add"
+      },
+      "url": "https://api.github.com/repos/apple/swift/git/commits/03606ecbaa7f330811c481cd55ef6f2e10ab4371",
+      "comment_count": 0
+    },
+    "url": "https://api.github.com/repos/apple/swift/commits/03606ecbaa7f330811c481cd55ef6f2e10ab4371",
+    "html_url": "https://github.com/apple/swift/commit/03606ecbaa7f330811c481cd55ef6f2e10ab4371",
+    "comments_url": "https://api.github.com/repos/apple/swift/commits/03606ecbaa7f330811c481cd55ef6f2e10ab4371/comments",
+    "author": {
+      "login": "tkremenek",
+      "id": 3087023,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3087023?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tkremenek",
+      "html_url": "https://github.com/tkremenek",
+      "followers_url": "https://api.github.com/users/tkremenek/followers",
+      "following_url": "https://api.github.com/users/tkremenek/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tkremenek/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tkremenek/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tkremenek/subscriptions",
+      "organizations_url": "https://api.github.com/users/tkremenek/orgs",
+      "repos_url": "https://api.github.com/users/tkremenek/repos",
+      "events_url": "https://api.github.com/users/tkremenek/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tkremenek/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "avatar_url": "https://avatars0.githubusercontent.com/u/19864447?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+                {
+                "sha": "b1ea34602a7741d456122fae97bcce257cd792d4",
+                "url": "https://api.github.com/repos/apple/swift/commits/b1ea34602a7741d456122fae97bcce257cd792d4",
+                "html_url": "https://github.com/apple/swift/commit/b1ea34602a7741d456122fae97bcce257cd792d4"
+                },
+                {
+                "sha": "0b0b1a8a6091ffb0fb44c0aef98b408220335a94",
+                "url": "https://api.github.com/repos/apple/swift/commits/0b0b1a8a6091ffb0fb44c0aef98b408220335a94",
+                "html_url": "https://github.com/apple/swift/commit/0b0b1a8a6091ffb0fb44c0aef98b408220335a94"
+                }
+                ]
+  },
+  "_links": {
+    "self": "https://api.github.com/repos/apple/swift/branches/swift-3.0-branch",
+    "html": "https://github.com/apple/swift/tree/swift-3.0-branch"
+  }
+}
