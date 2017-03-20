@@ -25,7 +25,7 @@ public struct Repository {
     public let compare_url: URL
     public let contents_url: URL
     public let contributors_url: URL
-    public let deployments_url: URL
+    public let deployments_url: URL?
     public let downloads_url: URL
     public let events_url: URL
     public let forks_url: URL
@@ -45,7 +45,7 @@ public struct Repository {
     public let languages_url: URL
     public let merges_url: URL
     public let milestones_url: URL
-    public let mirror_url: URL
+    public let mirror_url: URL?
   }
 
   public struct RURLs3 {
@@ -74,7 +74,7 @@ public struct Repository {
     public let has_wiki: Bool
     public let has_pages: Bool
     public let has_downloads: Bool
-    public let permissions: Repository.RPermission
+    public let permissions: Repository.RPermission?
     public let language: String?
     public let forks_count: UInt
     public let open_issues_count: UInt
@@ -210,7 +210,7 @@ extension Repository.RURLs: GHAPIModelType {
       <*> json <| "compare_url"
       <*> json <| "contents_url"
       <*> json <| "contributors_url"
-      <*> json <| "deployments_url"
+      <*> json <|? "deployments_url"
       <*> json <| "downloads_url"
       <*> json <| "events_url"
     let tmp4 = tmp3
@@ -234,7 +234,7 @@ extension Repository.RURLs: GHAPIModelType {
     result["compare_url"] = self.compare_url.absoluteString
     result["contents_url"] = self.contents_url.absoluteString
     result["contributors_url"] = self.contributors_url.absoluteString
-    result["deployments_url"] = self.deployments_url.absoluteString
+    result["deployments_url"] = self.deployments_url?.absoluteString
     result["downloads_url"] = self.downloads_url.absoluteString
     result["events_url"] = self.events_url.absoluteString
     result["forks_url"] = self.forks_url.absoluteString
@@ -264,7 +264,7 @@ extension Repository.RURLs2: GHAPIModelType {
       <*> json <| "languages_url"
       <*> json <| "merges_url"
       <*> json <| "milestones_url"
-      <*> json <| "mirror_url"
+      <*> json <|? "mirror_url"
     return tmp3
   }
 
@@ -282,7 +282,7 @@ extension Repository.RURLs2: GHAPIModelType {
     result["languages_url"] = self.languages_url.absoluteString
     result["merges_url"] = self.merges_url.absoluteString
     result["milestones_url"] = self.milestones_url.absoluteString
-    result["mirror_url"] = self.mirror_url.absoluteString
+    result["mirror_url"] = self.mirror_url?.absoluteString
     return result
   }
 }
@@ -341,7 +341,7 @@ extension Repository.ROthers: GHAPIModelType {
       <*> json <| "has_pages"
     let tmp2 = tmp
     <*> json <| "has_downloads"
-    <*> json <| "permissions"
+    <*> json <|? "permissions"
     <*> json <|? "language"
     <*> json <| "forks_count"
     <*> json <| "open_issues_count"
@@ -358,7 +358,7 @@ extension Repository.ROthers: GHAPIModelType {
     result["has_wiki"] = self.has_wiki
     result["has_pages"] = self.has_pages
     result["has_downloads"] = self.has_downloads
-    result["permissions"] = self.permissions.encode()
+    result["permissions"] = self.permissions?.encode()
     result["language"] = self.language
     result["forks_count"] = self.forks_count
     result["open_issues_count"] = self.open_issues_count

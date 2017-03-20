@@ -36,6 +36,21 @@ internal final class GHAPIServiceTests: XCTestCase {
 
   }
 
+  func testRepository() {
+    run { (expect) in
+      guard
+        let url
+        = URL(string: "https://api.github.com/repos/apple/swift")
+        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+      service.repository(referredBy: url).observeInBackground()
+        .startWithResult{ (result) in
+          defer { expect.fulfill() }
+          let repo = result.value
+          XCTAssertNotNil(repo, "commit request result should not be nil")
+      }
+    }
+  }
+
   func testCommit() {
     run { (expect) in
       guard
