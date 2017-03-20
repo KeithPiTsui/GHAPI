@@ -380,21 +380,6 @@ extension Repository.RPermission: GHAPIModelType {
   }
 }
 
-extension Repository {
-  public func requestContents(of branchName: String? = nil, with service: ServiceType)
-    -> SignalProducer<[Content], ErrorEnvelope> {
-      return service.contents(of: self, ref: branchName)
-  }
-  public func requestBranches(with service: ServiceType) -> SignalProducer<[BranchLite], ErrorEnvelope> {
-    return service.branchLites(referredBy: self.urls.branches_url)
-  }
-
-  public func requestBranch(of branchName: String, with service: ServiceType)
-    -> SignalProducer<Branch, ErrorEnvelope> {
-      return service.branch(referredBy: self.urls.branches_url.appendingPathComponent(branchName))
-  }
-}
-
 
 
 
