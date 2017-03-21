@@ -13,8 +13,8 @@ import Runes
 public struct ReleaseEventPayload: EventPayloadType{
   public let action: String
   public let release: Release
-  public let repository: Repository
-  public let sender: UserLite
+  public let repository: Repository?
+  public let sender: UserLite?
 }
 extension ReleaseEventPayload: GHAPIModelType {
   public static func == (lhs: ReleaseEventPayload, rhs: ReleaseEventPayload) -> Bool {
@@ -27,15 +27,15 @@ extension ReleaseEventPayload: GHAPIModelType {
     return curry(ReleaseEventPayload.init)
       <^> json <| "action"
       <*> json <| "release"
-      <*> json <| "repository"
-      <*> json <| "sender"
+      <*> json <|? "repository"
+      <*> json <|? "sender"
   }
   public func encode() -> [String : Any] {
     var result: [String:Any] = [:]
     result["action"] = self.action
     result["release"] = self.release.encode()
-    result["repository"] = self.repository.encode()
-    result["sender"] = self.sender.encode()
+    result["repository"] = self.repository?.encode()
+    result["sender"] = self.sender?.encode()
     return result
   }
 }

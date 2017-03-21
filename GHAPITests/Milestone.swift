@@ -1,8 +1,8 @@
 //
-//  Content.swift
+//  Milestone.swift
 //  GHAPI
 //
-//  Created by Pi on 20/03/2017.
+//  Created by Pi on 21/03/2017.
 //  Copyright © 2017 Keith. All rights reserved.
 //
 
@@ -12,9 +12,9 @@ import Curry
 import Runes
 @testable import GHAPI
 
-internal final class ContentTests: XCTestCase {
+internal final class MilestoneTests: XCTestCase {
 
-  fileprivate var json: JSON? = GHAPITestsHelper.jsonObject(named: "Content")
+  fileprivate var json: JSON? = GHAPITestsHelper.jsonObject(named: "Milestone")
 
   override func setUp() {
     super.setUp()
@@ -28,16 +28,12 @@ internal final class ContentTests: XCTestCase {
     guard
       let json = self.json
       else { XCTAssert(false, "Json must not be nil"); return }
-    let decodePayload = Content.decode(json)
+    let decodePayload = Milestone.decode(json)
     guard
       let payload = decodePayload.value
       else { XCTAssert(false, "payload cannot be constructed"); return }
-    XCTAssertEqual(payload.sha, "2993037ec17800276816444d4b0b0255417ab870")
+    XCTAssertEqual(payload.id, 1315501)
     let jsonStr = payload.toJSONString()
     XCTAssertNotNil(jsonStr)
-    let contentStr = payload.plainContent
-    print("\(contentStr)")
   }
 }
-
-

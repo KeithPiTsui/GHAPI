@@ -122,6 +122,17 @@ public struct Service: ServiceType {
         }
       }
   }
+
+  public func data(of url: URL) -> SignalProducer<Data, ErrorEnvelope> {
+    return SignalProducer { observer, disposable in
+      if let data = try? Data(contentsOf: url) {
+        observer.send(value: data)
+        observer.sendCompleted()
+      } else {
+        observer.send(error: .networkError)
+      }
+    }
+  }
 }
 
 extension Service {

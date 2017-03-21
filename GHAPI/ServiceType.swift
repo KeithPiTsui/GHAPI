@@ -80,7 +80,6 @@ public protocol ServiceType {
   func contents(of repository: Repository, ref branch: String?)
     -> SignalProducer<[Content], ErrorEnvelope>
 
-
   /// Request a readme specified by url
   func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope>
 
@@ -95,6 +94,9 @@ public protocol ServiceType {
     of period: GithubCraper.TrendingPeriod,
     with language: String?)
     -> SignalProducer<[TrendingRepository], ErrorEnvelope>
+
+  /// Request data specified by a url
+  func data(of url: URL) -> SignalProducer<Data, ErrorEnvelope>
 }
 
 extension ServiceType {

@@ -1,16 +1,18 @@
 {
-  "name": ".clang-format",
-  "path": ".clang-format",
-  "sha": "9b3aa8b7213b2d3b534a08907a44773b4f9c1f1a",
-  "size": 19,
-  "url": "https://api.github.com/repos/apple/swift/contents/.clang-format?ref=master",
-  "html_url": "https://github.com/apple/swift/blob/master/.clang-format",
-  "git_url": "https://api.github.com/repos/apple/swift/git/blobs/9b3aa8b7213b2d3b534a08907a44773b4f9c1f1a",
-  "download_url": "https://raw.githubusercontent.com/apple/swift/master/.clang-format",
+  "name": ".dir-locals.el",
+  "path": ".dir-locals.el",
+  "sha": "2993037ec17800276816444d4b0b0255417ab870",
+  "size": 1918,
+  "url": "https://api.github.com/repos/apple/swift/contents/.dir-locals.el?ref=swift-3.0-branch",
+  "html_url": "https://github.com/apple/swift/blob/swift-3.0-branch/.dir-locals.el",
+  "git_url": "https://api.github.com/repos/apple/swift/git/blobs/2993037ec17800276816444d4b0b0255417ab870",
+  "download_url": "https://raw.githubusercontent.com/apple/swift/swift-3.0-branch/.dir-locals.el",
   "type": "file",
+  "content": "Oz09PS0tLSAuZGlyLWxvY2Fscy5lbCAtLS0tLS0tLS0tLS0tLS0tLS0tLS0t\nLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS09PT07CjsKOyBUaGlzIHNv\ndXJjZSBmaWxlIGlzIHBhcnQgb2YgdGhlIFN3aWZ0Lm9yZyBvcGVuIHNvdXJj\nZSBwcm9qZWN0CjsKOyBDb3B5cmlnaHQgKGMpIDIwMTQgLSAyMDE2IEFwcGxl\nIEluYy4gYW5kIHRoZSBTd2lmdCBwcm9qZWN0IGF1dGhvcnMKOyBMaWNlbnNl\nZCB1bmRlciBBcGFjaGUgTGljZW5zZSB2Mi4wIHdpdGggUnVudGltZSBMaWJy\nYXJ5IEV4Y2VwdGlvbgo7CjsgU2VlIGh0dHA6Ly9zd2lmdC5vcmcvTElDRU5T\nRS50eHQgZm9yIGxpY2Vuc2UgaW5mb3JtYXRpb24KOyBTZWUgaHR0cDovL3N3\naWZ0Lm9yZy9DT05UUklCVVRPUlMudHh0IGZvciB0aGUgbGlzdCBvZiBTd2lm\ndCBwcm9qZWN0IGF1dGhvcnMKOwo7PT09LS0tLS0tLS0tLS0tLS0tLS0tLS0t\nLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t\nLS0tLT09PTsKOzs7IERpcmVjdG9yeSBMb2NhbCBWYXJpYWJsZXMKOzs7IFNl\nZSBJbmZvIG5vZGUgYChlbWFjcykgRGlyZWN0b3J5IFZhcmlhYmxlcycgZm9y\nIG1vcmUgaW5mb3JtYXRpb24uCgooKG5pbAogICh0YWItd2lkdGggLiAyKQog\nIChmaWxsLWNvbHVtbiAuIDgwKQogIChldmFsIC4KICAgICAgICA7OyBMb2Fk\nIHRoZSBTd2lmdCBwcm9qZWN0J3Mgc2V0dGluZ3MuICBUbyBzdXBwcmVzcyB0\naGlzIGFjdGlvbgogICAgICAgIDs7IHlvdSBjYW4gcHV0ICIocHJvdmlkZSAn\nc3dpZnQtcHJvamVjdC1zZXR0aW5ncykiIGluIHlvdXIKICAgICAgICA7OyAu\nZW1hY3MKICAgICAgICAodW5sZXNzIChmZWF0dXJlcCAnc3dpZnQtcHJvamVj\ndC1zZXR0aW5ncykKICAgICAgICAgIDs7IE1ha2Ugc3VyZSB0aGUgcHJvamVj\ndCdzIG93biB1dGlscyBkaXJlY3RvcnkgaXMgaW4gdGhlCiAgICAgICAgICA7\nOyBsb2FkIHBhdGgsIGJ1dCBkb24ndCBvdmVycmlkZSBhbnkgb25lIHRoZSB1\nc2VyIG1pZ2h0IGhhdmUKICAgICAgICAgIDs7IHNldCB1cC4KICAgICAgICAg\nIChhZGQtdG8tbGlzdAogICAgICAgICAgICdsb2FkLXBhdGgKICAgICAgICAg\nICAoY29uY2F0CiAgICAgICAgICAgIChsZXQgKChkbGZmIChkaXItbG9jYWxz\nLWZpbmQtZmlsZSBkZWZhdWx0LWRpcmVjdG9yeSkpKQogICAgICAgICAgICAg\nIChpZiAobGlzdHAgZGxmZikgKGNhciBkbGZmKSAoZmlsZS1uYW1lLWRpcmVj\ndG9yeSBkbGZmKSkpCiAgICAgICAgICAgICJ1dGlscyIpCiAgICAgICAgICAg\nOmFwcGVuZCkKICAgICAgICAgICAgOzsgTG9hZCBvdXIgcHJvamVjdCdzIHNl\ndHRpbmdzIC0tIGluZGlyZWN0bHkgYnJpbmdzIGluIHN3aWZ0LW1vZGUKICAg\nICAgICAgIChyZXF1aXJlICdzd2lmdC1wcm9qZWN0LXNldHRpbmdzKSkpCiAg\nKGMtZmlsZS1zdHlsZSAuICJzd2lmdCIpCiAgKQogKGMrKy1tb2RlCiAgKHdo\naXRlc3BhY2Utc3R5bGUgLiAoZmFjZSBsaW5lcyBpbmRlbnRhdGlvbjpzcGFj\nZSkpCiAgKGV2YWwgLiAod2hpdGVzcGFjZS1tb2RlKSkpCiAob2JqYy1tb2Rl\nCiAgKHdoaXRlc3BhY2Utc3R5bGUgLiAoZmFjZSBsaW5lcyBpbmRlbnRhdGlv\nbjpzcGFjZSkpCiAgKGV2YWwgLiAod2hpdGVzcGFjZS1tb2RlKSkpCiAoYy1t\nb2RlCiAgKHdoaXRlc3BhY2Utc3R5bGUgLiAoZmFjZSBsaW5lcyBpbmRlbnRh\ndGlvbjpzcGFjZSkpCiAgKGV2YWwgLiAod2hpdGVzcGFjZS1tb2RlKSkpCiAo\nc3dpZnQtbW9kZQogICh3aGl0ZXNwYWNlLXN0eWxlIC4gKGZhY2UgbGluZXMg\naW5kZW50YXRpb246c3BhY2UpKQogIChldmFsIC4gKHdoaXRlc3BhY2UtbW9k\nZSkpCiAgKHN3aWZ0LWJhc2ljLW9mZnNldCAuIDIpCiAgKHRhYi1hbHdheXMt\naW5kZW50IC4gdCkpKQoKOzsgTG9jYWwgVmFyaWFibGVzOgo7OyBldmFsOiAo\nd2hpdGVzcGFjZS1tb2RlIC0xKQo7OyBFbmQ6Cg==\n",
+  "encoding": "base64",
   "_links": {
-    "self": "https://api.github.com/repos/apple/swift/contents/.clang-format?ref=master",
-    "git": "https://api.github.com/repos/apple/swift/git/blobs/9b3aa8b7213b2d3b534a08907a44773b4f9c1f1a",
-    "html": "https://github.com/apple/swift/blob/master/.clang-format"
+    "self": "https://api.github.com/repos/apple/swift/contents/.dir-locals.el?ref=swift-3.0-branch",
+    "git": "https://api.github.com/repos/apple/swift/git/blobs/2993037ec17800276816444d4b0b0255417ab870",
+    "html": "https://github.com/apple/swift/blob/swift-3.0-branch/.dir-locals.el"
   }
 }

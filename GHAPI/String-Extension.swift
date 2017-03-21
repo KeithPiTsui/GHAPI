@@ -56,6 +56,18 @@ extension NSRegularExpression {
     }
 }
 
+extension String {
+  /// return a secret string after encoded into base64
+  internal func base64Encoded() -> String? {
+    return data(using: String.Encoding.utf8)?.base64EncodedString()
+  }
+
+  /// return a plain string after decoded from base64
+  internal func base64Decoded() -> String? {
+    guard let data = Data(base64Encoded: self, options: Data.Base64DecodingOptions.ignoreUnknownCharacters) else { return nil }
+    return String(data: data, encoding: .utf8)
+  }
+}
 
 
 

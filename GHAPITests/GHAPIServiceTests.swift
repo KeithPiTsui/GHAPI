@@ -72,7 +72,7 @@ internal final class GHAPIServiceTests: XCTestCase {
         guard let serv = self?.service else {
           return SignalProducer<[Content], ErrorEnvelope>(error: ErrorEnvelope.unknownError)
         }
-        return repo.requestContents(of: nil, with: serv)
+        return serv.contents(of: repo, ref: nil)
       }
 
       service.repository(referredBy: url).observeInBackground()

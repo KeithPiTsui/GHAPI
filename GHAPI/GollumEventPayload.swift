@@ -21,8 +21,8 @@ public struct GollumEventPayload: EventPayloadType{
     public let html_url: URL
   }
   public let pages: [GollumEventPayload.GPage]
-  public let repository: Repository
-  public let sender: UserLite
+  public let repository: Repository?
+  public let sender: UserLite?
 }
 
 extension GollumEventPayload: GHAPIModelType {
@@ -34,14 +34,14 @@ extension GollumEventPayload: GHAPIModelType {
   public static func decode(_ json: JSON) -> Decoded<EventPayloadType> {
     return curry(GollumEventPayload.init)
       <^> json <|| "pages"
-      <*> json <| "repository"
-      <*> json <| "sender"
+      <*> json <|? "repository"
+      <*> json <|? "sender"
   }
   public func encode() -> [String : Any] {
     var result: [String:Any] = [:]
     result["pages"] = self.pages.map{$0.encode()}
-    result["repository"] = self.repository.encode()
-    result["sender"] = self.sender.encode()
+    result["repository"] = self.repository?.encode()
+    result["sender"] = self.sender?.encode()
     return result
   }
 }

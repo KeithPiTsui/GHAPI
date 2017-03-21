@@ -20,30 +20,41 @@ public struct Content {
   public let git_url: URL
   public let download_url: URL?
   public let type: String
+  public let content: String?
+  public let encoding: String?
   public let _links: Readme.RLinks
+
+  public var plainContent: String?  {
+    return self.encoding == "base64"
+      ? self.content?.base64Decoded()
+      : nil
+  }
 }
 
 extension Content: GHAPIModelType {
   public static func == (lhs: Content, rhs: Content) -> Bool {
     return lhs.sha == rhs.sha
   }
+
   public static func decode(_ json: JSON) -> Decoded<Content> {
     let tmp = curry(Content.init)
       <^> json <| "name"
       <*> json <| "path"
-    <*> json <| "sha"
-    <*> json <| "size"
-    <*> json <| "url"
+      <*> json <| "sha"
+      <*> json <| "size"
+      <*> json <| "url"
     let tmp2 = tmp
-    <*> json <| "html_url"
-    <*> json <| "git_url"
-    <*> json <|? "download_url"
-    <*> json <| "type"
+      <*> json <| "html_url"
+      <*> json <| "git_url"
+      <*> json <|? "download_url"
+      <*> json <| "type"
     let tmp3 = tmp2
+      <*> json <|? "content"
+      <*> json <|? "encoding"
       <*> json <| "_links"
     return tmp3
-
   }
+
   public func encode() -> [String : Any] {
     var result: [String:Any] = [:]
     result["name"] = self.name
@@ -55,6 +66,8 @@ extension Content: GHAPIModelType {
     result["git_url"] = self.git_url.absoluteString
     result["download_url"] = self.download_url?.absoluteString
     result["type"] = self.type
+    result["content"] = self.content
+    result["encoding"] = self.encoding
     result["_links"] = self._links.encode()
     return result
   }

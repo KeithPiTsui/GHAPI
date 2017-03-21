@@ -55,8 +55,8 @@ public struct Commit {
   public let url: URL
   public let html_url: URL
   public let comments_url: URL
-  public let author: User
-  public let committer: User
+  public let author: User?
+  public let committer: User?
   public let parents: [Parent]
   public let stats: Commit.CStats?
   public let files: [Commit.CFile]?
@@ -76,8 +76,8 @@ extension Commit: GHAPIModelType {
       <*> json <| "html_url"
     let tmp1 = tmp
       <*> json <| "comments_url"
-      <*> json <| "author"
-      <*> json <| "committer"
+      <*> json <|? "author"
+      <*> json <|? "committer"
 
     return tmp1
       <*> json <|| "parents"
@@ -92,8 +92,8 @@ extension Commit: GHAPIModelType {
     result["url"] = self.url.absoluteString
     result["html_url"] = self.html_url.absoluteString
     result["comments_url"] = self.comments_url.absoluteString
-    result["author"] = self.author.encode()
-    result["committer"] = self.committer.encode()
+    result["author"] = self.author?.encode()
+    result["committer"] = self.committer?.encode()
     result["parents"] = self.parents.map{$0.encode()}
     result["stats"] = self.stats?.encode()
     result["files"] = self.files?.map{$0.encode()}

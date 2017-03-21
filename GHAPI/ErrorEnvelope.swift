@@ -24,12 +24,25 @@ public struct ErrorEnvelope {
     // Catch all code for when server sends code we don't know about yet
     case UnknownCode = "__internal_unknown_code"
 
+    // Network Error
+    case NetworkError = "NetworkError"
+
     // Codes defined by the client
     case JSONParsingFailed = "json_parsing_failed"
     case ErrorEnvelopeJSONParsingFailed = "error_json_parsing_failed"
     case DecodingJSONFailed = "decoding_json_failed"
     case InvalidPaginationUrl = "invalid_pagination_url"
   }
+
+  /**
+   A general error that JSON could not be parsed.
+   */
+  internal static let networkError = ErrorEnvelope(
+    httpCode: 400,
+    message: "",
+    errors: nil,
+    ghErrCode: .NetworkError
+  )
 
   /**
    A general error that JSON could not be parsed.

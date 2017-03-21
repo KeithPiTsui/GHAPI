@@ -36,7 +36,7 @@ public struct Issue {
   public let locked: Bool
   public let assignee: UserLite?
   public let assignees: [UserLite]?
-  public let milestone: String?
+  public let milestone: Milestone?
   public let comments: UInt
   public let created_at: Date
   public let updated_at: Date
@@ -80,12 +80,12 @@ extension Issue: GHAPIModelType {
     result["number"] = self.number
     result["title"] = self.title
     result["user"] = self.user.encode()
-    result["labels"] = self.labels
+    result["labels"] = self.labels.map{$0.encode()}
     result["state"] = self.state
     result["locked"] = self.locked
     result["assignee"] = self.assignee?.encode()
     result["assignees"] = self.assignees?.map{$0.encode()}
-    result["milestone"] = self.milestone
+    result["milestone"] = self.milestone?.encode()
     result["comments"] = self.comments
     result["created_at"] = self.created_at.ISO8601DateRepresentation
     result["updated_at"] = self.updated_at.ISO8601DateRepresentation
@@ -111,7 +111,7 @@ extension Issue.IURLs: GHAPIModelType {
 
   public func encode() -> [String : Any] {
     var result: [String:Any] = [:]
-    result["url"] = self.url
+    result["url"] = self.url.absoluteString
     result["repository_url"] = self.repository_url.absoluteString
     result["labels_url"] = self.labels_url.absoluteString
     result["comments_url"] = self.comments_url.absoluteString
