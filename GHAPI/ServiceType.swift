@@ -16,6 +16,10 @@ public protocol ServiceType {
 
   init( serverConfig: ServerConfigType)
 
+  /// Returns roots of this api
+  func apiRoots()
+    -> SignalProducer<GHAPIRoots, ErrorEnvelope>
+
   /// Returns a new service with the user and password replaced
   func login(username: String, password: String)
     -> SignalProducer<(User,Service), ErrorEnvelope>
@@ -61,8 +65,8 @@ public protocol ServiceType {
     -> URL
 
   /// Compose a url for contents of a repository with specified branch
-  func contentURL(of ownername: String, and reponame: String, and branchname: String)
-    -> URL
+  func contentURL(of repository: Repository, ref branch: String?)
+  -> URL
 
   /// Request a content specified by url
   func contents(referredBy url: URL)
@@ -97,11 +101,11 @@ public protocol ServiceType {
     -> SignalProducer<Readme, ErrorEnvelope>
 
   /// Request events of user
-  func events(of username: String)
+  func events(of user: User)
     -> SignalProducer<[GHEvent], ErrorEnvelope>
 
   /// Request received events of user
-  func receivedEvents(of username: String)
+  func receivedEvents(of user: User)
     -> SignalProducer<[GHEvent], ErrorEnvelope>
 
   /// Request trending repositories specified with period and programming language
@@ -221,7 +225,7 @@ extension ServiceType {
 
   fileprivate func queryComponents(_ key: String, _ value: Any) -> [(String, String)] {
     var components: [(String, String)] = []
-    
+
     if let dictionary = value as? [String:Any] {
       for (nestedKey, value) in dictionary {
         components += queryComponents("\(key)[\(nestedKey)]", value)

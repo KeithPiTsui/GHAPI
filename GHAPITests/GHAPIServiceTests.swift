@@ -32,6 +32,16 @@ internal final class GHAPIServiceTests: XCTestCase {
     self.waitForExpectations(timeout: timeout, handler: nil)
   }
 
+  func testApiRoots() {
+    run { (expect) in
+      service.apiRoots().observeInBackground().startWithResult{ (result) in
+        defer { expect.fulfill() }
+        let roots = result.value
+        XCTAssertNotNil(roots, "commit request result should not be nil")
+      }
+    }
+  }
+
   func testLogin() {
 
   }
@@ -72,18 +82,6 @@ internal final class GHAPIServiceTests: XCTestCase {
         XCTAssertNotNil(repo, "commit request result should not be nil")
       }
     }
-  }
-
-  func testContentURLComposition() {
-    let owner = "apple"
-    let repo = "swift"
-    let branch = "master"
-    guard
-      let url
-      = URL(string: "https://api.github.com/repos/apple/swift/contents?ref=master")
-      else { XCTAssert(false, "ContentURLComposition test URL cannot be constructed"); return }
-    let composedURL = service.contentURL(of: owner, and: repo, and: branch)
-    XCTAssertEqual(url, composedURL)
   }
 
 
@@ -186,9 +184,11 @@ internal final class GHAPIServiceTests: XCTestCase {
 
   func testServiceReceivedEvents() {
     run { (expect) in
-      service
-        .receivedEvents(of: "keithpitsui")
-        .observeInBackground()
+      service.user(with: "keithpitsui")
+        .concatMap{ [weak self] (user) -> SignalProducer<[GHEvent], ErrorEnvelope> in
+          return self?.service.receivedEvents(of: user)
+            ?? SignalProducer.init(error: ErrorEnvelope.couldNotParseJSON)
+        }.observeInBackground()
         .startWithResult {[weak self] (result) in
           defer {expect.fulfill()}
           XCTAssert(result.value != nil, "Cannot get received event")
@@ -198,9 +198,11 @@ internal final class GHAPIServiceTests: XCTestCase {
 
   func testServiceEvents() {
     run { (expect) in
-      service
-        .events(of: "keithpitsui")
-        .observeInBackground()
+      service.user(with: "keithpitsui")
+        .concatMap{ [weak self] (user) -> SignalProducer<[GHEvent], ErrorEnvelope> in
+          return self?.service.events(of: user)
+            ?? SignalProducer.init(error: ErrorEnvelope.couldNotParseJSON)
+        }.observeInBackground()
         .startWithResult {[weak self] (result) in
           defer {expect.fulfill()}
           XCTAssert(result.value != nil, "Cannot get received event")

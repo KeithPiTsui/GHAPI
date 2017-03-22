@@ -127,6 +127,9 @@
 		0EB10E1A1E7BD544001460D8 /* UserLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB10E191E7BD544001460D8 /* UserLite.swift */; };
 		0EB10E1F1E7BDB44001460D8 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB10E1E1E7BDB44001460D8 /* SearchResult.swift */; };
 		0EB10E211E7BE701001460D8 /* GHAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB10E201E7BE701001460D8 /* GHAPIServiceTests.swift */; };
+		0EB658191E82499800D48AAE /* GHAPIRoots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB658181E82499800D48AAE /* GHAPIRoots.swift */; };
+		0EB6581B1E8249B600D48AAE /* GHAPIRoots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6581A1E8249B600D48AAE /* GHAPIRoots.swift */; };
+		0EB6581D1E8249C500D48AAE /* GHAPIRoots.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EB6581C1E8249C500D48AAE /* GHAPIRoots.json */; };
 		0ECE8A651E77CB15001FE48B /* GithubCraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A641E77CB15001FE48B /* GithubCraper.swift */; };
 		0ECE8A671E77CB22001FE48B /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECE8A661E77CB22001FE48B /* Ji.framework */; };
 		0ECE8A691E77CBE4001FE48B /* GithubCraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A681E77CBE4001FE48B /* GithubCraper.swift */; };
@@ -279,6 +282,9 @@
 		0EB10E191E7BD544001460D8 /* UserLite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLite.swift; sourceTree = "<group>"; };
 		0EB10E1E1E7BDB44001460D8 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		0EB10E201E7BE701001460D8 /* GHAPIServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHAPIServiceTests.swift; sourceTree = "<group>"; };
+		0EB658181E82499800D48AAE /* GHAPIRoots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHAPIRoots.swift; sourceTree = "<group>"; };
+		0EB6581A1E8249B600D48AAE /* GHAPIRoots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHAPIRoots.swift; sourceTree = "<group>"; };
+		0EB6581C1E8249C500D48AAE /* GHAPIRoots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GHAPIRoots.json; sourceTree = "<group>"; };
 		0ECE8A641E77CB15001FE48B /* GithubCraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubCraper.swift; sourceTree = "<group>"; };
 		0ECE8A661E77CB22001FE48B /* Ji.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ji.framework; path = "../Ji/build/Debug-iphoneos/Ji.framework"; sourceTree = "<group>"; };
 		0ECE8A681E77CBE4001FE48B /* GithubCraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubCraper.swift; sourceTree = "<group>"; };
@@ -450,6 +456,7 @@
 				0E00C9181E7C12A200958A39 /* Team.swift */,
 				0E57061C1E5D9FC50047BF4C /* User.swift */,
 				0EB10E191E7BD544001460D8 /* UserLite.swift */,
+				0EB658181E82499800D48AAE /* GHAPIRoots.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -517,6 +524,8 @@
 				0EE07C1B1E7E556A0021FC6C /* EventPayloadTests */,
 				0E71A5051E7FF11C00D8EED6 /* Repository.json */,
 				0E71A5071E7FF13300D8EED6 /* Repository.swift */,
+				0EB6581A1E8249B600D48AAE /* GHAPIRoots.swift */,
+				0EB6581C1E8249C500D48AAE /* GHAPIRoots.json */,
 			);
 			name = ModelTests;
 			sourceTree = "<group>";
@@ -747,6 +756,7 @@
 				0E71A5061E7FF11C00D8EED6 /* Repository.json in Resources */,
 				0E4BCFC31E810FBC00BF6135 /* IssueCommentEventPayload.json in Resources */,
 				0E65E10F1E7E81A3004EDBCA /* ProjectColumnEventPayload.json in Resources */,
+				0EB6581D1E8249C500D48AAE /* GHAPIRoots.json in Resources */,
 				0E65E1151E7E83F1004EDBCA /* ProjectEventPayload.json in Resources */,
 				0E65E0CB1E7E749B004EDBCA /* PageBuildEventPayload.json in Resources */,
 				0E6AAC191E81125B00E94429 /* Issue.json in Resources */,
@@ -779,6 +789,7 @@
 				0E5706181E5D9DDA0047BF4C /* ServerConfig.swift in Sources */,
 				0E7AF45F1E729F5F0001C425 /* EnumIterating.swift in Sources */,
 				0E7B7B9D1E6E3DBB00D50C95 /* RepositoryQualifier.swift in Sources */,
+				0EB658191E82499800D48AAE /* GHAPIRoots.swift in Sources */,
 				0E00C91D1E7C14A300958A39 /* Milestone.swift in Sources */,
 				0EE17BBF1E6D657300451632 /* SearchParameters.swift in Sources */,
 				0E7B7BA11E6E3DF800D50C95 /* IssueQualifier.swift in Sources */,
@@ -855,6 +866,7 @@
 				0E4BCFC51E81100900BF6135 /* Milestone.swift in Sources */,
 				0E65E1411E7EA575004EDBCA /* StatusEventPayload.swift in Sources */,
 				0EF4E6C21E7ED604008BDB49 /* Event.swift in Sources */,
+				0EB6581B1E8249B600D48AAE /* GHAPIRoots.swift in Sources */,
 				0E4BCFBF1E810F4700BF6135 /* IssueCommentEventPayload.swift in Sources */,
 				0E65E13B1E7EA467004EDBCA /* RepositoryEventPayload.swift in Sources */,
 				0E65E0BB1E7E67BC004EDBCA /* GHAPITestsHelper.swift in Sources */,

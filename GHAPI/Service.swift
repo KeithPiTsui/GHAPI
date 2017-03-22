@@ -19,6 +19,11 @@ public struct Service: ServiceType {
 // MARK: Service extension of Service Type
 extension Service {
 
+  public func apiRoots()
+    -> SignalProducer<GHAPIRoots, ErrorEnvelope> {
+      return request(.apiRoots)
+  }
+
   public func login(username: String, password: String)
     -> SignalProducer<(User,Service), ErrorEnvelope> {
       let serv = Service(serverConfig: ServerConfig.githubServerConfig(username: username, password: password))
@@ -32,7 +37,7 @@ extension Service {
 
   public func user(with name: String)
     -> SignalProducer<User, ErrorEnvelope> {
-    return request(.user(userName: name))
+      return request(.user(userName: name))
   }
 
   public func user(referredBy url: URL)
@@ -92,40 +97,39 @@ extension Service {
   public func contents(of repository: Repository,
                        ref branch: String? = nil)
     -> SignalProducer<[Content], ErrorEnvelope>{
-      return request(.contents(repoURL: repository.urls.url, branch: branch))
+      return request(.contents(repo: repository, branch: branch))
   }
 
   public func contents(ofRepository url: URL,
-                       ref branch: String?)
+                       ref branch: String? = nil)
     -> SignalProducer<[Content], ErrorEnvelope>{
-      return request(.contents(repoURL: url, branch: branch))
+      return self.repository(referredBy: url).concatMap { self.contents(of: $0) }
   }
 
-  public func contentURL(of ownername: String,
-                         and reponame: String,
-                         and branchname: String = "master") -> URL {
-    let repoURL = self.repositoryUrl(of: ownername, and: reponame)
-    guard let url = pureURL(of: .contents(repoURL: repoURL, branch: branchname)) else {
-      fatalError("Cannot construct a url of owner:\(ownername), repo:\(reponame) and branch:\(branchname) ")
-    }
-    return url
+  public func contentURL(of repository: Repository,
+                         ref branch: String? = nil)
+    -> URL {
+      guard let url = pureURL(of: .contents(repo: repository, branch: branch)) else {
+        fatalError("Cannot construct a url of repo:\(repository.full_name) on branch:\(branch) ")
+      }
+      return url
   }
 
   // MARK: -
   // MARK: Branch and Commit Requesting
   public func branchLites(referredBy url: URL)
     -> SignalProducer<[BranchLite], ErrorEnvelope> {
-    return request(.resource(url: url))
+      return request(.resource(url: url))
   }
 
   public func branch(referredBy url: URL)
     -> SignalProducer<Branch, ErrorEnvelope> {
-    return request(.resource(url: url))
+      return request(.resource(url: url))
   }
 
   public func commits(referredBy url: URL)
     -> SignalProducer<[Commit], ErrorEnvelope> {
-    return request(.resource(url: url))
+      return request(.resource(url: url))
   }
 
   public func commit(referredBy url: URL)
@@ -139,12 +143,12 @@ extension Service {
   public func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope> {
     return request(.resource(url: url))
   }
-  public func events(of username: String) -> SignalProducer<[GHEvent], ErrorEnvelope> {
-    return request(.events(userName: username))
+  public func events(of user: User) -> SignalProducer<[GHEvent], ErrorEnvelope> {
+    return request(.events(user:user))
   }
 
-  public func receivedEvents(of username: String) -> SignalProducer<[GHEvent], ErrorEnvelope> {
-    return request(.receivedEvents(userName: username))
+  public func receivedEvents(of user: User) -> SignalProducer<[GHEvent], ErrorEnvelope> {
+    return request(.receivedEvents(user: user))
   }
 
   public func trendingRepository(of period: GithubCraper.TrendingPeriod, with language: String?)
