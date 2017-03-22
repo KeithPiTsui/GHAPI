@@ -4,8 +4,8 @@
 public protocol ServerConfigType {
   var apiBaseUrl: URL { get }
   var basicHTTPAuth: BasicHTTPAuthType? { get }
-  var defaultHeaders: [String: String]? {get}
-  var defaultParameters: [String: String]? {get}
+  var defaultHeaders: [String: String] {get}
+  var defaultParameters: [String: String] {get}
 }
 
 public func == (lhs: ServerConfigType, rhs: ServerConfigType) -> Bool {
@@ -18,8 +18,8 @@ public func == (lhs: ServerConfigType, rhs: ServerConfigType) -> Bool {
 public struct ServerConfig: ServerConfigType {
   public let apiBaseUrl: URL
   public let basicHTTPAuth: BasicHTTPAuthType?
-  public let defaultHeaders: [String : String]?
-  public let defaultParameters: [String : String]?
+  public let defaultHeaders: [String : String]
+  public let defaultParameters: [String : String]
 
 
   public static let github: ServerConfigType = ServerConfig(
@@ -38,8 +38,8 @@ public struct ServerConfig: ServerConfigType {
 
   public init(apiBaseUrl: URL,
               basicHTTPAuth: BasicHTTPAuthType? = nil,
-              defaultHeaders: [String: String]? = nil,
-              defaultParameters: [String: String]? = ["per_page":"100"]) {
+              defaultHeaders: [String: String] = [:],
+              defaultParameters: [String: String] = [:]) {
     self.apiBaseUrl = apiBaseUrl
     self.basicHTTPAuth = basicHTTPAuth
     self.defaultHeaders = defaultHeaders

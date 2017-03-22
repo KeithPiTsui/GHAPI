@@ -11,7 +11,9 @@ import Result
 import ReactiveExtensions
 import GHAPI
 
-let str = "git@github.com:octocat/Hello-World.git"
-let url = URL(string: str)
-url == nil
+//let str = "git@github.com:octocat/Hello-World.git"
+//let url = URL(string: str)
+//url == nil
 
+let str: String? = nil
+str == "hello"

@@ -7,32 +7,41 @@ import Prelude
 import ReactiveExtensions
 import ReactiveSwift
 
-private extension Bundle {
-  var _buildVersion: String {
-    return (self.infoDictionary?["CFBundleVersion"] as? String) ?? "1"
-  }
-}
-
 /**
  A `ServerType` that requests data from an API webservice.
  */
 public struct Service: ServiceType {
   public let serverConfig: ServerConfigType
-
   public init(serverConfig: ServerConfigType = ServerConfig.github) { self.serverConfig = serverConfig }
+}
+
+
+// MARK: Service extension of Service Type
+extension Service {
 
   public func login(username: String, password: String)
     -> SignalProducer<(User,Service), ErrorEnvelope> {
       let serv = Service(serverConfig: ServerConfig.githubServerConfig(username: username, password: password))
-      let me = serv.user(with: username).map{($0, serv)}
-      return me
+      return serv.user(with: username).map{($0, serv)}
   }
 
   public func logout() -> Service { return Service() }
 
-  public func user(with name: String) -> SignalProducer<User, ErrorEnvelope> {
+  // MARK: -
+  // MARK: User Requesting
+
+  public func user(with name: String)
+    -> SignalProducer<User, ErrorEnvelope> {
     return request(.user(userName: name))
   }
+
+  public func user(referredBy url: URL)
+    -> SignalProducer<User, ErrorEnvelope> {
+      return request(.resource(url: url))
+  }
+
+  // MARK: -
+  // MARK: Searching Requesting
 
   public func searchRepository(
     qualifiers: [RepositoriesQualifier],
@@ -52,11 +61,9 @@ public struct Service: ServiceType {
       return request(.search(scope: .users(qualifiers), keyword: keyword,  sort: sort, order: order))
   }
 
-  public func user(referredBy url: URL)
-    -> SignalProducer<User, ErrorEnvelope> {
-      return request(.resource(url: url))
-  }
 
+  // MARK: -
+  // MARK: Repository Requesting
   public func repository(referredBy url: URL)
     -> SignalProducer<Repository, ErrorEnvelope> {
       return request(.resource(url: url))
@@ -68,25 +75,56 @@ public struct Service: ServiceType {
   }
 
   public func repositoryUrl(of ownername: String, and reponame: String) -> URL {
-    return self.serverConfig.apiBaseUrl.appendingPathComponent(
-      Route.repository(username: ownername, reponame: reponame).requestProperties.path)
+    guard let url = pureURL(of: .repository(username: ownername, reponame: reponame)) else {
+      fatalError("Cannot construct a url of owner:\(ownername) and repo:\(reponame)")
+    }
+    return url
   }
 
-  public func contentURL(of ownername: String, and reponame: String, and branchname: String) -> URL {
-    let repoURLStr = self.repositoryUrl(of: ownername, and: reponame).absoluteString
-    let contentURLStr = "\(repoURLStr)/contents?ref=\(branchname)"
-    return URL(string: contentURLStr)!
+  // MARK: -
+  // MARK: Repository Content Requesting
+
+  public func contents(referredBy url: URL)
+    -> SignalProducer<[Content], ErrorEnvelope>{
+      return request(.resource(url: url))
   }
 
-  public func branchLites(referredBy url: URL) -> SignalProducer<[BranchLite], ErrorEnvelope> {
+  public func contents(of repository: Repository,
+                       ref branch: String? = nil)
+    -> SignalProducer<[Content], ErrorEnvelope>{
+      return request(.contents(repoURL: repository.urls.url, branch: branch))
+  }
+
+  public func contents(ofRepository url: URL,
+                       ref branch: String?)
+    -> SignalProducer<[Content], ErrorEnvelope>{
+      return request(.contents(repoURL: url, branch: branch))
+  }
+
+  public func contentURL(of ownername: String,
+                         and reponame: String,
+                         and branchname: String = "master") -> URL {
+    let repoURL = self.repositoryUrl(of: ownername, and: reponame)
+    guard let url = pureURL(of: .contents(repoURL: repoURL, branch: branchname)) else {
+      fatalError("Cannot construct a url of owner:\(ownername), repo:\(reponame) and branch:\(branchname) ")
+    }
+    return url
+  }
+
+  // MARK: -
+  // MARK: Branch and Commit Requesting
+  public func branchLites(referredBy url: URL)
+    -> SignalProducer<[BranchLite], ErrorEnvelope> {
     return request(.resource(url: url))
   }
 
-  public func branch(referredBy url: URL) -> SignalProducer<Branch, ErrorEnvelope> {
+  public func branch(referredBy url: URL)
+    -> SignalProducer<Branch, ErrorEnvelope> {
     return request(.resource(url: url))
   }
 
-  public func commits(referredBy url: URL) -> SignalProducer<[Commit], ErrorEnvelope> {
+  public func commits(referredBy url: URL)
+    -> SignalProducer<[Commit], ErrorEnvelope> {
     return request(.resource(url: url))
   }
 
@@ -95,20 +133,8 @@ public struct Service: ServiceType {
       return request(.resource(url: url))
   }
 
-  public func contents(referredBy url: URL)
-    -> SignalProducer<[Content], ErrorEnvelope>{
-      return request(.resource(url: url))
-  }
-
-  public func contents(of repository: Repository, ref branch: String? = nil)
-    -> SignalProducer<[Content], ErrorEnvelope>{
-      return request(.contents(repoURL: repository.urls.url, branch: branch))
-  }
-
-  public func contents(ofRepository url: URL, ref branch: String?)
-    -> SignalProducer<[Content], ErrorEnvelope>{
-      return request(.contents(repoURL: url, branch: branch))
-  }
+  // MARK: -
+  // MARK: Others Requesting
 
   public func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope> {
     return request(.resource(url: url))
@@ -145,10 +171,13 @@ public struct Service: ServiceType {
   }
 }
 
+
+// MARK: -
+// MARK: Service Extension of Json decoding
 extension Service {
+  /// Decode json to get a model
   fileprivate func decodeModel<M: Decodable>(_ json: Any) ->
     SignalProducer<M, ErrorEnvelope> where M == M.DecodedType {
-
       return SignalProducer(value: json)
         .map { json in decode(json) as Decoded<M> }
         .flatMap(.concat) { (decoded: Decoded<M>) -> SignalProducer<M, ErrorEnvelope> in
@@ -162,9 +191,9 @@ extension Service {
       }
   }
 
+  /// Decode json to get an array of models
   fileprivate func decodeModels<M: Decodable>(_ json: Any) ->
     SignalProducer<[M], ErrorEnvelope> where M == M.DecodedType {
-
       return SignalProducer(value: json)
         .map { json in decode(json) as Decoded<[M]> }
         .flatMap(.concat) { (decoded: Decoded<[M]>) -> SignalProducer<[M], ErrorEnvelope> in
@@ -177,31 +206,49 @@ extension Service {
           }
       }
   }
+}
+
+// MARK: -
+// MARK: Service Extension of data requesting
+extension Service {
 
   fileprivate static let session = URLSession(configuration: .default)
 
   fileprivate func requestPagination<M: Decodable>(_ paginationUrl: String)
     -> SignalProducer<M, ErrorEnvelope> where M == M.DecodedType {
-
       guard let paginationUrl = URL(string: paginationUrl) else {
         return .init(error: .invalidPaginationUrl)
       }
-
-      return Service.session.rac_JSONResponse(preparedRequest(forURL: paginationUrl))
+      return Service.session
+        .rac_JSONResponse(preparedRequest(forURL: paginationUrl))
         .flatMap(decodeModel)
+  }
+
+  fileprivate func pureRequest(of route: Route) -> URLRequest {
+    let properties = route.requestProperties
+    guard let URL = URL(string: properties.path, relativeTo: self.serverConfig.apiBaseUrl as URL) else {
+      fatalError(
+        "URL(string: \(properties.path), relativeToURL: \(self.serverConfig.apiBaseUrl)) == nil"
+      )
+    }
+    return preparedRequest(forURL: URL,
+                           method: properties.method,
+                           query: properties.query,
+                           headers: properties.headers)
+  }
+
+  fileprivate func pureURL(of route: Route) -> URL? {
+    return self.pureRequest(of: route).url
   }
 
   fileprivate func request<M: Decodable>(_ route: Route)
     -> SignalProducer<M, ErrorEnvelope> where M == M.DecodedType {
-
       let properties = route.requestProperties
-
       guard let URL = URL(string: properties.path, relativeTo: self.serverConfig.apiBaseUrl as URL) else {
         fatalError(
           "URL(string: \(properties.path), relativeToURL: \(self.serverConfig.apiBaseUrl)) == nil"
         )
       }
-
       return Service.session.rac_JSONResponse(
         preparedRequest(forURL: URL,
                         method: properties.method,
@@ -214,19 +261,51 @@ extension Service {
 
   fileprivate func request<M: Decodable>(_ route: Route)
     -> SignalProducer<[M], ErrorEnvelope> where M == M.DecodedType {
-
       let properties = route.requestProperties
-
       let url = self.serverConfig.apiBaseUrl.appendingPathComponent(properties.path)
-
       return Service.session.rac_JSONResponse(
-        preparedRequest(forURL: url, method: properties.method, query: properties.query),
+        preparedRequest(forURL: url,
+                        method: properties.method,
+                        query: properties.query),
         uploading: properties.file.map { ($1, $0.rawValue) }
         )
         .flatMap(decodeModels)
   }
-  
-  
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

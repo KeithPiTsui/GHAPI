@@ -83,7 +83,7 @@ internal final class GHAPIServiceTests: XCTestCase {
       = URL(string: "https://api.github.com/repos/apple/swift/contents?ref=master")
       else { XCTAssert(false, "ContentURLComposition test URL cannot be constructed"); return }
     let composedURL = service.contentURL(of: owner, and: repo, and: branch)
-    XCTAssertEqual(url, composedURL, "two url should be equal\nurl:\(url)\nComposedURL:\(composedURL)")
+    XCTAssertEqual(url, composedURL)
   }
 
 

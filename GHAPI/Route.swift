@@ -13,11 +13,11 @@ internal enum Route {
 
   case resource(url: URL)
 
-  case search(scope: SearchScope,
+  case search(
+    scope: SearchScope,
     keyword: String?,
     sort: SearchSorting?,
-    order: SearchSortingOrder?
-  )
+    order: SearchSortingOrder?)
 
   case events(userName: String)
 

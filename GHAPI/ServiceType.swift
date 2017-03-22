@@ -17,15 +17,19 @@ public protocol ServiceType {
   init( serverConfig: ServerConfigType)
 
   /// Returns a new service with the user and password replaced
-  func login(username: String, password: String) -> SignalProducer<(User,Service), ErrorEnvelope>
+  func login(username: String, password: String)
+    -> SignalProducer<(User,Service), ErrorEnvelope>
 
   /// Returns a new service without authentification infomation.
-  func logout() -> Self
+  func logout()
+    -> Self
 
   /// Request user profile from github
-  func user(with name: String) -> SignalProducer<User, ErrorEnvelope>
+  func user(with name: String)
+    -> SignalProducer<User, ErrorEnvelope>
 
-  func user(referredBy url: URL) -> SignalProducer<User, ErrorEnvelope>
+  func user(referredBy url: URL)
+    -> SignalProducer<User, ErrorEnvelope>
 
   /// Request a search on Repository from github
   func searchRepository(
@@ -33,7 +37,7 @@ public protocol ServiceType {
     keyword: String?,
     sort: SearchSorting?,
     order: SearchSortingOrder?)
-    ->  SignalProducer<SearchResult<Repository>, ErrorEnvelope>
+    -> SignalProducer<SearchResult<Repository>, ErrorEnvelope>
 
   /// Request a search on User from github
   func searchUser(
@@ -41,40 +45,24 @@ public protocol ServiceType {
     keyword: String?,
     sort: SearchSorting?,
     order: SearchSortingOrder?)
-    ->  SignalProducer<SearchResult<User>, ErrorEnvelope>
+    -> SignalProducer<SearchResult<User>, ErrorEnvelope>
 
 
   /// Request a repository referred by url
-  func repository(referredBy url: URL) -> SignalProducer<Repository, ErrorEnvelope>
+  func repository(referredBy url: URL)
+    -> SignalProducer<Repository, ErrorEnvelope>
 
   /// Request a repository specified by owner name and reop name
   func repository(of ownername: String, and reponame: String)
     -> SignalProducer<Repository, ErrorEnvelope>
 
   /// Compose a url for a repository specified by owner name and repo name
-  func repositoryUrl(of ownername: String, and reponame: String) -> URL
+  func repositoryUrl(of ownername: String, and reponame: String)
+    -> URL
 
   /// Compose a url for contents of a repository with specified branch
-  func contentURL(of ownername: String, and reponame: String, and branchname: String) -> URL
-
-  /// Request a list of branch brief specified by url
-  ///
-  /// As refered by branches url of repository
-  func branchLites(referredBy url: URL)
-    -> SignalProducer<[BranchLite], ErrorEnvelope>
-
-  /// Request a specific branch specified by url
-  func branch(referredBy url: URL)
-    -> SignalProducer<Branch, ErrorEnvelope>
-
-
-  /// Request a commit specified by url
-  func commits(referredBy url: URL)
-    -> SignalProducer<[Commit], ErrorEnvelope>
-
-  /// Request a commit specified by url
-  func commit(referredBy url: URL)
-    -> SignalProducer<Commit, ErrorEnvelope>
+  func contentURL(of ownername: String, and reponame: String, and branchname: String)
+    -> URL
 
   /// Request a content specified by url
   func contents(referredBy url: URL)
@@ -86,14 +74,35 @@ public protocol ServiceType {
   func contents(ofRepository url: URL, ref branch: String?)
     -> SignalProducer<[Content], ErrorEnvelope>
 
+  /// Request a list of branch brief specified by url
+  ///
+  /// As refered by branches url of repository
+  func branchLites(referredBy url: URL)
+    -> SignalProducer<[BranchLite], ErrorEnvelope>
+
+  /// Request a specific branch specified by url
+  func branch(referredBy url: URL)
+    -> SignalProducer<Branch, ErrorEnvelope>
+
+  /// Request a commit specified by url
+  func commits(referredBy url: URL)
+    -> SignalProducer<[Commit], ErrorEnvelope>
+
+  /// Request a commit specified by url
+  func commit(referredBy url: URL)
+    -> SignalProducer<Commit, ErrorEnvelope>
+
   /// Request a readme specified by url
-  func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope>
+  func readme(referredBy url: URL)
+    -> SignalProducer<Readme, ErrorEnvelope>
 
   /// Request events of user
-  func events(of username: String) -> SignalProducer<[GHEvent], ErrorEnvelope>
+  func events(of username: String)
+    -> SignalProducer<[GHEvent], ErrorEnvelope>
 
   /// Request received events of user
-  func receivedEvents(of username: String) -> SignalProducer<[GHEvent], ErrorEnvelope>
+  func receivedEvents(of username: String)
+    -> SignalProducer<[GHEvent], ErrorEnvelope>
 
   /// Request trending repositories specified with period and programming language
   func trendingRepository(
@@ -110,6 +119,9 @@ extension ServiceType {
   public var isAuthenticated: Bool { return self.serverConfig.basicHTTPAuth != nil}
 }
 
+
+// MARK: -
+// MARK: ServiceType equality
 public func == (lhs: ServiceType, rhs: ServiceType) -> Bool {
   return
     type(of: lhs) == type(of: rhs) &&
@@ -120,8 +132,10 @@ public func != (lhs: ServiceType, rhs: ServiceType) -> Bool {
   return !(lhs == rhs)
 }
 
-extension ServiceType {
 
+// MARK: -
+// MARK: ServiceType Request handling
+extension ServiceType {
   /**
    Prepares a URL request to be sent to the server.
 
@@ -134,7 +148,6 @@ extension ServiceType {
                               query: [String:Any] = [:],
                               headers: [String: String] = [:])
     -> URLRequest {
-
       var request = originalRequest
       guard let URL = request.url else { return originalRequest }
 
@@ -147,9 +160,7 @@ extension ServiceType {
       var components = URLComponents(url: URL, resolvingAgainstBaseURL: false)!
       var queryItems = components.queryItems ?? []
 
-      if let defaultQPs = self.defaultQueryParameters {
-        queryItems.append(contentsOf: defaultQPs.map(URLQueryItem.init(name:value:)))
-      }
+      queryItems.append(contentsOf: self.defaultQueryParameters.map(URLQueryItem.init(name:value:)))
 
       if method == .some("POST") || method == .some("PUT")
         || method == .some("PATCH") || method == .some("DELETE") {
@@ -167,7 +178,6 @@ extension ServiceType {
 
       let currentHeaders = request.allHTTPHeaderFields ?? [:]
       request.allHTTPHeaderFields = currentHeaders.withAllValuesFrom(thisHeaders)
-
       return request
   }
 
@@ -195,12 +205,12 @@ extension ServiceType {
   }
 
   fileprivate var defaultHeaders: [String:String]  {
-    var headers = self.serverConfig.defaultHeaders ?? [:]
+    var headers = self.serverConfig.defaultHeaders
     headers["Authorization"] = self.authorizationHeader
     return headers
   }
 
-  fileprivate var defaultQueryParameters: [String: String]? {
+  fileprivate var defaultQueryParameters: [String: String] {
     return self.serverConfig.defaultParameters
   }
 
@@ -211,7 +221,7 @@ extension ServiceType {
 
   fileprivate func queryComponents(_ key: String, _ value: Any) -> [(String, String)] {
     var components: [(String, String)] = []
-
+    
     if let dictionary = value as? [String:Any] {
       for (nestedKey, value) in dictionary {
         components += queryComponents("\(key)[\(nestedKey)]", value)
