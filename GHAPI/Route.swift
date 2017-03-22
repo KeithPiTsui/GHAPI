@@ -25,7 +25,7 @@ internal enum Route {
 
   case repository(username: String, reponame: String)
 
-  case contents(repo: Repository, branch: String?)
+  case contents(repoURL: URL, branch: String?)
 
   // swiftlint:disable:next large_tuple
   internal var requestProperties: (
@@ -58,7 +58,6 @@ internal enum Route {
       default:
         break
       }
-
       if let qualifiers = qualifiers, qualifiers.count > 0 {
         let kw = keyword == nil ? "" : (keyword! + "+")
         query["q"] = kw + qualifiers.map{$0.searchRepresentation}.joined(separator: "+")
@@ -69,16 +68,20 @@ internal enum Route {
 
     case let .events(username):
       return (.GET, "/users/\(username)/events", [:], nil, [:])
+
     case let .receivedEvents(username):
       return (.GET, "/users/\(username)/received_events", [:], nil, [:])
+
     case let .repository(username, reponame):
       return (.GET, "/repos/\(username)/\(reponame)", [:], nil, [:])
-    case let .contents(repo, branch):
+
+    case let .contents(repoURL, branch):
+      let contentURL = repoURL.appendingPathComponent("contents")
       var queries: [String:Any] = [:]
       if let branch = branch {
         queries["ref"] = branch
       }
-      return (.GET, repo.urls.contents_url.path, queries, nil, [:])
+      return (.GET, contentURL.path, queries, nil, [:])
     }
   }
 }

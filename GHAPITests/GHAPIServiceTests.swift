@@ -46,10 +46,10 @@ internal final class GHAPIServiceTests: XCTestCase {
       let repository = service.repository(referredBy: url).observeInBackground()
       let content = repository
         .concatMap{ [weak self] (repo) -> SignalProducer<[Content], ErrorEnvelope> in
-        guard let serv = self?.service else {
-          return SignalProducer<[Content], ErrorEnvelope>(error: ErrorEnvelope.unknownError)
-        }
-        return serv.contents(of: repo, ref: nil)
+          guard let serv = self?.service else {
+            return SignalProducer<[Content], ErrorEnvelope>(error: ErrorEnvelope.unknownError)
+          }
+          return serv.contents(of: repo, ref: nil)
       }
       content.startWithResult{ (result) in
         defer { expect.fulfill() }
@@ -58,6 +58,34 @@ internal final class GHAPIServiceTests: XCTestCase {
       }
     }
   }
+
+  func testContentFromURL() {
+    run { (expect) in
+      guard
+        let url
+        = URL(string: "https://api.github.com/repos/apple/swift")
+        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+
+      service.contents(ofRepository: url, ref: "master").observeInBackground().startWithResult{ (result) in
+        defer { expect.fulfill() }
+        let repo = result.value
+        XCTAssertNotNil(repo, "commit request result should not be nil")
+      }
+    }
+  }
+
+  func testContentURLComposition() {
+    let owner = "apple"
+    let repo = "swift"
+    let branch = "master"
+    guard
+      let url
+      = URL(string: "https://api.github.com/repos/apple/swift/contents?ref=master")
+      else { XCTAssert(false, "ContentURLComposition test URL cannot be constructed"); return }
+    let composedURL = service.contentURL(of: owner, and: repo, and: branch)
+    XCTAssertEqual(url, composedURL, "two url should be equal\nurl:\(url)\nComposedURL:\(composedURL)")
+  }
+
 
   func testRepository() {
     run { (expect) in
@@ -95,7 +123,7 @@ internal final class GHAPIServiceTests: XCTestCase {
           defer { expect.fulfill() }
           let commit = result.value
           XCTAssertNotNil(commit, "commit request result should not be nil")
-        }
+      }
     }
   }
 
@@ -139,7 +167,7 @@ internal final class GHAPIServiceTests: XCTestCase {
           defer {expect.fulfill()}
           let branches = result.value
           XCTAssertNotNil(branches, "commit request result should not be nil")
-        }
+      }
     }
   }
 

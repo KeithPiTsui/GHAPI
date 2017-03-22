@@ -54,6 +54,9 @@ public protocol ServiceType {
   /// Compose a url for a repository specified by owner name and repo name
   func repositoryUrl(of ownername: String, and reponame: String) -> URL
 
+  /// Compose a url for contents of a repository with specified branch
+  func contentURL(of ownername: String, and reponame: String, and branchname: String) -> URL
+
   /// Request a list of branch brief specified by url
   ///
   /// As refered by branches url of repository
@@ -78,6 +81,9 @@ public protocol ServiceType {
     -> SignalProducer<[Content], ErrorEnvelope>
 
   func contents(of repository: Repository, ref branch: String?)
+    -> SignalProducer<[Content], ErrorEnvelope>
+
+  func contents(ofRepository url: URL, ref branch: String?)
     -> SignalProducer<[Content], ErrorEnvelope>
 
   /// Request a readme specified by url

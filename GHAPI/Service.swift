@@ -72,6 +72,12 @@ public struct Service: ServiceType {
       Route.repository(username: ownername, reponame: reponame).requestProperties.path)
   }
 
+  public func contentURL(of ownername: String, and reponame: String, and branchname: String) -> URL {
+    let repoURLStr = self.repositoryUrl(of: ownername, and: reponame).absoluteString
+    let contentURLStr = "\(repoURLStr)/contents?ref=\(branchname)"
+    return URL(string: contentURLStr)!
+  }
+
   public func branchLites(referredBy url: URL) -> SignalProducer<[BranchLite], ErrorEnvelope> {
     return request(.resource(url: url))
   }
@@ -84,7 +90,6 @@ public struct Service: ServiceType {
     return request(.resource(url: url))
   }
 
-  /// Request a commit specified by url
   public func commit(referredBy url: URL)
     -> SignalProducer<Commit, ErrorEnvelope> {
       return request(.resource(url: url))
@@ -97,7 +102,12 @@ public struct Service: ServiceType {
 
   public func contents(of repository: Repository, ref branch: String? = nil)
     -> SignalProducer<[Content], ErrorEnvelope>{
-      return request(.contents(repo: repository, branch: branch))
+      return request(.contents(repoURL: repository.urls.url, branch: branch))
+  }
+
+  public func contents(ofRepository url: URL, ref branch: String?)
+    -> SignalProducer<[Content], ErrorEnvelope>{
+      return request(.contents(repoURL: url, branch: branch))
   }
 
   public func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope> {
