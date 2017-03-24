@@ -32,6 +32,9 @@ public protocol ServiceType {
   func user(with name: String)
     -> SignalProducer<User, ErrorEnvelope>
 
+  func userURL(with name: String)
+    -> URL
+
   func user(referredBy url: URL)
     -> SignalProducer<User, ErrorEnvelope>
 

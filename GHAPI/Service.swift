@@ -40,6 +40,14 @@ extension Service {
       return request(.user(userName: name))
   }
 
+  public func userURL(with name: String)
+    -> URL{
+      guard let url = self.pureURL(of: .user(userName: name)) else {
+        fatalError("Cannot construct a url with username: \(name)")
+      }
+      return url
+  }
+
   public func user(referredBy url: URL)
     -> SignalProducer<User, ErrorEnvelope> {
       return request(.resource(url: url))

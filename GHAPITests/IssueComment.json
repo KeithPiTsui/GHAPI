@@ -1,0 +1,28 @@
+{
+  "url": "https://api.github.com/repos/Alamofire/Alamofire/issues/comments/287873409",
+  "html_url": "https://github.com/Alamofire/Alamofire/issues/206#issuecomment-287873409",
+  "issue_url": "https://api.github.com/repos/Alamofire/Alamofire/issues/206",
+  "id": 287873409,
+  "user": {
+    "login": "jshier",
+    "id": 51020,
+    "avatar_url": "https://avatars3.githubusercontent.com/u/51020?v=3",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/jshier",
+    "html_url": "https://github.com/jshier",
+    "followers_url": "https://api.github.com/users/jshier/followers",
+    "following_url": "https://api.github.com/users/jshier/following{/other_user}",
+    "gists_url": "https://api.github.com/users/jshier/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/jshier/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/jshier/subscriptions",
+    "organizations_url": "https://api.github.com/users/jshier/orgs",
+    "repos_url": "https://api.github.com/users/jshier/repos",
+    "events_url": "https://api.github.com/users/jshier/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/jshier/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "created_at": "2017-03-20T19:36:19Z",
+  "updated_at": "2017-03-20T19:36:19Z",
+  "body": "It was only found to crash for iOS 8.1 and 8.2, hence our workaround only affects those OSes. There shouldn't be any further issue here. If you are seeing a new crash, please open a new issue."
+}

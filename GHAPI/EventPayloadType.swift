@@ -9,10 +9,11 @@
 import Argo
 import Curry
 import Runes
+import UIKit
 
 public protocol EventPayloadType {
-    static func decode(_ json: JSON) -> Decoded<EventPayloadType>
-    func encode() -> [String:Any]
+  static func decode(_ json: JSON) -> Decoded<EventPayloadType>
+  func encode() -> [String:Any]
 }
 
 

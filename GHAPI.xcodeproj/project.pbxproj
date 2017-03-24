@@ -16,6 +16,9 @@
 		0E00C9191E7C12A200958A39 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00C9181E7C12A200958A39 /* Team.swift */; };
 		0E00C91B1E7C132A00958A39 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00C91A1E7C132A00958A39 /* Issue.swift */; };
 		0E00C91D1E7C14A300958A39 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00C91C1E7C14A300958A39 /* Milestone.swift */; };
+		0E1AAB1A1E84CDF800BFD36C /* IssueComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1AAB191E84CDF800BFD36C /* IssueComment.swift */; };
+		0E1AAB1C1E84CF2900BFD36C /* IssueComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1AAB1B1E84CF2900BFD36C /* IssueComment.swift */; };
+		0E1AAB1E1E84CF3500BFD36C /* IssueComment.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E1AAB1D1E84CF3500BFD36C /* IssueComment.json */; };
 		0E2B00641E73E2DC007C4A89 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2B00631E73E2DC007C4A89 /* Commit.swift */; };
 		0E2B00661E73F39C007C4A89 /* String-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2B00651E73F39C007C4A89 /* String-Extension.swift */; };
 		0E4BCFBD1E810D7500BF6135 /* Error.text in Sources */ = {isa = PBXBuildFile; fileRef = 0E4BCFBC1E810D7500BF6135 /* Error.text */; };
@@ -160,6 +163,9 @@
 		0E00C9181E7C12A200958A39 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		0E00C91A1E7C132A00958A39 /* Issue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		0E00C91C1E7C14A300958A39 /* Milestone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
+		0E1AAB191E84CDF800BFD36C /* IssueComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueComment.swift; sourceTree = "<group>"; };
+		0E1AAB1B1E84CF2900BFD36C /* IssueComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueComment.swift; sourceTree = "<group>"; };
+		0E1AAB1D1E84CF3500BFD36C /* IssueComment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = IssueComment.json; sourceTree = "<group>"; };
 		0E2B00631E73E2DC007C4A89 /* Commit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
 		0E2B00651E73F39C007C4A89 /* String-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Extension.swift"; sourceTree = "<group>"; };
 		0E4BCFBC1E810D7500BF6135 /* Error.text */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Error.text; sourceTree = "<group>"; };
@@ -446,6 +452,7 @@
 				0EA044E01E76C1D900643EBA /* Event */,
 				0EA044D21E76567400643EBA /* GHAPIModelType.swift */,
 				0E00C91A1E7C132A00958A39 /* Issue.swift */,
+				0E1AAB191E84CDF800BFD36C /* IssueComment.swift */,
 				0E00C91C1E7C14A300958A39 /* Milestone.swift */,
 				0E00C9101E7C0AD600958A39 /* Organization.swift */,
 				0E65E1221E7E88D4004EDBCA /* PullRequest.swift */,
@@ -518,6 +525,8 @@
 				0E4BCFC61E81101E00BF6135 /* Milestone.json */,
 				0E71A4F41E7FDE6B00D8EED6 /* Commit.swift */,
 				0E71A5031E7FF00700D8EED6 /* Content.json */,
+				0E1AAB1B1E84CF2900BFD36C /* IssueComment.swift */,
+				0E1AAB1D1E84CF3500BFD36C /* IssueComment.json */,
 				0E6AAC161E81125100E94429 /* Issue.swift */,
 				0E6AAC181E81125B00E94429 /* Issue.json */,
 				0E71A5011E7FEFF600D8EED6 /* Content.swift */,
@@ -762,6 +771,7 @@
 				0E6AAC191E81125B00E94429 /* Issue.json in Resources */,
 				0E65E0D11E7E7D37004EDBCA /* ProjectCardEventPayload.json in Resources */,
 				0E65E0C11E7E6D58004EDBCA /* OrgBlockEventPayload.json in Resources */,
+				0E1AAB1E1E84CF3500BFD36C /* IssueComment.json in Resources */,
 				0E4BCFC71E81101E00BF6135 /* Milestone.json in Resources */,
 				0E65E11B1E7E86B9004EDBCA /* PublicEventPayload.json in Resources */,
 				0E65E1211E7E8808004EDBCA /* PullRequestEventPayload.json in Resources */,
@@ -820,6 +830,7 @@
 				0E4D5A221E5C60C1008E4AD6 /* MimeType.swift in Sources */,
 				0E00C90D1E7C042600958A39 /* GollumEventPayload.swift in Sources */,
 				0EB10E181E7BD3DB001460D8 /* DeploymentEventPayload.swift in Sources */,
+				0E1AAB1A1E84CDF800BFD36C /* IssueComment.swift in Sources */,
 				0E4D5A1F1E5C60C1008E4AD6 /* Decodable.swift in Sources */,
 				0E7B7BE31E6E628C00D50C95 /* StandardTypeExtension.swift in Sources */,
 				0E7B7BA31E6E3E1100D50C95 /* UserQualifier.swift in Sources */,
@@ -884,6 +895,7 @@
 				0E65E0CF1E7E7D2E004EDBCA /* ProjectCardEventPayload.swift in Sources */,
 				0E65E1131E7E83E7004EDBCA /* ProjectEventPayload.swift in Sources */,
 				0ECE8A691E77CBE4001FE48B /* GithubCraper.swift in Sources */,
+				0E1AAB1C1E84CF2900BFD36C /* IssueComment.swift in Sources */,
 				0E65E1471E7EA8CA004EDBCA /* TeamEventPayload.swift in Sources */,
 				0EB10E211E7BE701001460D8 /* GHAPIServiceTests.swift in Sources */,
 				0E6AAC171E81125100E94429 /* Issue.swift in Sources */,
