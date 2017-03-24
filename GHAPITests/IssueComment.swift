@@ -32,7 +32,7 @@ internal final class IssueCommentTests: XCTestCase {
     guard
       let payload = decodePayload.value
       else { XCTAssert(false, "payload cannot be constructed"); return }
-    XCTAssertEqual(payload.action, "member_invited")
+    XCTAssertEqual(payload.id, 287873409)
     let jsonStr = payload.toJSONString()
     XCTAssertNotNil(jsonStr)
   }

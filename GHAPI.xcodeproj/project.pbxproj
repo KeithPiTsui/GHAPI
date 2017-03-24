@@ -451,6 +451,7 @@
 				0E4D5A261E5C61A0008E4AD6 /* ErrorEnvelope.swift */,
 				0EA044E01E76C1D900643EBA /* Event */,
 				0EA044D21E76567400643EBA /* GHAPIModelType.swift */,
+				0EB658181E82499800D48AAE /* GHAPIRoots.swift */,
 				0E00C91A1E7C132A00958A39 /* Issue.swift */,
 				0E1AAB191E84CDF800BFD36C /* IssueComment.swift */,
 				0E00C91C1E7C14A300958A39 /* Milestone.swift */,
@@ -463,7 +464,6 @@
 				0E00C9181E7C12A200958A39 /* Team.swift */,
 				0E57061C1E5D9FC50047BF4C /* User.swift */,
 				0EB10E191E7BD544001460D8 /* UserLite.swift */,
-				0EB658181E82499800D48AAE /* GHAPIRoots.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
