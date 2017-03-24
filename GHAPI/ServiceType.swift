@@ -119,6 +119,12 @@ public protocol ServiceType {
 
   /// Request data specified by a url
   func data(of url: URL) -> SignalProducer<Data, ErrorEnvelope>
+
+  /// Request an issue specified by a url
+  func issue(of url: URL) -> SignalProducer<Issue, ErrorEnvelope>
+
+  /// Request comments of an issue
+  func issueComments(of issue: Issue) -> SignalProducer<[IssueComment], ErrorEnvelope>
 }
 
 extension ServiceType {

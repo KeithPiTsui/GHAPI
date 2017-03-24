@@ -83,6 +83,9 @@ internal enum Route {
   /// repo.contents_url?ref=branch
   case contents(repo: Repository, branch: String?)
 
+  /// issue.comments
+  case issueComments(issue: Issue)
+
   // swiftlint:disable:next large_tuple
   internal var requestProperties: (
     method: Method,
@@ -141,6 +144,9 @@ internal enum Route {
       var queries: [String:Any] = [:]
       queries["ref"] = branch
       return (.GET, repo.urls.contents_url.path, queries, nil, [:])
+
+    case let .issueComments(issue):
+      return (.GET, issue.urls.comments_url.path, [:], nil, [:])
     }
   }
 }

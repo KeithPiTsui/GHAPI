@@ -159,6 +159,14 @@ extension Service {
     return request(.receivedEvents(user: user))
   }
 
+  public func issue(of url: URL) -> SignalProducer<Issue, ErrorEnvelope> {
+    return request(.resource(url: url))
+  }
+
+  public func issueComments(of issue: Issue) -> SignalProducer<[IssueComment], ErrorEnvelope> {
+    return request(.issueComments(issue: issue))
+  }
+
   public func trendingRepository(of period: GithubCraper.TrendingPeriod, with language: String?)
     -> SignalProducer<[TrendingRepository], ErrorEnvelope> {
       return SignalProducer { observer, disposable in

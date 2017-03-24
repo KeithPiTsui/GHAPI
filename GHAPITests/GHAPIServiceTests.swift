@@ -169,6 +169,43 @@ internal final class GHAPIServiceTests: XCTestCase {
     }
   }
 
+  func testIssue() {
+    run { (expect) in
+      guard let url =
+        URL(string: "https://api.github.com/repos/danielgindi/Charts/issues/2225")
+        else {  XCTAssert(false, "Issue test URL cannot be constructed"); return }
+      service.issue(of: url).observeInBackground()
+        .startWithResult{ (result) in
+          defer {expect.fulfill()}
+          let branches = result.value
+          XCTAssertNotNil(branches, "commit request result should not be nil")
+      }
+    }
+  }
+
+  func testIssueComments() {
+    run { (expect) in
+      guard
+        let url
+        = URL(string: "https://api.github.com/repos/danielgindi/Charts/issues/2225")
+        else { XCTAssert(false, "IssueComments test URL cannot be constructed"); return }
+
+      let issue = service.issue(of: url).observeInBackground()
+      let comments = issue
+        .concatMap{ [weak self] (i) -> SignalProducer<[IssueComment], ErrorEnvelope> in
+          guard let serv = self?.service else {
+            return SignalProducer<[IssueComment], ErrorEnvelope>(error: ErrorEnvelope.unknownError)
+          }
+          return serv.issueComments(of: i)
+      }
+      comments.startWithResult{ (result) in
+        defer { expect.fulfill() }
+        let repo = result.value
+        XCTAssertNotNil(repo, "IssueComments request result should not be nil")
+      }
+    }
+  }
+
   func testRequestError() {
     run { (expect) in
       service
