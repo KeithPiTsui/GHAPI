@@ -13,7 +13,7 @@ import Runes
 public struct Issue {
   public struct IURLs {
     public let url: URL
-    public let repository_url: URL
+    public let repository_url: URL?
     public let labels_url: URL
     public let comments_url: URL
     public let events_url: URL
@@ -102,7 +102,7 @@ extension Issue.IURLs: GHAPIModelType {
   public static func decode(_ json: JSON) -> Decoded<Issue.IURLs> {
     return curry(Issue.IURLs.init)
       <^> json <| "url"
-      <*> json <| "repository_url"
+      <*> json <|? "repository_url"
       <*> json <| "labels_url"
       <*> json <| "comments_url"
       <*> json <| "events_url"
@@ -112,7 +112,7 @@ extension Issue.IURLs: GHAPIModelType {
   public func encode() -> [String : Any] {
     var result: [String:Any] = [:]
     result["url"] = self.url.absoluteString
-    result["repository_url"] = self.repository_url.absoluteString
+    result["repository_url"] = self.repository_url?.absoluteString
     result["labels_url"] = self.labels_url.absoluteString
     result["comments_url"] = self.comments_url.absoluteString
     result["events_url"] = self.events_url.absoluteString

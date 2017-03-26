@@ -94,6 +94,39 @@ extension Service {
     return url
   }
 
+  public func forks(of repository: Repository) -> SignalProducer<[Repository], ErrorEnvelope> {
+    return request(.resource(url: repository.urls.forks_url))
+  }
+
+  public func releases(of repository: Repository) -> SignalProducer<[Release], ErrorEnvelope> {
+    return request(.resource(url: repository.urls3.releases_url))
+  }
+
+  /// Request events of a repo
+  public func events(of repository: Repository) -> SignalProducer<[GHEvent], ErrorEnvelope> {
+    return request(.resource(url: repository.urls.events_url))
+  }
+
+  /// Request events of a repo
+  public func contributors(of repository: Repository) -> SignalProducer<[UserLite], ErrorEnvelope> {
+    return request(.resource(url: repository.urls.contributors_url))
+  }
+
+  /// Request events of a repo
+  public func stargazers(of repository: Repository) -> SignalProducer<[UserLite], ErrorEnvelope> {
+    return request(.resource(url: repository.urls3.stargazers_url))
+  }
+
+  /// Request events of a repo
+  public func pullRequests(of repository: Repository) -> SignalProducer<[PullRequest], ErrorEnvelope> {
+    return request(.resource(url: repository.urls3.pulls_url))
+  }
+
+  /// Request events of a repo
+  public func issues(of repository: Repository) -> SignalProducer<[Issue], ErrorEnvelope> {
+    return request(.resource(url: repository.urls2.issues_url))
+  }
+
   // MARK: -
   // MARK: Repository Content Requesting
 

@@ -71,7 +71,7 @@ public struct PullRequest {
   public let merge_commit_sha: String?
   public let assignee: UserLite?
   public let assignees: [UserLite]?
-  public let milestone: String?
+  public let milestone: Milestone?
   public let head: PullRequest.PNode
   public let base: PullRequest.PNode
   public let _links: PullRequest.PLinks
@@ -126,7 +126,7 @@ extension PullRequest: GHAPIModelType {
     result["merge_commit_sha"] = self.merge_commit_sha
     result["assignee"] = self.assignee?.encode()
     result["assignees"] = self.assignees?.map{$0.encode()}
-    result["milestone"] = self.milestone
+    result["milestone"] = self.milestone?.encode()
     result["head"] = self.head.encode()
     result["base"] = self.base.encode()
     result["_links"] = self._links.encode()

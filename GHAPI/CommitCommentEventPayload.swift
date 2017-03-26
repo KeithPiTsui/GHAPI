@@ -26,10 +26,10 @@ public struct CommitCommentEventPayload: EventPayloadType{
     public let body: String
   }
 
-  public let action: String
+  public let action: String?
   public let comment: CComment
-  public let repository: Repository
-  public let sender: UserLite
+  public let repository: Repository?
+  public let sender: UserLite?
 }
 
 extension CommitCommentEventPayload: GHAPIModelType {
@@ -38,19 +38,22 @@ extension CommitCommentEventPayload: GHAPIModelType {
   }
   public static func decode(_ json: JSON) -> Decoded<EventPayloadType> {
     return curry(CommitCommentEventPayload.init)
-      <^> json <| "action"
+      <^> json <|? "action"
       <*> json <| "comment"
-      <*> json <| "repository"
-      <*> json <| "sender"
+      <*> json <|? "repository"
+      <*> json <|? "sender"
   }
 
   public func encode() -> [String : Any] {
     var result: [String:Any] = [:]
     result["action"] = self.action
+    result["comment"] = self.comment.encode()
+    result["repository"] = self.repository?.encode()
+    result["sender"] = self.sender?.encode()
     return result
   }
 }
-
+ 
 extension CommitCommentEventPayload.CComment: GHAPIModelType {
   public static func == (
     lhs: CommitCommentEventPayload.CComment,

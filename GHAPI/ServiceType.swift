@@ -125,6 +125,27 @@ public protocol ServiceType {
 
   /// Request comments of an issue
   func issueComments(of issue: Issue) -> SignalProducer<[IssueComment], ErrorEnvelope>
+
+  /// Request forked repositories of a repo
+  func forks(of repository: Repository) -> SignalProducer<[Repository], ErrorEnvelope>
+
+  /// Request releases of a repo
+  func releases(of repository: Repository) -> SignalProducer<[Release], ErrorEnvelope>
+
+  /// Request events of a repo
+  func events(of repository: Repository) -> SignalProducer<[GHEvent], ErrorEnvelope>
+
+  /// Request events of a repo
+  func contributors(of repository: Repository) -> SignalProducer<[UserLite], ErrorEnvelope>
+
+  /// Request events of a repo
+  func stargazers(of repository: Repository) -> SignalProducer<[UserLite], ErrorEnvelope>
+
+  /// Request events of a repo
+  func pullRequests(of repository: Repository) -> SignalProducer<[PullRequest], ErrorEnvelope>
+
+  /// Request events of a repo
+  func issues(of repository: Repository) -> SignalProducer<[Issue], ErrorEnvelope>
 }
 
 extension ServiceType {

@@ -128,6 +128,11 @@ extension GHEvent: GHAPIModelType {
       : _payload!.map(Optional.some)
 
     let tmp5 = tmp <*> payload <*> json <|? "repo"
+
+    if case Decoded.failure(_) = tmp5 {
+      print("Error with json :\(json)")
+    }
+
     return tmp5
   }
 
@@ -140,7 +145,7 @@ extension GHEvent: GHAPIModelType {
     result["created_at"] = self.created_at.ISO8601DateRepresentation
     result["id"] = self.id
     result["payload"] = self.payload?.encode()
-    result["repo"] = self.repo
+    result["repo"] = self.repo?.encode()
     return result
   }
 }

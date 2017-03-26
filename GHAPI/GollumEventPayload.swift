@@ -65,7 +65,7 @@ extension GollumEventPayload.GPage: GHAPIModelType {
     result["summary"] = self.summary
     result["action"] = self.action
     result["sha"] = self.sha
-    result["html_url"] = self.html_url
+    result["html_url"] = self.html_url.absoluteString
     return result
   }
 }

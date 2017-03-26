@@ -93,20 +93,184 @@ internal final class GHAPIServiceTests: XCTestCase {
         else { XCTAssert(false, "commit test URL cannot be constructed"); return }
 
       let repository = service.repository(referredBy: url).observeInBackground()
-      let content = repository.concatMap{ [weak self] (repo) -> SignalProducer<[Content], ErrorEnvelope> in
-
-        guard let serv = self?.service else {
-          return SignalProducer<[Content], ErrorEnvelope>(error: ErrorEnvelope.unknownError)
-        }
-        return serv.contents(of: repo, ref: nil)
+      let content = repository
+        .concatMap{ [weak self] (repo) -> SignalProducer<[Content], ErrorEnvelope> in
+          guard let serv = self?.service else {
+            return SignalProducer<[Content], ErrorEnvelope>(error: ErrorEnvelope.unknownError)
+          }
+          return serv.contents(of: repo, ref: nil)
       }
 
-      service.repository(referredBy: url).observeInBackground()
-        .startWithResult{ (result) in
-          defer { expect.fulfill() }
-          let repo = result.value
-          XCTAssertNotNil(repo, "commit request result should not be nil")
+      content.startWithResult{ (result) in
+        defer { expect.fulfill() }
+        let repo = result.value
+        XCTAssertNotNil(repo, "commit request result should not be nil")
       }
+    }
+  }
+
+  func testRepoContributors() {
+    run { (expect) in
+      guard
+        let url
+        = URL(string: "https://api.github.com/repos/apple/swift")
+        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+
+      let repository = service.repository(referredBy: url).observeInBackground()
+      let forks = repository
+        .concatMap{ [weak self] (repo) -> SignalProducer<[UserLite], ErrorEnvelope> in
+          guard let serv = self?.service else {
+            return SignalProducer<[UserLite], ErrorEnvelope>(error: ErrorEnvelope.unknownError)
+          }
+          return serv.contributors(of: repo)
+      }
+      forks.startWithResult{ (result) in
+        defer { expect.fulfill() }
+        let repo = result.value
+        XCTAssertNotNil(repo, "commit request result should not be nil")
+      }
+
+    }
+  }
+  func testRepoStargazers() {
+    run { (expect) in
+      guard
+        let url
+        = URL(string: "https://api.github.com/repos/apple/swift")
+        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+
+      let repository = service.repository(referredBy: url).observeInBackground()
+      let forks = repository
+        .concatMap{ [weak self] (repo) -> SignalProducer<[UserLite], ErrorEnvelope> in
+          guard let serv = self?.service else {
+            return SignalProducer<[UserLite], ErrorEnvelope>(error: ErrorEnvelope.unknownError)
+          }
+          return serv.stargazers(of: repo)
+      }
+      forks.startWithResult{ (result) in
+        defer { expect.fulfill() }
+        let repo = result.value
+        XCTAssertNotNil(repo, "commit request result should not be nil")
+      }
+
+    }
+  }
+  func testRepoPullRequests() {
+    run { (expect) in
+      guard
+        let url
+        = URL(string: "https://api.github.com/repos/apple/swift")
+        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+
+      let repository = service.repository(referredBy: url).observeInBackground()
+      let forks = repository
+        .concatMap{ [weak self] (repo) -> SignalProducer<[PullRequest], ErrorEnvelope> in
+          guard let serv = self?.service else {
+            return SignalProducer<[PullRequest], ErrorEnvelope>(error: ErrorEnvelope.unknownError)
+          }
+          return serv.pullRequests(of: repo)
+      }
+      forks.startWithResult{ (result) in
+        defer { expect.fulfill() }
+        let repo = result.value
+        XCTAssertNotNil(repo, "commit request result should not be nil \(result.error)")
+      }
+
+    }
+  }
+  func testRepoIssues() {
+    run { (expect) in
+      guard
+        let url
+        = URL(string: "https://api.github.com/repos/apple/swift")
+        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+
+      let repository = service.repository(referredBy: url).observeInBackground()
+      let forks = repository
+        .concatMap{ [weak self] (repo) -> SignalProducer<[Issue], ErrorEnvelope> in
+          guard let serv = self?.service else {
+            return SignalProducer<[Issue], ErrorEnvelope>(error: ErrorEnvelope.unknownError)
+          }
+          return serv.issues(of: repo)
+      }
+      forks.startWithResult{ (result) in
+        defer { expect.fulfill() }
+        let repo = result.value
+        XCTAssertNotNil(repo, "commit request result should not be nil")
+      }
+
+    }
+  }
+
+  func testRepoActivities() {
+    run { (expect) in
+      guard
+        let url
+        = URL(string: "https://api.github.com/repos/apple/swift")
+        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+
+      let repository = service.repository(referredBy: url).observeInBackground()
+      let events = repository
+        .concatMap{ [weak self] (repo) -> SignalProducer<[GHEvent], ErrorEnvelope> in
+          guard let serv = self?.service else {
+            return SignalProducer<[GHEvent], ErrorEnvelope>(error: ErrorEnvelope.unknownError)
+          }
+          return serv.events(of: repo)
+      }
+      events.startWithResult{ (result) in
+        defer { expect.fulfill() }
+        let es = result.value
+        XCTAssertNotNil(es, "commit request result should not be nil")
+      }
+
+    }
+  }
+
+  func testRepoRelease() {
+    run { (expect) in
+      guard
+        let url 
+        = URL(string: "https://api.github.com/repos/apple/swift")
+        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+
+      let repository = service.repository(referredBy: url).observeInBackground()
+      let forks = repository
+        .concatMap{ [weak self] (repo) -> SignalProducer<[Release], ErrorEnvelope> in
+          guard let serv = self?.service else {
+            return SignalProducer<[Release], ErrorEnvelope>(error: ErrorEnvelope.unknownError)
+          }
+          return serv.releases(of: repo)
+      }
+      forks.startWithResult{ (result) in
+        defer { expect.fulfill() }
+        let repo = result.value
+        XCTAssertNotNil(repo, "commit request result should not be nil")
+      }
+
+    }
+  }
+
+  func testRepoForks() {
+    run { (expect) in
+      guard
+        let url
+        = URL(string: "https://api.github.com/repos/apple/swift")
+        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+
+      let repository = service.repository(referredBy: url).observeInBackground()
+      let forks = repository
+        .concatMap{ [weak self] (repo) -> SignalProducer<[Repository], ErrorEnvelope> in
+          guard let serv = self?.service else {
+            return SignalProducer<[Repository], ErrorEnvelope>(error: ErrorEnvelope.unknownError)
+          }
+          return serv.forks(of: repo)
+      }
+      forks.startWithResult{ (result) in
+        defer { expect.fulfill() }
+        let repo = result.value
+        XCTAssertNotNil(repo, "commit request result should not be nil")
+      }
+
     }
   }
 

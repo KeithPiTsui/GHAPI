@@ -43,11 +43,11 @@ public struct PushEventPayload: EventPayloadType {
   public let head_commit: PushEventPayload.PCommit?
   public let repository: Repository?
   public let pusher: PushEventPayload.PCommit.PCPerson?
-  public let sender: User?
-  public let push_id: UInt
-  public let size: UInt
-  public let distinct_size: UInt
-  public let head: String
+  public let sender: UserLite?
+  public let push_id: UInt?
+  public let size: UInt?
+  public let distinct_size: UInt?
+  public let head: String?
 }
 
 extension PushEventPayload.PCommit.PCPerson: GHAPIModelType {
@@ -133,13 +133,20 @@ extension PushEventPayload: GHAPIModelType {
       <*> json <|? "head_commit"
     let tmp2 = tmp1
       <*> json <|? "repository"
+    let tmp21 = tmp2
       <*> json <|? "pusher"
+    let tmp22 = tmp21
       <*> json <|? "sender"
-    let tmp3 = tmp2
-      <*> json <| "push_id"
-      <*> json <| "size"
-      <*> json <| "distinct_size"
-      <*> json <| "head"
+    let tmp3 = tmp22
+      <*> json <|? "push_id"
+      <*> json <|? "size"
+      <*> json <|? "distinct_size"
+      <*> json <|? "head"
+
+    if case Decoded.failure(_) = tmp3 {
+      print("json with \(json)")
+    }
+
     return tmp3.map{$0 as EventPayloadType}
   }
 
@@ -155,10 +162,9 @@ extension PushEventPayload: GHAPIModelType {
     result["compare"] = self.compare?.absoluteString
     result["commits"] = self.commits.map{$0.encode()}
     result["head_commit"] = self.head_commit?.encode()
-    result["repository"] = self.encode()
-    result["pusher"] = self.encode()
+    result["repository"] = self.repository?.encode()
+    result["pusher"] = self.pusher?.encode()
     result["sender"] = self.sender?.encode()
-
     result["push_id"] = self.push_id
     result["size"] = self.size
     result["distinct_size"] = self.distinct_size
@@ -173,7 +179,31 @@ extension PushEventPayload: GHAPIModelType {
 
 
 
-
+/**
+  Multiple(MissingKey(login), 
+ MissingKey(id), 
+ Multiple(MissingKey(avatar_url), 
+ MissingKey(gravatar_id)), 
+ Multiple(MissingKey(url), 
+ MissingKey(html_url), 
+ MissingKey(followers_url), 
+ MissingKey(following_url), 
+ MissingKey(gists_url), 
+ MissingKey(starred_url), 
+ MissingKey(subscriptions_url), 
+ MissingKey(organizations_url), 
+ MissingKey(repos_url), 
+ MissingKey(events_url), 
+ MissingKey(received_events_url)), 
+ MissingKey(type), MissingKey(site_admin), 
+ Multiple(TypeMismatch(Expected Date, got Number(1430869212)), TypeMismatch(Expected Date, got Number(1430869217))), 
+ MissingKey(push_id), 
+ MissingKey(size), 
+ MissingKey(distinct_size), 
+ MissingKey(head))
+ 
+ 
+ */
 
 
 

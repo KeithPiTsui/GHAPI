@@ -18,7 +18,7 @@ public struct DeploymentEventPayload: EventPayloadType{
     public let ref: String
     public let task: String
     public let environment: String
-    public let desc: String
+    public let desc: String?
     public let creator: UserLite
     public let created_at: Date
     public let updated_at: Date
@@ -69,7 +69,7 @@ extension DeploymentEventPayload.DDeployment: GHAPIModelType {
       <*> json <| "task"
       <*> json <| "environment"
     let tmp2 = tmp
-      <*> json <| "description"
+      <*> json <|? "description"
       <*> json <| "creator"
       <*> json <| "created_at"
       <*> json <| "updated_at"

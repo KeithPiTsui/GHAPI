@@ -41,10 +41,10 @@ extension MembershipEventPayload: GHAPIModelType {
     var result: [String:Any] = [:]
     result["action"] = self.action
     result["scope"] = self.scope
-    result["member"] = self.member
-    result["sender"] = self.sender
-    result["team"] = self.team
-    result["organization"] = self.organization
+    result["member"] = self.member.encode()
+    result["sender"] = self.sender.encode()
+    result["team"] = self.team.encode()
+    result["organization"] = self.organization.encode()
     return result
   }
 }
