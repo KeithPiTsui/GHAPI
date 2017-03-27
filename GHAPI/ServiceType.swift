@@ -146,6 +146,8 @@ public protocol ServiceType {
 
   /// Request events of a repo
   func issues(of repository: Repository) -> SignalProducer<[Issue], ErrorEnvelope>
+
+  func commits(of repository: Repository, on branch: BranchLite) -> SignalProducer<[Commit], ErrorEnvelope>
 }
 
 extension ServiceType {

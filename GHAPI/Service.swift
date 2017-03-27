@@ -178,6 +178,11 @@ extension Service {
       return request(.resource(url: url))
   }
 
+  public func commits(of repository: Repository, on branch: BranchLite)
+    -> SignalProducer<[Commit], ErrorEnvelope> {
+      return request(.commits(repo: repository, branch: branch))
+  }
+
   // MARK: -
   // MARK: Others Requesting
 

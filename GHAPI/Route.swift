@@ -86,6 +86,9 @@ internal enum Route {
   /// issue.comments
   case issueComments(issue: Issue)
 
+  /// Repository.branch.commits
+  case commits(repo: Repository, branch: BranchLite)
+
   // swiftlint:disable:next large_tuple
   internal var requestProperties: (
     method: Method,
@@ -147,6 +150,10 @@ internal enum Route {
 
     case let .issueComments(issue):
       return (.GET, issue.urls.comments_url.path, [:], nil, [:])
+
+    case let .commits(repo, branch):
+      return (.GET, repo.urls.commits_url.path, ["ref":branch.name], nil, [:])
+
     }
   }
 }

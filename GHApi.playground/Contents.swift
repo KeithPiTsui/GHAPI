@@ -11,35 +11,36 @@ import Result
 import ReactiveExtensions
 import GHAPI
 
-//let str = "git@github.com:octocat/Hello-World.git"
-//let url = URL(string: str)
-//url == nil
-
-//let str: String? = nil
-//let any: Any = str
-//
-//str == nil
-//
-//print(any)
-
-//func unwrap(any:Any) -> Any {
-//  let mi = Mirror(reflecting: any)
-//  if mi.displayStyle != .optional {
-//    return any
-//  }
-//  guard let (_, some) = mi.children.first else { return nil }
-//  return some
-//
-//  if mi.children.count == 0 { return NSNull() }
-//  let (_, some) = mi.children.first!
-//  return some
-//}
 
 
 
-//
-//
-//let int:Int? = 1
-//let str: String? = "foo"
-//let null:Any? = nil
-//let values:[Any] = [unwrap(any: int),2,unwrap(any: str),"bar", unwrap(any: null)]
+
+
+
+fileprivate func unwrap<T>(value: Any)
+  -> (unwraped:T?, isOriginalType:Bool) {
+  let mirror = Mirror(reflecting: value)
+  let isOrgType = mirror.subjectType == Optional<T>.self
+  if mirror.displayStyle != .optional {
+    return (value as? T, isOrgType)
+  }
+  guard let firstChild = mirror.children.first else {
+    return (nil, isOrgType)
+  }
+  return (firstChild.value as? T, isOrgType)
+}
+
+let value: [Int]? = [0]
+let value2: [Int]? = nil
+
+let anyValue: Any = value
+let anyValue2: Any = value2
+
+let unwrappedResult:([Int]?, Bool)
+  = unwrap(value: anyValue)
+let unwrappedResult2:([Int]?, Bool)
+  = unwrap(value: anyValue2)
+let unwrappedResult3:([UInt]?, Bool)
+  = unwrap(value: anyValue)
+let unwrappedResult4:([NSNumber]?, Bool)
+  = unwrap(value: anyValue)
