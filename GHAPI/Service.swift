@@ -94,6 +94,24 @@ extension Service {
     return url
   }
 
+  public func personalRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope> {
+    return request(.resource(url: user.urls.reposUrl))
+  }
+//  public func watchedRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope> {
+//    return request(.resource(url: user.urls.starredUrl))
+//  }
+  public func starredRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope> {
+    return request(.resource(url: user.urls.starredUrl))
+  }
+
+//  public func personalIssues(of user: User) -> SignalProducer<[Issue], ErrorEnvelope> {
+//
+//  }
+//  public func personalPullRequests(of user: User) -> SignalProducer<[PullRequest], ErrorEnvelope> {
+//
+//  }
+
+
   public func forks(of repository: Repository) -> SignalProducer<[Repository], ErrorEnvelope> {
     return request(.resource(url: repository.urls.forks_url))
   }

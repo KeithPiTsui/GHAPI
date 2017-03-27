@@ -148,6 +148,13 @@ public protocol ServiceType {
   func issues(of repository: Repository) -> SignalProducer<[Issue], ErrorEnvelope>
 
   func commits(of repository: Repository, on branch: BranchLite) -> SignalProducer<[Commit], ErrorEnvelope>
+
+  func personalRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope>
+//  func watchedRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope>
+  func starredRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope>
+
+//  func personalIssues(of user: User) -> SignalProducer<[Issue], ErrorEnvelope>
+//  func personalPullRequests(of user: User) -> SignalProducer<[PullRequest], ErrorEnvelope>
 }
 
 extension ServiceType {

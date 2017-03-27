@@ -202,6 +202,54 @@ internal final class GHAPIServiceTests: XCTestCase {
     }
   }
 
+  func testPersonalRepos() {
+    run { (expect) in
+      guard
+        let url
+        = URL(string: "https://api.github.com/users/keithPitsui")
+        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+
+      let user = service.user(referredBy: url).observeInBackground()
+      let repos = user
+        .concatMap{ [weak self] (u) -> SignalProducer<[Repository], ErrorEnvelope> in
+          guard let serv = self?.service else {
+            return SignalProducer<[Repository], ErrorEnvelope>(error: ErrorEnvelope.unknownError)
+          }
+          return serv.personalRepositories(of: u)
+      }
+      repos.startWithResult{ (result) in
+        defer { expect.fulfill() }
+        let es = result.value
+        XCTAssertNotNil(es, "commit request result should not be nil")
+      }
+      
+    }
+  }
+
+  func testStarredRepos() {
+    run { (expect) in
+      guard
+        let url
+        = URL(string: "https://api.github.com/users/keithPitsui")
+        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+
+      let user = service.user(referredBy: url).observeInBackground()
+      let repos = user
+        .concatMap{ [weak self] (u) -> SignalProducer<[Repository], ErrorEnvelope> in
+          guard let serv = self?.service else {
+            return SignalProducer<[Repository], ErrorEnvelope>(error: ErrorEnvelope.unknownError)
+          }
+          return serv.starredRepositories(of: u)
+      }
+      repos.startWithResult{ (result) in
+        defer { expect.fulfill() }
+        let es = result.value
+        XCTAssertNotNil(es, "commit request result should not be nil")
+      }
+
+    }
+  }
+
   func testCommitOfRepositoryOnBranch() {
     run { (expect) in
       guard
