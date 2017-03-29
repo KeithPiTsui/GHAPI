@@ -117,9 +117,9 @@ extension GHEvent: GHAPIModelType {
       _payload = nil
     }
     if _payload == nil {
-      print("Event \(eventType) with id \(eventId) doesn't contain a payload")
+      print("Event \(String(describing: eventType)) with id \(String(describing: eventId)) doesn't contain a payload")
     } else if case let .failure(error) = _payload! {
-      print("Event \(eventType) with id \(eventId) doesn't convert a payload")
+      print("Event \(String(describing: eventType)) with id \(String(describing: eventId)) doesn't convert a payload")
       print(error)
     }
 

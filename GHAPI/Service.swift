@@ -169,7 +169,7 @@ extension Service {
                          ref branch: String? = nil)
     -> URL {
       guard let url = pureURL(of: .contents(repo: repository, branch: branch)) else {
-        fatalError("Cannot construct a url of repo:\(repository.full_name) on branch:\(branch) ")
+        fatalError("Cannot construct a url of repo:\(repository.full_name) on branch:\(String(describing: branch)) ")
       }
       return url
   }
