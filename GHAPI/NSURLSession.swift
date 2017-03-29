@@ -25,7 +25,18 @@ internal extension URLSession {
 
       return producer
         .start(on: scheduler)
-        .flatMapError { _ in SignalProducer(error: .couldNotParseErrorEnvelopeJSON) } // NSError
+        .flatMapError { (error) -> SignalProducer<(Data, URLResponse), ErrorEnvelope> in
+          let errorEnvelope
+            = ErrorEnvelope(
+              requestingPhase: .networking,
+              errorType: .networkError,
+              message: "Network error",
+              ghErrorEnvelope: nil,
+              responseError: error.error,
+              responseData: nil,
+              response: nil)
+          return SignalProducer(error: errorEnvelope)
+        }
         .flatMap(.concat) { data, response -> SignalProducer<Data, ErrorEnvelope> in
           guard let response = response as? HTTPURLResponse else { fatalError() }
 
@@ -35,20 +46,49 @@ internal extension URLSession {
             let contentType = headers["Content-Type"], contentType.hasPrefix("application/json")
             else {
               print("[GHAPI] Failure \(self.sanitized(request))")
-              if let json = parseJSONData(data),
-                var ghErrJson = json as? [String: Any] {
-                ghErrJson["httpCode"] = response.statusCode
-                switch decode(ghErrJson) as Decoded<ErrorEnvelope> {
+
+              if let json = parseJSONData(data) {
+                switch decode(json) as Decoded<GHErrorEnvelope> {
                 case let .success(envelope):
-                  return SignalProducer(error: envelope)
+                  let errorEnvelope
+                    = ErrorEnvelope(
+                      requestingPhase: .reponseHandling,
+                      errorType: .GHAPIReturnError,
+                      message: "GHAPIReturnError",
+                      ghErrorEnvelope: envelope,
+                      responseError: nil,
+                      responseData: data,
+                      response: response)
+
+                  return SignalProducer(error: errorEnvelope)
                 case let .failure(error):
+                  let errorEnvelope
+                    = ErrorEnvelope(
+                      requestingPhase: .reponseHandling,
+                      errorType: .ErrorEnvelopeJSONParsingFailed,
+                      message: "Argo decoding error envelope error: \(error)",
+                      ghErrorEnvelope: nil,
+                      responseError: nil,
+                      responseData: data,
+                      response: response)
                   print("Argo decoding error envelope error: \(error)")
-                  return SignalProducer(error: .couldNotDecodeJSON(error))
+                  return SignalProducer(error: errorEnvelope)
                 }
               } else {
+                let errorEnvelope
+                  = ErrorEnvelope(
+                    requestingPhase: .reponseHandling,
+                    errorType: .jsonParsingFailed,
+                    message: "Couldn't parse error envelope JSON.",
+                    ghErrorEnvelope: nil,
+                    responseError: nil,
+                    responseData: data,
+                    response: response)
                 print("Couldn't parse error envelope JSON.")
-                return SignalProducer(error: .couldNotParseErrorEnvelopeJSON)
+                return SignalProducer(error: errorEnvelope)
               }
+
+
           }
           print("[GHAPI] Success \(self.sanitized(request))")
           return SignalProducer(value: data)
@@ -61,10 +101,10 @@ internal extension URLSession {
     -> SignalProducer<Any, ErrorEnvelope> {
 
       return self.rac_dataResponse(request, uploading: file)
-        .map(parseJSONData)
-        .flatMap(.concat) { json -> SignalProducer<Any, ErrorEnvelope> in
-          guard let json = json else {
-            return .init(error: .couldNotParseJSON)
+        .flatMap(.concat) { data -> SignalProducer<Any, ErrorEnvelope> in
+          let jsonData = parseJSONData(data)
+          guard let json = jsonData else {
+            return .init(error: .couldNotParseJSON(from: data))
           }
           return .init(value: json)
       }

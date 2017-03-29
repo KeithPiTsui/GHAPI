@@ -230,18 +230,28 @@ extension Service {
           observer.send(value: repos)
           observer.sendCompleted()
         } else {
-          observer.send(error: .couldNotParseJSON)
+          observer.send(error: .noNetworkError)
         }
       }
   }
 
   public func data(of url: URL) -> SignalProducer<Data, ErrorEnvelope> {
     return SignalProducer { observer, disposable in
-      if let data = try? Data(contentsOf: url) {
+      do {
+        let data = try Data(contentsOf: url)
         observer.send(value: data)
         observer.sendCompleted()
-      } else {
-        observer.send(error: .networkError)
+      } catch {
+        let errorEnvelope
+          = ErrorEnvelope(
+            requestingPhase: .networking,
+            errorType: .networkError,
+            message: "Network Error",
+            ghErrorEnvelope: nil,
+            responseError: error,
+            responseData: nil,
+            response: nil)
+        observer.send(error: errorEnvelope)
       }
     }
   }
@@ -290,15 +300,15 @@ extension Service {
 
   fileprivate static let session = URLSession(configuration: .default)
 
-  fileprivate func requestPagination<M: Decodable>(_ paginationUrl: String)
-    -> SignalProducer<M, ErrorEnvelope> where M == M.DecodedType {
-      guard let paginationUrl = URL(string: paginationUrl) else {
-        return .init(error: .invalidPaginationUrl)
-      }
-      return Service.session
-        .rac_JSONResponse(preparedRequest(forURL: paginationUrl))
-        .flatMap(decodeModel)
-  }
+//  fileprivate func requestPagination<M: Decodable>(_ paginationUrl: String)
+//    -> SignalProducer<M, ErrorEnvelope> where M == M.DecodedType {
+//      guard let paginationUrl = URL(string: paginationUrl) else {
+//        return .init(error: .invalidPaginationUrl)
+//      }
+//      return Service.session
+//        .rac_JSONResponse(preparedRequest(forURL: paginationUrl))
+//        .flatMap(decodeModel)
+//  }
 
   fileprivate func pureRequest(of route: Route) -> URLRequest {
     let properties = route.requestProperties

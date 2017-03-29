@@ -467,7 +467,7 @@ internal final class GHAPIServiceTests: XCTestCase {
       service.user(with: "keithpitsui")
         .concatMap{ [weak self] (user) -> SignalProducer<[GHEvent], ErrorEnvelope> in
           return self?.service.receivedEvents(of: user)
-            ?? SignalProducer.init(error: ErrorEnvelope.couldNotParseJSON)
+            ?? SignalProducer.init(error: ErrorEnvelope.unknownError)
         }.observeInBackground()
         .startWithResult {[weak self] (result) in
           defer {expect.fulfill()}
@@ -481,7 +481,7 @@ internal final class GHAPIServiceTests: XCTestCase {
       service.user(with: "keithpitsui")
         .concatMap{ [weak self] (user) -> SignalProducer<[GHEvent], ErrorEnvelope> in
           return self?.service.events(of: user)
-            ?? SignalProducer.init(error: ErrorEnvelope.couldNotParseJSON)
+            ?? SignalProducer.init(error: ErrorEnvelope.unknownError)
         }.observeInBackground()
         .startWithResult {[weak self] (result) in
           defer {expect.fulfill()}
