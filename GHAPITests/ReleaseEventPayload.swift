@@ -31,7 +31,7 @@ internal final class ReleaseEventPayloadTests: XCTestCase {
     let decodePayload = ReleaseEventPayload.decode(json)
     guard
       let payload = decodePayload.value as? ReleaseEventPayload
-      else { XCTAssert(false, "payload cannot be constructed"); return }
+      else { XCTAssert(false, "payload cannot be constructed \(decodePayload.error)"); return }
     XCTAssertEqual(payload.action, "published")
     let jsonStr = payload.toJSONString()
     XCTAssertNotNil(jsonStr)
