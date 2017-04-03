@@ -204,6 +204,11 @@ extension Service {
       return request(.resource(url: url))
   }
 
+  public func comments(of commit: Commit)
+    -> SignalProducer<[CommitComment], ErrorEnvelope> {
+      return request(.resource(url: commit.comments_url))
+  }
+
   public func commits(of repository: Repository, on branch: BranchLite)
     -> SignalProducer<[Commit], ErrorEnvelope> {
       return request(.commits(repo: repository, branch: branch))

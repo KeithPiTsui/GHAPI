@@ -101,6 +101,9 @@ public protocol ServiceType {
   func commit(referredBy url: URL)
     -> SignalProducer<Commit, ErrorEnvelope>
 
+  /// Commit comment
+  func comments(of commit: Commit) -> SignalProducer<[CommitComment], ErrorEnvelope>
+
   /// Request a readme specified by url
   func readme(referredBy url: URL)
     -> SignalProducer<Readme, ErrorEnvelope>

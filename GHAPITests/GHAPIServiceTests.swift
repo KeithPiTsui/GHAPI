@@ -368,6 +368,27 @@ internal final class GHAPIServiceTests: XCTestCase {
     }
   }
 
+  func testCommitComment() {
+    run { (expect) in
+      guard
+        let url
+        = URL(string: "https://api.github.com/repos/apple/swift/commits/39639fd3b8c5c1eb2fcaf6d565d23975a55b528d")
+        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+      let commit = service.commit(referredBy: url).observeInBackground()
+      let comments = commit.concatMap{ [weak self] (commit) -> SignalProducer<[CommitComment], ErrorEnvelope> in
+        guard let serv = self?.service else {
+          return SignalProducer<[CommitComment], ErrorEnvelope>(error: ErrorEnvelope.unknownError)
+        }
+        return serv.comments(of: commit)
+      }
+      comments.startWithResult{ (result) in
+        defer { expect.fulfill() }
+        let commit = result.value
+        XCTAssertNotNil(commit, "commit request result should not be nil")
+      }
+    }
+  }
+
   func testCommits() {
     run { (expect) in
       guard
