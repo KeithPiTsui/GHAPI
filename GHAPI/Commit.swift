@@ -47,7 +47,7 @@ public struct Commit {
     public let blob_url: URL
     public let raw_url: URL
     public let contents_url: URL
-    public let patch: String
+    public let patch: String?
   }
 
   public let sha: String
@@ -210,7 +210,7 @@ extension Commit.CFile: GHAPIModelType {
       <*> json <| "blob_url"
       <*> json <| "raw_url"
       <*> json <| "contents_url"
-      <*> json <| "patch"
+      <*> json <|? "patch"
     return tmp2
   }
   public func encode() -> [String:Any] {
