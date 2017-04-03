@@ -71,6 +71,8 @@ public protocol ServiceType {
   func contentURL(of repository: Repository, ref branch: String?)
   -> URL
 
+  func contentURL(of repository: URL, ref branch: String?) -> URL
+
   /// Request a content specified by url
   func contents(referredBy url: URL)
     -> SignalProducer<[Content], ErrorEnvelope>

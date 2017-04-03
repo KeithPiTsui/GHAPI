@@ -11,7 +11,13 @@ import Result
 import ReactiveExtensions
 import GHAPI
 
+let service  = Service()
+let userSignalProducer = service.user(with: "keith")
+userSignalProducer.startWithSignal { (signal, disposable) in
 
+}
+
+userSignalProducer.start()
 
 
 

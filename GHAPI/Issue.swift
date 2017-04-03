@@ -42,6 +42,7 @@ public struct Issue {
   public let updated_at: Date
   public let closed_at: Date?
   public let body: String
+  public let pull_request: PullRequestLite?
 }
 
 extension Issue: GHAPIModelType {
@@ -71,6 +72,7 @@ extension Issue: GHAPIModelType {
       <*> json <| "updated_at"
       <*> json <|? "closed_at"
       <*> json <| "body"
+      <*> json <|? "pull_request"
     return tmp3
   }
 
@@ -91,6 +93,7 @@ extension Issue: GHAPIModelType {
     result["updated_at"] = self.updated_at.ISO8601DateRepresentation
     result["closed_at"] = self.closed_at?.ISO8601DateRepresentation
     result["body"] = self.body
+    result["pull_request"] = self.pull_request?.encode()
     return result
   }
 }

@@ -159,6 +159,14 @@ extension Service {
       return request(.contents(repo: repository, branch: branch))
   }
 
+  public func contentURL(of repository: URL, ref branch: String?) -> URL {
+    let contentURL = repository.appendingPathComponent("contents")
+    var components = URLComponents(url: contentURL, resolvingAgainstBaseURL: true)
+    let queryItem = URLQueryItem(name: "ref", value: branch)
+    components?.queryItems = [queryItem]
+    return (components?.url)!
+  }
+
   public func contents(ofRepository url: URL,
                        ref branch: String? = nil)
     -> SignalProducer<[Content], ErrorEnvelope>{
