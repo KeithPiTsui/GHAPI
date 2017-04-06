@@ -91,11 +91,11 @@ public struct GithubCraper {
     let lang = repoNode.descendantsWithAttributeName("itemprop", attributeValue: "programmingLanguage").first?
       .content?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
 
-    let totalStarsStr = repoNode.descendantsWithAttributeName("aria-label", attributeValue: "Stargazers").first?
+    let totalStarsStr = repoNode.descendantsWithAttributeName("aria-label", attributeValue: "star").first?.parent?
       .content?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     let totalStars = totalStarsStr?.numbers().first.map(UInt.init)
 
-    let forksStr = repoNode.descendantsWithAttributeName("aria-label", attributeValue: "Forks").first?
+    let forksStr = repoNode.descendantsWithAttributeName("aria-label", attributeValue: "fork").first?.parent?
       .content?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     let forks = forksStr?.numbers().first.map(UInt.init)
 

@@ -11,42 +11,62 @@ import Result
 import ReactiveExtensions
 import GHAPI
 
-let service  = Service()
-let userSignalProducer = service.user(with: "keith")
-userSignalProducer.startWithSignal { (signal, disposable) in
+PlaygroundPage.current.needsIndefiniteExecution = true
+let cq = DispatchQueue(label: "concurrent.queue", attributes: .concurrent)
+let cq2 = DispatchQueue(label: "concurent.queue2", attributes: .concurrent)
+let sq = DispatchQueue(label: "serial.queue")
 
+func codeFragment() {
+  print("code Fragment begin")
+  print("Task Thread:\(Thread.current.description)")
+  let imgURL = URL(string: "http://stackoverflow.com/questions/24058336/how-do-i-run-asynchronous-callbacks-in-playground")!
+  let _ = try! Data(contentsOf: imgURL)
+  print("code Fragment completed")
 }
 
-userSignalProducer.start()
+func serialQueueSync() { sq.sync { codeFragment() } }
+func serialQueueAsync() { sq.async { codeFragment() } }
+func concurrentQueueSync() { cq2.sync { codeFragment() } }
+func concurrentQueueAsync() { cq2.async { codeFragment() } }
 
-
-
-
-
-fileprivate func unwrap<T>(value: Any)
-  -> (unwraped:T?, isOriginalType:Bool) {
-  let mirror = Mirror(reflecting: value)
-  let isOrgType = mirror.subjectType == Optional<T>.self
-  if mirror.displayStyle != .optional {
-    return (value as? T, isOrgType)
+func tasksExecution() {
+  (1...5).forEach { (_) in
+    /// Using an concurrent queue to simulate concurent task executions.
+    cq.async {
+      print("Caller Thread:\(Thread.current.description)")
+      /// Serial Queue Async, tasks run serially, because only one thread that can be used by serial queue, the underlying thread of serial queue.
+      //serialQueueAsync()
+      /// Serial Queue Sync, tasks run serially, because only one thread that can be used by serial queue,one by one of the callers' threads.
+      //serialQueueSync()
+      /// Concurrent Queue Async, tasks run concurrently, because tasks run on different underlying threads
+      //concurrentQueueAsync()
+      /// Concurrent Queue Sync, tasks run concurrently, because tasks run on different callers' thread
+      //concurrentQueueSync()
+    }
   }
-  guard let firstChild = mirror.children.first else {
-    return (nil, isOrgType)
-  }
-  return (firstChild.value as? T, isOrgType)
 }
+tasksExecution()
 
-let value: [Int]? = [0]
-let value2: [Int]? = nil
 
-let anyValue: Any = value
-let anyValue2: Any = value2
 
-let unwrappedResult:([Int]?, Bool)
-  = unwrap(value: anyValue)
-let unwrappedResult2:([Int]?, Bool)
-  = unwrap(value: anyValue2)
-let unwrappedResult3:([UInt]?, Bool)
-  = unwrap(value: anyValue)
-let unwrappedResult4:([NSNumber]?, Bool)
-  = unwrap(value: anyValue)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

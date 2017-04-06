@@ -44,8 +44,8 @@ public struct Commit {
     public let additions: UInt
     public let deletions: UInt
     public let changes: UInt
-    public let blob_url: URL
-    public let raw_url: URL
+    public let blob_url: URL?
+    public let raw_url: URL?
     public let contents_url: URL
     public let patch: String?
   }
@@ -207,8 +207,8 @@ extension Commit.CFile: GHAPIModelType {
       <*> json <| "deletions"
     let tmp2 = tmp
       <*> json <| "changes"
-      <*> json <| "blob_url"
-      <*> json <| "raw_url"
+      <*> json <|? "blob_url"
+      <*> json <|? "raw_url"
       <*> json <| "contents_url"
       <*> json <|? "patch"
     return tmp2
@@ -221,8 +221,8 @@ extension Commit.CFile: GHAPIModelType {
     result["additions"] = self.additions
     result["deletions"] = self.deletions
     result["changes"] = self.changes
-    result["blob_url"] = self.blob_url.absoluteString
-    result["raw_url"] = self.raw_url.absoluteString
+    result["blob_url"] = self.blob_url?.absoluteString
+    result["raw_url"] = self.raw_url?.absoluteString
     result["contents_url"] = self.contents_url.absoluteString
     result["patch"] = self.patch
     return result
