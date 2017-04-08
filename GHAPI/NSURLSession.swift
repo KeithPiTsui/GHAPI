@@ -19,7 +19,7 @@ internal extension URLSession {
     -> SignalProducer<Data, ErrorEnvelope> {
 
       let producer = file.map {
-        self.rac_dataWithRequest(request, uploading: $0, named: $1)
+        self.rac_dataUpload(request, uploading: $0, named: $1)
         }
         ?? self.reactive.data(with: request)
 
@@ -145,7 +145,7 @@ private let boundary = "k1ck574r73r154c0mp4ny"
 
 extension URLSession {
   // Returns a producer that will execute the given upload once for each invocation of start().
-  fileprivate func rac_dataWithRequest(_ request: URLRequest, uploading file: URL, named name: String)
+  fileprivate func rac_dataUpload(_ request: URLRequest, uploading file: URL, named name: String)
     -> SignalProducer<(Data, URLResponse), AnyError> {
 
       var mutableRequest = request
