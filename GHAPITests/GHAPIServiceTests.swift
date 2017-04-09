@@ -353,6 +353,41 @@ internal final class GHAPIServiceTests: XCTestCase {
     }
   }
 
+  func testPullRequestReferedByURL() {
+    run { (expect) in
+      guard
+        let url
+        = URL(string: "https://api.github.com/repos/ArtSabintsev/Guitar/pulls/16")
+        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+      service.pullRequest(of: url).observeInBackground()
+        .startWithResult{ (result) in
+          defer { expect.fulfill() }
+          let pr = result.value
+          XCTAssertNotNil(pr, "pull request result should not be nil")
+      }
+    }
+  }
+
+  func testCommentsOfPullRequest() {
+    run { (expect) in
+      guard
+        let url
+        = URL(string: "https://api.github.com/repos/ArtSabintsev/Guitar/pulls/16")
+        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+      let pr = service.pullRequest(of: url).observeInBackground()
+      let comments = pr.flatMap{ [weak self] (pr) -> SignalProducer<[IssueComment], ErrorEnvelope> in
+        guard let serv = self?.service
+          else { return SignalProducer<[IssueComment], ErrorEnvelope>(error: ErrorEnvelope.unknownError)}
+        return serv.pullRequestComments(of: pr)
+      }
+      comments.startWithResult{ (result) in
+        defer { expect.fulfill() }
+        let cs = result.value
+        XCTAssertNotNil(cs, "comments of pull request result should not be nil")
+      }
+    }
+  }
+
   func testCommit() {
     run { (expect) in
       guard

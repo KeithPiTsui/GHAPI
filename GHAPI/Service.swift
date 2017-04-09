@@ -217,6 +217,10 @@ extension Service {
   // MARK: -
   // MARK: Others Requesting
 
+  public func pullRequest(of url: URL) -> SignalProducer<PullRequest, ErrorEnvelope> {
+    return request(.resource(url: url))
+  }
+
   public func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope> {
     return request(.resource(url: url))
   }
@@ -234,6 +238,10 @@ extension Service {
 
   public func issueComments(of issue: Issue) -> SignalProducer<[IssueComment], ErrorEnvelope> {
     return request(.issueComments(issue: issue))
+  }
+
+  public func pullRequestComments(of pullRequest: PullRequest) -> SignalProducer<[IssueComment], ErrorEnvelope> {
+    return request(.pullRequestComments(pullRequest: pullRequest))
   }
 
   public func trendingRepository(of period: GithubCraper.TrendingPeriod, with language: String?)

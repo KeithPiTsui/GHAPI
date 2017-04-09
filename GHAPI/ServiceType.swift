@@ -131,6 +131,9 @@ public protocol ServiceType {
   /// Request comments of an issue
   func issueComments(of issue: Issue) -> SignalProducer<[IssueComment], ErrorEnvelope>
 
+  /// Request comments of a pull request
+  func pullRequestComments(of pullRequest: PullRequest) -> SignalProducer<[IssueComment], ErrorEnvelope>
+
   /// Request forked repositories of a repo
   func forks(of repository: Repository) -> SignalProducer<[Repository], ErrorEnvelope>
 
@@ -146,8 +149,11 @@ public protocol ServiceType {
   /// Request events of a repo
   func stargazers(of repository: Repository) -> SignalProducer<[UserLite], ErrorEnvelope>
 
-  /// Request events of a repo
+  /// Pull Request events of a repo
   func pullRequests(of repository: Repository) -> SignalProducer<[PullRequest], ErrorEnvelope>
+
+  /// Pull Request referred by an URL
+  func pullRequest(of url: URL) -> SignalProducer<PullRequest, ErrorEnvelope>
 
   /// Request events of a repo
   func issues(of repository: Repository) -> SignalProducer<[Issue], ErrorEnvelope>

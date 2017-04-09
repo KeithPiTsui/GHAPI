@@ -86,6 +86,9 @@ internal enum Route {
   /// issue.comments
   case issueComments(issue: Issue)
 
+  /// PullRequest.comments
+  case pullRequestComments(pullRequest: PullRequest)
+
   /// Repository.branch.commits
   case commits(repo: Repository, branch: BranchLite)
 
@@ -150,6 +153,9 @@ internal enum Route {
 
     case let .issueComments(issue):
       return (.GET, issue.urls.comments_url.path, [:], nil, [:])
+
+    case let .pullRequestComments(pullRequest):
+      return (.GET, pullRequest.urls.comments_url.path, [:], nil, [:])
 
     case let .commits(repo, branch):
       return (.GET, repo.urls.commits_url.path, ["ref":branch.name], nil, [:])
