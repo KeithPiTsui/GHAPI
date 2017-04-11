@@ -23,6 +23,7 @@ public enum GHAPIErrorType {
   case ErrorEnvelopeJSONParsingFailed
   case DecodingJSONFailed
   case GHAPIReturnError
+  case InvalidPaginationUrl
   case unknown
 }
 
@@ -79,6 +80,16 @@ public struct ErrorEnvelope {
     response: nil
   )
 
+  internal static let invalidPaginationUrl = ErrorEnvelope(
+    requestingPhase: .routing,
+    errorType: .InvalidPaginationUrl,
+    message: "Cannot construct pagination url",
+    ghErrorEnvelope: nil,
+    responseError: nil,
+    responseData: nil,
+    response: nil
+  )
+
   internal static func couldNotParseJSON(from data: Data) -> ErrorEnvelope {
     return ErrorEnvelope(
       requestingPhase: .ghAPIModelConverting,
@@ -90,6 +101,8 @@ public struct ErrorEnvelope {
       response: nil
     )
   }
+
+//  invalidPaginationUrl
 
   internal static func couldNotDecodeJSON(_ decodeError: DecodeError) -> ErrorEnvelope {
     return ErrorEnvelope(

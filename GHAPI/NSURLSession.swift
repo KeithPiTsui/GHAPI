@@ -16,7 +16,7 @@ internal extension URLSession {
 
   // Wrap an URLSession producer with error envelope logic.
   internal func rac_dataResponse(_ request: URLRequest, uploading file: (url: URL, name: String)? = nil)
-    -> SignalProducer<Data, ErrorEnvelope> {
+    -> SignalProducer<(Data,HTTPURLResponse), ErrorEnvelope> {
 
       let producer = file.map {
         self.rac_dataUpload(request, uploading: $0, named: $1)
@@ -37,7 +37,7 @@ internal extension URLSession {
               response: nil)
           return SignalProducer(error: errorEnvelope)
         }
-        .flatMap(.concat) { data, response -> SignalProducer<Data, ErrorEnvelope> in
+        .flatMap(.concat) { data, response -> SignalProducer<(Data,HTTPURLResponse), ErrorEnvelope> in
           guard let response = response as? HTTPURLResponse else { fatalError() }
 
           guard
@@ -91,22 +91,22 @@ internal extension URLSession {
 
           }
           print("[GHAPI] Success \(self.sanitized(request))")
-          return SignalProducer(value: data)
+          return SignalProducer(value: (data, response))
       }
   }
 
   // Converts an URLSessionTask into a signal producer of raw JSON data. If the JSON does not parse
   // successfully, an `ErrorEnvelope.errorJSONCouldNotParse()` error is emitted.
   internal func rac_JSONResponse(_ request: URLRequest, uploading file: (url: URL, name: String)? = nil)
-    -> SignalProducer<Any, ErrorEnvelope> {
+    -> SignalProducer<(Any,HTTPURLResponse), ErrorEnvelope> {
 
       return self.rac_dataResponse(request, uploading: file)
-        .flatMap(.concat) { data -> SignalProducer<Any, ErrorEnvelope> in
+        .flatMap(.concat) { (data,response) -> SignalProducer<(Any,HTTPURLResponse), ErrorEnvelope> in
           let jsonData = parseJSONData(data)
           guard let json = jsonData else {
             return .init(error: .couldNotParseJSON(from: data))
           }
-          return .init(value: json)
+          return .init(value: (json, response))
       }
   }
 

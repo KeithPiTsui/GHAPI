@@ -1,5 +1,10 @@
-// swiftlint:disable file_length
-// swiftlint:disable type_body_length
+//
+//  MockService.swift
+//  GHAPI
+//
+//  Created by Pi on 11/04/2017.
+//  Copyright © 2017 Keith. All rights reserved.
+//
 
 import Argo
 import Foundation
@@ -10,18 +15,26 @@ import ReactiveSwift
 /**
  A `ServerType` that requests data from an API webservice.
  */
-public struct Service: ServiceType {
+public struct MockService: ServiceType {
+   /// Returns a new service without authentification infomation.
+  public func logout() -> MockService {
+    return MockService()
+  }
+
   public let serverConfig: ServerConfigType
   public init(serverConfig: ServerConfigType = ServerConfig.github) { self.serverConfig = serverConfig }
+
+  fileprivate let user: User = .template
+
 }
 
 
 // MARK: Service extension of Service Type
-extension Service {
+extension MockService {
 
   public func apiRoots()
     -> SignalProducer<GHAPIRoots, ErrorEnvelope> {
-      return request(.apiRoots).map(first)
+      return request(.apiRoots)
   }
 
   public func login(username: String, password: String)
@@ -37,7 +50,7 @@ extension Service {
 
   public func user(with name: String)
     -> SignalProducer<User, ErrorEnvelope> {
-      return request(.user(userName: name)).map(first)
+      return SignalProducer(value: self.user |> User.lens.name .~ name)
   }
 
   public func userURL(with name: String)
@@ -50,7 +63,9 @@ extension Service {
 
   public func user(referredBy url: URL)
     -> SignalProducer<User, ErrorEnvelope> {
-      return request(.resource(url: url)).map(first)
+      let login = url.lastPathComponent
+      let name =  url.lastPathComponent
+      return SignalProducer(value: self.user |> User.lens.name .~ name |> User.lens.login .~ login)
   }
 
   // MARK: -
@@ -62,7 +77,7 @@ extension Service {
     sort: SearchSorting? = nil,
     order: SearchSortingOrder? = nil)
     -> SignalProducer<SearchResult<Repository>, ErrorEnvelope> {
-      return request(.search(scope: .repositories(qualifiers), keyword: keyword,  sort: sort, order: order)).map(first)
+      return request(.search(scope: .repositories(qualifiers), keyword: keyword,  sort: sort, order: order))
   }
 
   public func searchUser(
@@ -71,7 +86,7 @@ extension Service {
     sort: SearchSorting? = nil,
     order: SearchSortingOrder? = nil)
     -> SignalProducer<SearchResult<User>, ErrorEnvelope> {
-      return request(.search(scope: .users(qualifiers), keyword: keyword,  sort: sort, order: order)).map(first)
+      return request(.search(scope: .users(qualifiers), keyword: keyword,  sort: sort, order: order))
   }
 
 
@@ -79,12 +94,12 @@ extension Service {
   // MARK: Repository Requesting
   public func repository(referredBy url: URL)
     -> SignalProducer<Repository, ErrorEnvelope> {
-      return request(.resource(url: url)).map(first)
+      return request(.resource(url: url))
   }
 
   public func repository(of ownername: String, and reponame: String)
     -> SignalProducer<Repository, ErrorEnvelope>{
-      return request(.repository(username: ownername, reponame: reponame)).map(first)
+      return request(.repository(username: ownername, reponame: reponame))
   }
 
   public func repositoryUrl(of ownername: String, and reponame: String) -> URL {
@@ -95,58 +110,54 @@ extension Service {
   }
 
   public func personalRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope> {
-    return request(.resource(url: user.urls.reposUrl)).map(first)
+    return request(.resource(url: user.urls.reposUrl))
   }
-//  public func watchedRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope> {
-//    return request(.resource(url: user.urls.starredUrl))
-//  }
+  //  public func watchedRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope> {
+  //    return request(.resource(url: user.urls.starredUrl))
+  //  }
   public func starredRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope> {
-    return request(.resource(url: user.urls.starredUrl)).map(first)
+    return request(.resource(url: user.urls.starredUrl))
   }
 
-//  public func personalIssues(of user: User) -> SignalProducer<[Issue], ErrorEnvelope> {
-//
-//  }
-//  public func personalPullRequests(of user: User) -> SignalProducer<[PullRequest], ErrorEnvelope> {
-//
-//  }
+  //  public func personalIssues(of user: User) -> SignalProducer<[Issue], ErrorEnvelope> {
+  //
+  //  }
+  //  public func personalPullRequests(of user: User) -> SignalProducer<[PullRequest], ErrorEnvelope> {
+  //
+  //  }
 
 
   public func forks(of repository: Repository) -> SignalProducer<[Repository], ErrorEnvelope> {
-    return request(.resource(url: repository.urls.forks_url)).map(first)
+    return request(.resource(url: repository.urls.forks_url))
   }
 
   public func releases(of repository: Repository) -> SignalProducer<[Release], ErrorEnvelope> {
-    return request(.resource(url: repository.urls3.releases_url)).map(first)
+    return request(.resource(url: repository.urls3.releases_url))
   }
 
   /// Request events of a repo
   public func events(of repository: Repository) -> SignalProducer<[GHEvent], ErrorEnvelope> {
-    return request(.resource(url: repository.urls.events_url)).map(first)
-  }
-
-  public func eventsP(of url: URL) ->  SignalProducer<([GHEvent],PaginationLinks?), ErrorEnvelope> {
-    return request(.resource(url: url))
+    return request(.resource(url: repository.urls.events_url))
   }
 
   /// Request events of a repo
   public func contributors(of repository: Repository) -> SignalProducer<[UserLite], ErrorEnvelope> {
-    return request(.resource(url: repository.urls.contributors_url)).map(first)
+    return request(.resource(url: repository.urls.contributors_url))
   }
 
   /// Request events of a repo
   public func stargazers(of repository: Repository) -> SignalProducer<[UserLite], ErrorEnvelope> {
-    return request(.resource(url: repository.urls3.stargazers_url)).map(first)
+    return request(.resource(url: repository.urls3.stargazers_url))
   }
 
   /// Request events of a repo
   public func pullRequests(of repository: Repository) -> SignalProducer<[PullRequest], ErrorEnvelope> {
-    return request(.resource(url: repository.urls3.pulls_url)).map(first)
+    return request(.resource(url: repository.urls3.pulls_url))
   }
 
   /// Request events of a repo
   public func issues(of repository: Repository) -> SignalProducer<[Issue], ErrorEnvelope> {
-    return request(.resource(url: repository.urls2.issues_url)).map(first)
+    return request(.resource(url: repository.urls2.issues_url))
   }
 
   // MARK: -
@@ -154,13 +165,13 @@ extension Service {
 
   public func contents(referredBy url: URL)
     -> SignalProducer<[Content], ErrorEnvelope>{
-      return request(.resource(url: url)).map(first)
+      return request(.resource(url: url))
   }
 
   public func contents(of repository: Repository,
                        ref branch: String? = nil)
     -> SignalProducer<[Content], ErrorEnvelope>{
-      return request(.contents(repo: repository, branch: branch)).map(first)
+      return request(.contents(repo: repository, branch: branch))
   }
 
   public func contentURL(of repository: URL, ref branch: String?) -> URL {
@@ -190,62 +201,62 @@ extension Service {
   // MARK: Branch and Commit Requesting
   public func branchLites(referredBy url: URL)
     -> SignalProducer<[BranchLite], ErrorEnvelope> {
-      return request(.resource(url: url)).map(first)
+      return request(.resource(url: url))
   }
 
   public func branch(referredBy url: URL)
     -> SignalProducer<Branch, ErrorEnvelope> {
-      return request(.resource(url: url)).map(first)
+      return request(.resource(url: url))
   }
 
   public func commits(referredBy url: URL)
     -> SignalProducer<[Commit], ErrorEnvelope> {
-      return request(.resource(url: url)).map(first)
+      return request(.resource(url: url))
   }
 
   public func commit(referredBy url: URL)
     -> SignalProducer<Commit, ErrorEnvelope> {
-      return request(.resource(url: url)).map(first)
+      return request(.resource(url: url))
   }
 
   public func comments(of commit: Commit)
     -> SignalProducer<[CommitComment], ErrorEnvelope> {
-      return request(.resource(url: commit.comments_url)).map(first)
+      return request(.resource(url: commit.comments_url))
   }
 
   public func commits(of repository: Repository, on branch: BranchLite)
     -> SignalProducer<[Commit], ErrorEnvelope> {
-      return request(.commits(repo: repository, branch: branch)).map(first)
+      return request(.commits(repo: repository, branch: branch))
   }
 
   // MARK: -
   // MARK: Others Requesting
 
   public func pullRequest(of url: URL) -> SignalProducer<PullRequest, ErrorEnvelope> {
-    return request(.resource(url: url)).map(first)
+    return request(.resource(url: url))
   }
 
   public func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope> {
-    return request(.resource(url: url)).map(first)
+    return request(.resource(url: url))
   }
   public func events(of user: User) -> SignalProducer<[GHEvent], ErrorEnvelope> {
-    return request(.events(user:user)).map(first)
+    return request(.events(user:user))
   }
 
   public func receivedEvents(of user: User) -> SignalProducer<[GHEvent], ErrorEnvelope> {
-    return request(.receivedEvents(user: user)).map(first)
+    return request(.receivedEvents(user: user))
   }
 
   public func issue(of url: URL) -> SignalProducer<Issue, ErrorEnvelope> {
-    return request(.resource(url: url)).map(first)
+    return request(.resource(url: url))
   }
 
   public func issueComments(of issue: Issue) -> SignalProducer<[IssueComment], ErrorEnvelope> {
-    return request(.issueComments(issue: issue)).map(first)
+    return request(.issueComments(issue: issue))
   }
 
   public func pullRequestComments(of pullRequest: PullRequest) -> SignalProducer<[IssueComment], ErrorEnvelope> {
-    return request(.pullRequestComments(pullRequest: pullRequest)).map(first)
+    return request(.pullRequestComments(pullRequest: pullRequest))
   }
 
   public func trendingRepository(of period: GithubCraper.TrendingPeriod, with language: String?)
@@ -285,19 +296,16 @@ extension Service {
 
 // MARK: -
 // MARK: Service Extension of Json decoding
-extension Service {
+extension MockService {
   /// Decode json to get a model
-  fileprivate func decodeModel<M: Decodable>(_ responses: (json: Any, response: HTTPURLResponse)) ->
-    SignalProducer<(M,PaginationLinks?), ErrorEnvelope> where M == M.DecodedType {
-
-      let json = responses.json
-      let response = responses.response
+  fileprivate func decodeModel<M: Decodable>(_ json: Any) ->
+    SignalProducer<M, ErrorEnvelope> where M == M.DecodedType {
       return SignalProducer(value: json)
         .map { json in decode(json) as Decoded<M> }
-        .flatMap(.concat) { (decoded: Decoded<M>) -> SignalProducer<(M,PaginationLinks?), ErrorEnvelope> in
+        .flatMap(.concat) { (decoded: Decoded<M>) -> SignalProducer<M, ErrorEnvelope> in
           switch decoded {
           case let .success(value):
-            return .init(value: (value, PaginationLinks(response)))
+            return .init(value: value)
           case let .failure(error):
             print("Argo decoding model \(M.self) error: \(error)")
             return .init(error: .couldNotDecodeJSON(error))
@@ -306,16 +314,14 @@ extension Service {
   }
 
   /// Decode json to get an array of models
-  fileprivate func decodeModels<M: Decodable>(_ responses: (json: Any, response: HTTPURLResponse)) ->
-    SignalProducer<([M],PaginationLinks?), ErrorEnvelope> where M == M.DecodedType {
-      let json = responses.json
-      let response = responses.response
+  fileprivate func decodeModels<M: Decodable>(_ json: Any) ->
+    SignalProducer<[M], ErrorEnvelope> where M == M.DecodedType {
       return SignalProducer(value: json)
         .map { json in decode(json) as Decoded<[M]> }
-        .flatMap(.concat) { (decoded: Decoded<[M]>) -> SignalProducer<([M],PaginationLinks?), ErrorEnvelope> in
+        .flatMap(.concat) { (decoded: Decoded<[M]>) -> SignalProducer<[M], ErrorEnvelope> in
           switch decoded {
           case let .success(value):
-            return .init(value: (value,PaginationLinks(response)))
+            return .init(value: value)
           case let .failure(error):
             print("Argo decoding model error: \(error)")
             return .init(error: .couldNotDecodeJSON(error))
@@ -326,19 +332,19 @@ extension Service {
 
 // MARK: -
 // MARK: Service Extension of data requesting
-extension Service {
+extension MockService {
 
   fileprivate static let session = URLSession(configuration: .default)
 
-  fileprivate func requestPagination<M: Decodable>(_ paginationUrl: String)
-    -> SignalProducer<(M,PaginationLinks?), ErrorEnvelope> where M == M.DecodedType {
-      guard let paginationUrl = URL(string: paginationUrl) else {
-        return .init(error: .invalidPaginationUrl)
-      }
-      return Service.session
-        .rac_JSONResponse(preparedRequest(forURL: paginationUrl))
-        .flatMap(decodeModel)
-  }
+  //  fileprivate func requestPagination<M: Decodable>(_ paginationUrl: String)
+  //    -> SignalProducer<M, ErrorEnvelope> where M == M.DecodedType {
+  //      guard let paginationUrl = URL(string: paginationUrl) else {
+  //        return .init(error: .invalidPaginationUrl)
+  //      }
+  //      return Service.session
+  //        .rac_JSONResponse(preparedRequest(forURL: paginationUrl))
+  //        .flatMap(decodeModel)
+  //  }
 
   fileprivate func pureRequest(of route: Route) -> URLRequest {
     let properties = route.requestProperties
@@ -358,14 +364,14 @@ extension Service {
   }
 
   fileprivate func request<M: Decodable>(_ route: Route)
-    -> SignalProducer<(M,PaginationLinks?), ErrorEnvelope> where M == M.DecodedType {
+    -> SignalProducer<M, ErrorEnvelope> where M == M.DecodedType {
       let properties = route.requestProperties
       guard let URL = URL(string: properties.path, relativeTo: self.serverConfig.apiBaseUrl as URL) else {
         fatalError(
           "URL(string: \(properties.path), relativeToURL: \(self.serverConfig.apiBaseUrl)) == nil"
         )
       }
-      return Service.session.rac_JSONResponse(
+      return MockService.session.rac_JSONResponse(
         preparedRequest(forURL: URL,
                         method: properties.method,
                         query: properties.query,
@@ -376,10 +382,10 @@ extension Service {
   }
 
   fileprivate func request<M: Decodable>(_ route: Route)
-    -> SignalProducer<([M],PaginationLinks?), ErrorEnvelope> where M == M.DecodedType {
+    -> SignalProducer<[M], ErrorEnvelope> where M == M.DecodedType {
       let properties = route.requestProperties
       let url = self.serverConfig.apiBaseUrl.appendingPathComponent(properties.path)
-      return Service.session.rac_JSONResponse(
+      return MockService.session.rac_JSONResponse(
         preparedRequest(forURL: url,
                         method: properties.method,
                         query: properties.query),
@@ -388,40 +394,3 @@ extension Service {
         .flatMap(decodeModels)
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
