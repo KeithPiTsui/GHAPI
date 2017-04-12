@@ -128,6 +128,15 @@
 		0E65E14B1E7EAA2F004EDBCA /* TeamAddEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E65E14A1E7EAA2F004EDBCA /* TeamAddEventPayload.swift */; };
 		0E65E14D1E7EAA3C004EDBCA /* TeamAddEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E65E14C1E7EAA3C004EDBCA /* TeamAddEventPayload.swift */; };
 		0E65E14F1E7EAA49004EDBCA /* TeamAddEventPayload.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E65E14E1E7EAA49004EDBCA /* TeamAddEventPayload.json */; };
+		0E673B3F1E9DD8250086C21A /* ResponseHandleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E673B3E1E9DD8250086C21A /* ResponseHandleable.swift */; };
+		0E673B421E9DDA610086C21A /* ResponseHandleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E673B411E9DDA610086C21A /* ResponseHandleError.swift */; };
+		0E673B441E9DDAA90086C21A /* ResponseHandled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E673B431E9DDAA90086C21A /* ResponseHandled.swift */; };
+		0E673B461E9DDBD90086C21A /* Monad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E673B451E9DDBD90086C21A /* Monad.swift */; };
+		0E673B481E9DDC200086C21A /* Functor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E673B471E9DDC200086C21A /* Functor.swift */; };
+		0E673B4A1E9DDC670086C21A /* Applicative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E673B491E9DDC670086C21A /* Applicative.swift */; };
+		0E673B4C1E9DDC970086C21A /* Alternative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E673B4B1E9DDC970086C21A /* Alternative.swift */; };
+		0E673B4E1E9DDCD30086C21A /* FailureCoalescing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E673B4D1E9DDCD30086C21A /* FailureCoalescing.swift */; };
+		0E673B521E9DDF1E0086C21A /* PaginationLinksResponseHandleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E673B511E9DDF1E0086C21A /* PaginationLinksResponseHandleable.swift */; };
 		0E6AAC171E81125100E94429 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6AAC161E81125100E94429 /* Issue.swift */; };
 		0E6AAC191E81125B00E94429 /* Issue.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E6AAC181E81125B00E94429 /* Issue.json */; };
 		0E71A4F51E7FDE6B00D8EED6 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E71A4F41E7FDE6B00D8EED6 /* Commit.swift */; };
@@ -320,6 +329,15 @@
 		0E65E14A1E7EAA2F004EDBCA /* TeamAddEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamAddEventPayload.swift; sourceTree = "<group>"; };
 		0E65E14C1E7EAA3C004EDBCA /* TeamAddEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamAddEventPayload.swift; sourceTree = "<group>"; };
 		0E65E14E1E7EAA49004EDBCA /* TeamAddEventPayload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TeamAddEventPayload.json; sourceTree = "<group>"; };
+		0E673B3E1E9DD8250086C21A /* ResponseHandleable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseHandleable.swift; sourceTree = "<group>"; };
+		0E673B411E9DDA610086C21A /* ResponseHandleError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseHandleError.swift; sourceTree = "<group>"; };
+		0E673B431E9DDAA90086C21A /* ResponseHandled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseHandled.swift; sourceTree = "<group>"; };
+		0E673B451E9DDBD90086C21A /* Monad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monad.swift; sourceTree = "<group>"; };
+		0E673B471E9DDC200086C21A /* Functor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functor.swift; sourceTree = "<group>"; };
+		0E673B491E9DDC670086C21A /* Applicative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Applicative.swift; sourceTree = "<group>"; };
+		0E673B4B1E9DDC970086C21A /* Alternative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alternative.swift; sourceTree = "<group>"; };
+		0E673B4D1E9DDCD30086C21A /* FailureCoalescing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailureCoalescing.swift; sourceTree = "<group>"; };
+		0E673B511E9DDF1E0086C21A /* PaginationLinksResponseHandleable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationLinksResponseHandleable.swift; sourceTree = "<group>"; };
 		0E6AAC161E81125100E94429 /* Issue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		0E6AAC181E81125B00E94429 /* Issue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Issue.json; sourceTree = "<group>"; };
 		0E71A4F41E7FDE6B00D8EED6 /* Commit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
@@ -580,6 +598,7 @@
 		0E4D5A0D1E5C601B008E4AD6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0E673B401E9DDA430086C21A /* ResponseHandler */,
 				0E0944821E9C9CCC009672CA /* Models */,
 				0E0944771E9C8F75009672CA /* Templates */,
 				0E0944741E9C8317009672CA /* Lenses */,
@@ -632,6 +651,38 @@
 				0ECE8A681E77CBE4001FE48B /* GithubCraper.swift */,
 			);
 			name = CraperTests;
+			sourceTree = "<group>";
+		};
+		0E673B401E9DDA430086C21A /* ResponseHandler */ = {
+			isa = PBXGroup;
+			children = (
+				0E673B501E9DDEFF0086C21A /* SupportedType */,
+				0E673B4F1E9DDD280086C21A /* Functionals */,
+				0E673B431E9DDAA90086C21A /* ResponseHandled.swift */,
+				0E673B411E9DDA610086C21A /* ResponseHandleError.swift */,
+				0E673B3E1E9DD8250086C21A /* ResponseHandleable.swift */,
+			);
+			name = ResponseHandler;
+			sourceTree = "<group>";
+		};
+		0E673B4F1E9DDD280086C21A /* Functionals */ = {
+			isa = PBXGroup;
+			children = (
+				0E673B451E9DDBD90086C21A /* Monad.swift */,
+				0E673B491E9DDC670086C21A /* Applicative.swift */,
+				0E673B4B1E9DDC970086C21A /* Alternative.swift */,
+				0E673B471E9DDC200086C21A /* Functor.swift */,
+				0E673B4D1E9DDCD30086C21A /* FailureCoalescing.swift */,
+			);
+			name = Functionals;
+			sourceTree = "<group>";
+		};
+		0E673B501E9DDEFF0086C21A /* SupportedType */ = {
+			isa = PBXGroup;
+			children = (
+				0E673B511E9DDF1E0086C21A /* PaginationLinksResponseHandleable.swift */,
+			);
+			name = SupportedType;
 			sourceTree = "<group>";
 		};
 		0E71A4F61E7FDE7500D8EED6 /* ModelTests */ = {
@@ -958,6 +1009,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E673B441E9DDAA90086C21A /* ResponseHandled.swift in Sources */,
 				0E0944791E9C8F99009672CA /* UserTemplates.swift in Sources */,
 				0E65E1171E7E86A6004EDBCA /* PublicEventPayload.swift in Sources */,
 				0E4D5A211E5C60C1008E4AD6 /* Method.swift in Sources */,
@@ -970,17 +1022,20 @@
 				0EB658191E82499800D48AAE /* GHAPIRoots.swift in Sources */,
 				0E00C91D1E7C14A300958A39 /* Milestone.swift in Sources */,
 				0EB13A711E8D4A9700163750 /* CommitComment.swift in Sources */,
+				0E673B461E9DDBD90086C21A /* Monad.swift in Sources */,
 				0EE17BBF1E6D657300451632 /* SearchParameters.swift in Sources */,
 				0E7B7BA11E6E3DF800D50C95 /* IssueQualifier.swift in Sources */,
 				0EB10E1A1E7BD544001460D8 /* UserLite.swift in Sources */,
 				0E00C9191E7C12A200958A39 /* Team.swift in Sources */,
 				0E4D5A201E5C60C1008E4AD6 /* EncodableType.swift in Sources */,
 				0E65E1391E7EA45C004EDBCA /* RepositoryEventPayload.swift in Sources */,
+				0E673B4A1E9DDC670086C21A /* Applicative.swift in Sources */,
 				0E29533F1E8B609B00134B43 /* GHErrorEnvelope.swift in Sources */,
 				0EA044D31E76567400643EBA /* GHAPIModelType.swift in Sources */,
 				0E4D5A231E5C60C1008E4AD6 /* Route.swift in Sources */,
 				0E5BF8C41E73D46200EDD841 /* BranchLite.swift in Sources */,
 				0E0944801E9C99CF009672CA /* TemplateConstructionHelper.swift in Sources */,
+				0E673B4E1E9DDCD30086C21A /* FailureCoalescing.swift in Sources */,
 				0E4E43F41E7BCE1700A4CADE /* CommitCommentEventPayload.swift in Sources */,
 				0E65E13F1E7EA565004EDBCA /* StatusEventPayload.swift in Sources */,
 				0E65E1231E7E88D4004EDBCA /* PullRequest.swift in Sources */,
@@ -993,10 +1048,12 @@
 				0E7B7BA61E6E3EA300D50C95 /* CommitsQualifier.swift in Sources */,
 				0E2B00661E73F39C007C4A89 /* String-Extension.swift in Sources */,
 				0ECE8A651E77CB15001FE48B /* GithubCraper.swift in Sources */,
+				0E673B421E9DDA610086C21A /* ResponseHandleError.swift in Sources */,
 				0E2B00641E73E2DC007C4A89 /* Commit.swift in Sources */,
 				0E00C91B1E7C132A00958A39 /* Issue.swift in Sources */,
 				0E65E0D31E7E813A004EDBCA /* ProjectColumnEventPayload.swift in Sources */,
 				0E65E12B1E7E9D22004EDBCA /* PullRequestReviewCommentEventPayload.swift in Sources */,
+				0E673B521E9DDF1E0086C21A /* PaginationLinksResponseHandleable.swift in Sources */,
 				0E3139E01E9D01CF006C9232 /* GHEventEnvelope.swift in Sources */,
 				0E00C9151E7C0E2700958A39 /* MembershipEventPayload.swift in Sources */,
 				0E4D5A221E5C60C1008E4AD6 /* MimeType.swift in Sources */,
@@ -1023,6 +1080,8 @@
 				0E65E0CD1E7E7D1F004EDBCA /* ProjectCardEventPayload.swift in Sources */,
 				0E71A5001E7FEEAB00D8EED6 /* Content.swift in Sources */,
 				0E71A4FC1E7FE2E400D8EED6 /* Branch.swift in Sources */,
+				0E673B3F1E9DD8250086C21A /* ResponseHandleable.swift in Sources */,
+				0E673B481E9DDC200086C21A /* Functor.swift in Sources */,
 				0EA044DB1E768DB000643EBA /* Event.swift in Sources */,
 				0E65E1311E7EA099004EDBCA /* ReleaseEventPayload.swift in Sources */,
 				0E65E1251E7E9861004EDBCA /* PullRequestReviewEventPayload.swift in Sources */,
@@ -1034,6 +1093,7 @@
 				0EA044E61E76C23B00643EBA /* WatchEventPayload.swift in Sources */,
 				0EA044E41E76C21D00643EBA /* ForkEventPayload.swift in Sources */,
 				0E3139E21E9D02EE006C9232 /* PaginationLinks.swift in Sources */,
+				0E673B4C1E9DDC970086C21A /* Alternative.swift in Sources */,
 				0E00C90F1E7C08AC00958A39 /* LabelEventPayload.swift in Sources */,
 				0E65E1111E7E83DB004EDBCA /* ProjectEventPayload.swift in Sources */,
 				0E00C9111E7C0AD600958A39 /* Organization.swift in Sources */,

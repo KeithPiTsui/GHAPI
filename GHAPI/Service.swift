@@ -19,234 +19,240 @@ public struct Service: ServiceType {
 // MARK: Service extension of Service Type
 extension Service {
 
-  public func apiRoots()
-    -> SignalProducer<GHAPIRoots, ErrorEnvelope> {
-      return request(.apiRoots).map(first)
-  }
-
-  public func login(username: String, password: String)
-    -> SignalProducer<(User,Service), ErrorEnvelope> {
-      let serv = Service(serverConfig: ServerConfig.githubServerConfig(username: username, password: password))
-      return serv.user(with: username).map{($0, serv)}
-  }
-
-  public func logout() -> Service { return Service() }
-
-  // MARK: -
-  // MARK: User Requesting
-
-  public func user(with name: String)
-    -> SignalProducer<User, ErrorEnvelope> {
-      return request(.user(userName: name)).map(first)
-  }
-
-  public func userURL(with name: String)
-    -> URL{
-      guard let url = self.pureURL(of: .user(userName: name)) else {
-        fatalError("Cannot construct a url with username: \(name)")
-      }
-      return url
-  }
-
+//  public func apiRoots()
+//    -> SignalProducer<GHAPIRoots, ErrorEnvelope> {
+//      return request(.apiRoots).map(first)
+//  }
+//
+//  public func login(username: String, password: String)
+//    -> SignalProducer<(User,Service), ErrorEnvelope> {
+//      let serv = Service(serverConfig: ServerConfig.githubServerConfig(username: username, password: password))
+//      return serv.user(with: username).map{($0, serv)}
+//  }
+//
+//  public func logout() -> Service { return Service() }
+//
+//  // MARK: -
+//  // MARK: User Requesting
+//
+//  public func user(with name: String)
+//    -> SignalProducer<User, ErrorEnvelope> {
+//      return request(.user(userName: name)).map(first)
+//  }
+//
+//  public func userURL(with name: String)
+//    -> URL{
+//      guard let url = self.pureURL(of: .user(userName: name)) else {
+//        fatalError("Cannot construct a url with username: \(name)")
+//      }
+//      return url
+//  }
+//
   public func user(referredBy url: URL)
     -> SignalProducer<User, ErrorEnvelope> {
-      return request(.resource(url: url)).map(first)
+      return self.userWithResponseHeader(referredBy: url).map(first)
   }
 
-  // MARK: -
-  // MARK: Searching Requesting
-
-  public func searchRepository(
-    qualifiers: [RepositoriesQualifier],
-    keyword: String? = nil,
-    sort: SearchSorting? = nil,
-    order: SearchSortingOrder? = nil)
-    -> SignalProducer<SearchResult<Repository>, ErrorEnvelope> {
-      return request(.search(scope: .repositories(qualifiers), keyword: keyword,  sort: sort, order: order)).map(first)
+  public func userWithResponseHeader(referredBy url: URL)
+    -> SignalProducer<(User, GHResponseHeader), ErrorEnvelope> {
+      return request(.resource(url: url))
   }
 
-  public func searchUser(
-    qualifiers: [UserQualifier],
-    keyword: String? = nil,
-    sort: SearchSorting? = nil,
-    order: SearchSortingOrder? = nil)
-    -> SignalProducer<SearchResult<User>, ErrorEnvelope> {
-      return request(.search(scope: .users(qualifiers), keyword: keyword,  sort: sort, order: order)).map(first)
-  }
-
-
-  // MARK: -
-  // MARK: Repository Requesting
-  public func repository(referredBy url: URL)
-    -> SignalProducer<Repository, ErrorEnvelope> {
-      return request(.resource(url: url)).map(first)
-  }
-
-  public func repository(of ownername: String, and reponame: String)
-    -> SignalProducer<Repository, ErrorEnvelope>{
-      return request(.repository(username: ownername, reponame: reponame)).map(first)
-  }
-
-  public func repositoryUrl(of ownername: String, and reponame: String) -> URL {
-    guard let url = pureURL(of: .repository(username: ownername, reponame: reponame)) else {
-      fatalError("Cannot construct a url of owner:\(ownername) and repo:\(reponame)")
-    }
-    return url
-  }
-
-  public func personalRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope> {
-    return request(.resource(url: user.urls.reposUrl)).map(first)
-  }
-//  public func watchedRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope> {
-//    return request(.resource(url: user.urls.starredUrl))
-//  }
-  public func starredRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope> {
-    return request(.resource(url: user.urls.starredUrl)).map(first)
-  }
-
-//  public func personalIssues(of user: User) -> SignalProducer<[Issue], ErrorEnvelope> {
 //
-//  }
-//  public func personalPullRequests(of user: User) -> SignalProducer<[PullRequest], ErrorEnvelope> {
+//  // MARK: -
+//  // MARK: Searching Requesting
 //
+//  public func searchRepository(
+//    qualifiers: [RepositoriesQualifier],
+//    keyword: String? = nil,
+//    sort: SearchSorting? = nil,
+//    order: SearchSortingOrder? = nil)
+//    -> SignalProducer<SearchResult<Repository>, ErrorEnvelope> {
+//      return request(.search(scope: .repositories(qualifiers), keyword: keyword,  sort: sort, order: order)).map(first)
 //  }
-
-
-  public func forks(of repository: Repository) -> SignalProducer<[Repository], ErrorEnvelope> {
-    return request(.resource(url: repository.urls.forks_url)).map(first)
-  }
-
-  public func releases(of repository: Repository) -> SignalProducer<[Release], ErrorEnvelope> {
-    return request(.resource(url: repository.urls3.releases_url)).map(first)
-  }
-
-  /// Request events of a repo
-  public func events(of repository: Repository) -> SignalProducer<[GHEvent], ErrorEnvelope> {
-    return request(.resource(url: repository.urls.events_url)).map(first)
-  }
-
-  public func eventsP(of url: URL) ->  SignalProducer<([GHEvent],PaginationLinks?), ErrorEnvelope> {
-    return request(.resource(url: url))
-  }
-
-  /// Request events of a repo
-  public func contributors(of repository: Repository) -> SignalProducer<[UserLite], ErrorEnvelope> {
-    return request(.resource(url: repository.urls.contributors_url)).map(first)
-  }
-
-  /// Request events of a repo
-  public func stargazers(of repository: Repository) -> SignalProducer<[UserLite], ErrorEnvelope> {
-    return request(.resource(url: repository.urls3.stargazers_url)).map(first)
-  }
-
-  /// Request events of a repo
-  public func pullRequests(of repository: Repository) -> SignalProducer<[PullRequest], ErrorEnvelope> {
-    return request(.resource(url: repository.urls3.pulls_url)).map(first)
-  }
-
-  /// Request events of a repo
-  public func issues(of repository: Repository) -> SignalProducer<[Issue], ErrorEnvelope> {
-    return request(.resource(url: repository.urls2.issues_url)).map(first)
-  }
-
-  // MARK: -
-  // MARK: Repository Content Requesting
-
-  public func contents(referredBy url: URL)
-    -> SignalProducer<[Content], ErrorEnvelope>{
-      return request(.resource(url: url)).map(first)
-  }
-
-  public func contents(of repository: Repository,
-                       ref branch: String? = nil)
-    -> SignalProducer<[Content], ErrorEnvelope>{
-      return request(.contents(repo: repository, branch: branch)).map(first)
-  }
-
-  public func contentURL(of repository: URL, ref branch: String?) -> URL {
-    let contentURL = repository.appendingPathComponent("contents")
-    var components = URLComponents(url: contentURL, resolvingAgainstBaseURL: true)
-    let queryItem = URLQueryItem(name: "ref", value: branch)
-    components?.queryItems = [queryItem]
-    return (components?.url)!
-  }
-
-  public func contents(ofRepository url: URL,
-                       ref branch: String? = nil)
-    -> SignalProducer<[Content], ErrorEnvelope>{
-      return self.repository(referredBy: url).concatMap { self.contents(of: $0) }
-  }
-
-  public func contentURL(of repository: Repository,
-                         ref branch: String? = nil)
-    -> URL {
-      guard let url = pureURL(of: .contents(repo: repository, branch: branch)) else {
-        fatalError("Cannot construct a url of repo:\(repository.full_name) on branch:\(String(describing: branch)) ")
-      }
-      return url
-  }
-
-  // MARK: -
-  // MARK: Branch and Commit Requesting
-  public func branchLites(referredBy url: URL)
-    -> SignalProducer<[BranchLite], ErrorEnvelope> {
-      return request(.resource(url: url)).map(first)
-  }
-
-  public func branch(referredBy url: URL)
-    -> SignalProducer<Branch, ErrorEnvelope> {
-      return request(.resource(url: url)).map(first)
-  }
-
-  public func commits(referredBy url: URL)
-    -> SignalProducer<[Commit], ErrorEnvelope> {
-      return request(.resource(url: url)).map(first)
-  }
-
-  public func commit(referredBy url: URL)
-    -> SignalProducer<Commit, ErrorEnvelope> {
-      return request(.resource(url: url)).map(first)
-  }
-
-  public func comments(of commit: Commit)
-    -> SignalProducer<[CommitComment], ErrorEnvelope> {
-      return request(.resource(url: commit.comments_url)).map(first)
-  }
-
-  public func commits(of repository: Repository, on branch: BranchLite)
-    -> SignalProducer<[Commit], ErrorEnvelope> {
-      return request(.commits(repo: repository, branch: branch)).map(first)
-  }
-
-  // MARK: -
-  // MARK: Others Requesting
-
-  public func pullRequest(of url: URL) -> SignalProducer<PullRequest, ErrorEnvelope> {
-    return request(.resource(url: url)).map(first)
-  }
-
-  public func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope> {
-    return request(.resource(url: url)).map(first)
-  }
-  public func events(of user: User) -> SignalProducer<[GHEvent], ErrorEnvelope> {
-    return request(.events(user:user)).map(first)
-  }
-
-  public func receivedEvents(of user: User) -> SignalProducer<[GHEvent], ErrorEnvelope> {
-    return request(.receivedEvents(user: user)).map(first)
-  }
-
-  public func issue(of url: URL) -> SignalProducer<Issue, ErrorEnvelope> {
-    return request(.resource(url: url)).map(first)
-  }
-
-  public func issueComments(of issue: Issue) -> SignalProducer<[IssueComment], ErrorEnvelope> {
-    return request(.issueComments(issue: issue)).map(first)
-  }
-
-  public func pullRequestComments(of pullRequest: PullRequest) -> SignalProducer<[IssueComment], ErrorEnvelope> {
-    return request(.pullRequestComments(pullRequest: pullRequest)).map(first)
-  }
+//
+//  public func searchUser(
+//    qualifiers: [UserQualifier],
+//    keyword: String? = nil,
+//    sort: SearchSorting? = nil,
+//    order: SearchSortingOrder? = nil)
+//    -> SignalProducer<SearchResult<User>, ErrorEnvelope> {
+//      return request(.search(scope: .users(qualifiers), keyword: keyword,  sort: sort, order: order)).map(first)
+//  }
+//
+//
+//  // MARK: -
+//  // MARK: Repository Requesting
+//  public func repository(referredBy url: URL)
+//    -> SignalProducer<Repository, ErrorEnvelope> {
+//      return request(.resource(url: url)).map(first)
+//  }
+//
+//  public func repository(of ownername: String, and reponame: String)
+//    -> SignalProducer<Repository, ErrorEnvelope>{
+//      return request(.repository(username: ownername, reponame: reponame)).map(first)
+//  }
+//
+//  public func repositoryUrl(of ownername: String, and reponame: String) -> URL {
+//    guard let url = pureURL(of: .repository(username: ownername, reponame: reponame)) else {
+//      fatalError("Cannot construct a url of owner:\(ownername) and repo:\(reponame)")
+//    }
+//    return url
+//  }
+//
+//  public func personalRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope> {
+//    return request(.resource(url: user.urls.reposUrl)).map(first)
+//  }
+////  public func watchedRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope> {
+////    return request(.resource(url: user.urls.starredUrl))
+////  }
+//  public func starredRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope> {
+//    return request(.resource(url: user.urls.starredUrl)).map(first)
+//  }
+//
+////  public func personalIssues(of user: User) -> SignalProducer<[Issue], ErrorEnvelope> {
+////
+////  }
+////  public func personalPullRequests(of user: User) -> SignalProducer<[PullRequest], ErrorEnvelope> {
+////
+////  }
+//
+//
+//  public func forks(of repository: Repository) -> SignalProducer<[Repository], ErrorEnvelope> {
+//    return request(.resource(url: repository.urls.forks_url)).map(first)
+//  }
+//
+//  public func releases(of repository: Repository) -> SignalProducer<[Release], ErrorEnvelope> {
+//    return request(.resource(url: repository.urls3.releases_url)).map(first)
+//  }
+//
+//  /// Request events of a repo
+//  public func events(of repository: Repository) -> SignalProducer<[GHEvent], ErrorEnvelope> {
+//    return request(.resource(url: repository.urls.events_url)).map(first)
+//  }
+//
+//  public func eventsP(of url: URL) ->  SignalProducer<([GHEvent],N), ErrorEnvelope> {
+//    return request(.resource(url: url))
+//  }
+//
+//  /// Request events of a repo
+//  public func contributors(of repository: Repository) -> SignalProducer<[UserLite], ErrorEnvelope> {
+//    return request(.resource(url: repository.urls.contributors_url)).map(first)
+//  }
+//
+//  /// Request events of a repo
+//  public func stargazers(of repository: Repository) -> SignalProducer<[UserLite], ErrorEnvelope> {
+//    return request(.resource(url: repository.urls3.stargazers_url)).map(first)
+//  }
+//
+//  /// Request events of a repo
+//  public func pullRequests(of repository: Repository) -> SignalProducer<[PullRequest], ErrorEnvelope> {
+//    return request(.resource(url: repository.urls3.pulls_url)).map(first)
+//  }
+//
+//  /// Request events of a repo
+//  public func issues(of repository: Repository) -> SignalProducer<[Issue], ErrorEnvelope> {
+//    return request(.resource(url: repository.urls2.issues_url)).map(first)
+//  }
+//
+//  // MARK: -
+//  // MARK: Repository Content Requesting
+//
+//  public func contents(referredBy url: URL)
+//    -> SignalProducer<[Content], ErrorEnvelope>{
+//      return request(.resource(url: url)).map(first)
+//  }
+//
+//  public func contents(of repository: Repository,
+//                       ref branch: String? = nil)
+//    -> SignalProducer<[Content], ErrorEnvelope>{
+//      return request(.contents(repo: repository, branch: branch)).map(first)
+//  }
+//
+//  public func contentURL(of repository: URL, ref branch: String?) -> URL {
+//    let contentURL = repository.appendingPathComponent("contents")
+//    var components = URLComponents(url: contentURL, resolvingAgainstBaseURL: true)
+//    let queryItem = URLQueryItem(name: "ref", value: branch)
+//    components?.queryItems = [queryItem]
+//    return (components?.url)!
+//  }
+//
+//  public func contents(ofRepository url: URL,
+//                       ref branch: String? = nil)
+//    -> SignalProducer<[Content], ErrorEnvelope>{
+//      return self.repository(referredBy: url).concatMap { self.contents(of: $0) }
+//  }
+//
+//  public func contentURL(of repository: Repository,
+//                         ref branch: String? = nil)
+//    -> URL {
+//      guard let url = pureURL(of: .contents(repo: repository, branch: branch)) else {
+//        fatalError("Cannot construct a url of repo:\(repository.full_name) on branch:\(String(describing: branch)) ")
+//      }
+//      return url
+//  }
+//
+//  // MARK: -
+//  // MARK: Branch and Commit Requesting
+//  public func branchLites(referredBy url: URL)
+//    -> SignalProducer<[BranchLite], ErrorEnvelope> {
+//      return request(.resource(url: url)).map(first)
+//  }
+//
+//  public func branch(referredBy url: URL)
+//    -> SignalProducer<Branch, ErrorEnvelope> {
+//      return request(.resource(url: url)).map(first)
+//  }
+//
+//  public func commits(referredBy url: URL)
+//    -> SignalProducer<[Commit], ErrorEnvelope> {
+//      return request(.resource(url: url)).map(first)
+//  }
+//
+//  public func commit(referredBy url: URL)
+//    -> SignalProducer<Commit, ErrorEnvelope> {
+//      return request(.resource(url: url)).map(first)
+//  }
+//
+//  public func comments(of commit: Commit)
+//    -> SignalProducer<[CommitComment], ErrorEnvelope> {
+//      return request(.resource(url: commit.comments_url)).map(first)
+//  }
+//
+//  public func commits(of repository: Repository, on branch: BranchLite)
+//    -> SignalProducer<[Commit], ErrorEnvelope> {
+//      return request(.commits(repo: repository, branch: branch)).map(first)
+//  }
+//
+//  // MARK: -
+//  // MARK: Others Requesting
+//
+//  public func pullRequest(of url: URL) -> SignalProducer<PullRequest, ErrorEnvelope> {
+//    return request(.resource(url: url)).map(first)
+//  }
+//
+//  public func readme(referredBy url: URL) -> SignalProducer<Readme, ErrorEnvelope> {
+//    return request(.resource(url: url)).map(first)
+//  }
+//  public func events(of user: User) -> SignalProducer<[GHEvent], ErrorEnvelope> {
+//    return request(.events(user:user)).map(first)
+//  }
+//
+//  public func receivedEvents(of user: User) -> SignalProducer<[GHEvent], ErrorEnvelope> {
+//    return request(.receivedEvents(user: user)).map(first)
+//  }
+//
+//  public func issue(of url: URL) -> SignalProducer<Issue, ErrorEnvelope> {
+//    return request(.resource(url: url)).map(first)
+//  }
+//
+//  public func issueComments(of issue: Issue) -> SignalProducer<[IssueComment], ErrorEnvelope> {
+//    return request(.issueComments(issue: issue)).map(first)
+//  }
+//
+//  public func pullRequestComments(of pullRequest: PullRequest) -> SignalProducer<[IssueComment], ErrorEnvelope> {
+//    return request(.pullRequestComments(pullRequest: pullRequest)).map(first)
+//  }
 
   public func trendingRepository(of period: GithubCraper.TrendingPeriod, with language: String?)
     -> SignalProducer<[TrendingRepository], ErrorEnvelope> {
@@ -287,38 +293,45 @@ extension Service {
 // MARK: Service Extension of Json decoding
 extension Service {
   /// Decode json to get a model
-  fileprivate func decodeModel<M: Decodable>(_ responses: (json: Any, response: HTTPURLResponse)) ->
-    SignalProducer<(M,PaginationLinks?), ErrorEnvelope> where M == M.DecodedType {
+  fileprivate func decodeModel<M: Decodable, N: ResponseHandleable>(_ responses: (json: Any, response: HTTPURLResponse)) ->
+    SignalProducer<(M,N), ErrorEnvelope>
+    where M == M.DecodedType, N == N.HandledType {
 
       let json = responses.json
       let response = responses.response
-      return SignalProducer(value: json)
-        .map { json in decode(json) as Decoded<M> }
-        .flatMap(.concat) { (decoded: Decoded<M>) -> SignalProducer<(M,PaginationLinks?), ErrorEnvelope> in
-          switch decoded {
-          case let .success(value):
-            return .init(value: (value, PaginationLinks(response)))
-          case let .failure(error):
+
+      return SignalProducer(value: (json, response))
+        .map { (json, response) in return ((decode(json) as Decoded<M>), (N.handle(response) as ResponseHandled<N>)) }
+        .flatMap(.concat) { (decoded: Decoded<M>, responded: ResponseHandled<N> ) -> SignalProducer<(M,N), ErrorEnvelope> in
+
+          switch (decoded, responded) {
+          case let (.success(value), .success(value2)):
+            return .init(value: (value, value2))
+          case let (.failure(error), _):
             print("Argo decoding model \(M.self) error: \(error)")
             return .init(error: .couldNotDecodeJSON(error))
+          default:
+            return .init(error: .unknownError)
           }
       }
   }
 
   /// Decode json to get an array of models
-  fileprivate func decodeModels<M: Decodable>(_ responses: (json: Any, response: HTTPURLResponse)) ->
-    SignalProducer<([M],PaginationLinks?), ErrorEnvelope> where M == M.DecodedType {
+  fileprivate func decodeModels<M: Decodable, N: ResponseHandleable>(_ responses: (json: Any, response: HTTPURLResponse)) ->
+    SignalProducer<([M],N), ErrorEnvelope> where M == M.DecodedType, N == N.HandledType {
       let json = responses.json
       let response = responses.response
-      return SignalProducer(value: json)
-        .map { json in decode(json) as Decoded<[M]> }
-        .flatMap(.concat) { (decoded: Decoded<[M]>) -> SignalProducer<([M],PaginationLinks?), ErrorEnvelope> in
-          switch decoded {
-          case let .success(value):
-            return .init(value: (value,PaginationLinks(response)))
-          case let .failure(error):
+      return SignalProducer(value: (json, response))
+        .map { (json, response) in ((decode(json) as Decoded<[M]>), (N.handle(response) as ResponseHandled<N>)) }
+        .flatMap(.concat) { (decoded: Decoded<[M]>, responded: ResponseHandled<N>) -> SignalProducer<([M],N), ErrorEnvelope> in
+          switch (decoded, responded) {
+          case let (.success(value) , .success(value2)):
+            return .init(value: (value, value2))
+          case let (.failure(error), _):
             print("Argo decoding model error: \(error)")
             return .init(error: .couldNotDecodeJSON(error))
+          default:
+            return .init(error: .unknownError)
           }
       }
   }
@@ -330,8 +343,8 @@ extension Service {
 
   fileprivate static let session = URLSession(configuration: .default)
 
-  fileprivate func requestPagination<M: Decodable>(_ paginationUrl: String)
-    -> SignalProducer<(M,PaginationLinks?), ErrorEnvelope> where M == M.DecodedType {
+  fileprivate func requestPagination<M: Decodable, N: ResponseHandleable>(_ paginationUrl: String)
+    -> SignalProducer<(M,N), ErrorEnvelope> where M == M.DecodedType, N == N.HandledType {
       guard let paginationUrl = URL(string: paginationUrl) else {
         return .init(error: .invalidPaginationUrl)
       }
@@ -357,8 +370,8 @@ extension Service {
     return self.pureRequest(of: route).url
   }
 
-  fileprivate func request<M: Decodable>(_ route: Route)
-    -> SignalProducer<(M,PaginationLinks?), ErrorEnvelope> where M == M.DecodedType {
+  fileprivate func request<M: Decodable, N: ResponseHandleable>(_ route: Route)
+    -> SignalProducer<(M,N), ErrorEnvelope> where M == M.DecodedType, N == N.HandledType {
       let properties = route.requestProperties
       guard let URL = URL(string: properties.path, relativeTo: self.serverConfig.apiBaseUrl as URL) else {
         fatalError(
@@ -375,8 +388,8 @@ extension Service {
         .flatMap(decodeModel)
   }
 
-  fileprivate func request<M: Decodable>(_ route: Route)
-    -> SignalProducer<([M],PaginationLinks?), ErrorEnvelope> where M == M.DecodedType {
+  fileprivate func request<M: Decodable, N: ResponseHandleable>(_ route: Route)
+    -> SignalProducer<([M],N), ErrorEnvelope> where M == M.DecodedType, N == N.HandledType {
       let properties = route.requestProperties
       let url = self.serverConfig.apiBaseUrl.appendingPathComponent(properties.path)
       return Service.session.rac_JSONResponse(

@@ -16,156 +16,156 @@ public protocol ServiceType {
 
   init( serverConfig: ServerConfigType)
 
-  /// Returns roots of this api
-  func apiRoots()
-    -> SignalProducer<GHAPIRoots, ErrorEnvelope>
-
-  /// Returns a new service with the user and password replaced
-  func login(username: String, password: String)
-    -> SignalProducer<(User,Service), ErrorEnvelope>
-
-  /// Returns a new service without authentification infomation.
-  func logout()
-    -> Self
-
-  /// Request user profile from github
-  func user(with name: String)
-    -> SignalProducer<User, ErrorEnvelope>
-
-  func userURL(with name: String)
-    -> URL
-
-  func user(referredBy url: URL)
-    -> SignalProducer<User, ErrorEnvelope>
-
-  /// Request a search on Repository from github
-  func searchRepository(
-    qualifiers: [RepositoriesQualifier],
-    keyword: String?,
-    sort: SearchSorting?,
-    order: SearchSortingOrder?)
-    -> SignalProducer<SearchResult<Repository>, ErrorEnvelope>
-
-  /// Request a search on User from github
-  func searchUser(
-    qualifiers: [UserQualifier],
-    keyword: String?,
-    sort: SearchSorting?,
-    order: SearchSortingOrder?)
-    -> SignalProducer<SearchResult<User>, ErrorEnvelope>
-
-
-  /// Request a repository referred by url
-  func repository(referredBy url: URL)
-    -> SignalProducer<Repository, ErrorEnvelope>
-
-  /// Request a repository specified by owner name and reop name
-  func repository(of ownername: String, and reponame: String)
-    -> SignalProducer<Repository, ErrorEnvelope>
-
-  /// Compose a url for a repository specified by owner name and repo name
-  func repositoryUrl(of ownername: String, and reponame: String)
-    -> URL
-
-  /// Compose a url for contents of a repository with specified branch
-  func contentURL(of repository: Repository, ref branch: String?)
-  -> URL
-
-  func contentURL(of repository: URL, ref branch: String?) -> URL
-
-  /// Request a content specified by url
-  func contents(referredBy url: URL)
-    -> SignalProducer<[Content], ErrorEnvelope>
-
-  func contents(of repository: Repository, ref branch: String?)
-    -> SignalProducer<[Content], ErrorEnvelope>
-
-  func contents(ofRepository url: URL, ref branch: String?)
-    -> SignalProducer<[Content], ErrorEnvelope>
-
-  /// Request a list of branch brief specified by url
-  ///
-  /// As refered by branches url of repository
-  func branchLites(referredBy url: URL)
-    -> SignalProducer<[BranchLite], ErrorEnvelope>
-
-  /// Request a specific branch specified by url
-  func branch(referredBy url: URL)
-    -> SignalProducer<Branch, ErrorEnvelope>
-
-  /// Request a commit specified by url
-  func commits(referredBy url: URL)
-    -> SignalProducer<[Commit], ErrorEnvelope>
-
-  /// Request a commit specified by url
-  func commit(referredBy url: URL)
-    -> SignalProducer<Commit, ErrorEnvelope>
-
-  /// Commit comment
-  func comments(of commit: Commit) -> SignalProducer<[CommitComment], ErrorEnvelope>
-
-  /// Request a readme specified by url
-  func readme(referredBy url: URL)
-    -> SignalProducer<Readme, ErrorEnvelope>
-
-  /// Request events of user
-  func events(of user: User)
-    -> SignalProducer<[GHEvent], ErrorEnvelope>
-
-  /// Request received events of user
-  func receivedEvents(of user: User)
-    -> SignalProducer<[GHEvent], ErrorEnvelope>
-
-  /// Request trending repositories specified with period and programming language
-  func trendingRepository(
-    of period: GithubCraper.TrendingPeriod,
-    with language: String?)
-    -> SignalProducer<[TrendingRepository], ErrorEnvelope>
-
-  /// Request data specified by a url
-  func data(of url: URL) -> SignalProducer<Data, ErrorEnvelope>
-
-  /// Request an issue specified by a url
-  func issue(of url: URL) -> SignalProducer<Issue, ErrorEnvelope>
-
-  /// Request comments of an issue
-  func issueComments(of issue: Issue) -> SignalProducer<[IssueComment], ErrorEnvelope>
-
-  /// Request comments of a pull request
-  func pullRequestComments(of pullRequest: PullRequest) -> SignalProducer<[IssueComment], ErrorEnvelope>
-
-  /// Request forked repositories of a repo
-  func forks(of repository: Repository) -> SignalProducer<[Repository], ErrorEnvelope>
-
-  /// Request releases of a repo
-  func releases(of repository: Repository) -> SignalProducer<[Release], ErrorEnvelope>
-
-  /// Request events of a repo
-  func events(of repository: Repository) -> SignalProducer<[GHEvent], ErrorEnvelope>
-
-  /// Request events of a repo
-  func contributors(of repository: Repository) -> SignalProducer<[UserLite], ErrorEnvelope>
-
-  /// Request events of a repo
-  func stargazers(of repository: Repository) -> SignalProducer<[UserLite], ErrorEnvelope>
-
-  /// Pull Request events of a repo
-  func pullRequests(of repository: Repository) -> SignalProducer<[PullRequest], ErrorEnvelope>
-
-  /// Pull Request referred by an URL
-  func pullRequest(of url: URL) -> SignalProducer<PullRequest, ErrorEnvelope>
-
-  /// Request events of a repo
-  func issues(of repository: Repository) -> SignalProducer<[Issue], ErrorEnvelope>
-
-  func commits(of repository: Repository, on branch: BranchLite) -> SignalProducer<[Commit], ErrorEnvelope>
-
-  func personalRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope>
-//  func watchedRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope>
-  func starredRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope>
-
-//  func personalIssues(of user: User) -> SignalProducer<[Issue], ErrorEnvelope>
-//  func personalPullRequests(of user: User) -> SignalProducer<[PullRequest], ErrorEnvelope>
+//  /// Returns roots of this api
+//  func apiRoots()
+//    -> SignalProducer<GHAPIRoots, ErrorEnvelope>
+//
+//  /// Returns a new service with the user and password replaced
+//  func login(username: String, password: String)
+//    -> SignalProducer<(User,Service), ErrorEnvelope>
+//
+//  /// Returns a new service without authentification infomation.
+//  func logout()
+//    -> Self
+//
+//  /// Request user profile from github
+//  func user(with name: String)
+//    -> SignalProducer<User, ErrorEnvelope>
+//
+//  func userURL(with name: String)
+//    -> URL
+//
+//  func user(referredBy url: URL)
+//    -> SignalProducer<User, ErrorEnvelope>
+//
+//  /// Request a search on Repository from github
+//  func searchRepository(
+//    qualifiers: [RepositoriesQualifier],
+//    keyword: String?,
+//    sort: SearchSorting?,
+//    order: SearchSortingOrder?)
+//    -> SignalProducer<SearchResult<Repository>, ErrorEnvelope>
+//
+//  /// Request a search on User from github
+//  func searchUser(
+//    qualifiers: [UserQualifier],
+//    keyword: String?,
+//    sort: SearchSorting?,
+//    order: SearchSortingOrder?)
+//    -> SignalProducer<SearchResult<User>, ErrorEnvelope>
+//
+//
+//  /// Request a repository referred by url
+//  func repository(referredBy url: URL)
+//    -> SignalProducer<Repository, ErrorEnvelope>
+//
+//  /// Request a repository specified by owner name and reop name
+//  func repository(of ownername: String, and reponame: String)
+//    -> SignalProducer<Repository, ErrorEnvelope>
+//
+//  /// Compose a url for a repository specified by owner name and repo name
+//  func repositoryUrl(of ownername: String, and reponame: String)
+//    -> URL
+//
+//  /// Compose a url for contents of a repository with specified branch
+//  func contentURL(of repository: Repository, ref branch: String?)
+//  -> URL
+//
+//  func contentURL(of repository: URL, ref branch: String?) -> URL
+//
+//  /// Request a content specified by url
+//  func contents(referredBy url: URL)
+//    -> SignalProducer<[Content], ErrorEnvelope>
+//
+//  func contents(of repository: Repository, ref branch: String?)
+//    -> SignalProducer<[Content], ErrorEnvelope>
+//
+//  func contents(ofRepository url: URL, ref branch: String?)
+//    -> SignalProducer<[Content], ErrorEnvelope>
+//
+//  /// Request a list of branch brief specified by url
+//  ///
+//  /// As refered by branches url of repository
+//  func branchLites(referredBy url: URL)
+//    -> SignalProducer<[BranchLite], ErrorEnvelope>
+//
+//  /// Request a specific branch specified by url
+//  func branch(referredBy url: URL)
+//    -> SignalProducer<Branch, ErrorEnvelope>
+//
+//  /// Request a commit specified by url
+//  func commits(referredBy url: URL)
+//    -> SignalProducer<[Commit], ErrorEnvelope>
+//
+//  /// Request a commit specified by url
+//  func commit(referredBy url: URL)
+//    -> SignalProducer<Commit, ErrorEnvelope>
+//
+//  /// Commit comment
+//  func comments(of commit: Commit) -> SignalProducer<[CommitComment], ErrorEnvelope>
+//
+//  /// Request a readme specified by url
+//  func readme(referredBy url: URL)
+//    -> SignalProducer<Readme, ErrorEnvelope>
+//
+//  /// Request events of user
+//  func events(of user: User)
+//    -> SignalProducer<[GHEvent], ErrorEnvelope>
+//
+//  /// Request received events of user
+//  func receivedEvents(of user: User)
+//    -> SignalProducer<[GHEvent], ErrorEnvelope>
+//
+//  /// Request trending repositories specified with period and programming language
+//  func trendingRepository(
+//    of period: GithubCraper.TrendingPeriod,
+//    with language: String?)
+//    -> SignalProducer<[TrendingRepository], ErrorEnvelope>
+//
+//  /// Request data specified by a url
+//  func data(of url: URL) -> SignalProducer<Data, ErrorEnvelope>
+//
+//  /// Request an issue specified by a url
+//  func issue(of url: URL) -> SignalProducer<Issue, ErrorEnvelope>
+//
+//  /// Request comments of an issue
+//  func issueComments(of issue: Issue) -> SignalProducer<[IssueComment], ErrorEnvelope>
+//
+//  /// Request comments of a pull request
+//  func pullRequestComments(of pullRequest: PullRequest) -> SignalProducer<[IssueComment], ErrorEnvelope>
+//
+//  /// Request forked repositories of a repo
+//  func forks(of repository: Repository) -> SignalProducer<[Repository], ErrorEnvelope>
+//
+//  /// Request releases of a repo
+//  func releases(of repository: Repository) -> SignalProducer<[Release], ErrorEnvelope>
+//
+//  /// Request events of a repo
+//  func events(of repository: Repository) -> SignalProducer<[GHEvent], ErrorEnvelope>
+//
+//  /// Request events of a repo
+//  func contributors(of repository: Repository) -> SignalProducer<[UserLite], ErrorEnvelope>
+//
+//  /// Request events of a repo
+//  func stargazers(of repository: Repository) -> SignalProducer<[UserLite], ErrorEnvelope>
+//
+//  /// Pull Request events of a repo
+//  func pullRequests(of repository: Repository) -> SignalProducer<[PullRequest], ErrorEnvelope>
+//
+//  /// Pull Request referred by an URL
+//  func pullRequest(of url: URL) -> SignalProducer<PullRequest, ErrorEnvelope>
+//
+//  /// Request events of a repo
+//  func issues(of repository: Repository) -> SignalProducer<[Issue], ErrorEnvelope>
+//
+//  func commits(of repository: Repository, on branch: BranchLite) -> SignalProducer<[Commit], ErrorEnvelope>
+//
+//  func personalRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope>
+////  func watchedRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope>
+//  func starredRepositories(of user: User) -> SignalProducer<[Repository], ErrorEnvelope>
+//
+////  func personalIssues(of user: User) -> SignalProducer<[Issue], ErrorEnvelope>
+////  func personalPullRequests(of user: User) -> SignalProducer<[PullRequest], ErrorEnvelope>
 }
 
 extension ServiceType {

@@ -14,7 +14,7 @@ public protocol GHAPIModelType:
   CustomStringConvertible,
   CustomDebugStringConvertible,
   Decodable,
-EncodableType {
+  EncodableType {
 
 }
 
