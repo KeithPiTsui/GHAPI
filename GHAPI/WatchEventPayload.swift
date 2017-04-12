@@ -12,8 +12,8 @@ import Runes
 
 public struct WatchEventPayload: EventPayloadType{
   public let action: String
-  public let repository: Repository
-  public let sender: UserLite
+  public let repository: Repository?
+  public let sender: UserLite?
 }
 
 extension WatchEventPayload: GHAPIModelType {
@@ -23,14 +23,14 @@ extension WatchEventPayload: GHAPIModelType {
   public static func decode(_ json: JSON) -> Decoded<EventPayloadType> {
     return curry(WatchEventPayload.init)
       <^> json <| "action"
-      <*> json <| "repository"
-    <*> json <| "sender"
+      <*> json <|? "repository"
+    <*> json <|? "sender"
   }
   public func encode() -> [String : Any] {
     var result: [String:Any] = [:]
     result["action"] = self.action
-    result["repository"] = self.repository.encode()
-    result["sender"] = self.sender.encode()
+    result["repository"] = self.repository?.encode()
+    result["sender"] = self.sender?.encode()
     return result
   }
 }

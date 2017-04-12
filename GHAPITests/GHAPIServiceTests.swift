@@ -281,27 +281,27 @@ internal final class GHAPIServiceTests: XCTestCase {
     }
   }
 
-  func testGHEventsWithLinks() {
-    run { (expect) in
-      guard
-        let url
-        = URL(string: "https://api.github.com/users/KeithPitsui/received_events")
-        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
-
-      service.eventsP(of: url).observeInBackground().startWithResult{ (result) in
-        defer { expect.fulfill() }
-        if let value = result.value {
-          let events = value.0
-          let links = value.1
-          print("received \(events.count) events")
-          print("links: \(String(describing: links))")
-        } else {
-          let error = result.error
-          print("error: \(String(describing: error))")
-        }
-      }
-    }
-  }
+//  func testGHEventsWithLinks() {
+//    run { (expect) in
+//      guard
+//        let url
+//        = URL(string: "https://api.github.com/users/KeithPitsui/received_events")
+//        else { XCTAssert(false, "commit test URL cannot be constructed"); return }
+//
+//      service.reve(of: url).observeInBackground().startWithResult{ (result) in
+//        defer { expect.fulfill() }
+//        if let value = result.value {
+//          let events = value.0
+//          let links = value.1
+//          print("received \(events.count) events")
+//          print("links: \(String(describing: links))")
+//        } else {
+//          let error = result.error
+//          print("error: \(String(describing: error))")
+//        }
+//      }
+//    }
+//  }
 
   func testRepoActivities() {
     run { (expect) in
