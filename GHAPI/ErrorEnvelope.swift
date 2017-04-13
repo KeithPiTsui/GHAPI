@@ -40,7 +40,7 @@ public struct ErrorEnvelope {
   /**
    A general error that networkTimeout.
    */
-  internal static let networkTimeoutError = ErrorEnvelope(
+  public static let networkTimeoutError = ErrorEnvelope(
     requestingPhase: .networking,
     errorType: .networkTimeout,
     message: "network time out",
@@ -50,7 +50,7 @@ public struct ErrorEnvelope {
     response: nil
   )
 
-  internal static let unknownError = ErrorEnvelope(
+  public static let unknownError = ErrorEnvelope(
     requestingPhase: .unknown,
     errorType: .unknown,
     message: "unknown",
@@ -60,7 +60,7 @@ public struct ErrorEnvelope {
     response: nil
   )
 
-  internal static let noNetworkError = ErrorEnvelope(
+  public static let noNetworkError = ErrorEnvelope(
     requestingPhase: .networking,
     errorType: .noNetwork,
     message: "no network",
@@ -70,7 +70,7 @@ public struct ErrorEnvelope {
     response: nil
   )
 
-  internal static let couldNotParseErrorEnvelopeJSON = ErrorEnvelope(
+  public static let couldNotParseErrorEnvelopeJSON = ErrorEnvelope(
     requestingPhase: .ghAPIModelConverting,
     errorType: .ErrorEnvelopeJSONParsingFailed,
     message: "couldNotParseErrorEnvelopeJSON",
@@ -80,7 +80,7 @@ public struct ErrorEnvelope {
     response: nil
   )
 
-  internal static let invalidPaginationUrl = ErrorEnvelope(
+  public static let invalidPaginationUrl = ErrorEnvelope(
     requestingPhase: .routing,
     errorType: .InvalidPaginationUrl,
     message: "Cannot construct pagination url",
@@ -90,7 +90,7 @@ public struct ErrorEnvelope {
     response: nil
   )
 
-  internal static func couldNotParseJSON(from data: Data) -> ErrorEnvelope {
+  public static func couldNotParseJSON(from data: Data) -> ErrorEnvelope {
     return ErrorEnvelope(
       requestingPhase: .ghAPIModelConverting,
       errorType: .DecodingJSONFailed,
@@ -104,7 +104,7 @@ public struct ErrorEnvelope {
 
 //  invalidPaginationUrl
 
-  internal static func couldNotDecodeJSON(_ decodeError: DecodeError) -> ErrorEnvelope {
+  public static func couldNotDecodeJSON(_ decodeError: DecodeError) -> ErrorEnvelope {
     return ErrorEnvelope(
       requestingPhase: .ghAPIModelConverting,
       errorType: .DecodingJSONFailed,

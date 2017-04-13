@@ -390,6 +390,10 @@ extension Service {
     return request(.events(user:user))
   }
 
+  public func receivedEventsWithResponseHeader(of url: URL)
+    -> SignalProducer<GHServiceReturnType<[GHEvent]>, ErrorEnvelope> {
+      return request(.resource(url: url))
+  }
 
   public func receivedEvents(of user: User) -> SignalProducer<[GHEvent], ErrorEnvelope> {
     return self.receivedEventsWithResponseHeader(of: user).map(first)
@@ -519,11 +523,9 @@ extension Service {
 
   fileprivate static let session = URLSession(configuration: .default)
 
-  fileprivate func requestPagination<M: Decodable, N: ResponseHandleable>(_ paginationUrl: String)
-    -> SignalProducer<(M,N), ErrorEnvelope> where M == M.DecodedType, N == N.HandledType {
-      guard let paginationUrl = URL(string: paginationUrl) else {
-        return .init(error: .invalidPaginationUrl)
-      }
+  fileprivate func requestPagination<M: Decodable, N: ResponseHandleable>(_ paginationUrl: URL)
+    -> SignalProducer<(M,N), ErrorEnvelope>
+    where M == M.DecodedType, N == N.HandledType {
       return Service.session
         .rac_JSONResponse(preparedRequest(forURL: paginationUrl))
         .flatMap(decodeModel)

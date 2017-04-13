@@ -166,6 +166,12 @@ public protocol ServiceType {
 
 //  func personalIssues(of user: User) -> SignalProducer<[Issue], ErrorEnvelope>
 //  func personalPullRequests(of user: User) -> SignalProducer<[PullRequest], ErrorEnvelope>
+
+  func receivedEventsWithResponseHeader(of url: URL)
+    -> SignalProducer<GHServiceReturnType<[GHEvent]>, ErrorEnvelope>
+
+  func receivedEventsWithResponseHeader(of user: User)
+    -> SignalProducer<GHServiceReturnType<[GHEvent]>, ErrorEnvelope>
 }
 
 extension ServiceType {

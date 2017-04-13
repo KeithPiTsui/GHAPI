@@ -109,7 +109,17 @@ internal enum Route {
       return (.GET, "/users/\(userName)", [:], nil, [:])
 
     case let .resource(url):
-      return (.GET, url.path, [:], nil, [:])
+      var query = [String: String]()
+      if let queriesStr = url.query {
+        let queryStrs = queriesStr.components(separatedBy: "&")
+        queryStrs.forEach { (queryStr) in
+          let keyValue = queryStr.components(separatedBy: "=")
+          if keyValue.count == 2 {
+            query[keyValue[0]] = keyValue[1]
+          }
+        }
+      }
+      return (.GET, url.path, query, nil, [:])
 
     case let .search(scope, keyword, sort, order):
       let path = "/search/\(scope.name)"
