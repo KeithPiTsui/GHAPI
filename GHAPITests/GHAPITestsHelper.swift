@@ -6,9 +6,8 @@
 //  Copyright © 2017 Keith. All rights reserved.
 //
 
-import Argo
-import Curry
-import Runes
+import PaversFRP
+import PaversArgo
 import Foundation
 import XCTest
 

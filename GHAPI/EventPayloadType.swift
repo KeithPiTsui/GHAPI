@@ -6,10 +6,9 @@
 //  Copyright © 2017 Keith. All rights reserved.
 //
 
-import Argo
-import Curry
-import Runes
-import UIKit
+import PaversArgo
+import PaversFRP
+
 
 public protocol EventPayloadType {
   static func decode(_ json: JSON) -> Decoded<EventPayloadType>

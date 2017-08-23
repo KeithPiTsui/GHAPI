@@ -7,10 +7,8 @@
 //
 
 import XCTest
-import Argo
-import Curry
-import Runes
-import Prelude
+import PaversFRP
+import PaversArgo
 @testable import GHAPI
 
 internal final class UserTests: XCTestCase {

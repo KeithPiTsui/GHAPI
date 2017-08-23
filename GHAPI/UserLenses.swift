@@ -6,7 +6,8 @@
 //  Copyright © 2017 Keith. All rights reserved.
 //
 
-import Prelude
+import PaversFRP
+
 
 
 extension User {
@@ -634,48 +635,48 @@ extension User.URLs {
   }
 }
 
-extension LensType where Whole == User, Part == User.Avatar {
-  public var avatarURL: Lens<User, URL> {
-    return User.lens.avatar • User.Avatar.lens.url
-  }
-
-  public var avatarId: Lens<User, String> {
-    return User.lens.avatar • User.Avatar.lens.id
-  }
-}
-
-extension LensType where Whole == User, Part == User.URLs {
-  public var userUrl: Lens<User, URL> {
-    return User.lens.urls • User.URLs.lens.url
-  }
-  public var userHtmlUrl: Lens<User, URL> {
-    return User.lens.urls • User.URLs.lens.htmlUrl
-  }
-  public var userFollowersUrl: Lens<User, URL> {
-    return User.lens.urls • User.URLs.lens.followersUrl
-  }
-  public var userFollowingUrl: Lens<User, URL> {
-    return User.lens.urls • User.URLs.lens.followingUrl
-  }
-  public var userGitsUrl: Lens<User, URL> {
-    return User.lens.urls • User.URLs.lens.gitsUrl
-  }
-  public var userOrganizationsUrl: Lens<User, URL> {
-    return User.lens.urls • User.URLs.lens.organizationsUrl
-  }
-  public var userSubscriptionsUrl: Lens<User, URL> {
-    return User.lens.urls • User.URLs.lens.subscriptionsUrl
-  }
-  public var userReposUrl: Lens<User, URL> {
-    return User.lens.urls • User.URLs.lens.reposUrl
-  }
-  public var userEventsurl: Lens<User, URL> {
-    return User.lens.urls • User.URLs.lens.eventsUrl
-  }
-  public var userReceivedEventsUrl: Lens<User, URL> {
-    return User.lens.urls • User.URLs.lens.receivedEventsUrl
-  }
-}
+//extension LensType where Whole == User, Part == User.Avatar {
+//  public var avatarURL: Lens<User, URL> {
+//    return User.lens.avatar • User.Avatar.lens.url
+//  }
+//
+//  public var avatarId: Lens<User, String> {
+//    return User.lens.avatar • User.Avatar.lens.id
+//  }
+//}
+//
+//extension LensType where Whole == User, Part == User.URLs {
+//  public var userUrl: Lens<User, URL> {
+//    return User.lens.urls • User.URLs.lens.url
+//  }
+//  public var userHtmlUrl: Lens<User, URL> {
+//    return User.lens.urls • User.URLs.lens.htmlUrl
+//  }
+//  public var userFollowersUrl: Lens<User, URL> {
+//    return User.lens.urls • User.URLs.lens.followersUrl
+//  }
+//  public var userFollowingUrl: Lens<User, URL> {
+//    return User.lens.urls • User.URLs.lens.followingUrl
+//  }
+//  public var userGitsUrl: Lens<User, URL> {
+//    return User.lens.urls • User.URLs.lens.gitsUrl
+//  }
+//  public var userOrganizationsUrl: Lens<User, URL> {
+//    return User.lens.urls • User.URLs.lens.organizationsUrl
+//  }
+//  public var userSubscriptionsUrl: Lens<User, URL> {
+//    return User.lens.urls • User.URLs.lens.subscriptionsUrl
+//  }
+//  public var userReposUrl: Lens<User, URL> {
+//    return User.lens.urls • User.URLs.lens.reposUrl
+//  }
+//  public var userEventsurl: Lens<User, URL> {
+//    return User.lens.urls • User.URLs.lens.eventsUrl
+//  }
+//  public var userReceivedEventsUrl: Lens<User, URL> {
+//    return User.lens.urls • User.URLs.lens.receivedEventsUrl
+//  }
+//}
 
 
 

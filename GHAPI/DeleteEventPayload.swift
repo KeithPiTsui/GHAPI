@@ -7,9 +7,9 @@
 //
 
 
-import Argo
-import Curry
-import Runes
+import PaversArgo
+import PaversFRP
+
 
 
 public struct DeleteEventPayload: EventPayloadType{

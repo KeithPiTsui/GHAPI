@@ -5,9 +5,9 @@
 //  Created by Pi on 13/03/2017.
 //  Copyright © 2017 Keith. All rights reserved.
 //
-import Argo
-import Curry
-import Runes
+import PaversArgo
+import PaversFRP
+
 
 public struct GHEvent {
   public enum EventType: String {

@@ -1,6 +1,5 @@
-import Argo
-import Curry
-import Runes
+import PaversArgo
+import PaversFRP
 
 public enum GHAPIRequestingPhase {
   case routing

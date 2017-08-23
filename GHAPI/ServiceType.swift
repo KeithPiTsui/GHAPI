@@ -1,7 +1,6 @@
 // swiftlint:disable file_length
 import Foundation
-import Prelude
-import ReactiveSwift
+import PaversFRP
 
 public enum Mailbox: String {
   case inbox

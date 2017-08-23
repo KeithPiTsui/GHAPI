@@ -6,7 +6,7 @@
 //  Copyright © 2017 Keith. All rights reserved.
 //
 
-import Runes
+import PaversFRP
 
 /**
  Conditionally map a function over a `Decoded` value.

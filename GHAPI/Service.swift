@@ -1,11 +1,9 @@
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
 
-import Argo
+import PaversArgo
 import Foundation
-import Prelude
-import ReactiveExtensions
-import ReactiveSwift
+import PaversFRP
 
 /**
  A `ServerType` that requests data from an API webservice.

@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import Argo
+import PaversArgo
+
 
 public protocol GHAPIModelType:
   Equatable,

@@ -8,12 +8,8 @@
 
 import XCTest
 @testable import GHAPI
-import Argo
-import Curry
-import Runes
-import ReactiveSwift
-import Result
-import ReactiveExtensions
+import PaversFRP
+import PaversArgo
 
 
 internal final class GithubCraperTests: XCTestCase {

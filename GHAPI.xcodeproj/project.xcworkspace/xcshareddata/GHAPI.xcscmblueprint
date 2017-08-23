@@ -1,4 +1,5 @@
 {
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "5E7FCDF539B2F3BC45CA957A3D11B8C34E9B20E9",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
@@ -7,9 +8,11 @@
     "194A7A54F3CE0138A6C320E0643B7C60F8218891" : 9223372036854775807,
     "56143BFACBB606C93830EB59176C6A4332845E1D" : 9223372036854775807,
     "E139BF47DAAF0281292F8A8A85F2631B9D6680F3" : 9223372036854775807,
+    "5E7FCDF539B2F3BC45CA957A3D11B8C34E9B20E9" : 9223372036854775807,
+    "29B9092BBB2BA17BE73D7CCC9AD45E87AB4B663B" : 9223372036854775807,
     "956D2B21DD155C49504BB67697A67F7C5351A353" : 9223372036854775807,
-    "E084C86B03F81D63323C9E7510697EA528A758C7" : 9223372036854775807,
     "51B210D0D41486D3ADD6940D57E4480BBD4DE4C5" : 9223372036854775807,
+    "E084C86B03F81D63323C9E7510697EA528A758C7" : 9223372036854775807,
     "0A5C3A6DB1EA9211CEFA5384E9882B4D710699A4" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "8F86651A-462F-4058-BB81-BB6F91E10111",
@@ -18,9 +21,11 @@
     "194A7A54F3CE0138A6C320E0643B7C60F8218891" : "GHAPI\/Curry\/",
     "56143BFACBB606C93830EB59176C6A4332845E1D" : "GHAPI\/Kickstarter-Prelude\/",
     "E139BF47DAAF0281292F8A8A85F2631B9D6680F3" : "GHAPI\/Kickstarter-ReactiveExtensions\/",
+    "5E7FCDF539B2F3BC45CA957A3D11B8C34E9B20E9" : "GHAPI\/",
+    "29B9092BBB2BA17BE73D7CCC9AD45E87AB4B663B" : "GHAPI\/Pavers\/",
     "956D2B21DD155C49504BB67697A67F7C5351A353" : "GHAPI\/Kickstarter-ReactiveExtensions\/Frameworks\/ReactiveSwift\/Carthage\/Checkouts\/Result\/",
-    "E084C86B03F81D63323C9E7510697EA528A758C7" : "GHAPI\/Kickstarter-ReactiveExtensions\/Frameworks\/ReactiveSwift\/Carthage\/Checkouts\/xcconfigs\/",
     "51B210D0D41486D3ADD6940D57E4480BBD4DE4C5" : "GHAPI\/Kickstarter-ReactiveExtensions\/Frameworks\/ReactiveSwift\/",
+    "E084C86B03F81D63323C9E7510697EA528A758C7" : "GHAPI\/Kickstarter-ReactiveExtensions\/Frameworks\/ReactiveSwift\/Carthage\/Checkouts\/xcconfigs\/",
     "0A5C3A6DB1EA9211CEFA5384E9882B4D710699A4" : "GHAPI\/Runes\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "GHAPI",
@@ -38,6 +43,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "194A7A54F3CE0138A6C320E0643B7C60F8218891"
     },
     {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/KeithPiTsui\/Pavers.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "29B9092BBB2BA17BE73D7CCC9AD45E87AB4B663B"
+    },
+    {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/thoughtbot\/Argo.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "39CB70283A1C33AFB5FF861E924945826EDC74FE"
@@ -51,6 +61,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kickstarter\/Kickstarter-Prelude.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "56143BFACBB606C93830EB59176C6A4332845E1D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/KeithPiTsui\/GHAPI.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5E7FCDF539B2F3BC45CA957A3D11B8C34E9B20E9"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/antitypical\/Result.git",

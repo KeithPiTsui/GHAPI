@@ -8,7 +8,7 @@
 
 import Foundation
 import Ji
-import Curry
+import PaversFRP
 
 
 public struct TrendingRepository {

@@ -6,12 +6,9 @@
 //  Copyright © 2017 Keith. All rights reserved.
 //
 
-import Argo
-import Curry
-import Runes
-import ReactiveSwift
-import Result
-import ReactiveExtensions
+import PaversArgo
+import PaversFRP
+
 
 public struct Repository {
   public struct RURLs {

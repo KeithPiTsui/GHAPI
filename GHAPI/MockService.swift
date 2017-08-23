@@ -6,11 +6,9 @@
 //  Copyright © 2017 Keith. All rights reserved.
 //
 
-import Argo
+import PaversArgo
 import Foundation
-import Prelude
-import ReactiveExtensions
-import ReactiveSwift
+import PaversFRP
 
 /**
  A `ServerType` that requests data from an API webservice.

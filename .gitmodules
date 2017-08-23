@@ -13,3 +13,6 @@
 [submodule "Kickstarter-ReactiveExtensions"]
 	path = Kickstarter-ReactiveExtensions
 	url = https://github.com/kickstarter/Kickstarter-ReactiveExtensions.git
+[submodule "Pavers"]
+	path = Pavers
+	url = https://github.com/KeithPiTsui/Pavers.git

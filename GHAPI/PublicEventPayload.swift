@@ -6,9 +6,9 @@
 //  Copyright © 2017 Keith. All rights reserved.
 //
 
-import Argo
-import Curry
-import Runes
+import PaversArgo
+import PaversFRP
+
 
 public struct PublicEventPayload: EventPayloadType{
   public let repository: Repository

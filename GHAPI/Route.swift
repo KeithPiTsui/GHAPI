@@ -1,4 +1,4 @@
-import Prelude
+import PaversFRP
 
 /**
  A list of possible requests that can be made for Kickstarter data.

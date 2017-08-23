@@ -1,10 +1,6 @@
-import Argo
-import Curry
-import Runes
+import PaversFRP
+import PaversArgo
 import Foundation
-import Prelude
-import ReactiveSwift
-import Result
 
 private func parseJSONData(_ data: Data) -> Any? {
   return (try? JSONSerialization.jsonObject(with: data, options: []))
@@ -176,7 +172,10 @@ extension URLSession {
           observer.send(value: (data, response))
           observer.sendCompleted()
         }
-        disposable += task.cancel
+//        disposable += task.cancel
+        disposable.observeEnded {
+          task.cancel()
+        }
         task.resume()
       }
   }

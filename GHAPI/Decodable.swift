@@ -1,4 +1,5 @@
-import Argo
+import PaversArgo
+
 
 public extension Decodable {
     /**

@@ -6,7 +6,7 @@
 //  Copyright © 2017 Keith. All rights reserved.
 //
 
-import Prelude
+import PaversFRP
 
 extension User.Avatar {
   internal static let template = User.template.avatar
