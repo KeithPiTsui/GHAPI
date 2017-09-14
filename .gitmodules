@@ -1,3 +1,6 @@
-[submodule "Pavers"]
-	path = Pavers
+[submodule "Frameworks/Pavers"]
+	path = Frameworks/Pavers
 	url = https://github.com/KeithPiTsui/Pavers.git
+[submodule "Frameworks/Ji"]
+	path = Frameworks/Ji
+	url = https://github.com/KeithPiTsui/Ji.git
