@@ -262,8 +262,6 @@
 		0E4D597C1E5C5BC0008E4AD6 /* GHAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GHAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E4D59831E5C5BC0008E4AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E4D598D1E5C5BD9008E4AD6 /* GHApi.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = GHApi.playground; sourceTree = "<group>"; };
-		0E4D5A051E5C5E58008E4AD6 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = "Kickstarter-ReactiveExtensions/Frameworks/ReactiveSwift/build/Debug-iphoneos/ReactiveSwift.framework"; sourceTree = "<group>"; };
-		0E4D5A061E5C5E58008E4AD6 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "Kickstarter-ReactiveExtensions/Frameworks/ReactiveSwift/Carthage/Checkouts/Result/build/Debug-iphoneos/Result.framework"; sourceTree = "<group>"; };
 		0E4D5A121E5C607A008E4AD6 /* NSURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSession.swift; sourceTree = "<group>"; };
 		0E4D5A141E5C60AD008E4AD6 /* BasicHTTPAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicHTTPAuth.swift; sourceTree = "<group>"; };
 		0E4D5A1A1E5C60C1008E4AD6 /* Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decodable.swift; sourceTree = "<group>"; };
@@ -355,18 +353,6 @@
 		0E7B7BA21E6E3E1100D50C95 /* UserQualifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserQualifier.swift; sourceTree = "<group>"; };
 		0E7B7BA51E6E3EA300D50C95 /* CommitsQualifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitsQualifier.swift; sourceTree = "<group>"; };
 		0E7B7BE21E6E628C00D50C95 /* StandardTypeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardTypeExtension.swift; sourceTree = "<group>"; };
-		0E88068B1E642A820019CE44 /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = "Argo/build/Debug-iphoneos/Argo.framework"; sourceTree = "<group>"; };
-		0E88068C1E642A820019CE44 /* Curry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Curry.framework; path = "Curry/build/Debug-iphoneos/Curry.framework"; sourceTree = "<group>"; };
-		0E88068D1E642A820019CE44 /* Prelude.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Prelude.framework; path = "Kickstarter-Prelude/build/Debug-iphoneos/Prelude.framework"; sourceTree = "<group>"; };
-		0E88068E1E642A820019CE44 /* ReactiveExtensions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveExtensions.framework; path = "Kickstarter-ReactiveExtensions/build/Debug-iphoneos/ReactiveExtensions.framework"; sourceTree = "<group>"; };
-		0E88068F1E642A820019CE44 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = "Runes/build/Debug-iphoneos/Runes.framework"; sourceTree = "<group>"; };
-		0E8806971E642C0F0019CE44 /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/Argo.framework"; sourceTree = "<group>"; };
-		0E8806981E642C0F0019CE44 /* Curry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Curry.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/Curry.framework"; sourceTree = "<group>"; };
-		0E8806991E642C0F0019CE44 /* Prelude.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Prelude.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/Prelude.framework"; sourceTree = "<group>"; };
-		0E88069A1E642C0F0019CE44 /* ReactiveExtensions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveExtensions.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/ReactiveExtensions.framework"; sourceTree = "<group>"; };
-		0E88069B1E642C0F0019CE44 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/ReactiveSwift.framework"; sourceTree = "<group>"; };
-		0E88069C1E642C0F0019CE44 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/Result.framework"; sourceTree = "<group>"; };
-		0E88069D1E642C0F0019CE44 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = "../../Library/Developer/Xcode/DerivedData/GHAPI-btitqnsxiqoysrhaujuuliuzakpk/Build/Products/Debug-iphoneos/Runes.framework"; sourceTree = "<group>"; };
 		0EA044D01E76535300643EBA /* Readme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Readme.swift; sourceTree = "<group>"; };
 		0EA044D21E76567400643EBA /* GHAPIModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHAPIModelType.swift; sourceTree = "<group>"; };
 		0EA044DA1E768DB000643EBA /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -387,7 +373,6 @@
 		0EB6581A1E8249B600D48AAE /* GHAPIRoots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHAPIRoots.swift; sourceTree = "<group>"; };
 		0EB6581C1E8249C500D48AAE /* GHAPIRoots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GHAPIRoots.json; sourceTree = "<group>"; };
 		0ECE8A641E77CB15001FE48B /* GithubCraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubCraper.swift; sourceTree = "<group>"; };
-		0ECE8A661E77CB22001FE48B /* Ji.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ji.framework; path = "../Ji/build/Debug-iphoneos/Ji.framework"; sourceTree = "<group>"; };
 		0ECE8A681E77CBE4001FE48B /* GithubCraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubCraper.swift; sourceTree = "<group>"; };
 		0EE07C191E7E49670021FC6C /* OrganizationEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizationEventPayload.swift; sourceTree = "<group>"; };
 		0EE07C1E1E7E56000021FC6C /* OrganizationEventPayload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OrganizationEventPayload.json; sourceTree = "<group>"; };
@@ -529,21 +514,6 @@
 				0E3173B71F4E61CA00356F5E /* Ji.framework */,
 				0E3173B81F4E61CA00356F5E /* PaversArgo.framework */,
 				0E3173B91F4E61CA00356F5E /* PaversFRP.framework */,
-				0ECE8A661E77CB22001FE48B /* Ji.framework */,
-				0E8806971E642C0F0019CE44 /* Argo.framework */,
-				0E8806981E642C0F0019CE44 /* Curry.framework */,
-				0E8806991E642C0F0019CE44 /* Prelude.framework */,
-				0E88069A1E642C0F0019CE44 /* ReactiveExtensions.framework */,
-				0E88069B1E642C0F0019CE44 /* ReactiveSwift.framework */,
-				0E88069C1E642C0F0019CE44 /* Result.framework */,
-				0E88069D1E642C0F0019CE44 /* Runes.framework */,
-				0E88068B1E642A820019CE44 /* Argo.framework */,
-				0E88068C1E642A820019CE44 /* Curry.framework */,
-				0E88068D1E642A820019CE44 /* Prelude.framework */,
-				0E88068E1E642A820019CE44 /* ReactiveExtensions.framework */,
-				0E88068F1E642A820019CE44 /* Runes.framework */,
-				0E4D5A051E5C5E58008E4AD6 /* ReactiveSwift.framework */,
-				0E4D5A061E5C5E58008E4AD6 /* Result.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
