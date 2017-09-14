@@ -2,23 +2,41 @@
 
 import UIKit
 import PlaygroundSupport
-import Argo
-import Curry
-import Prelude
-import Prelude_UIKit
-import Runes
-import ReactiveSwift
-import Result
-import ReactiveExtensions
-import GHAPI
 
+enum A {
+  case hello
+  case hi
+}
 
-PlaygroundPage.current.needsIndefiniteExecution = true
+let a = A.hello
+let s = "\(a)"
 
-let view = UIView()
-view |> UIView.lens.backgroundColor .~ UIColor.red
-PlaygroundPage.current.liveView = view
+let f: CGFloat = 0.23
 
+let fs: String = String(format: "%-0.1f", f)
+
+var x: UIView? =  UIView()
+let y = x
+
+let b = x === y
+
+//import Argo
+//import Curry
+//import Prelude
+//import Prelude_UIKit
+//import Runes
+//import ReactiveSwift
+//import Result
+//import ReactiveExtensions
+//import GHAPI
+//
+//
+//PlaygroundPage.current.needsIndefiniteExecution = true
+//
+//let view = UIView()
+//view |> UIView.lens.backgroundColor .~ UIColor.red
+//PlaygroundPage.current.liveView = view
+//
 
 //
 //PlaygroundPage.current.needsIndefiniteExecution = true

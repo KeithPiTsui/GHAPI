@@ -58,9 +58,9 @@
 		0E2B00661E73F39C007C4A89 /* String-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2B00651E73F39C007C4A89 /* String-Extension.swift */; };
 		0E3139E01E9D01CF006C9232 /* GHEventEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3139DF1E9D01CF006C9232 /* GHEventEnvelope.swift */; };
 		0E3139E21E9D02EE006C9232 /* PaginationLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3139E11E9D02EE006C9232 /* PaginationLinks.swift */; };
-		0E3D76091F4DC84A00FFD6C3 /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E3D75F61F4DC80F00FFD6C3 /* Ji.framework */; };
-		0E3D760A1F4DC84A00FFD6C3 /* PaversArgo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E3D75E81F4DC79200FFD6C3 /* PaversArgo.framework */; };
-		0E3D760B1F4DC84A00FFD6C3 /* PaversFRP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E3D75E41F4DC79200FFD6C3 /* PaversFRP.framework */; };
+		0E3173BA1F4E61CA00356F5E /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E3173B71F4E61CA00356F5E /* Ji.framework */; };
+		0E3173BB1F4E61CA00356F5E /* PaversArgo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E3173B81F4E61CA00356F5E /* PaversArgo.framework */; };
+		0E3173BC1F4E61CA00356F5E /* PaversFRP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E3173B91F4E61CA00356F5E /* PaversFRP.framework */; };
 		0E4BCFBD1E810D7500BF6135 /* Error.text in Sources */ = {isa = PBXBuildFile; fileRef = 0E4BCFBC1E810D7500BF6135 /* Error.text */; };
 		0E4BCFBF1E810F4700BF6135 /* IssueCommentEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4BCFBE1E810F4700BF6135 /* IssueCommentEventPayload.swift */; };
 		0E4BCFC31E810FBC00BF6135 /* IssueCommentEventPayload.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E4BCFC21E810FBC00BF6135 /* IssueCommentEventPayload.json */; };
@@ -188,118 +188,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0E3D75DF1F4DC79200FFD6C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E3D75D61F4DC79100FFD6C3 /* Pavers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0E5151C91F4AD7280006BE05;
-			remoteInfo = PaversUI;
-		};
-		0E3D75E11F4DC79200FFD6C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E3D75D61F4DC79100FFD6C3 /* Pavers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0E5151D11F4AD7280006BE05;
-			remoteInfo = PaversUITests;
-		};
-		0E3D75E31F4DC79200FFD6C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E3D75D61F4DC79100FFD6C3 /* Pavers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0E1D070B1F4C71A900D9CB38;
-			remoteInfo = PaversFRP;
-		};
-		0E3D75E51F4DC79200FFD6C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E3D75D61F4DC79100FFD6C3 /* Pavers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0E1D07131F4C71AA00D9CB38;
-			remoteInfo = PaversFRPTests;
-		};
-		0E3D75E71F4DC79200FFD6C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E3D75D61F4DC79100FFD6C3 /* Pavers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0E3D75911F4DC5E600FFD6C3;
-			remoteInfo = PaversArgo;
-		};
-		0E3D75E91F4DC79200FFD6C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E3D75D61F4DC79100FFD6C3 /* Pavers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0E3D75991F4DC5E700FFD6C3;
-			remoteInfo = PaversArgoTests;
-		};
-		0E3D75F51F4DC80F00FFD6C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E3D75EB1F4DC80F00FFD6C3 /* Ji.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E43D74D61B8FBBBF00702114;
-			remoteInfo = "Ji iOS";
-		};
-		0E3D75F71F4DC80F00FFD6C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E3D75EB1F4DC80F00FFD6C3 /* Ji.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E43A4D831BD838FC003CB3D7;
-			remoteInfo = "Ji OSX";
-		};
-		0E3D75F91F4DC80F00FFD6C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E3D75EB1F4DC80F00FFD6C3 /* Ji.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E43A4E241BD842B6003CB3D7;
-			remoteInfo = "Ji tvOS";
-		};
-		0E3D75FB1F4DC80F00FFD6C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E3D75EB1F4DC80F00FFD6C3 /* Ji.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E43A4DDE1BD83FBF003CB3D7;
-			remoteInfo = "Ji watchOS";
-		};
-		0E3D75FD1F4DC80F00FFD6C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E3D75EB1F4DC80F00FFD6C3 /* Ji.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E43D75061B8FE82100702114;
-			remoteInfo = "Ji iOS Tests";
-		};
-		0E3D75FF1F4DC80F00FFD6C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E3D75EB1F4DC80F00FFD6C3 /* Ji.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E43A4D8C1BD838FD003CB3D7;
-			remoteInfo = "Ji OSX Tests";
-		};
-		0E3D76011F4DC80F00FFD6C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E3D75EB1F4DC80F00FFD6C3 /* Ji.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E43A4E2D1BD842B6003CB3D7;
-			remoteInfo = "Ji tvOS Tests";
-		};
-		0E3D76031F4DC82200FFD6C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E3D75EB1F4DC80F00FFD6C3 /* Ji.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E43D74D51B8FBBBF00702114;
-			remoteInfo = "Ji iOS";
-		};
-		0E3D76051F4DC82200FFD6C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E3D75D61F4DC79100FFD6C3 /* Pavers.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 0E1D070A1F4C71A900D9CB38;
-			remoteInfo = PaversFRP;
-		};
-		0E3D76071F4DC82200FFD6C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E3D75D61F4DC79100FFD6C3 /* Pavers.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 0E3D75901F4DC5E600FFD6C3;
-			remoteInfo = PaversArgo;
-		};
 		0E4D597E1E5C5BC0008E4AD6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0E4D596A1E5C5BC0008E4AD6 /* Project object */;
@@ -360,8 +248,9 @@
 		0E2B00651E73F39C007C4A89 /* String-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Extension.swift"; sourceTree = "<group>"; };
 		0E3139DF1E9D01CF006C9232 /* GHEventEnvelope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHEventEnvelope.swift; sourceTree = "<group>"; };
 		0E3139E11E9D02EE006C9232 /* PaginationLinks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationLinks.swift; sourceTree = "<group>"; };
-		0E3D75D61F4DC79100FFD6C3 /* Pavers.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pavers.xcodeproj; path = Pavers/Pavers/Pavers.xcodeproj; sourceTree = "<group>"; };
-		0E3D75EB1F4DC80F00FFD6C3 /* Ji.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Ji.xcodeproj; path = Ji/Ji.xcodeproj; sourceTree = "<group>"; };
+		0E3173B71F4E61CA00356F5E /* Ji.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ji.framework; path = "../../../../../Developer/Xcode/DerivedData/GitHot-ccqzaxuoednaxzgmmmwxwtkdqcvz/Build/Products/Debug-iphonesimulator/Ji.framework"; sourceTree = "<group>"; };
+		0E3173B81F4E61CA00356F5E /* PaversArgo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PaversArgo.framework; path = "../../../../../Developer/Xcode/DerivedData/GitHot-ccqzaxuoednaxzgmmmwxwtkdqcvz/Build/Products/Debug-iphonesimulator/PaversArgo.framework"; sourceTree = "<group>"; };
+		0E3173B91F4E61CA00356F5E /* PaversFRP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PaversFRP.framework; path = "../../../../../Developer/Xcode/DerivedData/GitHot-ccqzaxuoednaxzgmmmwxwtkdqcvz/Build/Products/Debug-iphonesimulator/PaversFRP.framework"; sourceTree = "<group>"; };
 		0E4BCFBC1E810D7500BF6135 /* Error.text */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Error.text; sourceTree = "<group>"; };
 		0E4BCFBE1E810F4700BF6135 /* IssueCommentEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueCommentEventPayload.swift; sourceTree = "<group>"; };
 		0E4BCFC21E810FBC00BF6135 /* IssueCommentEventPayload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = IssueCommentEventPayload.json; sourceTree = "<group>"; };
@@ -512,9 +401,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E3D76091F4DC84A00FFD6C3 /* Ji.framework in Frameworks */,
-				0E3D760A1F4DC84A00FFD6C3 /* PaversArgo.framework in Frameworks */,
-				0E3D760B1F4DC84A00FFD6C3 /* PaversFRP.framework in Frameworks */,
+				0E3173BA1F4E61CA00356F5E /* Ji.framework in Frameworks */,
+				0E3173BB1F4E61CA00356F5E /* PaversArgo.framework in Frameworks */,
+				0E3173BC1F4E61CA00356F5E /* PaversFRP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,12 +438,12 @@
 		0E0944821E9C9CCC009672CA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0E29533D1E8B607D00134B43 /* Error */,
 				0E71A4FB1E7FE2E400D8EED6 /* Branch.swift */,
 				0E5BF8C31E73D46200EDD841 /* BranchLite.swift */,
 				0E2B00631E73E2DC007C4A89 /* Commit.swift */,
-				0E71A4FF1E7FEEAB00D8EED6 /* Content.swift */,
 				0EB13A701E8D4A9700163750 /* CommitComment.swift */,
+				0E71A4FF1E7FEEAB00D8EED6 /* Content.swift */,
+				0E29533D1E8B607D00134B43 /* Error */,
 				0EA044E01E76C1D900643EBA /* Event */,
 				0EA044D21E76567400643EBA /* GHAPIModelType.swift */,
 				0EB658181E82499800D48AAE /* GHAPIRoots.swift */,
@@ -562,8 +451,8 @@
 				0E1AAB191E84CDF800BFD36C /* IssueComment.swift */,
 				0E00C91C1E7C14A300958A39 /* Milestone.swift */,
 				0E00C9101E7C0AD600958A39 /* Organization.swift */,
-				0E65E1221E7E88D4004EDBCA /* PullRequest.swift */,
 				0E3139E11E9D02EE006C9232 /* PaginationLinks.swift */,
+				0E65E1221E7E88D4004EDBCA /* PullRequest.swift */,
 				0E267A571E91F0B0006D647B /* PullRequestLite.swift */,
 				0EA044D01E76535300643EBA /* Readme.swift */,
 				0E65E1361E7EA0F3004EDBCA /* Release.swift */,
@@ -593,38 +482,9 @@
 			name = Error;
 			sourceTree = "<group>";
 		};
-		0E3D75D71F4DC79100FFD6C3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0E3D75E01F4DC79200FFD6C3 /* PaversUI.framework */,
-				0E3D75E21F4DC79200FFD6C3 /* PaversUITests.xctest */,
-				0E3D75E41F4DC79200FFD6C3 /* PaversFRP.framework */,
-				0E3D75E61F4DC79200FFD6C3 /* PaversFRPTests.xctest */,
-				0E3D75E81F4DC79200FFD6C3 /* PaversArgo.framework */,
-				0E3D75EA1F4DC79200FFD6C3 /* PaversArgoTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		0E3D75EC1F4DC80F00FFD6C3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0E3D75F61F4DC80F00FFD6C3 /* Ji.framework */,
-				0E3D75F81F4DC80F00FFD6C3 /* Ji.framework */,
-				0E3D75FA1F4DC80F00FFD6C3 /* Ji.framework */,
-				0E3D75FC1F4DC80F00FFD6C3 /* Ji.framework */,
-				0E3D75FE1F4DC80F00FFD6C3 /* Ji iOS Tests.xctest */,
-				0E3D76001F4DC80F00FFD6C3 /* Ji OSX Tests.xctest */,
-				0E3D76021F4DC80F00FFD6C3 /* Ji tvOS Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		0E4D59691E5C5BC0008E4AD6 = {
 			isa = PBXGroup;
 			children = (
-				0E3D75EB1F4DC80F00FFD6C3 /* Ji.xcodeproj */,
-				0E3D75D61F4DC79100FFD6C3 /* Pavers.xcodeproj */,
 				0E4D598D1E5C5BD9008E4AD6 /* GHApi.playground */,
 				0E4D59751E5C5BC0008E4AD6 /* GHAPI */,
 				0E4D59801E5C5BC0008E4AD6 /* GHAPITests */,
@@ -666,6 +526,9 @@
 		0E4D5A041E5C5E58008E4AD6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E3173B71F4E61CA00356F5E /* Ji.framework */,
+				0E3173B81F4E61CA00356F5E /* PaversArgo.framework */,
+				0E3173B91F4E61CA00356F5E /* PaversFRP.framework */,
 				0ECE8A661E77CB22001FE48B /* Ji.framework */,
 				0E8806971E642C0F0019CE44 /* Argo.framework */,
 				0E8806981E642C0F0019CE44 /* Curry.framework */,
@@ -1015,9 +878,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				0E3D76041F4DC82200FFD6C3 /* PBXTargetDependency */,
-				0E3D76061F4DC82200FFD6C3 /* PBXTargetDependency */,
-				0E3D76081F4DC82200FFD6C3 /* PBXTargetDependency */,
 			);
 			name = GHAPI;
 			productName = GHAPI;
@@ -1075,16 +935,6 @@
 			mainGroup = 0E4D59691E5C5BC0008E4AD6;
 			productRefGroup = 0E4D59741E5C5BC0008E4AD6 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 0E3D75EC1F4DC80F00FFD6C3 /* Products */;
-					ProjectRef = 0E3D75EB1F4DC80F00FFD6C3 /* Ji.xcodeproj */;
-				},
-				{
-					ProductGroup = 0E3D75D71F4DC79100FFD6C3 /* Products */;
-					ProjectRef = 0E3D75D61F4DC79100FFD6C3 /* Pavers.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				0E4D59721E5C5BC0008E4AD6 /* GHAPI */,
@@ -1092,100 +942,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		0E3D75E01F4DC79200FFD6C3 /* PaversUI.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PaversUI.framework;
-			remoteRef = 0E3D75DF1F4DC79200FFD6C3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0E3D75E21F4DC79200FFD6C3 /* PaversUITests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PaversUITests.xctest;
-			remoteRef = 0E3D75E11F4DC79200FFD6C3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0E3D75E41F4DC79200FFD6C3 /* PaversFRP.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PaversFRP.framework;
-			remoteRef = 0E3D75E31F4DC79200FFD6C3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0E3D75E61F4DC79200FFD6C3 /* PaversFRPTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PaversFRPTests.xctest;
-			remoteRef = 0E3D75E51F4DC79200FFD6C3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0E3D75E81F4DC79200FFD6C3 /* PaversArgo.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PaversArgo.framework;
-			remoteRef = 0E3D75E71F4DC79200FFD6C3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0E3D75EA1F4DC79200FFD6C3 /* PaversArgoTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PaversArgoTests.xctest;
-			remoteRef = 0E3D75E91F4DC79200FFD6C3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0E3D75F61F4DC80F00FFD6C3 /* Ji.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Ji.framework;
-			remoteRef = 0E3D75F51F4DC80F00FFD6C3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0E3D75F81F4DC80F00FFD6C3 /* Ji.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Ji.framework;
-			remoteRef = 0E3D75F71F4DC80F00FFD6C3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0E3D75FA1F4DC80F00FFD6C3 /* Ji.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Ji.framework;
-			remoteRef = 0E3D75F91F4DC80F00FFD6C3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0E3D75FC1F4DC80F00FFD6C3 /* Ji.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Ji.framework;
-			remoteRef = 0E3D75FB1F4DC80F00FFD6C3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0E3D75FE1F4DC80F00FFD6C3 /* Ji iOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Ji iOS Tests.xctest";
-			remoteRef = 0E3D75FD1F4DC80F00FFD6C3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0E3D76001F4DC80F00FFD6C3 /* Ji OSX Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Ji OSX Tests.xctest";
-			remoteRef = 0E3D75FF1F4DC80F00FFD6C3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0E3D76021F4DC80F00FFD6C3 /* Ji tvOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Ji tvOS Tests.xctest";
-			remoteRef = 0E3D76011F4DC80F00FFD6C3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		0E4D59711E5C5BC0008E4AD6 /* Resources */ = {
@@ -1395,21 +1151,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0E3D76041F4DC82200FFD6C3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Ji iOS";
-			targetProxy = 0E3D76031F4DC82200FFD6C3 /* PBXContainerItemProxy */;
-		};
-		0E3D76061F4DC82200FFD6C3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PaversFRP;
-			targetProxy = 0E3D76051F4DC82200FFD6C3 /* PBXContainerItemProxy */;
-		};
-		0E3D76081F4DC82200FFD6C3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PaversArgo;
-			targetProxy = 0E3D76071F4DC82200FFD6C3 /* PBXContainerItemProxy */;
-		};
 		0E4D597F1E5C5BC0008E4AD6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0E4D59721E5C5BC0008E4AD6 /* GHAPI */;
