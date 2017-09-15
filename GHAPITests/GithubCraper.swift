@@ -23,6 +23,7 @@ internal final class GithubCraperTests: XCTestCase {
 
   func testDailyTrendingSwift() {
     let repos = GithubCraper.trendingRepositories(of: .daily, with: "swift")
+    let str = try! String(contentsOf: repos!.first!.url!)
     XCTAssert(repos != nil, "Repos should not be nil")
   }
 

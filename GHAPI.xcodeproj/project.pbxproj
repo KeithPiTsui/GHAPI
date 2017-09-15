@@ -16,6 +16,8 @@
 		0E00C9191E7C12A200958A39 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00C9181E7C12A200958A39 /* Team.swift */; };
 		0E00C91B1E7C132A00958A39 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00C91A1E7C132A00958A39 /* Issue.swift */; };
 		0E00C91D1E7C14A300958A39 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E00C91C1E7C14A300958A39 /* Milestone.swift */; };
+		0E032C9B1F6AB56100B83434 /* PaversArgo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E032C991F6AB56100B83434 /* PaversArgo.framework */; };
+		0E032C9C1F6AB56100B83434 /* PaversFRP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E032C9A1F6AB56100B83434 /* PaversFRP.framework */; };
 		0E08D9A51E87E71E008E0284 /* CommitCommentEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08D9A41E87E71E008E0284 /* CommitCommentEventPayload.swift */; };
 		0E08D9A71E87E734008E0284 /* CommitCommentEventPayload.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E08D9A61E87E734008E0284 /* CommitCommentEventPayload.json */; };
 		0E08D9A91E87E79D008E0284 /* CreateEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08D9A81E87E79D008E0284 /* CreateEventPayload.swift */; };
@@ -178,8 +180,6 @@
 		0ECE8A651E77CB15001FE48B /* GithubCraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A641E77CB15001FE48B /* GithubCraper.swift */; };
 		0ECE8A691E77CBE4001FE48B /* GithubCraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE8A681E77CBE4001FE48B /* GithubCraper.swift */; };
 		0ECFC9771F6AA0390001317F /* Ji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECFC9551F6AA01F0001317F /* Ji.framework */; };
-		0ECFC9781F6AA0390001317F /* PaversArgo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECFC9741F6AA0270001317F /* PaversArgo.framework */; };
-		0ECFC9791F6AA0390001317F /* PaversFRP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECFC9701F6AA0270001317F /* PaversFRP.framework */; };
 		0EE07C1A1E7E49670021FC6C /* OrganizationEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE07C191E7E49670021FC6C /* OrganizationEventPayload.swift */; };
 		0EE07C1F1E7E56000021FC6C /* OrganizationEventPayload.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EE07C1E1E7E56000021FC6C /* OrganizationEventPayload.json */; };
 		0EE17BBF1E6D657300451632 /* SearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE17BBE1E6D657300451632 /* SearchParameters.swift */; };
@@ -244,48 +244,6 @@
 			remoteGlobalIDString = E43A4E2D1BD842B6003CB3D7;
 			remoteInfo = "Ji tvOS Tests";
 		};
-		0ECFC96B1F6AA0270001317F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0ECFC9621F6AA0260001317F /* Pavers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0E5151C91F4AD7280006BE05;
-			remoteInfo = PaversUI;
-		};
-		0ECFC96D1F6AA0270001317F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0ECFC9621F6AA0260001317F /* Pavers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0E5151D11F4AD7280006BE05;
-			remoteInfo = PaversUITests;
-		};
-		0ECFC96F1F6AA0270001317F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0ECFC9621F6AA0260001317F /* Pavers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0E1D070B1F4C71A900D9CB38;
-			remoteInfo = PaversFRP;
-		};
-		0ECFC9711F6AA0270001317F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0ECFC9621F6AA0260001317F /* Pavers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0E1D07131F4C71AA00D9CB38;
-			remoteInfo = PaversFRPTests;
-		};
-		0ECFC9731F6AA0270001317F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0ECFC9621F6AA0260001317F /* Pavers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0E3D75911F4DC5E600FFD6C3;
-			remoteInfo = PaversArgo;
-		};
-		0ECFC9751F6AA0270001317F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0ECFC9621F6AA0260001317F /* Pavers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0E3D75991F4DC5E700FFD6C3;
-			remoteInfo = PaversArgoTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -298,6 +256,8 @@
 		0E00C9181E7C12A200958A39 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		0E00C91A1E7C132A00958A39 /* Issue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		0E00C91C1E7C14A300958A39 /* Milestone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
+		0E032C991F6AB56100B83434 /* PaversArgo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PaversArgo.framework; path = "../../../../../../Developer/Xcode/DerivedData/GitHot-ccqzaxuoednaxzgmmmwxwtkdqcvz/Build/Products/Debug-iphonesimulator/PaversArgo.framework"; sourceTree = "<group>"; };
+		0E032C9A1F6AB56100B83434 /* PaversFRP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PaversFRP.framework; path = "../../../../../../Developer/Xcode/DerivedData/GitHot-ccqzaxuoednaxzgmmmwxwtkdqcvz/Build/Products/Debug-iphonesimulator/PaversFRP.framework"; sourceTree = "<group>"; };
 		0E08D9A41E87E71E008E0284 /* CommitCommentEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitCommentEventPayload.swift; sourceTree = "<group>"; };
 		0E08D9A61E87E734008E0284 /* CommitCommentEventPayload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CommitCommentEventPayload.json; sourceTree = "<group>"; };
 		0E08D9A81E87E79D008E0284 /* CreateEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventPayload.swift; sourceTree = "<group>"; };
@@ -466,7 +426,6 @@
 		0ECE8A641E77CB15001FE48B /* GithubCraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubCraper.swift; sourceTree = "<group>"; };
 		0ECE8A681E77CBE4001FE48B /* GithubCraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubCraper.swift; sourceTree = "<group>"; };
 		0ECFC94A1F6AA01F0001317F /* Ji.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Ji.xcodeproj; path = Frameworks/Ji/Ji.xcodeproj; sourceTree = "<group>"; };
-		0ECFC9621F6AA0260001317F /* Pavers.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pavers.xcodeproj; path = Frameworks/Pavers/Pavers/Pavers.xcodeproj; sourceTree = "<group>"; };
 		0EE07C191E7E49670021FC6C /* OrganizationEventPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizationEventPayload.swift; sourceTree = "<group>"; };
 		0EE07C1E1E7E56000021FC6C /* OrganizationEventPayload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OrganizationEventPayload.json; sourceTree = "<group>"; };
 		0EE17BBE1E6D657300451632 /* SearchParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchParameters.swift; sourceTree = "<group>"; };
@@ -479,9 +438,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E032C9B1F6AB56100B83434 /* PaversArgo.framework in Frameworks */,
+				0E032C9C1F6AB56100B83434 /* PaversFRP.framework in Frameworks */,
 				0ECFC9771F6AA0390001317F /* Ji.framework in Frameworks */,
-				0ECFC9781F6AA0390001317F /* PaversArgo.framework in Frameworks */,
-				0ECFC9791F6AA0390001317F /* PaversFRP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,7 +522,6 @@
 		0E4D59691E5C5BC0008E4AD6 = {
 			isa = PBXGroup;
 			children = (
-				0ECFC9621F6AA0260001317F /* Pavers.xcodeproj */,
 				0ECFC94A1F6AA01F0001317F /* Ji.xcodeproj */,
 				0E4D598D1E5C5BD9008E4AD6 /* GHApi.playground */,
 				0E4D59751E5C5BC0008E4AD6 /* GHAPI */,
@@ -606,6 +564,8 @@
 		0E4D5A041E5C5E58008E4AD6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E032C991F6AB56100B83434 /* PaversArgo.framework */,
+				0E032C9A1F6AB56100B83434 /* PaversFRP.framework */,
 				0E3173B71F4E61CA00356F5E /* Ji.framework */,
 				0E3173B81F4E61CA00356F5E /* PaversArgo.framework */,
 				0E3173B91F4E61CA00356F5E /* PaversFRP.framework */,
@@ -865,19 +825,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0ECFC9631F6AA0260001317F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0ECFC96C1F6AA0270001317F /* PaversUI.framework */,
-				0ECFC96E1F6AA0270001317F /* PaversUITests.xctest */,
-				0ECFC9701F6AA0270001317F /* PaversFRP.framework */,
-				0ECFC9721F6AA0270001317F /* PaversFRPTests.xctest */,
-				0ECFC9741F6AA0270001317F /* PaversArgo.framework */,
-				0ECFC9761F6AA0270001317F /* PaversArgoTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		0EE07C1B1E7E556A0021FC6C /* EventPayloadTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1006,9 +953,8 @@
 				TargetAttributes = {
 					0E4D59721E5C5BC0008E4AD6 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 6T5NK4S24M;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					0E4D597B1E5C5BC0008E4AD6 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1031,10 +977,6 @@
 				{
 					ProductGroup = 0ECFC94B1F6AA01F0001317F /* Products */;
 					ProjectRef = 0ECFC94A1F6AA01F0001317F /* Ji.xcodeproj */;
-				},
-				{
-					ProductGroup = 0ECFC9631F6AA0260001317F /* Products */;
-					ProjectRef = 0ECFC9621F6AA0260001317F /* Pavers.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1093,48 +1035,6 @@
 			fileType = wrapper.cfbundle;
 			path = "Ji tvOS Tests.xctest";
 			remoteRef = 0ECFC9601F6AA01F0001317F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0ECFC96C1F6AA0270001317F /* PaversUI.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PaversUI.framework;
-			remoteRef = 0ECFC96B1F6AA0270001317F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0ECFC96E1F6AA0270001317F /* PaversUITests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PaversUITests.xctest;
-			remoteRef = 0ECFC96D1F6AA0270001317F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0ECFC9701F6AA0270001317F /* PaversFRP.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PaversFRP.framework;
-			remoteRef = 0ECFC96F1F6AA0270001317F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0ECFC9721F6AA0270001317F /* PaversFRPTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PaversFRPTests.xctest;
-			remoteRef = 0ECFC9711F6AA0270001317F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0ECFC9741F6AA0270001317F /* PaversArgo.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PaversArgo.framework;
-			remoteRef = 0ECFC9731F6AA0270001317F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0ECFC9761F6AA0270001317F /* PaversArgoTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PaversArgoTests.xctest;
-			remoteRef = 0ECFC9751F6AA0270001317F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1461,7 +1361,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 6T5NK4S24M;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1472,6 +1372,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.GHAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1485,7 +1386,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 6T5NK4S24M;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1496,6 +1397,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Keith.Pi.Tsui.GHAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
